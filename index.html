@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SQLingo — MySQL Mastery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f7f2;
+    --card:#ffffff;
+    --ink:#2b2b2b;
+    --muted:#777;
+    --line:#e5e5e5;
+    --green:#58cc02;
+    --green-dark:#46a302;
+    --green-shadow:#58a700;
+    --orange:#ff9600;
+    --orange-shadow:#c77400;
+    --blue:#1cb0f6;
+    --blue-shadow:#0a8ac9;
+    --red:#ff4b4b;
+    --red-shadow:#cc3a3a;
+    --purple:#ce82ff;
+    --gold:#ffc800;
+    --code-bg:#1e1e2e;
+    --code-text:#cdd6f4;
+    --code-keyword:#f5c2e7;
+    --code-string:#a6e3a1;
+    --code-number:#fab387;
+    --code-comment:#6c7086;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  code,pre{font-family:'JetBrains Mono',ui-monospace,monospace}
+
+  /* ─── APP SHELL ─── */
+  #app{min-height:100vh;display:flex;flex-direction:column}
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:var(--card);
+    border-bottom:2px solid var(--line);
+    padding:14px 20px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;
+  }
+  .logo{font-weight:900;font-size:24px;letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}
+  .logo-mark{
+    width:36px;height:36px;border-radius:10px;
+    background:linear-gradient(135deg,var(--green),var(--blue));
+    display:flex;align-items:center;justify-content:center;
+    color:white;font-weight:900;font-size:18px;
+    box-shadow:0 3px 0 var(--green-shadow);
+  }
+  .stats{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .stat{
+    display:flex;align-items:center;gap:6px;
+    font-weight:800;font-size:15px;
+  }
+  .stat-icon{font-size:20px}
+  .hearts{color:var(--red)}
+  .streak{color:var(--orange)}
+  .xp{color:var(--gold)}
+
+  main{flex:1;padding:24px 16px 60px;max-width:900px;margin:0 auto;width:100%}
+
+  /* ─── BUTTONS ─── */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 24px;border-radius:14px;
+    font-weight:800;font-size:15px;letter-spacing:0.5px;text-transform:uppercase;
+    transition:transform 0.08s, box-shadow 0.08s;
+    user-select:none;
+  }
+  .btn:active{transform:translateY(2px)}
+  .btn-primary{background:var(--green);color:white;box-shadow:0 4px 0 var(--green-shadow)}
+  .btn-primary:active{box-shadow:0 2px 0 var(--green-shadow)}
+  .btn-primary:disabled{background:#e5e5e5;color:#aaa;box-shadow:0 4px 0 #ccc;cursor:not-allowed}
+  .btn-secondary{background:white;color:var(--muted);box-shadow:0 4px 0 var(--line);border:2px solid var(--line)}
+  .btn-secondary:active{box-shadow:0 2px 0 var(--line)}
+  .btn-danger{background:var(--red);color:white;box-shadow:0 4px 0 var(--red-shadow)}
+  .btn-blue{background:var(--blue);color:white;box-shadow:0 4px 0 var(--blue-shadow)}
+  .btn-ghost{background:transparent;color:var(--muted);font-weight:700}
+
+  /* ─── HOME / MODULE MAP ─── */
+  .hero{
+    text-align:center;padding:24px 0 32px;
+  }
+  .hero h1{font-size:38px;font-weight:900;letter-spacing:-1px;line-height:1.05}
+  .hero p{color:var(--muted);font-size:17px;font-weight:600;margin-top:8px;max-width:560px;margin-left:auto;margin-right:auto}
+  .resume-banner{
+    background:linear-gradient(135deg,#fff5e1,#ffe9c4);
+    border:2px solid #ffd17a;
+    border-radius:18px;
+    padding:16px 20px;
+    margin:0 auto 28px;max-width:640px;
+    display:flex;gap:14px;align-items:flex-start;
+  }
+  .resume-banner-icon{font-size:28px;line-height:1}
+  .resume-banner-text{font-size:14px;font-weight:600;color:#7a5a10;line-height:1.45}
+  .resume-banner-text strong{font-weight:900;color:#4a3700}
+
+  .map{display:flex;flex-direction:column;gap:18px;margin-top:8px}
+  .module-card{
+    background:var(--card);
+    border:2px solid var(--line);
+    border-radius:20px;
+    padding:22px;
+    display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center;
+    cursor:pointer;
+    transition:transform 0.1s, box-shadow 0.1s, border-color 0.1s;
+    box-shadow:0 4px 0 var(--line);
+    position:relative;
+  }
+  .module-card:hover:not(.locked){transform:translateY(-2px);box-shadow:0 6px 0 var(--line);border-color:var(--green)}
+  .module-card.locked{opacity:0.55;cursor:not-allowed}
+  .module-card.completed{border-color:var(--green);background:linear-gradient(135deg,#ffffff,#f0fae6)}
+  .module-icon{
+    width:64px;height:64px;border-radius:18px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:32px;
+    color:white;
+    box-shadow:inset 0 -4px 0 rgba(0,0,0,0.15);
+  }
+  .module-meta h3{font-size:19px;font-weight:900;letter-spacing:-0.3px}
+  .module-meta .desc{font-size:13.5px;color:var(--muted);font-weight:600;margin-top:3px;line-height:1.4}
+  .module-meta .diff{display:inline-block;margin-top:8px;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:800;letter-spacing:0.6px;text-transform:uppercase;background:#eef;color:#447}
+  .diff.beginner{background:#e3f7d2;color:#3d7300}
+  .diff.intermediate{background:#fff0d6;color:#9c5d00}
+  .diff.advanced{background:#ffe0e0;color:#9c2222}
+  .diff.expert{background:#e8defb;color:#5e2c9e}
+  .module-progress{
+    text-align:right;
+    font-weight:900;font-size:14px;color:var(--muted);
+    min-width:50px;
+  }
+  .progress-ring{
+    width:54px;height:54px;
+    border-radius:50%;
+    background:conic-gradient(var(--green) calc(var(--p)*1%), #eee 0);
+    display:flex;align-items:center;justify-content:center;
+    margin-left:auto;
+  }
+  .progress-ring-inner{
+    width:42px;height:42px;border-radius:50%;
+    background:var(--card);
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:900;
+  }
+  .lock-icon{position:absolute;top:14px;right:14px;font-size:18px;opacity:0.6}
+
+  /* ─── LESSON / FLASHCARD VIEW ─── */
+  .lesson-header{
+    display:flex;align-items:center;gap:12px;margin-bottom:24px;
+  }
+  .progress-bar{
+    flex:1;height:14px;background:#e5e5e5;border-radius:10px;overflow:hidden;
+  }
+  .progress-bar-fill{
+    height:100%;background:var(--green);border-radius:10px;
+    transition:width 0.3s;
+    box-shadow:inset 0 -3px 0 rgba(0,0,0,0.1);
+  }
+  .close-btn{
+    width:36px;height:36px;border-radius:50%;background:#eee;color:var(--muted);
+    display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;
+  }
+
+  .card-stage{
+    perspective:1200px;
+    min-height:420px;
+    display:flex;align-items:center;justify-content:center;
+    margin:30px 0;
+  }
+  .flashcard{
+    width:100%;max-width:560px;min-height:380px;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:transform 0.6s cubic-bezier(.65,.05,.36,1);
+    cursor:pointer;
+  }
+  .flashcard.flipped{transform:rotateY(180deg)}
+  .flashcard-face{
+    position:absolute;inset:0;
+    background:var(--card);
+    border:2px solid var(--line);
+    border-radius:22px;
+    padding:30px;
+    display:flex;flex-direction:column;
+    backface-visibility:hidden;
+    box-shadow:0 6px 0 var(--line);
+  }
+  .flashcard-face.back{transform:rotateY(180deg)}
+  .flashcard-label{
+    font-size:11px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
+    color:var(--blue);margin-bottom:12px;
+  }
+  .flashcard-front .concept{
+    font-size:28px;font-weight:900;letter-spacing:-0.5px;line-height:1.2;
+    margin-bottom:14px;
+  }
+  .flashcard-front .hint{
+    color:var(--muted);font-size:14.5px;font-weight:600;line-height:1.5;
+  }
+  .flashcard-back h4{font-size:15px;font-weight:800;margin-bottom:10px}
+  .flashcard-back p{font-size:14.5px;line-height:1.55;color:#444;font-weight:500;margin-bottom:12px}
+  .tap-hint{
+    position:absolute;bottom:14px;left:0;right:0;
+    text-align:center;font-size:12px;font-weight:700;color:var(--muted);
+    letter-spacing:0.5px;text-transform:uppercase;
+  }
+  pre.code{
+    background:var(--code-bg);color:var(--code-text);
+    padding:14px 16px;border-radius:12px;
+    font-size:13px;line-height:1.55;
+    overflow-x:auto;white-space:pre;
+    margin:8px 0 6px;
+  }
+  pre.code .k{color:var(--code-keyword);font-weight:600}
+  pre.code .s{color:var(--code-string)}
+  pre.code .n{color:var(--code-number)}
+  pre.code .c{color:var(--code-comment);font-style:italic}
+  .scenario-tag{
+    display:inline-block;padding:4px 10px;border-radius:8px;
+    font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.6px;
+    background:#e1f4ff;color:#0a6996;margin-bottom:10px;
+  }
+
+  /* ─── QUIZ VIEW ─── */
+  .question-area{
+    background:var(--card);
+    border:2px solid var(--line);
+    border-radius:22px;
+    padding:26px;
+    box-shadow:0 6px 0 var(--line);
+  }
+  .question-prompt{
+    font-size:13px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;
+    color:var(--orange);margin-bottom:10px;
+  }
+  .question-text{
+    font-size:20px;font-weight:800;line-height:1.35;margin-bottom:8px;letter-spacing:-0.3px;
+  }
+  .question-scenario{
+    background:#f0f8ff;border-left:4px solid var(--blue);
+    padding:12px 14px;border-radius:10px;
+    font-size:13.5px;font-weight:600;color:#1a4d6e;margin:14px 0;line-height:1.5;
+  }
+  .options{display:grid;gap:12px;margin-top:16px}
+  .option{
+    background:white;border:2px solid var(--line);
+    border-radius:14px;padding:14px 18px;
+    font-size:15px;font-weight:700;text-align:left;
+    box-shadow:0 3px 0 var(--line);
+    transition:all 0.1s;
+    display:flex;align-items:center;gap:12px;
+  }
+  .option:hover:not(:disabled){border-color:var(--blue)}
+  .option.selected{border-color:var(--blue);background:#eaf6fe;color:var(--blue-shadow)}
+  .option.correct{border-color:var(--green);background:#dffac4;color:var(--green-shadow);box-shadow:0 3px 0 var(--green-shadow)}
+  .option.wrong{border-color:var(--red);background:#ffd6d6;color:var(--red-shadow);box-shadow:0 3px 0 var(--red-shadow)}
+  .option-letter{
+    width:28px;height:28px;border-radius:8px;background:#eee;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:13px;color:var(--muted);flex-shrink:0;
+  }
+  .option.selected .option-letter{background:var(--blue);color:white}
+  .option.correct .option-letter{background:var(--green);color:white}
+  .option.wrong .option-letter{background:var(--red);color:white}
+  .option code{font-size:13.5px;background:rgba(0,0,0,0.06);padding:2px 6px;border-radius:4px}
+
+  /* Fill in the blank */
+  .fill-template{
+    background:var(--code-bg);color:var(--code-text);
+    padding:18px;border-radius:12px;
+    font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;
+    margin:14px 0;white-space:pre-wrap;
+  }
+  .blank-input{
+    display:inline-block;
+    background:white;color:var(--ink);
+    border:2px dashed var(--orange);border-radius:8px;
+    padding:2px 10px;font-family:inherit;font-size:14px;font-weight:700;
+    min-width:90px;outline:none;
+  }
+  .blank-input:focus{border-style:solid;border-color:var(--blue)}
+  .blank-input.correct{border-color:var(--green);background:#dffac4;color:var(--green-shadow)}
+  .blank-input.wrong{border-color:var(--red);background:#ffd6d6;color:var(--red-shadow)}
+
+  /* Order/arrange clauses */
+  .order-bank,.order-zone{
+    display:flex;flex-wrap:wrap;gap:8px;
+    padding:14px;border-radius:14px;
+    min-height:64px;margin:10px 0;
+  }
+  .order-bank{background:#f5f5f0;border:2px dashed #ccc}
+  .order-zone{background:white;border:2px solid var(--line);box-shadow:0 3px 0 var(--line)}
+  .order-chip{
+    background:white;border:2px solid var(--line);
+    border-radius:10px;padding:8px 14px;
+    font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;
+    box-shadow:0 3px 0 var(--line);
+    cursor:pointer;transition:transform 0.1s;
+    user-select:none;
+  }
+  .order-chip:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line)}
+  .order-chip.placed{background:#eaf6fe;border-color:var(--blue)}
+
+  /* ─── FEEDBACK BAR ─── */
+  .feedback{
+    position:fixed;bottom:0;left:0;right:0;
+    padding:18px 20px 24px;
+    background:white;border-top:3px solid var(--line);
+    transform:translateY(100%);
+    transition:transform 0.25s cubic-bezier(.5,.0,.5,1.4);
+    z-index:60;
+  }
+  .feedback.show{transform:translateY(0)}
+  .feedback.correct{background:#d7ffb8;border-top-color:var(--green)}
+  .feedback.wrong{background:#ffdfdf;border-top-color:var(--red)}
+  .feedback-inner{max-width:780px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .feedback-title{font-size:22px;font-weight:900;letter-spacing:-0.5px}
+  .feedback.correct .feedback-title{color:var(--green-shadow)}
+  .feedback.wrong .feedback-title{color:var(--red-shadow)}
+  .feedback-explain{font-size:14px;font-weight:600;line-height:1.4;margin-top:4px;max-width:550px}
+  .feedback-explain code{background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-size:12.5px}
+
+  /* ─── RESULTS ─── */
+  .results{text-align:center;padding:40px 20px}
+  .results-trophy{font-size:88px;margin-bottom:12px;animation:bounce 0.8s ease-out}
+  @keyframes bounce{
+    0%{transform:scale(0) rotate(-15deg)}
+    60%{transform:scale(1.15) rotate(8deg)}
+    100%{transform:scale(1) rotate(0)}
+  }
+  .results h2{font-size:32px;font-weight:900;letter-spacing:-0.8px;margin-bottom:8px}
+  .results .subtitle{color:var(--muted);font-weight:600;font-size:16px;margin-bottom:32px}
+  .stat-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:540px;margin:0 auto 32px;
+  }
+  .stat-card{
+    background:var(--card);border:2px solid var(--line);
+    border-radius:16px;padding:20px 12px;
+    box-shadow:0 4px 0 var(--line);
+  }
+  .stat-card-label{font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
+  .stat-card-value{font-size:30px;font-weight:900;letter-spacing:-1px;margin-top:6px}
+  .stat-card.xp .stat-card-value{color:var(--gold)}
+  .stat-card.acc .stat-card-value{color:var(--green)}
+  .stat-card.time .stat-card-value{color:var(--blue)}
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+  .shake{animation:shake 0.3s}
+  @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
+  .pop{animation:pop 0.3s}
+
+  /* ─── MISC ─── */
+  .hidden{display:none !important}
+  .row{display:flex;gap:12px;align-items:center}
+  .center{text-align:center}
+  .footer-actions{display:flex;gap:12px;justify-content:center;margin-top:20px}
+
+  @media (max-width:600px){
+    .hero h1{font-size:28px}
+    .module-card{grid-template-columns:54px 1fr auto;padding:16px;gap:12px}
+    .module-icon{width:54px;height:54px;font-size:26px;border-radius:14px}
+    .module-meta h3{font-size:16px}
+    .module-meta .desc{font-size:12.5px}
+    .progress-ring{width:46px;height:46px}
+    .progress-ring-inner{width:36px;height:36px;font-size:11px}
+    .flashcard-front .concept{font-size:22px}
+    .question-text{font-size:17px}
+    .stats{gap:10px}
+    .stat{font-size:13px}
+    .topbar{padding:10px 14px}
+    .logo{font-size:20px}
+    .logo-mark{width:32px;height:32px;font-size:16px}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="logo">
+      <div class="logo-mark">🐬</div>
+      <span>SQLingo</span>
+    </div>
+    <div class="stats">
+      <div class="stat streak"><span class="stat-icon">🔥</span><span id="streakCount">0</span></div>
+      <div class="stat xp"><span class="stat-icon">⚡</span><span id="xpCount">0</span></div>
+      <div class="stat hearts"><span class="stat-icon">❤️</span><span id="heartCount">5</span></div>
+    </div>
+  </header>
+  <main id="mainContent"></main>
+</div>
+
+<div class="feedback" id="feedback">
+  <div class="feedback-inner">
+    <div>
+      <div class="feedback-title" id="feedbackTitle"></div>
+      <div class="feedback-explain" id="feedbackExplain"></div>
+    </div>
+    <button class="btn btn-primary" id="continueBtn">Continue</button>
+  </div>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────────────────
+   SQLINGO — MySQL Mastery, tailored to a senior data
+   analyst / Python+FastAPI dev background.
+   All scenarios pulled from the user's real work history:
+   SEO/backlinks, brand imitation detection, inventory &
+   billing, BI dashboards, audience segmentation, etc.
+   ───────────────────────────────────────────────────────── */
+
+const MODULES = [
+  /* ─── 1 ─── */
+  {
+    id:1, title:"SELECT Sharpening", icon:"🎯", color:"#58cc02",
+    description:"Refresh advanced SELECT, DISTINCT, ORDER BY and filter patterns.",
+    difficulty:"intermediate",
+    flashcards:[
+      {label:"PATTERN MATCHING", concept:"LIKE vs REGEXP",
+       hint:"When do you reach for each in MySQL?",
+       back:`<p><b>LIKE</b> uses <code>%</code> (any chars) and <code>_</code> (one char). Case-insensitive by default in MySQL.</p>
+             <p><b>REGEXP</b> (alias <code>RLIKE</code>) supports full regex — character classes, anchors, alternation.</p>
+             <pre class="code"><span class="k">SELECT</span> brand_name <span class="k">FROM</span> listings
+<span class="k">WHERE</span> brand_name <span class="k">REGEXP</span> <span class="s">'^(nik[eE3]|n1ke)'</span>;</pre>
+             <p class="scenario-tag">Your work: brand imitation detection</p>`},
+      {label:"NULL HANDLING", concept:"NULL is not equal to anything",
+       hint:"Including itself. So how do you filter it?",
+       back:`<p><code>col = NULL</code> is always UNKNOWN (effectively false). Use <code>IS NULL</code> / <code>IS NOT NULL</code>.</p>
+             <p>Want a fallback value? Use <code>COALESCE(col, 'default')</code> or <code>IFNULL(col, 'default')</code>.</p>
+             <pre class="code"><span class="k">SELECT</span> COALESCE(meta_description, <span class="s">'(missing)'</span>)
+<span class="k">FROM</span> seo_pages
+<span class="k">WHERE</span> canonical_url <span class="k">IS NOT NULL</span>;</pre>`},
+      {label:"DISTINCT", concept:"DISTINCT applies to ALL listed columns",
+       hint:"It's not just on the first column.",
+       back:`<p><code>SELECT DISTINCT a, b</code> returns unique <b>combinations</b> of (a, b), not distinct values of <code>a</code>.</p>
+             <p>For per-column uniqueness use <code>GROUP BY</code> or window functions.</p>
+             <pre class="code"><span class="c">-- unique (campaign, keyword) pairs:</span>
+<span class="k">SELECT DISTINCT</span> campaign_id, keyword
+<span class="k">FROM</span> serp_tracking;</pre>`},
+      {label:"ORDER BY tricks", concept:"You can ORDER BY expressions",
+       hint:"Not just columns — and you can use column position too.",
+       back:`<p>Order by computed values, CASE expressions, or even by ordinal position (<code>ORDER BY 2 DESC</code>).</p>
+             <pre class="code"><span class="k">SELECT</span> client_id, SUM(spend) <span class="k">AS</span> total
+<span class="k">FROM</span> campaigns
+<span class="k">GROUP BY</span> client_id
+<span class="k">ORDER BY</span> total <span class="k">DESC</span>,
+  <span class="k">CASE</span> tier <span class="k">WHEN</span> <span class="s">'platinum'</span> <span class="k">THEN</span> <span class="n">1</span> <span class="k">ELSE</span> <span class="n">2</span> <span class="k">END</span>;</pre>`}
+    ],
+    questions:[
+      {type:"mcq",
+       scenario:"You're auditing SEO metadata and need to find pages where the meta title contains either 'sale', 'discount' or 'offer' — case-insensitive.",
+       question:"Which WHERE clause is most idiomatic in MySQL?",
+       options:[
+         "WHERE meta_title LIKE '%sale%' OR meta_title LIKE '%discount%' OR meta_title LIKE '%offer%'",
+         "WHERE meta_title REGEXP 'sale|discount|offer'",
+         "WHERE meta_title IN ('sale','discount','offer')",
+         "WHERE meta_title CONTAINS ANY ('sale','discount','offer')"
+       ],
+       correct:1,
+       explanation:"REGEXP with alternation is the cleanest. Option A works but is verbose. IN matches the entire string, not substrings. Option D isn't valid MySQL syntax."},
+      {type:"mcq",
+       question:"Which query returns unique CLIENTS (not unique client-campaign pairs)?",
+       options:[
+         "SELECT DISTINCT client_id, campaign_id FROM campaigns",
+         "SELECT client_id FROM campaigns GROUP BY campaign_id",
+         "SELECT DISTINCT client_id FROM campaigns",
+         "SELECT client_id FROM campaigns ORDER BY client_id"
+       ],
+       correct:2,
+       explanation:"DISTINCT on a single column gives unique values of that column. Option A returns unique pairs. Option B groups wrongly. Option D doesn't dedupe at all."},
+      {type:"fill",
+       scenario:"From your inventory tracking work — show products with stock between 1 and 9 (low, but not zero).",
+       template:"SELECT sku, qty_in_stock FROM inventory\nWHERE qty_in_stock ___ 1 AND 9;",
+       answer:"BETWEEN",
+       explanation:"BETWEEN is inclusive on both ends. Equivalent to qty_in_stock >= 1 AND qty_in_stock <= 9."},
+      {type:"mcq",
+       scenario:"A column 'campaign_notes' may be NULL for some rows.",
+       question:"Which clause correctly returns rows where notes are MISSING?",
+       options:[
+         "WHERE campaign_notes = NULL",
+         "WHERE campaign_notes == NULL",
+         "WHERE campaign_notes IS NULL",
+         "WHERE ISNULL(campaign_notes) = 'true'"
+       ],
+       correct:2,
+       explanation:"NULL comparisons must use IS NULL / IS NOT NULL. Equality operators with NULL always return UNKNOWN. ISNULL() exists but returns 1/0, not 'true'."}
+    ]
+  },
+  /* ─── 2 ─── */
+  {
+    id:2, title:"GROUP BY & Aggregation", icon:"📊", color:"#1cb0f6",
+    description:"HAVING vs WHERE, conditional aggregates, ROLLUP — the backbone of every dashboard.",
+    difficulty:"intermediate",
+    flashcards:[
+      {label:"WHERE vs HAVING", concept:"WHERE runs BEFORE grouping, HAVING after",
+       hint:"This is why HAVING can use aggregates and WHERE can't.",
+       back:`<p>Order of evaluation: <code>FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT</code>.</p>
+             <p>Filter individual rows in <code>WHERE</code>. Filter groups in <code>HAVING</code>.</p>
+             <pre class="code"><span class="k">SELECT</span> client_id, COUNT(*) <span class="k">AS</span> tickets
+<span class="k">FROM</span> support_tickets
+<span class="k">WHERE</span> status = <span class="s">'closed'</span>      <span class="c">-- per-row</span>
+<span class="k">GROUP BY</span> client_id
+<span class="k">HAVING</span> tickets &gt; <span class="n">10</span>;        <span class="c">-- per-group</span></pre>`},
+      {label:"CONDITIONAL AGGREGATE", concept:"SUM(CASE WHEN…) is a Swiss army knife",
+       hint:"How do you count two things in one row of output?",
+       back:`<p>Crosstab-style aggregates without pivot:</p>
+             <pre class="code"><span class="k">SELECT</span> moderator_id,
+  SUM(<span class="k">CASE WHEN</span> verdict=<span class="s">'violation'</span> <span class="k">THEN</span> <span class="n">1</span> <span class="k">ELSE</span> <span class="n">0</span> <span class="k">END</span>) <span class="k">AS</span> violations,
+  SUM(<span class="k">CASE WHEN</span> verdict=<span class="s">'clean'</span> <span class="k">THEN</span> <span class="n">1</span> <span class="k">ELSE</span> <span class="n">0</span> <span class="k">END</span>) <span class="k">AS</span> clean,
+  AVG(<span class="k">CASE WHEN</span> verdict=<span class="s">'violation'</span> <span class="k">THEN</span> confidence <span class="k">END</span>) <span class="k">AS</span> avg_conf
+<span class="k">FROM</span> moderation_logs
+<span class="k">GROUP BY</span> moderator_id;</pre>
+             <p class="scenario-tag">Your work: moderation team performance dashboards</p>`},
+      {label:"ONLY_FULL_GROUP_BY", concept:"Every non-aggregated column in SELECT must be in GROUP BY",
+       hint:"This is on by default in MySQL 5.7+.",
+       back:`<p>If you select <code>name</code> and aggregate <code>SUM(revenue)</code>, you must <code>GROUP BY name</code> — otherwise MySQL throws an error in strict mode.</p>
+             <p>To get a representative non-grouped value, use <code>ANY_VALUE(col)</code>.</p>`},
+      {label:"WITH ROLLUP", concept:"Subtotals + grand totals in one query",
+       hint:"Saves multiple UNION queries for reports.",
+       back:`<p><code>GROUP BY … WITH ROLLUP</code> adds super-aggregate rows.</p>
+             <pre class="code"><span class="k">SELECT</span> region, channel, SUM(leads) <span class="k">AS</span> total
+<span class="k">FROM</span> campaign_leads
+<span class="k">GROUP BY</span> region, channel <span class="k">WITH ROLLUP</span>;</pre>
+             <p>Returns per region+channel, per region (with NULL channel), and a grand total row (both NULL).</p>`}
+    ],
+    questions:[
+      {type:"mcq",
+       scenario:"You want a list of brands with more than 50 reported imitation cases in 2025.",
+       question:"Where does the count > 50 filter belong?",
+       options:[
+         "In the WHERE clause",
+         "In the HAVING clause",
+         "In the ORDER BY clause",
+         "In a subquery's WHERE clause"
+       ],
+       correct:1,
+       explanation:"You're filtering on an aggregate (COUNT). Aggregates can only be referenced after GROUP BY runs — that's what HAVING is for."},
+      {type:"fill",
+       scenario:"Count closed vs open support tickets per client in one row each.",
+       template:"SELECT client_id,\n  SUM(CASE WHEN status='closed' THEN 1 ELSE 0 END) AS closed_cnt,\n  SUM(CASE WHEN status='open'   THEN 1 ELSE 0 END) AS open_cnt\nFROM tickets\n___ BY client_id;",
+       answer:"GROUP",
+       explanation:"Conditional SUM (or COUNT) inside GROUP BY is the standard 'pivot-without-pivot' trick."},
+      {type:"mcq",
+       question:"In strict mode, which query throws an error?",
+       options:[
+         "SELECT client_id, SUM(spend) FROM ads GROUP BY client_id",
+         "SELECT client_id, region, SUM(spend) FROM ads GROUP BY client_id, region",
+         "SELECT client_id, region, SUM(spend) FROM ads GROUP BY client_id",
+         "SELECT COUNT(*) FROM ads"
+       ],
+       correct:2,
+       explanation:"`region` is selected but not in GROUP BY and not aggregated — ONLY_FULL_GROUP_BY rejects this. Wrap region in ANY_VALUE() or add it to GROUP BY."},
+      {type:"mcq",
+       scenario:"You need region totals AND a grand total in a single result set, for a Power BI feed.",
+       question:"Which clause gives you both without UNION?",
+       options:[
+         "GROUP BY region WITH CUBE",
+         "GROUP BY region WITH ROLLUP",
+         "GROUP BY ROLLUP(region)",
+         "GROUP BY region INCLUDE TOTAL"
+       ],
+       correct:1,
+       explanation:"MySQL uses the suffix syntax `GROUP BY … WITH ROLLUP`. (CUBE is in some other RDBMS; the bracketed syntax is standard SQL but not MySQL.)"}
+    ]
+  },
+  /* ─── 3 ─── */
+  {
+    id:3, title:"JOINs Deep Dive", icon:"🔗", color:"#ff9600",
+    description:"Inner, left, right, self, multi-table — the #1 interview topic.",
+    difficulty:"intermediate",
+    flashcards:[
+      {label:"INNER vs LEFT", concept:"LEFT JOIN keeps unmatched LEFT rows",
+       hint:"Returning NULLs for the right side.",
+       back:`<p>Use LEFT JOIN when the right table is optional: clients who may or may not have campaigns, products that may or may not be in any order.</p>
+             <pre class="code"><span class="c">-- clients with zero campaigns (gap analysis):</span>
+<span class="k">SELECT</span> c.client_id, c.name
+<span class="k">FROM</span> clients c
+<span class="k">LEFT JOIN</span> campaigns ca <span class="k">ON</span> ca.client_id = c.client_id
+<span class="k">WHERE</span> ca.campaign_id <span class="k">IS NULL</span>;</pre>`},
+      {label:"SELF JOIN", concept:"A table joined to itself with aliases",
+       hint:"Useful for hierarchies and pair comparisons.",
+       back:`<p>Compare rows of the same table — finding pairs, hierarchies (manager → employee), or version diffs.</p>
+             <pre class="code"><span class="c">-- backlink pairs from the SAME domain:</span>
+<span class="k">SELECT</span> a.url <span class="k">AS</span> src1, b.url <span class="k">AS</span> src2, a.target_url
+<span class="k">FROM</span> backlinks a
+<span class="k">JOIN</span> backlinks b
+  <span class="k">ON</span> a.target_url = b.target_url
+ <span class="k">AND</span> a.source_domain = b.source_domain
+ <span class="k">AND</span> a.url &lt; b.url;</pre>
+             <p class="scenario-tag">Your work: SEO backlink analysis</p>`},
+      {label:"JOIN with WHERE vs ON", concept:"Filter location changes LEFT JOIN behavior",
+       hint:"Putting a right-table filter in WHERE silently converts LEFT JOIN to INNER JOIN.",
+       back:`<p>Compare:</p>
+             <pre class="code"><span class="c">-- Keeps unmatched orders (status filter is part of join):</span>
+<span class="k">LEFT JOIN</span> payments p <span class="k">ON</span> p.order_id = o.id <span class="k">AND</span> p.status = <span class="s">'paid'</span>
+
+<span class="c">-- Silently becomes INNER JOIN (NULL p.status filtered out):</span>
+<span class="k">LEFT JOIN</span> payments p <span class="k">ON</span> p.order_id = o.id
+<span class="k">WHERE</span> p.status = <span class="s">'paid'</span></pre>`},
+      {label:"MULTI-TABLE JOIN", concept:"Joins evaluate left-to-right",
+       hint:"Order can matter for readability and for explain plans.",
+       back:`<p>Typical 3-table pattern (clients → orders → items):</p>
+             <pre class="code"><span class="k">SELECT</span> c.name, COUNT(<span class="k">DISTINCT</span> o.order_id) <span class="k">AS</span> orders,
+       SUM(oi.qty * oi.unit_price) <span class="k">AS</span> revenue
+<span class="k">FROM</span> clients c
+<span class="k">JOIN</span> orders o      <span class="k">ON</span> o.client_id = c.client_id
+<span class="k">JOIN</span> order_items oi <span class="k">ON</span> oi.order_id = o.order_id
+<span class="k">WHERE</span> o.created_at &gt;= <span class="s">'2025-01-01'</span>
+<span class="k">GROUP BY</span> c.client_id;</pre>`}
+    ],
+    questions:[
+      {type:"mcq",
+       scenario:"You want every product, with the most recent purchase (if any). Some products have never been ordered.",
+       question:"Which join shape is correct?",
+       options:[
+         "products INNER JOIN orders",
+         "products LEFT JOIN orders",
+         "orders LEFT JOIN products",
+         "products CROSS JOIN orders"
+       ],
+       correct:1,
+       explanation:"You want every product preserved — so products is on the LEFT. Unmatched products get NULL for order columns."},
+      {type:"mcq",
+       scenario:"An audit query needs to find clients who have NEVER had a campaign.",
+       question:"Which pattern is the standard 'anti-join'?",
+       options:[
+         "LEFT JOIN campaigns … WHERE campaign_id IS NULL",
+         "INNER JOIN campaigns … WHERE campaign_id IS NULL",
+         "RIGHT JOIN campaigns … WHERE client_id IS NOT NULL",
+         "FULL OUTER JOIN campaigns"
+       ],
+       correct:0,
+       explanation:"LEFT JOIN preserves all clients, then filtering to where the right-side ID is NULL gives you the unmatched ones. Classic anti-join."},
+      {type:"order",
+       scenario:"Drag the clauses in correct logical order.",
+       question:"Build a JOIN query that filters, groups and orders correctly.",
+       chips:["SELECT c.name, SUM(o.amount)","FROM clients c","JOIN orders o ON o.client_id = c.client_id","WHERE o.created_at > '2025-01-01'","GROUP BY c.client_id","ORDER BY SUM(o.amount) DESC"],
+       correctOrder:[0,1,2,3,4,5],
+       explanation:"Standard order: SELECT … FROM … JOIN … ON … WHERE … GROUP BY … ORDER BY. Logical execution differs but written order is fixed."},
+      {type:"mcq",
+       scenario:"This query unexpectedly excludes products that have never been ordered:\nSELECT p.name, o.qty FROM products p LEFT JOIN orders o ON o.product_id = p.id WHERE o.qty > 0;",
+       question:"Why?",
+       options:[
+         "LEFT JOIN doesn't work with WHERE",
+         "The WHERE o.qty > 0 filters out NULL rows, turning it into an inner join",
+         "MySQL converts all LEFT JOINs to INNER for performance",
+         "products has no index on id"
+       ],
+       correct:1,
+       explanation:"Unmatched products produce NULL for o.qty. NULL > 0 is UNKNOWN, so those rows are dropped. Move the qty filter into the ON clause to preserve LEFT JOIN semantics."}
+    ]
+  },
+  /* ─── 4 ─── */
+  {
+    id:4, title:"Subqueries & EXISTS", icon:"📦", color:"#ce82ff",
+    description:"Correlated subqueries, EXISTS vs IN, scalar subqueries — express what joins can't.",
+    difficulty:"intermediate",
+    flashcards:[
+      {label:"EXISTS vs IN", concept:"EXISTS short-circuits, IN materializes the set",
+       hint:"For large or correlated subqueries, EXISTS often wins.",
+       back:`<p><code>IN</code> evaluates the full subquery and matches the value. <code>EXISTS</code> just asks "is there at least one row?" and stops.</p>
+             <pre class="code"><span class="c">-- products that have AT LEAST ONE recent order:</span>
+<span class="k">SELECT</span> p.* <span class="k">FROM</span> products p
+<span class="k">WHERE EXISTS</span> (
+  <span class="k">SELECT</span> <span class="n">1</span> <span class="k">FROM</span> orders o
+  <span class="k">WHERE</span> o.product_id = p.id
+    <span class="k">AND</span> o.created_at &gt; <span class="k">NOW</span>() - <span class="k">INTERVAL</span> <span class="n">30</span> <span class="k">DAY</span>
+);</pre>
+             <p>Also: <code>NOT EXISTS</code> handles NULLs better than <code>NOT IN</code>.</p>`},
+      {label:"NOT IN trap", concept:"NOT IN (subquery with NULLs) returns no rows",
+       hint:"A single NULL in the subquery poisons the whole result.",
+       back:`<p>If the subquery returns any NULL, every comparison becomes UNKNOWN, and NOT IN returns zero rows. Use NOT EXISTS instead, or filter NULLs out.</p>
+             <pre class="code"><span class="c">-- safer:</span>
+<span class="k">SELECT</span> * <span class="k">FROM</span> clients c
+<span class="k">WHERE NOT EXISTS</span> (
+  <span class="k">SELECT</span> <span class="n">1</span> <span class="k">FROM</span> blocklist b
+  <span class="k">WHERE</span> b.client_id = c.client_id
+);</pre>`},
+      {label:"SCALAR SUBQUERY", concept:"A subquery that returns exactly one value",
+       hint:"Can sit anywhere a value is expected — including SELECT list.",
+       back:`<p>Useful for per-row lookups when JOIN would over-multiply.</p>
+             <pre class="code"><span class="k">SELECT</span> c.name,
+  (<span class="k">SELECT</span> COUNT(*) <span class="k">FROM</span> orders o <span class="k">WHERE</span> o.client_id = c.id) <span class="k">AS</span> orders,
+  (<span class="k">SELECT</span> MAX(amount) <span class="k">FROM</span> orders o <span class="k">WHERE</span> o.client_id = c.id) <span class="k">AS</span> biggest
+<span class="k">FROM</span> clients c;</pre>
+             <p>Beware: each scalar subquery runs per row. Often a JOIN+GROUP BY is faster.</p>`},
+      {label:"DERIVED TABLE", concept:"A subquery in FROM, used as a temporary table",
+       hint:"Must be aliased.",
+       back:`<pre class="code"><span class="k">SELECT</span> tier, AVG(spend) <span class="k">AS</span> avg_spend
+<span class="k">FROM</span> (
+  <span class="k">SELECT</span> client_id, tier, SUM(amount) <span class="k">AS</span> spend
+  <span class="k">FROM</span> orders <span class="k">JOIN</span> clients <span class="k">USING</span>(client_id)
+  <span class="k">GROUP BY</span> client_id, tier
+) <span class="k">AS</span> client_totals
+<span class="k">GROUP BY</span> tier;</pre>
+             <p>For complex two-level aggregations. CTEs (next module) are usually cleaner.</p>`}
+    ],
+    questions:[
+      {type:"mcq",
+       scenario:"You need clients that have at least one open complaint.",
+       question:"Which is most idiomatic and tends to be fastest in MySQL?",
+       options:[
+         "SELECT * FROM clients WHERE id IN (SELECT client_id FROM complaints WHERE status='open')",
+         "SELECT * FROM clients c WHERE EXISTS (SELECT 1 FROM complaints WHERE client_id = c.id AND status='open')",
+         "SELECT DISTINCT c.* FROM clients c JOIN complaints x ON x.client_id=c.id WHERE x.status='open'",
+         "All three give the same result; B usually has the best plan"
+       ],
+       correct:3,
+       explanation:"All three return the same rows. EXISTS often gets the best plan because the optimizer can stop at the first match per outer row."},
+      {type:"mcq",
+       scenario:"You wrote:\nSELECT * FROM clients WHERE id NOT IN (SELECT blocked_client_id FROM blocklist);\nIt returns zero rows even though only some clients are blocked.",
+       question:"Most likely cause?",
+       options:[
+         "Missing index on blocklist.blocked_client_id",
+         "blocklist contains at least one NULL in blocked_client_id",
+         "MySQL doesn't support NOT IN",
+         "clients table is empty"
+       ],
+       correct:1,
+       explanation:"NOT IN against a set containing NULL evaluates to UNKNOWN for every comparison → zero rows. Switch to NOT EXISTS or filter NULLs out of the subquery."},
+      {type:"fill",
+       scenario:"Find the single most recent campaign for client #42.",
+       template:"SELECT * FROM campaigns\nWHERE client_id = 42\nORDER BY created_at DESC\n___ 1;",
+       answer:"LIMIT",
+       explanation:"LIMIT N returns the top N rows after ORDER BY. (For per-group 'latest', window functions are cleaner — coming up.)"},
+      {type:"mcq",
+       question:"A scalar subquery in the SELECT list must return…",
+       options:[
+         "Exactly one row and one column",
+         "At least one row",
+         "Any number of rows, MySQL picks one",
+         "Any number of rows and columns"
+       ],
+       correct:0,
+       explanation:"Scalar = single scalar value: one row, one column. More than one row at runtime raises an error."}
+    ]
+  },
+  /* ─── 5 ─── */
+  {
+    id:5, title:"CTEs & Recursive Queries", icon:"🌳", color:"#00d9c5",
+    description:"WITH clause for readability, recursive CTEs for hierarchies and graph walks.",
+    difficulty:"advanced",
+    flashcards:[
+      {label:"CTE BASICS", concept:"WITH name AS (…) SELECT …",
+       hint:"A named, scoped subquery — only lives for one statement.",
+       back:`<p>CTEs (Common Table Expressions) replace messy nested subqueries with named, readable blocks. Chain multiple with commas.</p>
+             <pre class="code"><span class="k">WITH</span> daily_leads <span class="k">AS</span> (
+  <span class="k">SELECT</span> DATE(created_at) <span class="k">AS</span> d, COUNT(*) <span class="k">AS</span> n
+  <span class="k">FROM</span> leads <span class="k">GROUP BY</span> DATE(created_at)
+),
+weekly <span class="k">AS</span> (
+  <span class="k">SELECT</span> YEARWEEK(d) <span class="k">AS</span> wk, SUM(n) <span class="k">AS</span> total
+  <span class="k">FROM</span> daily_leads <span class="k">GROUP BY</span> YEARWEEK(d)
+)
+<span class="k">SELECT</span> * <span class="k">FROM</span> weekly <span class="k">ORDER BY</span> wk;</pre>`},
+      {label:"RECURSIVE CTE", concept:"WITH RECURSIVE walks tree/graph structures",
+       hint:"Anchor row + recursive step joined to itself.",
+       back:`<p>Use for org charts, category trees, threaded comments, or backlink chains.</p>
+             <pre class="code"><span class="k">WITH RECURSIVE</span> category_tree <span class="k">AS</span> (
+  <span class="c">-- anchor: top-level categories</span>
+  <span class="k">SELECT</span> id, name, parent_id, <span class="n">0</span> <span class="k">AS</span> depth
+  <span class="k">FROM</span> categories <span class="k">WHERE</span> parent_id <span class="k">IS NULL</span>
+  <span class="k">UNION ALL</span>
+  <span class="c">-- recurse: children of already-found rows</span>
+  <span class="k">SELECT</span> c.id, c.name, c.parent_id, t.depth + <span class="n">1</span>
+  <span class="k">FROM</span> categories c
+  <span class="k">JOIN</span> category_tree t <span class="k">ON</span> c.parent_id = t.id
+)
+<span class="k">SELECT</span> * <span class="k">FROM</span> category_tree <span class="k">ORDER BY</span> depth, name;</pre>
+             <p class="scenario-tag">Your work: hierarchical SEO categories</p>`},
+      {label:"CTE vs SUBQUERY", concept:"CTEs improve readability; performance is similar",
+       hint:"MySQL 8 generally treats CTEs as derived tables.",
+       back:`<p>In MySQL 8, a non-recursive CTE is essentially a named derived table — same plan you'd get with a subquery in FROM, but far more readable when reused or chained.</p>
+             <p>CTEs are not materialized by default (no cache); the same CTE referenced twice runs twice.</p>`},
+      {label:"RECURSIVE TERMINATION", concept:"Always design a stopping condition",
+       hint:"Otherwise MySQL caps it at cte_max_recursion_depth (default 1000).",
+       back:`<p>Three ways to make recursion terminate:</p>
+             <ul style="margin-left:18px;font-size:14.5px"><li>Anchor selects a finite leaf set</li><li>Recursive step joins on a relationship that doesn't cycle</li><li>Add <code>WHERE depth &lt; N</code></li></ul>
+             <p>For graphs with cycles, track visited IDs in a string and exclude them.</p>`}
+    ],
+    questions:[
+      {type:"mcq",
+       question:"Which keyword turns a regular CTE into a recursive one?",
+       options:["WITH LOOP","WITH RECURSIVE","WITH SELF","REPEAT WITH"],
+       correct:1,
+       explanation:"`WITH RECURSIVE name AS (anchor UNION ALL recursive_step)` — the RECURSIVE keyword is required even though only one branch recurses."},
+      {type:"mcq",
+       scenario:"You have a categories table with id, name, parent_id. You want every category and its depth.",
+       question:"Which is the correct anchor (base case) for the recursive CTE?",
+       options:[
+         "SELECT id, name, parent_id, 0 AS depth FROM categories",
+         "SELECT id, name, parent_id, 0 AS depth FROM categories WHERE parent_id IS NULL",
+         "SELECT id, name, parent_id, 0 AS depth FROM categories WHERE id = 1",
+         "SELECT id, name, parent_id, depth FROM categories"
+       ],
+       correct:1,
+       explanation:"The anchor should pick the roots — categories with no parent. The recursive step then walks downward."},
+      {type:"order",
+       question:"Order the parts of a recursive CTE correctly.",
+       chips:["WITH RECURSIVE tree AS (","  SELECT id, parent_id, 0 AS lvl FROM nodes WHERE parent_id IS NULL","  UNION ALL","  SELECT n.id, n.parent_id, t.lvl+1 FROM nodes n JOIN tree t ON n.parent_id = t.id",")","SELECT * FROM tree;"],
+       correctOrder:[0,1,2,3,4,5],
+       explanation:"WITH RECURSIVE → anchor → UNION ALL → recursive step → close → final SELECT."},
+      {type:"mcq",
+       question:"A non-recursive CTE referenced twice in the main query is…",
+       options:[
+         "Always cached and computed once",
+         "Re-evaluated each time it's referenced (no caching in MySQL)",
+         "Stored on disk automatically",
+         "Forbidden in MySQL"
+       ],
+       correct:1,
+       explanation:"In MySQL 8, CTEs aren't materialized — each reference re-runs. If reuse is expensive, materialize manually into a temp table."}
+    ]
+  },
+  /* ─── 6 ─── */
+  {
+    id:6, title:"Window Functions", icon:"🪟", color:"#ff4b4b",
+    description:"ROW_NUMBER, RANK, LAG, LEAD, running totals — the analyst's superpower.",
+    difficulty:"advanced",
+    flashcards:[
+      {label:"PARTITION vs GROUP BY", concept:"Windows don't collapse rows",
+       hint:"You keep every row, but get an aggregate alongside.",
+       back:`<p>GROUP BY reduces N rows to 1 per group. Windows keep all N rows and attach a per-window computation.</p>
+             <pre class="code"><span class="k">SELECT</span> client_id, campaign_id, spend,
+       SUM(spend) <span class="k">OVER</span> (<span class="k">PARTITION BY</span> client_id) <span class="k">AS</span> client_total,
+       spend / SUM(spend) <span class="k">OVER</span> (<span class="k">PARTITION BY</span> client_id) <span class="k">AS</span> share
+<span class="k">FROM</span> campaigns;</pre>`},
+      {label:"ROW_NUMBER vs RANK vs DENSE_RANK", concept:"Three ways to number ordered rows",
+       hint:"They differ in how they handle ties.",
+       back:`<p>Given scores 90, 90, 85:</p>
+             <ul style="margin-left:18px;font-size:14.5px">
+               <li><code>ROW_NUMBER</code>: 1, 2, 3 (arbitrary on ties)</li>
+               <li><code>RANK</code>: 1, 1, 3 (gap after tie)</li>
+               <li><code>DENSE_RANK</code>: 1, 1, 2 (no gap)</li>
+             </ul>`},
+      {label:"LAG & LEAD", concept:"Look at the previous / next row in the partition",
+       hint:"Perfect for period-over-period comparisons.",
+       back:`<pre class="code"><span class="c">-- daily lead count vs the day before:</span>
+<span class="k">SELECT</span> d, leads,
+  LAG(leads, <span class="n">1</span>) <span class="k">OVER</span> (<span class="k">ORDER BY</span> d) <span class="k">AS</span> prev_day,
+  leads - LAG(leads, <span class="n">1</span>) <span class="k">OVER</span> (<span class="k">ORDER BY</span> d) <span class="k">AS</span> delta
+<span class="k">FROM</span> daily_lead_counts;</pre>
+             <p class="scenario-tag">Your work: SEO trend reporting</p>`},
+      {label:"RUNNING TOTALS", concept:"SUM(…) OVER (ORDER BY …) with no PARTITION",
+       hint:"Cumulative — running, rolling, year-to-date.",
+       back:`<pre class="code"><span class="k">SELECT</span> order_date, daily_revenue,
+  SUM(daily_revenue) <span class="k">OVER</span> (
+    <span class="k">ORDER BY</span> order_date
+    <span class="k">ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</span>
+  ) <span class="k">AS</span> running_total
+<span class="k">FROM</span> daily_sales;</pre>
+             <p>The frame clause (ROWS BETWEEN…) controls the window. Default is unbounded preceding to current row for ordered aggregates.</p>`}
+    ],
+    questions:[
+      {type:"mcq",
+       scenario:"For each client, you want the most recent campaign (one row per client).",
+       question:"Which approach uses window functions cleanly?",
+       options:[
+         "SELECT client_id, MAX(created_at) FROM campaigns GROUP BY client_id",
+         "SELECT * FROM campaigns ORDER BY created_at DESC LIMIT 1",
+         "SELECT * FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY client_id ORDER BY created_at DESC) AS rn FROM campaigns) t WHERE rn = 1",
+         "SELECT DISTINCT client_id, MAX(created_at) FROM campaigns"
+       ],
+       correct:2,
+       explanation:"ROW_NUMBER partitioned by client_id, ordered descending, gives row 1 = newest per client. The full row is available (unlike option A which loses other columns)."},
+      {type:"mcq",
+       scenario:"Scores: A=95, B=95, C=90, D=85. You want C to be ranked 2, not 3.",
+       question:"Which function gives that?",
+       options:["ROW_NUMBER()","RANK()","DENSE_RANK()","NTILE(4)"],
+       correct:2,
+       explanation:"DENSE_RANK closes the gap after ties: 1, 1, 2, 3. RANK would give 1, 1, 3, 4."},
+      {type:"fill",
+       scenario:"Day-over-day delta in organic clicks.",
+       template:"SELECT day, clicks,\n  clicks - ___(clicks, 1) OVER (ORDER BY day) AS delta\nFROM analytics;",
+       answer:"LAG",
+       explanation:"LAG(col, n) returns the value from n rows before within the ordered window. LEAD does the opposite (n rows after)."},
+      {type:"mcq",
+       question:"Which is true about windows vs GROUP BY?",
+       options:[
+         "Window functions collapse rows like GROUP BY does",
+         "Window functions keep every row and attach a per-window value",
+         "Window functions only work on numeric data",
+         "Window functions can't be combined with WHERE"
+       ],
+       correct:1,
+       explanation:"That's the whole point — keep row-level detail AND see aggregates / rankings. Note: windows are evaluated after WHERE/GROUP BY, so you can't filter on a window result in the same level — wrap it in a CTE/subquery."}
+    ]
+  },
+  /* ─── 7 ─── */
+  {
+    id:7, title:"Indexes & EXPLAIN", icon:"⚡", color:"#ffc800",
+    description:"What an index is, why composite order matters, how to read EXPLAIN.",
+    difficulty:"advanced",
+    flashcards:[
+      {label:"B-TREE INDEX", concept:"A sorted, balanced lookup structure",
+       hint:"O(log N) lookup, O(log N) insert.",
+       back:`<p>Default index type in InnoDB. Lets MySQL skip directly to matching rows instead of scanning the table.</p>
+             <p>Great for: equality, range, prefix LIKE ('abc%'), ORDER BY on indexed columns.</p>
+             <p>Not great for: leading wildcards (<code>'%abc'</code>), functions on the column (<code>WHERE DATE(created_at) = …</code>), low-cardinality columns alone.</p>`},
+      {label:"COMPOSITE INDEX", concept:"Order in the index DEFINES what queries it can serve",
+       hint:"Leftmost-prefix rule.",
+       back:`<p>Index on <code>(client_id, status, created_at)</code> serves:</p>
+             <ul style="margin-left:18px;font-size:14.5px">
+               <li>WHERE client_id = …</li>
+               <li>WHERE client_id = … AND status = …</li>
+               <li>WHERE client_id = … AND status = … AND created_at &gt; …</li>
+             </ul>
+             <p>Does NOT serve: WHERE status = …  alone, or WHERE created_at &gt; … alone.</p>`},
+      {label:"COVERING INDEX", concept:"All columns needed are in the index",
+       hint:"MySQL doesn't even touch the row data.",
+       back:`<p>If the index has every column from SELECT, WHERE and ORDER BY, MySQL serves the query from the index alone. EXPLAIN shows <code>Using index</code> in Extra.</p>
+             <p>This is one of the fastest patterns you can get.</p>`},
+      {label:"EXPLAIN BASICS", concept:"Read it right to left, top to bottom",
+       hint:"Key columns: type, key, rows, Extra.",
+       back:`<p>Watch for:</p>
+             <ul style="margin-left:18px;font-size:14.5px">
+               <li><code>type=ALL</code> → full table scan (bad on large tables)</li>
+               <li><code>type=ref / range / eq_ref</code> → index used</li>
+               <li><code>rows</code> → estimated rows examined (lower is better)</li>
+               <li>Extra: <code>Using filesort</code>, <code>Using temporary</code> usually mean trouble</li>
+               <li>Extra: <code>Using index</code> = covering index (great)</li>
+             </ul>`}
+    ],
+    questions:[
+      {type:"mcq",
+       question:"You have INDEX (client_id, status, created_at). Which query CANNOT use this index?",
+       options:[
+         "WHERE client_id = 5",
+         "WHERE client_id = 5 AND status = 'active'",
+         "WHERE status = 'active'",
+         "WHERE client_id = 5 AND created_at > '2025-01-01'"
+       ],
+       correct:2,
+       explanation:"Leftmost-prefix rule: the index is sorted by client_id first, so without client_id in the predicate the index can't be used efficiently."},
+      {type:"mcq",
+       scenario:"A reporting query is slow:\nSELECT * FROM orders WHERE DATE(created_at) = '2025-05-21';",
+       question:"Why won't an index on created_at help here?",
+       options:[
+         "DATE() on the column prevents index usage; the planner can't reverse the function",
+         "Indexes don't work on DATETIME columns",
+         "SELECT * always disables indexes",
+         "MySQL only indexes integer columns"
+       ],
+       correct:0,
+       explanation:"Wrapping the indexed column in a function defeats the index. Rewrite as `WHERE created_at >= '2025-05-21' AND created_at < '2025-05-22'` to make it sargable."},
+      {type:"mcq",
+       question:"`Using index` in EXPLAIN Extra means…",
+       options:[
+         "An index is being used to filter",
+         "A covering index — MySQL doesn't need to read the table itself",
+         "MySQL is creating an index on the fly",
+         "The index is corrupted"
+       ],
+       correct:1,
+       explanation:"'Using index' is the COVERING-INDEX signal. (Just 'using an index for lookup' shows as type=ref/range/eq_ref with a key, but no 'Using index' in Extra.)"},
+      {type:"mcq",
+       scenario:"A 200M-row backlinks table — most queries filter by target_domain AND date_range, ordered by quality_score DESC.",
+       question:"Which index is most likely to help?",
+       options:[
+         "INDEX(quality_score)",
+         "INDEX(target_domain)",
+         "INDEX(target_domain, crawled_at, quality_score)",
+         "INDEX(crawled_at)"
+       ],
+       correct:2,
+       explanation:"Equality first (target_domain), then range (crawled_at), then the column used for sort/select (quality_score). This is the canonical 'equality → range → sort' composite-index ordering."}
+    ]
+  },
+  /* ─── 8 ─── */
+  {
+    id:8, title:"Strings & Fuzzy Matching", icon:"🔍", color:"#ff6b9d",
+    description:"REGEXP, SOUNDEX, LEVENSHTEIN — directly applicable to brand imitation work.",
+    difficulty:"advanced",
+    flashcards:[
+      {label:"STRING FUNCTIONS", concept:"Core kit: SUBSTRING, LOCATE, REPLACE, CONCAT, TRIM",
+       hint:"You can chain them in WHERE and SELECT.",
+       back:`<pre class="code"><span class="k">SELECT</span>
+  TRIM(LOWER(brand_name)) <span class="k">AS</span> normalized,
+  SUBSTRING(domain, LOCATE(<span class="s">'.'</span>, domain) + <span class="n">1</span>) <span class="k">AS</span> tld,
+  REPLACE(slug, <span class="s">'_'</span>, <span class="s">'-'</span>) <span class="k">AS</span> clean_slug
+<span class="k">FROM</span> listings;</pre>`},
+      {label:"REGEXP CLASSES", concept:"MySQL 8 uses ICU regex — Unicode-aware",
+       hint:"Character classes, anchors, alternation, backrefs.",
+       back:`<p>Detect look-alike brand strings (homoglyphs, leetspeak):</p>
+             <pre class="code"><span class="k">SELECT</span> brand_name <span class="k">FROM</span> listings
+<span class="k">WHERE</span> brand_name <span class="k">REGEXP</span> <span class="s">'[a@4][d][i1!][d][a@4][s5\$]'</span>;
+<span class="c">-- catches: adidas, ad1das, ad!das, ad1da5, etc.</span></pre>
+             <p class="scenario-tag">Your work: brand imitation detection</p>`},
+      {label:"SOUNDEX", concept:"Phonetic similarity by code",
+       hint:"Two strings that sound alike get the same SOUNDEX code.",
+       back:`<p>SOUNDEX('Smith') = SOUNDEX('Smyth') = 'S530'.</p>
+             <pre class="code"><span class="k">SELECT</span> a.brand <span class="k">AS</span> known, b.brand <span class="k">AS</span> imitator
+<span class="k">FROM</span> brands a
+<span class="k">JOIN</span> listings b
+  <span class="k">ON</span> SOUNDEX(a.brand) = SOUNDEX(b.brand)
+ <span class="k">AND</span> a.brand &lt;&gt; b.brand;</pre>
+             <p>Weakness: English-phonetics only, and crude. Combine with edit-distance for production.</p>`},
+      {label:"EDIT DISTANCE", concept:"Levenshtein isn't built-in but easy to add",
+       hint:"Install a UDF, or implement as a stored function.",
+       back:`<p>MySQL has no built-in Levenshtein, but it's a common stored-function snippet. Typical use:</p>
+             <pre class="code"><span class="k">SELECT</span> known.brand, listing.brand,
+  levenshtein(known.brand, listing.brand) <span class="k">AS</span> dist
+<span class="k">FROM</span> known
+<span class="k">CROSS JOIN</span> listing
+<span class="k">WHERE</span> ABS(CHAR_LENGTH(known.brand) - CHAR_LENGTH(listing.brand)) &lt;= <span class="n">2</span>
+<span class="k">HAVING</span> dist <span class="k">BETWEEN</span> <span class="n">1</span> <span class="k">AND</span> <span class="n">3</span>;</pre>
+             <p>Pre-filter on length to keep the cross join cheap.</p>`}
+    ],
+    questions:[
+      {type:"mcq",
+       scenario:"You want to flag listings whose brand text contains characters mimicking 'nike' — like 'n1ke', 'nikë', 'nlke'.",
+       question:"Which approach is most precise?",
+       options:[
+         "WHERE brand LIKE '%nike%'",
+         "WHERE brand REGEXP '[nN][i1l!|][kK][eE3]'",
+         "WHERE SOUNDEX(brand) = SOUNDEX('nike')",
+         "WHERE LENGTH(brand) = 4"
+       ],
+       correct:1,
+       explanation:"REGEXP with character classes catches homoglyph substitutions explicitly. LIKE misses substitutions. SOUNDEX is too coarse. LENGTH is unrelated."},
+      {type:"mcq",
+       question:"SOUNDEX returns the same code for two strings when…",
+       options:[
+         "They're the same length",
+         "They sound alike in English phonetics",
+         "Their first letter is the same",
+         "Their hash values match"
+       ],
+       correct:1,
+       explanation:"SOUNDEX is a phonetic algorithm. Useful as a fast pre-filter for fuzzy matching, but English-centric and lossy."},
+      {type:"fill",
+       scenario:"Normalize all brand names to lowercase, trimmed.",
+       template:"SELECT ___(LOWER(brand_name)) FROM listings;",
+       answer:"TRIM",
+       explanation:"TRIM removes leading/trailing whitespace. Combined with LOWER, you get a consistent normalized form for deduplication and matching."},
+      {type:"mcq",
+       question:"A cross join of two large tables to compute Levenshtein on every pair is too slow. The best pre-filter is…",
+       options:[
+         "ORDER BY brand_name to align matches",
+         "An equality on LEFT(brand,1) or a length-difference cap to cut the search space",
+         "Increase max_join_size",
+         "Use LIMIT 1000 to truncate results"
+       ],
+       correct:1,
+       explanation:"Always reduce the comparison space first. Common pre-filters: same first letter, same SOUNDEX code, or `ABS(len(a)-len(b)) <= K`. Then run the expensive distance only on the candidates."}
+    ]
+  },
+  /* ─── 9 ─── */
+  {
+    id:9, title:"Transactions, Triggers & Procedures", icon:"⚙️", color:"#8e7cc3",
+    description:"ACID, isolation levels, stored logic — for billing, audit logs and FastAPI backends.",
+    difficulty:"advanced",
+    flashcards:[
+      {label:"ACID", concept:"Atomicity, Consistency, Isolation, Durability",
+       hint:"The four properties InnoDB guarantees for transactions.",
+       back:`<ul style="margin-left:18px;font-size:14.5px;line-height:1.6">
+              <li><b>Atomicity</b> — all-or-nothing</li>
+              <li><b>Consistency</b> — moves DB from one valid state to another</li>
+              <li><b>Isolation</b> — concurrent txns don't corrupt each other</li>
+              <li><b>Durability</b> — committed data survives crashes</li>
+             </ul>
+             <pre class="code"><span class="k">START TRANSACTION</span>;
+<span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance - <span class="n">100</span> <span class="k">WHERE</span> id = <span class="n">1</span>;
+<span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance + <span class="n">100</span> <span class="k">WHERE</span> id = <span class="n">2</span>;
+<span class="k">COMMIT</span>;</pre>
+             <p class="scenario-tag">Your work: billing systems</p>`},
+      {label:"ISOLATION LEVELS", concept:"Four levels: READ UNCOMMITTED → SERIALIZABLE",
+       hint:"InnoDB defaults to REPEATABLE READ.",
+       back:`<ul style="margin-left:18px;font-size:14.5px;line-height:1.6">
+              <li><b>READ UNCOMMITTED</b> — dirty reads possible</li>
+              <li><b>READ COMMITTED</b> — only committed data; non-repeatable reads possible</li>
+              <li><b>REPEATABLE READ</b> (default) — same reads in the txn return same data</li>
+              <li><b>SERIALIZABLE</b> — full ordering; effectively locks ranges</li>
+             </ul>`},
+      {label:"TRIGGERS", concept:"Code that runs automatically on INSERT/UPDATE/DELETE",
+       hint:"Great for audit trails — risky for business logic.",
+       back:`<pre class="code"><span class="k">CREATE TRIGGER</span> trg_order_audit
+<span class="k">AFTER UPDATE ON</span> orders
+<span class="k">FOR EACH ROW</span>
+<span class="k">INSERT INTO</span> order_audit(order_id, old_status, new_status, changed_at)
+<span class="k">VALUES</span> (OLD.id, OLD.status, NEW.status, <span class="k">NOW</span>());</pre>
+             <p>Always keep triggers small. Heavy logic belongs in the app layer.</p>`},
+      {label:"STORED PROCEDURE", concept:"Named, parameterized routines on the server",
+       hint:"Reusable, but tightly couples logic to the DB.",
+       back:`<pre class="code"><span class="k">DELIMITER</span> //
+<span class="k">CREATE PROCEDURE</span> create_invoice(<span class="k">IN</span> p_order_id <span class="k">INT</span>)
+<span class="k">BEGIN</span>
+  <span class="k">DECLARE</span> v_total DECIMAL(<span class="n">10,2</span>);
+  <span class="k">START TRANSACTION</span>;
+    <span class="k">SELECT</span> SUM(qty*unit_price) <span class="k">INTO</span> v_total
+      <span class="k">FROM</span> order_items <span class="k">WHERE</span> order_id = p_order_id;
+    <span class="k">INSERT INTO</span> invoices(order_id, amount, created_at)
+      <span class="k">VALUES</span> (p_order_id, v_total, <span class="k">NOW</span>());
+  <span class="k">COMMIT</span>;
+<span class="k">END</span> //
+<span class="k">DELIMITER</span> ;</pre>`}
+    ],
+    questions:[
+      {type:"mcq",
+       scenario:"Mid-transaction, the second UPDATE fails with a constraint violation. What happens to the first UPDATE if you call ROLLBACK?",
+       question:"",
+       options:[
+         "It's already permanent — ROLLBACK can't undo it",
+         "Both updates are undone — atomicity",
+         "Only the second update is undone",
+         "MySQL keeps both updates but warns you"
+       ],
+       correct:1,
+       explanation:"That's atomicity — the 'A' in ACID. Either all statements in the transaction commit, or none of them do."},
+      {type:"mcq",
+       question:"InnoDB's default isolation level is…",
+       options:["READ UNCOMMITTED","READ COMMITTED","REPEATABLE READ","SERIALIZABLE"],
+       correct:2,
+       explanation:"REPEATABLE READ — but note MySQL's implementation prevents phantom reads in many cases via gap locks, beyond what the standard requires."},
+      {type:"mcq",
+       scenario:"You want every UPDATE on the orders table to write a row to order_audit automatically.",
+       question:"Best mechanism?",
+       options:[
+         "A cron job that diffs orders every minute",
+         "An AFTER UPDATE trigger on orders",
+         "A view named order_audit",
+         "Application code in every place that updates orders"
+       ],
+       correct:1,
+       explanation:"Triggers are perfect for audit logging — guaranteed to fire on every change, including from manual SQL. Just keep them lean."},
+      {type:"fill",
+       scenario:"Mark the start of a transaction.",
+       template:"___ TRANSACTION;\nUPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;\nCOMMIT;",
+       answer:"START",
+       explanation:"`START TRANSACTION` (or `BEGIN`) opens a transaction. COMMIT to persist, ROLLBACK to undo."}
+    ]
+  },
+  /* ─── 10 ─── */
+  {
+    id:10, title:"JSON, Full-Text & Interview Boss", icon:"👑", color:"#ff6b35",
+    description:"Modern MySQL: JSON columns, full-text search, plus a mixed-bag final boss round.",
+    difficulty:"expert",
+    flashcards:[
+      {label:"JSON COLUMNS", concept:"Native JSON type with validation and indexable paths",
+       hint:"Great for semi-structured GenAI output stored alongside relational data.",
+       back:`<pre class="code"><span class="k">CREATE TABLE</span> enrichments (
+  id <span class="k">INT PRIMARY KEY</span>,
+  source_text <span class="k">TEXT</span>,
+  attributes <span class="k">JSON</span>
+);
+<span class="k">SELECT</span> id,
+  attributes-&gt;&gt;<span class="s">'$.sentiment'</span> <span class="k">AS</span> sentiment,
+  JSON_EXTRACT(attributes, <span class="s">'$.tags[*]'</span>) <span class="k">AS</span> tags
+<span class="k">FROM</span> enrichments
+<span class="k">WHERE</span> attributes-&gt;&gt;<span class="s">'$.sentiment'</span> = <span class="s">'negative'</span>;</pre>
+             <p class="scenario-tag">Your work: GenAI/LangChain enrichment outputs</p>`},
+      {label:"GENERATED COLUMNS", concept:"Expose JSON paths as virtual columns + index them",
+       hint:"The right way to make JSON queryable at scale.",
+       back:`<pre class="code"><span class="k">ALTER TABLE</span> enrichments
+  <span class="k">ADD COLUMN</span> sentiment <span class="k">VARCHAR</span>(<span class="n">20</span>) <span class="k">AS</span>
+    (attributes-&gt;&gt;<span class="s">'$.sentiment'</span>) <span class="k">STORED</span>,
+  <span class="k">ADD INDEX</span> (sentiment);</pre>
+             <p>Now WHERE sentiment = 'negative' uses an index — JSON-aware but fast.</p>`},
+      {label:"FULLTEXT INDEX", concept:"Natural-language and boolean search across text",
+       hint:"MATCH(col) AGAINST(query).",
+       back:`<pre class="code"><span class="k">ALTER TABLE</span> articles <span class="k">ADD FULLTEXT</span>(title, body);
+
+<span class="k">SELECT</span> id, title,
+  MATCH(title, body) <span class="k">AGAINST</span>(<span class="s">'mysql performance'</span>) <span class="k">AS</span> relevance
+<span class="k">FROM</span> articles
+<span class="k">WHERE</span> MATCH(title, body) <span class="k">AGAINST</span>(<span class="s">'mysql performance'</span>)
+<span class="k">ORDER BY</span> relevance <span class="k">DESC</span>;</pre>
+             <p>Boolean mode supports +required, -excluded, "phrase", * prefix.</p>`},
+      {label:"PIVOTING", concept:"MySQL has no PIVOT — use conditional SUM",
+       hint:"Common interview question.",
+       back:`<pre class="code"><span class="c">-- Months as columns, channels as rows:</span>
+<span class="k">SELECT</span> channel,
+  SUM(<span class="k">CASE WHEN</span> MONTH(d)=<span class="n">1</span> <span class="k">THEN</span> leads <span class="k">END</span>) <span class="k">AS</span> jan,
+  SUM(<span class="k">CASE WHEN</span> MONTH(d)=<span class="n">2</span> <span class="k">THEN</span> leads <span class="k">END</span>) <span class="k">AS</span> feb,
+  SUM(<span class="k">CASE WHEN</span> MONTH(d)=<span class="n">3</span> <span class="k">THEN</span> leads <span class="k">END</span>) <span class="k">AS</span> mar
+<span class="k">FROM</span> daily_leads
+<span class="k">GROUP BY</span> channel;</pre>`}
+    ],
+    questions:[
+      {type:"mcq",
+       scenario:"You store LangChain-enriched JSON in a column `attributes`. You need fast WHERE filtering on attributes.sentiment.",
+       question:"What's the production pattern?",
+       options:[
+         "JSON columns are inherently indexed; do nothing",
+         "Use a generated column for sentiment and add an index on it",
+         "Cast to TEXT and add a regular index",
+         "Store sentiment in a separate table and join every time"
+       ],
+       correct:1,
+       explanation:"Generated columns (`AS (json->>'$.sentiment') STORED`) plus an index give you indexed JSON access. Option D works but generated columns keep things clean."},
+      {type:"mcq",
+       question:"`->>` vs `->` in MySQL JSON paths:",
+       options:[
+         "Both return JSON",
+         "`->` returns JSON, `->>` returns unquoted text (scalar)",
+         "Both return text",
+         "`->` is for arrays, `->>` is for objects"
+       ],
+       correct:1,
+       explanation:"`->` keeps JSON quoting (so a string comes back wrapped in quotes). `->>` extracts the unquoted scalar — what you usually want for WHERE comparisons."},
+      {type:"mcq",
+       scenario:"Common interview question: second highest salary, without using LIMIT.",
+       question:"Which works?",
+       options:[
+         "SELECT MAX(salary) FROM emp WHERE salary < (SELECT MAX(salary) FROM emp)",
+         "SELECT salary FROM emp ORDER BY salary DESC LIMIT 1,1",
+         "SELECT salary FROM (SELECT salary, DENSE_RANK() OVER (ORDER BY salary DESC) AS r FROM emp) t WHERE r=2",
+         "All three are valid solutions"
+       ],
+       correct:3,
+       explanation:"All three return the second-highest salary. A is the classic SQL-89 approach, B is shortest, C handles ties cleanly with DENSE_RANK."},
+      {type:"fill",
+       scenario:"Full-text search articles for 'mysql performance', ordered by relevance.",
+       template:"SELECT id, title\nFROM articles\nWHERE ___(title, body) AGAINST('mysql performance');",
+       answer:"MATCH",
+       explanation:"`MATCH(...) AGAINST(...)` is the full-text predicate. The column list inside MATCH must match a FULLTEXT index."},
+      {type:"mcq",
+       scenario:"Find duplicate emails (emails appearing more than once).",
+       question:"Which query is correct?",
+       options:[
+         "SELECT email FROM users WHERE COUNT(email) > 1",
+         "SELECT email FROM users GROUP BY email HAVING COUNT(*) > 1",
+         "SELECT DISTINCT email FROM users WHERE email = email",
+         "SELECT email, COUNT(*) FROM users WHERE COUNT(*) > 1"
+       ],
+       correct:1,
+       explanation:"Classic interview answer. WHERE can't reference aggregates; group by the column, then HAVING filters the groups."}
+    ]
+  }
+];
+
+/* ─────── STATE & PERSISTENCE ─────── */
+
+const DEFAULT_STATE = {
+  xp:0,
+  streak:0,
+  hearts:5,
+  lastPlayed:null,
+  moduleProgress:{} // moduleId -> {flashcardsDone:bool, questionsCorrect:N, total:N, completed:bool}
+};
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem('sqlingo.v1');
+    if(!raw) return {...DEFAULT_STATE};
+    const s = JSON.parse(raw);
+    return {...DEFAULT_STATE, ...s};
+  }catch(e){return {...DEFAULT_STATE}}
+}
+function saveState(){
+  try{localStorage.setItem('sqlingo.v1', JSON.stringify(state))}catch(e){}
+}
+
+let state = loadState();
+
+// streak: bump if last play was yesterday, reset if older
+(function streakCheck(){
+  const today = new Date().toDateString();
+  if(state.lastPlayed !== today){
+    const last = state.lastPlayed ? new Date(state.lastPlayed) : null;
+    if(last){
+      const diff = (new Date(today) - last)/86400000;
+      if(diff > 1) state.streak = 0;
+    }
+  }
+})();
+
+/* ─────── DOM HELPERS ─────── */
+
+const $ = (sel)=>document.querySelector(sel);
+const main = $('#mainContent');
+const feedback = $('#feedback');
+const feedbackTitle = $('#feedbackTitle');
+const feedbackExplain = $('#feedbackExplain');
+const continueBtn = $('#continueBtn');
+
+function updateStatsUI(){
+  $('#xpCount').textContent = state.xp;
+  $('#streakCount').textContent = state.streak;
+  $('#heartCount').textContent = state.hearts;
+}
+
+function hideFeedback(){feedback.classList.remove('show','correct','wrong')}
+function showFeedback(correct, explain){
+  feedback.classList.remove('correct','wrong');
+  feedback.classList.add('show', correct?'correct':'wrong');
+  feedbackTitle.textContent = correct ? randomCorrect() : 'Not quite';
+  feedbackExplain.innerHTML = explain;
+}
+
+function randomCorrect(){
+  const opts = ['Nice!','Excellent!','You got it!','Crushed it!','That\'s the one.','Perfect.'];
+  return opts[Math.floor(Math.random()*opts.length)];
+}
+
+/* ─────── SCREENS ─────── */
+
+function renderHome(){
+  hideFeedback();
+  const completedCount = MODULES.filter(m=>state.moduleProgress[m.id]?.completed).length;
+  main.innerHTML = `
+    <div class="hero">
+      <h1>Welcome back 👋</h1>
+      <p>You're learning MySQL the way job interviews ask it — patterns from your own work, in bite-sized lessons.</p>
+    </div>
+    <div class="resume-banner">
+      <div class="resume-banner-icon">🎯</div>
+      <div class="resume-banner-text">
+        Tailored from your resume: <strong>SEO &amp; backlink analytics</strong>, <strong>brand imitation detection</strong>, <strong>inventory &amp; billing</strong>, <strong>FastAPI data exposure</strong>, <strong>BI dashboards</strong>. Every scenario below maps to something you've actually built.
+      </div>
+    </div>
+    <div class="row" style="justify-content:space-between;align-items:flex-end;margin-bottom:14px">
+      <h2 style="font-size:22px;font-weight:900;letter-spacing:-0.5px">Your roadmap</h2>
+      <div style="color:var(--muted);font-weight:700;font-size:13px">${completedCount}/${MODULES.length} modules complete</div>
+    </div>
+    <div class="map" id="map"></div>
+    <div class="footer-actions">
+      <button class="btn btn-secondary" onclick="resetProgress()">Reset progress</button>
+    </div>
+  `;
+  const map = $('#map');
+  MODULES.forEach((m, idx)=>{
+    const prog = state.moduleProgress[m.id] || {};
+    const isUnlocked = idx===0 || state.moduleProgress[MODULES[idx-1].id]?.completed;
+    const totalQs = m.questions.length + m.flashcards.length;
+    const doneQs = (prog.flashcardsDone?m.flashcards.length:0) + (prog.questionsCorrect||0);
+    const pct = Math.min(100, Math.round(100*doneQs/totalQs));
+    const card = document.createElement('div');
+    card.className = `module-card ${!isUnlocked?'locked':''} ${prog.completed?'completed':''}`;
+    card.innerHTML = `
+      <div class="module-icon" style="background:${m.color}">${m.icon}</div>
+      <div class="module-meta">
+        <h3>${idx+1}. ${m.title}</h3>
+        <div class="desc">${m.description}</div>
+        <span class="diff ${m.difficulty}">${m.difficulty}</span>
+      </div>
+      <div class="progress-ring" style="--p:${pct}">
+        <div class="progress-ring-inner">${prog.completed?'✓':pct+'%'}</div>
+      </div>
+      ${!isUnlocked?'<div class="lock-icon">🔒</div>':''}
+    `;
+    if(isUnlocked) card.onclick = ()=>startModule(m.id);
+    map.appendChild(card);
+  });
+  updateStatsUI();
+}
+
+function startModule(moduleId){
+  currentModule = MODULES.find(m=>m.id===moduleId);
+  currentStage = 'flashcards';
+  currentIndex = 0;
+  sessionCorrect = 0;
+  sessionWrong = 0;
+  sessionStart = Date.now();
+  if(!state.moduleProgress[moduleId]){
+    state.moduleProgress[moduleId] = {flashcardsDone:false,questionsCorrect:0,total:currentModule.questions.length,completed:false};
+  }
+  renderFlashcard();
+}
+
+let currentModule = null;
+let currentStage = 'flashcards'; // 'flashcards' | 'questions'
+let currentIndex = 0;
+let sessionCorrect = 0;
+let sessionWrong = 0;
+let sessionStart = 0;
+let currentSelected = null;
+let currentAnsweredCorrectly = false;
+
+function renderFlashcard(){
+  hideFeedback();
+  const fc = currentModule.flashcards[currentIndex];
+  const totalSteps = currentModule.flashcards.length + currentModule.questions.length;
+  const stepNum = currentIndex + 1;
+  const progress = Math.round(100*(stepNum-1)/totalSteps);
+  main.innerHTML = `
+    <div class="lesson-header">
+      <button class="close-btn" onclick="renderHome()">×</button>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:${progress}%"></div></div>
+      <div style="font-weight:900;font-size:14px;color:var(--muted);min-width:50px;text-align:right">${stepNum}/${totalSteps}</div>
+    </div>
+    <div style="font-size:13px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);text-align:center;margin-bottom:8px">Flashcard ${currentIndex+1} of ${currentModule.flashcards.length}</div>
+    <div class="card-stage">
+      <div class="flashcard" id="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-face flashcard-front">
+          <div class="flashcard-label">${fc.label}</div>
+          <div class="concept">${fc.concept}</div>
+          <div class="hint">${fc.hint}</div>
+          <div class="tap-hint">Tap card to reveal →</div>
+        </div>
+        <div class="flashcard-face back">
+          <div class="flashcard-label">EXPLANATION</div>
+          <div class="flashcard-back">${fc.back}</div>
+          <div class="tap-hint">← Tap to flip back</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-actions">
+      <button class="btn btn-secondary" onclick="prevStep()" ${currentIndex===0?'disabled':''}>Back</button>
+      <button class="btn btn-primary" onclick="nextStep()">${currentIndex===currentModule.flashcards.length-1?'Start quiz →':'Next card'}</button>
+    </div>
+  `;
+}
+
+function prevStep(){
+  if(currentStage==='flashcards' && currentIndex>0){currentIndex--; renderFlashcard()}
+  else if(currentStage==='questions' && currentIndex>0){currentIndex--; renderQuestion()}
+  else if(currentStage==='questions' && currentIndex===0){
+    currentStage='flashcards';
+    currentIndex = currentModule.flashcards.length-1;
+    renderFlashcard();
+  }
+}
+
+function nextStep(){
+  if(currentStage==='flashcards'){
+    if(currentIndex < currentModule.flashcards.length-1){
+      currentIndex++;
+      renderFlashcard();
+    } else {
+      state.moduleProgress[currentModule.id].flashcardsDone = true;
+      saveState();
+      currentStage='questions';
+      currentIndex=0;
+      renderQuestion();
+    }
+  }
+}
+
+function renderQuestion(){
+  hideFeedback();
+  currentSelected = null;
+  currentAnsweredCorrectly = false;
+  const q = currentModule.questions[currentIndex];
+  const totalSteps = currentModule.flashcards.length + currentModule.questions.length;
+  const stepNum = currentModule.flashcards.length + currentIndex + 1;
+  const progress = Math.round(100*(stepNum-1)/totalSteps);
+
+  let body = '';
+  if(q.type==='mcq'){
+    body = `
+      ${q.scenario?`<div class="question-scenario"><strong>Scenario:</strong> ${escapeHtml(q.scenario)}</div>`:''}
+      <div class="question-text">${q.question||'Choose the best answer:'}</div>
+      <div class="options" id="options">
+        ${q.options.map((opt,i)=>`
+          <button class="option" data-i="${i}" onclick="selectOption(${i})">
+            <div class="option-letter">${String.fromCharCode(65+i)}</div>
+            <div>${formatCode(opt)}</div>
+          </button>
+        `).join('')}
+      </div>
+    `;
+  } else if(q.type==='fill'){
+    body = `
+      ${q.scenario?`<div class="question-scenario"><strong>Scenario:</strong> ${escapeHtml(q.scenario)}</div>`:''}
+      <div class="question-text">${q.question||'Fill in the blank:'}</div>
+      <div class="fill-template">${q.template.replace('___','<input class="blank-input" id="blankInput" autocomplete="off" spellcheck="false" />')}</div>
+    `;
+  } else if(q.type==='order'){
+    body = `
+      ${q.scenario?`<div class="question-scenario"><strong>Scenario:</strong> ${escapeHtml(q.scenario)}</div>`:''}
+      <div class="question-text">${q.question}</div>
+      <div style="font-size:12px;font-weight:800;color:var(--muted);margin-top:14px;letter-spacing:0.5px;text-transform:uppercase">Tap chips below in correct order</div>
+      <div class="order-zone" id="orderZone"></div>
+      <div style="font-size:12px;font-weight:800;color:var(--muted);margin-top:6px;letter-spacing:0.5px;text-transform:uppercase">Available</div>
+      <div class="order-bank" id="orderBank"></div>
+    `;
+  }
+
+  main.innerHTML = `
+    <div class="lesson-header">
+      <button class="close-btn" onclick="renderHome()">×</button>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:${progress}%"></div></div>
+      <div style="font-weight:900;font-size:14px;color:var(--muted);min-width:50px;text-align:right">${stepNum}/${totalSteps}</div>
+    </div>
+    <div style="font-size:13px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);text-align:center;margin-bottom:8px">Question ${currentIndex+1} of ${currentModule.questions.length}</div>
+    <div class="question-area">${body}</div>
+    <div class="footer-actions" id="checkActions">
+      <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+      <button class="btn btn-primary" id="checkBtn" onclick="checkAnswer()" disabled>Check</button>
+    </div>
+  `;
+
+  if(q.type==='order'){
+    const bank = $('#orderBank');
+    // shuffle chips for display
+    const shuffled = [...q.chips.map((c,i)=>({c,i}))].sort(()=>Math.random()-0.5);
+    shuffled.forEach(({c,i})=>{
+      const chip = document.createElement('button');
+      chip.className='order-chip';
+      chip.dataset.i=i;
+      chip.textContent=c;
+      chip.onclick = ()=>moveChip(chip, 'zone');
+      bank.appendChild(chip);
+    });
+  }
+  if(q.type==='fill'){
+    const input = $('#blankInput');
+    input.addEventListener('input', ()=>{
+      $('#checkBtn').disabled = input.value.trim().length===0;
+    });
+    input.focus();
+    input.addEventListener('keydown',(e)=>{if(e.key==='Enter' && !$('#checkBtn').disabled)checkAnswer()});
+  }
+}
+
+function selectOption(i){
+  if(currentAnsweredCorrectly) return;
+  currentSelected = i;
+  document.querySelectorAll('#options .option').forEach((el,idx)=>{
+    el.classList.toggle('selected', idx===i);
+  });
+  $('#checkBtn').disabled = false;
+}
+
+function moveChip(chip, target){
+  if(currentAnsweredCorrectly) return;
+  const dest = target==='zone'?$('#orderZone'):$('#orderBank');
+  // Toggle handlers based on new container
+  chip.onclick = ()=>moveChip(chip, target==='zone'?'bank':'zone');
+  chip.classList.toggle('placed', target==='zone');
+  dest.appendChild(chip);
+  const placed = $('#orderZone').children.length;
+  $('#checkBtn').disabled = placed===0;
+}
+
+function checkAnswer(){
+  const q = currentModule.questions[currentIndex];
+  let correct = false;
+  let userAnswer = '';
+
+  if(q.type==='mcq'){
+    if(currentSelected===null) return;
+    correct = currentSelected === q.correct;
+    document.querySelectorAll('#options .option').forEach((el,idx)=>{
+      el.disabled = true;
+      el.classList.remove('selected');
+      if(idx===q.correct) el.classList.add('correct');
+      else if(idx===currentSelected && !correct) el.classList.add('wrong');
+    });
+  } else if(q.type==='fill'){
+    const input = $('#blankInput');
+    userAnswer = input.value.trim();
+    const answers = q.answer.split('|').map(a=>a.trim().toLowerCase());
+    correct = answers.includes(userAnswer.toLowerCase());
+    input.disabled = true;
+    input.classList.add(correct?'correct':'wrong');
+  } else if(q.type==='order'){
+    const placed = [...$('#orderZone').children].map(el=>parseInt(el.dataset.i,10));
+    correct = JSON.stringify(placed) === JSON.stringify(q.correctOrder);
+  }
+
+  if(correct){
+    currentAnsweredCorrectly = true;
+    sessionCorrect++;
+    state.xp += 10;
+    state.moduleProgress[currentModule.id].questionsCorrect = (state.moduleProgress[currentModule.id].questionsCorrect||0)+1;
+  } else {
+    sessionWrong++;
+    state.hearts = Math.max(0, state.hearts-1);
+  }
+  saveState();
+  updateStatsUI();
+  showFeedback(correct, q.explanation);
+  $('#checkBtn').remove();
+
+  if(state.hearts<=0 && !correct){
+    setTimeout(()=>{
+      alert("You're out of hearts! Take a break — they'll refill when you reset, or you can keep going for practice.");
+      state.hearts = 5; saveState(); updateStatsUI();
+    }, 800);
+  }
+}
+
+continueBtn.onclick = ()=>{
+  hideFeedback();
+  if(currentStage==='questions'){
+    if(currentIndex < currentModule.questions.length-1){
+      currentIndex++;
+      renderQuestion();
+    } else {
+      finishModule();
+    }
+  }
+};
+
+function finishModule(){
+  const today = new Date().toDateString();
+  if(state.lastPlayed !== today){
+    state.streak += 1;
+    state.lastPlayed = today;
+  }
+  state.moduleProgress[currentModule.id].completed = true;
+  saveState();
+  const totalQs = currentModule.questions.length;
+  const acc = Math.round(100 * sessionCorrect / totalQs);
+  const elapsed = Math.round((Date.now()-sessionStart)/1000);
+  const mins = Math.floor(elapsed/60);
+  const secs = elapsed%60;
+  const timeStr = mins>0 ? `${mins}m ${secs}s` : `${secs}s`;
+  const xpGained = sessionCorrect * 10;
+
+  main.innerHTML = `
+    <div class="results">
+      <div class="results-trophy">${acc===100?'🏆':acc>=80?'🌟':acc>=60?'💪':'📖'}</div>
+      <h2>Module complete!</h2>
+      <p class="subtitle">${currentModule.title}</p>
+      <div class="stat-grid">
+        <div class="stat-card xp">
+          <div class="stat-card-label">XP Earned</div>
+          <div class="stat-card-value">+${xpGained}</div>
+        </div>
+        <div class="stat-card acc">
+          <div class="stat-card-label">Accuracy</div>
+          <div class="stat-card-value">${acc}%</div>
+        </div>
+        <div class="stat-card time">
+          <div class="stat-card-label">Time</div>
+          <div class="stat-card-value">${timeStr}</div>
+        </div>
+      </div>
+      <div class="footer-actions">
+        <button class="btn btn-secondary" onclick="startModule(${currentModule.id})">Replay</button>
+        <button class="btn btn-primary" onclick="goNextOrHome()">${nextModuleId()?'Next module →':'Back to map'}</button>
+      </div>
+    </div>
+  `;
+}
+
+function nextModuleId(){
+  const idx = MODULES.findIndex(m=>m.id===currentModule.id);
+  if(idx<MODULES.length-1) return MODULES[idx+1].id;
+  return null;
+}
+function goNextOrHome(){
+  const n = nextModuleId();
+  if(n) startModule(n); else renderHome();
+}
+
+function resetProgress(){
+  if(confirm('Reset all progress, XP and streak? This cannot be undone.')){
+    state = {...DEFAULT_STATE};
+    saveState();
+    renderHome();
+  }
+}
+
+/* ─────── UTILITIES ─────── */
+function escapeHtml(s){
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function formatCode(s){
+  // wrap SQL-looking tokens in code tags for nicer rendering inside options
+  if(/SELECT|FROM|WHERE|JOIN|GROUP|HAVING|ORDER|INDEX|EXISTS|NULL|REGEXP|LIKE|CASE|WHEN|SUM|COUNT|MAX|MIN|AVG|MATCH|AGAINST|HAVING|DISTINCT|TRANSACTION|COMMIT|ROLLBACK/.test(s)){
+    return `<code>${escapeHtml(s)}</code>`;
+  }
+  return escapeHtml(s);
+}
+
+/* ─────── BOOT ─────── */
+updateStatsUI();
+renderHome();
+</script>
+</body>
+</html>
