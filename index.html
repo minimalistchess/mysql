@@ -304,18 +304,21 @@ const MODULES = [
        concept:"SELECT * FROM table — get every column for every row.",
        hint:"The star (*) means 'all columns'.",
        tables:[TBL.products],
+       answerTables:[TBL.products],
        back:`<pre class="code"><span class="k">SELECT</span> * <span class="k">FROM</span> products;</pre>
-             <p>Returns all 4 rows × all 4 columns. Easy, but in production code we usually name columns explicitly — it's faster and safer when the schema changes.</p>`},
+             <p>Returns all 4 rows × all 4 columns — the entire table. Easy, but in production code we usually name columns explicitly — it's faster and safer when the schema changes.</p>`},
       {label:"PICK COLUMNS",
        concept:"List only the columns you want, comma-separated.",
        hint:"Better than * when you only need a few fields.",
        tables:[TBL.products],
+       answerTables:[T("result","name,price",[["Pen",10],["Mug",90],["Book",250],["Lamp",450]])],
        back:`<pre class="code"><span class="k">SELECT</span> name, price <span class="k">FROM</span> products;</pre>
              <p>Returns just two columns. Cleaner output, less network traffic, often faster.</p>`},
       {label:"ALIASES (AS)",
        concept:"Rename a column or table in the output using AS.",
        hint:"Great for readable reports and for shortening table names.",
        tables:[TBL.products],
+       answerTables:[T("result","product_name,selling_price",[["Pen",10],["Mug",90],["Book",250],["Lamp",450]])],
        back:`<pre class="code"><span class="k">SELECT</span> name <span class="k">AS</span> product_name,
        price <span class="k">AS</span> selling_price
 <span class="k">FROM</span> products <span class="k">AS</span> p;</pre>
@@ -356,6 +359,7 @@ const MODULES = [
        concept:"WHERE filters rows. Only rows where the condition is TRUE are returned.",
        hint:"Comes after FROM, before GROUP BY / ORDER BY.",
        tables:[TBL.products],
+       answerTables:[T("result","id,name,price,category",[[3,"Book",250,"books"],[4,"Lamp",450,"home"]])],
        back:`<pre class="code"><span class="k">SELECT</span> * <span class="k">FROM</span> products
 <span class="k">WHERE</span> price &gt; <span class="n">100</span>;</pre>
              <p>Returns Book (250) and Lamp (450). Pen (10) and Mug (90) are filtered out.</p>
@@ -364,6 +368,7 @@ const MODULES = [
        concept:"Combine conditions with AND (both must be true) or OR (either is true).",
        hint:"AND narrows the result; OR broadens it.",
        tables:[TBL.products],
+       answerTables:[T("result of AND (price>50 AND category='home')","id,name,price,category",[[4,"Lamp",450,"home"]]),T("result of OR (category='books' OR price<20)","id,name,price,category",[[1,"Pen",10,"stationery"],[3,"Book",250,"books"]])],
        back:`<pre class="code"><span class="c">-- Both must be true:</span>
 <span class="k">WHERE</span> price &gt; <span class="n">50</span> <span class="k">AND</span> category = <span class="s">'home'</span>;
 
@@ -415,6 +420,7 @@ const MODULES = [
        concept:"ORDER BY column [ASC|DESC] sorts the result.",
        hint:"ASC = ascending (default). DESC = descending.",
        tables:[TBL.products],
+       answerTables:[T("result","name,price",[["Lamp",450],["Book",250],["Mug",90],["Pen",10]])],
        back:`<pre class="code"><span class="k">SELECT</span> name, price <span class="k">FROM</span> products
 <span class="k">ORDER BY</span> price <span class="k">DESC</span>;</pre>
              <p>Returns: Lamp 450, Book 250, Mug 90, Pen 10.</p>
@@ -423,6 +429,7 @@ const MODULES = [
        concept:"You can sort by several columns — the second breaks ties in the first.",
        hint:"Each column can have its own ASC/DESC.",
        tables:[TBL.employees],
+       answerTables:[T("result","name,dept,salary",[["Ben","Eng",95000],["Dev","Eng",95000],["Asha","Eng",70000],["Cara","Mkt",60000]])],
        back:`<pre class="code"><span class="k">SELECT</span> name, dept, salary <span class="k">FROM</span> employees
 <span class="k">ORDER BY</span> dept <span class="k">ASC</span>, salary <span class="k">DESC</span>;</pre>
              <p>Groups by dept alphabetically. Within each dept, highest salary first.</p>`},
@@ -430,6 +437,7 @@ const MODULES = [
        concept:"LIMIT N returns top N rows. OFFSET skips rows for pagination.",
        hint:"Almost always combined with ORDER BY.",
        tables:[TBL.products],
+       answerTables:[T("top-2 most expensive","id,name,price,category",[[4,"Lamp",450,"home"],[3,"Book",250,"books"]])],
        back:`<pre class="code"><span class="c">-- Top 2 most expensive:</span>
 <span class="k">SELECT</span> * <span class="k">FROM</span> products
 <span class="k">ORDER BY</span> price <span class="k">DESC LIMIT</span> <span class="n">2</span>;
@@ -473,6 +481,7 @@ const MODULES = [
        concept:"IN matches any value from a list. BETWEEN matches a range (inclusive).",
        hint:"Cleaner than long chains of OR / AND.",
        tables:[TBL.products],
+       answerTables:[T("IN result","id,name,price,category",[[3,"Book",250,"books"],[4,"Lamp",450,"home"]]),T("BETWEEN 50 AND 300 result","id,name,price,category",[[2,"Mug",90,"kitchen"],[3,"Book",250,"books"]])],
        back:`<pre class="code"><span class="k">WHERE</span> category <span class="k">IN</span> (<span class="s">'books'</span>, <span class="s">'home'</span>);
 <span class="c">-- same as: category='books' OR category='home'</span>
 
@@ -482,6 +491,7 @@ const MODULES = [
        concept:"LIKE does pattern matching. % = any chars. _ = exactly one char.",
        hint:"Case-insensitive by default in MySQL.",
        tables:[TBL.products],
+       answerTables:[T("LIKE 'B%' (starts with B)","name",[["Book"]]),T("LIKE '%oo%' (contains oo)","name",[["Book"]]),T("LIKE '_en' (one char + en)","name",[["Pen"]])],
        back:`<pre class="code"><span class="k">WHERE</span> name <span class="k">LIKE</span> <span class="s">'B%'</span>      <span class="c">-- starts with B → Book</span>
 <span class="k">WHERE</span> name <span class="k">LIKE</span> <span class="s">'%g'</span>      <span class="c">-- ends with g</span>
 <span class="k">WHERE</span> name <span class="k">LIKE</span> <span class="s">'%oo%'</span>    <span class="c">-- contains 'oo' → Book</span>
@@ -490,6 +500,7 @@ const MODULES = [
        concept:"NULL means 'unknown'. Use IS NULL / IS NOT NULL — never = NULL.",
        hint:"NULL compared with anything (including itself) is UNKNOWN.",
        tables:[TBL.ordersNullable],
+       answerTables:[T("unpaid orders","id,client_id,amount,paid_at",[[102,2,300,"NULL"]])],
        back:`<pre class="code"><span class="c">-- find unpaid orders:</span>
 <span class="k">SELECT</span> * <span class="k">FROM</span> orders <span class="k">WHERE</span> paid_at <span class="k">IS NULL</span>;
 
@@ -532,6 +543,7 @@ const MODULES = [
        concept:"COUNT(*), SUM, AVG, MIN, MAX collapse many rows into one number.",
        hint:"They ignore NULLs (except COUNT(*)).",
        tables:[TBL.products],
+       answerTables:[T("result","total_products,total_value,avg_price,cheapest,priciest",[[4,800,200,10,450]])],
        back:`<pre class="code"><span class="k">SELECT</span>
   COUNT(*)    <span class="k">AS</span> total_products,
   SUM(price)  <span class="k">AS</span> total_value,
@@ -544,6 +556,7 @@ const MODULES = [
        concept:"GROUP BY splits rows into buckets; aggregates are computed per bucket.",
        hint:"One output row per group.",
        tables:[TBL.products],
+       answerTables:[T("result","category,n,avg_p",[["stationery",1,10],["kitchen",1,90],["books",1,250],["home",1,450]])],
        back:`<pre class="code"><span class="k">SELECT</span> category, COUNT(*) <span class="k">AS</span> n, AVG(price) <span class="k">AS</span> avg_p
 <span class="k">FROM</span> products
 <span class="k">GROUP BY</span> category;</pre>
@@ -553,12 +566,13 @@ const MODULES = [
        concept:"WHERE filters individual rows; HAVING filters groups (after aggregation).",
        hint:"Use HAVING when the condition uses an aggregate (COUNT, SUM, …).",
        tables:[TBL.tickets],
+       answerTables:[T("result","client_id,tickets",[[2,2]])],
        back:`<pre class="code"><span class="k">SELECT</span> client_id, COUNT(*) <span class="k">AS</span> tickets
 <span class="k">FROM</span> tickets
 <span class="k">WHERE</span> status = <span class="s">'closed'</span>   <span class="c">-- per-row</span>
 <span class="k">GROUP BY</span> client_id
 <span class="k">HAVING</span> tickets &gt;= <span class="n">2</span>;     <span class="c">-- per-group</span></pre>
-             <p>Returns client 2 only (3 closed tickets). Client 1 has 1 closed.</p>`}
+             <p>Returns client 2 only (2 closed tickets). Client 1 has 1 closed.</p>`}
     ],
     questions:[
       {type:"mcq",
@@ -595,6 +609,7 @@ const MODULES = [
        concept:"Real data lives across multiple tables. JOIN reunites them.",
        hint:"FK column on one side matches PK on the other.",
        tables:[TBL.clients, TBL.orders],
+       answerTables:[T("result","name,amount",[["Acme",500],["Acme",300],["Globex",150]])],
        back:`<p>To see client names alongside their orders, combine the two tables on the relationship column.</p>
              <pre class="code"><span class="k">SELECT</span> c.name, o.amount
 <span class="k">FROM</span> clients c
@@ -604,6 +619,7 @@ const MODULES = [
        concept:"INNER JOIN keeps only matched rows. LEFT JOIN keeps all left-side rows.",
        hint:"Unmatched right-side cols become NULL in LEFT JOIN.",
        tables:[TBL.clients, TBL.orders],
+       answerTables:[T("INNER JOIN result","name,amount",[["Acme",500],["Acme",300],["Globex",150]]),T("LEFT JOIN result","name,amount",[["Acme",500],["Acme",300],["Globex",150],["Initech","NULL"]])],
        back:`<pre class="code"><span class="c">-- INNER: Acme, Acme, Globex (Initech excluded)</span>
 <span class="k">SELECT</span> c.name, o.amount
 <span class="k">FROM</span> clients c <span class="k">JOIN</span> orders o <span class="k">ON</span> o.client_id = c.id;
@@ -615,6 +631,7 @@ const MODULES = [
        concept:"Short aliases (c, o) make joins readable and required when columns repeat.",
        hint:"Use c.id vs o.client_id to disambiguate.",
        tables:[TBL.clients, TBL.orders],
+       answerTables:[T("result","client_id,client,order_id,amount",[[1,"Acme",101,500],[1,"Acme",102,300],[2,"Globex",103,150]])],
        back:`<pre class="code"><span class="k">SELECT</span>
   c.id   <span class="k">AS</span> client_id,
   c.name <span class="k">AS</span> client,
@@ -659,6 +676,7 @@ const MODULES = [
        concept:"Add new rows with INSERT INTO … VALUES (…).",
        hint:"List columns explicitly — safer against schema changes.",
        tables:[TBL.products],
+       answerTables:[T("products AFTER inserts","id,name,price,category",[[1,"Pen",10,"stationery"],[2,"Mug",90,"kitchen"],[3,"Book",250,"books"],[4,"Lamp",450,"home"],[5,"Notebook",120,"stationery"],[6,"Eraser",5,"stationery"],[7,"Bowl",60,"kitchen"]])],
        back:`<pre class="code"><span class="c">-- Single row:</span>
 <span class="k">INSERT INTO</span> products (name, price, category)
 <span class="k">VALUES</span> (<span class="s">'Notebook'</span>, <span class="n">120</span>, <span class="s">'stationery'</span>);
@@ -672,6 +690,7 @@ const MODULES = [
        concept:"UPDATE table SET col=val WHERE … — the WHERE is critical.",
        hint:"Without WHERE, you update EVERY row.",
        tables:[TBL.products],
+       answerTables:[T("products AFTER safe UPDATE","id,name,price,category",[[1,"Pen",15,"stationery"],[2,"Mug",90,"kitchen"],[3,"Book",250,"books"],[4,"Lamp",450,"home"]])],
        back:`<pre class="code"><span class="c">-- Raise the price of Pen by 5:</span>
 <span class="k">UPDATE</span> products
 <span class="k">SET</span> price = price + <span class="n">5</span>
@@ -684,6 +703,7 @@ const MODULES = [
        concept:"DELETE FROM table WHERE … — same warning as UPDATE.",
        hint:"Without WHERE, deletes every row.",
        tables:[TBL.products],
+       answerTables:[T("products AFTER DELETE WHERE category='home'","id,name,price,category",[[1,"Pen",10,"stationery"],[2,"Mug",90,"kitchen"],[3,"Book",250,"books"]])],
        back:`<pre class="code"><span class="c">-- Remove discontinued products:</span>
 <span class="k">DELETE FROM</span> products <span class="k">WHERE</span> category = <span class="s">'home'</span>;
 
@@ -807,6 +827,7 @@ const MODULES = [
        concept:"SUM(CASE WHEN…) — multiple counts in one row of output (pivot without PIVOT).",
        hint:"Powerful for dashboard rows that show 'closed vs open vs flagged'.",
        tables:[TBL.tickets],
+       answerTables:[T("result","client_id,open_n,closed_n",[[1,1,1],[2,0,2]])],
        back:`<pre class="code"><span class="k">SELECT</span> client_id,
   SUM(<span class="k">CASE WHEN</span> status=<span class="s">'open'</span>   <span class="k">THEN</span> <span class="n">1</span> <span class="k">ELSE</span> <span class="n">0</span> <span class="k">END</span>) <span class="k">AS</span> open_n,
   SUM(<span class="k">CASE WHEN</span> status=<span class="s">'closed'</span> <span class="k">THEN</span> <span class="n">1</span> <span class="k">ELSE</span> <span class="n">0</span> <span class="k">END</span>) <span class="k">AS</span> closed_n
@@ -818,6 +839,7 @@ const MODULES = [
        concept:"Adds subtotal + grand-total rows automatically.",
        hint:"Saves a UNION query for report totals.",
        tables:[TBL.campaigns],
+       answerTables:[T("result","client_id,total",[[1,3200],[2,800],["NULL",4000]])],
        back:`<pre class="code"><span class="k">SELECT</span> client_id, SUM(spend) <span class="k">AS</span> total
 <span class="k">FROM</span> campaigns
 <span class="k">GROUP BY</span> client_id <span class="k">WITH ROLLUP</span>;</pre>
@@ -895,6 +917,7 @@ const MODULES = [
        concept:"LEFT JOIN + WHERE … IS NULL → rows with no match.",
        hint:"The standard pattern for 'clients with no orders'.",
        tables:[TBL.clients, TBL.orders],
+       answerTables:[T("result","id,name,tier",[[3,"Initech","gold"]])],
        back:`<pre class="code"><span class="k">SELECT</span> c.*
 <span class="k">FROM</span> clients c
 <span class="k">LEFT JOIN</span> orders o <span class="k">ON</span> o.client_id = c.id
@@ -904,6 +927,7 @@ const MODULES = [
        concept:"A right-table filter in WHERE silently turns LEFT JOIN into INNER JOIN.",
        hint:"Put right-table predicates in ON to preserve outer-join semantics.",
        tables:[TBL.clients, TBL.orders],
+       answerTables:[T("WRONG (filter in WHERE)","name,amount",[["Acme",500],["Acme",300],["Globex",150]]),T("RIGHT (filter in ON)","name,amount",[["Acme",500],["Acme",300],["Globex",150],["Initech","NULL"]])],
        back:`<pre class="code"><span class="c">-- Wrong: filters out unmatched clients</span>
 <span class="k">FROM</span> clients c
 <span class="k">LEFT JOIN</span> orders o <span class="k">ON</span> o.client_id = c.id
@@ -964,6 +988,7 @@ const MODULES = [
        concept:"EXISTS short-circuits at first match; IN evaluates a value list.",
        hint:"For large/correlated subqueries, EXISTS often wins.",
        tables:[TBL.clients, TBL.tickets],
+       answerTables:[T("result","id,name,tier",[[1,"Acme","gold"]])],
        back:`<pre class="code"><span class="c">-- clients with at least one open ticket:</span>
 <span class="k">SELECT</span> * <span class="k">FROM</span> clients c
 <span class="k">WHERE EXISTS</span> (
@@ -975,6 +1000,7 @@ const MODULES = [
        concept:"A subquery returning exactly one value, usable anywhere a value is.",
        hint:"Each runs per outer row — JOIN+GROUP BY is often faster.",
        tables:[TBL.clients, TBL.orders],
+       answerTables:[T("result","name,n_orders,biggest",[["Acme",2,500],["Globex",1,150],["Initech",0,"NULL"]])],
        back:`<pre class="code"><span class="k">SELECT</span> c.name,
   (<span class="k">SELECT</span> COUNT(*) <span class="k">FROM</span> orders o <span class="k">WHERE</span> o.client_id = c.id) <span class="k">AS</span> n_orders,
   (<span class="k">SELECT</span> MAX(amount) <span class="k">FROM</span> orders o <span class="k">WHERE</span> o.client_id = c.id) <span class="k">AS</span> biggest
@@ -1045,6 +1071,7 @@ const MODULES = [
        concept:"WITH RECURSIVE walks trees: anchor row + recursive step joined to itself.",
        hint:"Anchor → UNION ALL → recursive part referencing the CTE.",
        tables:[TBL.categories],
+       answerTables:[T("result","id,name,parent_id,depth",[[1,"Home","NULL",0],[2,"Kitchen",1,1],[4,"Garden",1,1],[3,"Mugs",2,2]])],
        back:`<pre class="code"><span class="k">WITH RECURSIVE</span> tree <span class="k">AS</span> (
   <span class="c">-- anchor: root categories</span>
   <span class="k">SELECT</span> id, name, parent_id, <span class="n">0</span> <span class="k">AS</span> depth
@@ -1106,6 +1133,7 @@ const MODULES = [
        concept:"Windows keep every row; GROUP BY collapses rows.",
        hint:"That's the whole point — row detail + per-window aggregate.",
        tables:[TBL.campaigns],
+       answerTables:[T("result","client_id,id,spend,client_total,share",[[1,1,2000,3200,0.625],[1,2,1200,3200,0.375],[2,3,800,800,1.0]])],
        back:`<pre class="code"><span class="k">SELECT</span> client_id, id, spend,
   SUM(spend) <span class="k">OVER</span> (<span class="k">PARTITION BY</span> client_id) <span class="k">AS</span> client_total,
   spend / SUM(spend) <span class="k">OVER</span> (<span class="k">PARTITION BY</span> client_id) <span class="k">AS</span> share
@@ -1115,6 +1143,7 @@ const MODULES = [
        concept:"Three ways to number ordered rows; differ on ties.",
        hint:"Scores 90, 90, 85 → ROW_NUMBER 1,2,3; RANK 1,1,3; DENSE_RANK 1,1,2.",
        tables:[T("scores","name,score", [["A",90],["B",90],["C",85]])],
+       answerTables:[T("result","name,score,rn,rk,drk",[["A",90,1,1,1],["B",90,2,1,1],["C",85,3,3,2]])],
        back:`<pre class="code"><span class="k">SELECT</span> name, score,
   ROW_NUMBER() <span class="k">OVER</span> (<span class="k">ORDER BY</span> score <span class="k">DESC</span>) <span class="k">AS</span> rn,
   RANK()       <span class="k">OVER</span> (<span class="k">ORDER BY</span> score <span class="k">DESC</span>) <span class="k">AS</span> rk,
@@ -1124,6 +1153,7 @@ const MODULES = [
        concept:"LAG = previous row's value. LEAD = next. Cumulative SUM = running total.",
        hint:"Perfect for period-over-period and year-to-date.",
        tables:[TBL.leads],
+       answerTables:[T("result","day,leads,delta,running",[["2025-05-01",40,"NULL",40],["2025-05-02",55,15,95],["2025-05-03",48,-7,143]])],
        back:`<pre class="code"><span class="c">-- day-over-day delta and running total:</span>
 <span class="k">SELECT</span> day, leads,
   leads - LAG(leads, <span class="n">1</span>) <span class="k">OVER</span> (<span class="k">ORDER BY</span> day) <span class="k">AS</span> delta,
@@ -1246,6 +1276,7 @@ const MODULES = [
        concept:"MATCH … REGEXP pattern — full regex with character classes, anchors, alternation.",
        hint:"In MySQL 8 the engine is ICU-based and Unicode-aware.",
        tables:[TBL.listings],
+       answerTables:[T("result","id,brand_name",[[3,"nike"],[4,"n1ke"]])],
        back:`<pre class="code"><span class="c">-- detect 'nike' imitations including leetspeak / homoglyphs:</span>
 <span class="k">SELECT</span> brand_name <span class="k">FROM</span> listings
 <span class="k">WHERE</span> brand_name <span class="k">REGEXP</span> <span class="s">'[nN][i1l!|][kK][eE3]'</span>;
@@ -1255,6 +1286,7 @@ const MODULES = [
        concept:"Phonetic hash — same sound → same code.",
        hint:"SOUNDEX('Smith') = SOUNDEX('Smyth') = 'S530'.",
        tables:[T("brands","brand,soundex", [["adidas","A332"],["ad1das","A332"],["nike","N200"],["n1ke","N200"]])],
+       answerTables:[T("matched imitators","known,suspect",[["adidas","ad1das"],["nike","n1ke"]])],
        back:`<pre class="code"><span class="k">SELECT</span> a.brand <span class="k">AS</span> known, b.brand <span class="k">AS</span> suspect
 <span class="k">FROM</span> brands a
 <span class="k">JOIN</span> listings b
@@ -1315,6 +1347,7 @@ const MODULES = [
        concept:"Atomicity, Consistency, Isolation, Durability — the four guarantees.",
        hint:"InnoDB provides all four.",
        tables:[TBL.accounts],
+       answerTables:[T("accounts AFTER COMMIT","id,owner,balance",[[1,"A",900],[2,"B",600]])],
        back:`<pre class="code"><span class="k">START TRANSACTION</span>;
 <span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance - <span class="n">100</span> <span class="k">WHERE</span> id = <span class="n">1</span>;
 <span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance + <span class="n">100</span> <span class="k">WHERE</span> id = <span class="n">2</span>;
@@ -1330,6 +1363,7 @@ const MODULES = [
        concept:"Code that fires automatically on INSERT / UPDATE / DELETE.",
        hint:"Best for audit logs — keep them small and side-effect-only.",
        tables:[TBL.orders],
+       answerTables:[T("order_audit (after UPDATE on order 101)","order_id,old_amount,new_amount,changed_at",[[101,500,550,"2025-05-22 10:30"]])],
        back:`<pre class="code"><span class="k">CREATE TRIGGER</span> trg_order_audit
 <span class="k">AFTER UPDATE ON</span> orders
 <span class="k">FOR EACH ROW</span>
@@ -1381,6 +1415,7 @@ const MODULES = [
        concept:"Native JSON type — validation, path expressions, indexable via generated columns.",
        hint:"Perfect for GenAI / LangChain output stored alongside relational data.",
        tables:[TBL.enrichments],
+       answerTables:[T("result","id,sentiment",[[2,"neg"]])],
        back:`<pre class="code"><span class="k">SELECT</span> id,
   attributes-&gt;&gt;<span class="s">'$.sentiment'</span> <span class="k">AS</span> sentiment
 <span class="k">FROM</span> enrichments
@@ -1400,6 +1435,7 @@ const MODULES = [
        concept:"MATCH(cols) AGAINST(query) — relevance-ranked search across text.",
        hint:"Requires a FULLTEXT index.",
        tables:[TBL.articles],
+       answerTables:[T("result","id,title,rel",[[1,"MySQL tips",1.8],[2,"Performance",0.9]])],
        back:`<pre class="code"><span class="k">ALTER TABLE</span> articles <span class="k">ADD FULLTEXT</span>(title, body);
 
 <span class="k">SELECT</span> id, title,
@@ -1640,7 +1676,7 @@ function renderFlashcard(){
         </div>
         <div class="flashcard-face back">
           <div class="flashcard-label">EXPLANATION</div>
-          <div class="flashcard-back">${fc.back}</div>
+          <div class="flashcard-back">${fc.back}${fc.answerTables?'<div style="font-size:11px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;color:var(--green-shadow);margin-top:10px;margin-bottom:2px">▶ result</div>'+renderTables(fc.answerTables):''}</div>
           <div class="tap-hint">← Tap to flip back</div>
         </div>
       </div>
