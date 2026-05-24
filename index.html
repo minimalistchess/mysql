@@ -237,6 +237,50 @@ details.more[open]{background:#fff}
   .mini-table{font-size:11px;min-width:140px}
   .mini-table th,.mini-table td{padding:3px 6px}
 }
+
+/* === Playground === */
+.challenge-list{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.challenge-item{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:14px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;cursor:pointer;text-align:left;width:100%;transition:transform .1s,box-shadow .1s,border-color .1s;box-shadow:0 3px 0 var(--line)}
+.challenge-item:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--line);border-color:var(--blue)}
+.challenge-item.completed{border-color:var(--green);background:#f3fae6}
+.challenge-num{width:32px;height:32px;border-radius:8px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0}
+.challenge-num.intermediate{background:var(--orange)}
+.challenge-num.advanced{background:var(--red)}
+.challenge-info h4{font-size:15px;font-weight:800;letter-spacing:-.1px;line-height:1.3}
+.challenge-info p{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.4;font-weight:600}
+.check-badge{font-size:18px;flex-shrink:0;color:var(--green-sh);font-weight:900}
+
+.editor-shell{background:#1e1e2e;border-radius:12px;overflow:hidden;border:2px solid var(--line);margin-top:12px}
+.editor-bar{background:#181825;padding:7px 11px;font-size:10.5px;font-weight:800;letter-spacing:.5px;color:#a6adc8;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.editor-bar .hint{font-size:10px;color:#7f849c;letter-spacing:.2px;text-transform:none;font-weight:600}
+.sql-editor{width:100%;border:none;background:transparent;color:#cdd6f4;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.65;padding:12px 14px;outline:none;resize:vertical;min-height:140px;tab-size:2;display:block}
+.sql-editor::placeholder{color:#6c7086}
+
+.pg-actions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.pg-actions .btn{padding:10px 16px;font-size:13.5px;min-height:42px}
+
+.run-output{margin-top:14px}
+.run-output:empty{display:none}
+.run-status{font-size:11px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;margin:0 0 8px;display:flex;align-items:center;gap:6px}
+.run-status.ok{color:var(--green-sh)}
+.run-status.err{color:var(--red-sh)}
+.error-block{background:#fef2f2;border-left:4px solid var(--red);padding:12px 14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#7f1d1d;line-height:1.55;white-space:pre-wrap;word-break:break-word}
+.success-block{background:#d7ffb8;border-left:4px solid var(--green);padding:12px 14px;border-radius:8px;font-size:14px;color:#3d7300;font-weight:700;line-height:1.5;margin-bottom:8px}
+.diff-block{background:#fff7ed;border-left:4px solid var(--orange);padding:12px 14px;border-radius:8px;font-size:13px;color:#7a4a00;line-height:1.5;margin-top:10px;font-weight:600}
+.diff-block strong{color:#4a3700;display:block;margin:10px 0 4px;font-size:11.5px;letter-spacing:.4px;text-transform:uppercase}
+.diff-block strong:first-child{margin-top:0}
+.hint-block{background:#eff6ff;border-left:4px solid var(--blue);padding:11px 13px;border-radius:8px;font-size:13.5px;color:#1e40af;line-height:1.55;font-weight:600}
+
+.pg-loading{text-align:center;padding:50px 20px;color:var(--muted);font-weight:700;font-size:15px}
+.pg-loading .spin{display:inline-block;animation:spin 1s linear infinite;margin-right:8px;font-size:18px}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+@media (max-width:600px){
+  .sql-editor{font-size:13px;padding:11px 12px;min-height:120px}
+  .challenge-item{padding:12px;grid-template-columns:auto 1fr auto;gap:10px}
+  .challenge-info h4{font-size:14.5px}
+  .challenge-info p{font-size:12px}
+}
 </style>
 </head>
 <body>
@@ -1518,6 +1562,9 @@ function renderHome(){
     <h2 class="section-heading">🔥 Advanced &amp; Expert</h2>
     <div class="section-sub">Interview-grade patterns and production techniques.</div>
     <div class="map" id="mapAdv"></div>
+    <h2 class="section-heading">🛠 SQL Playground</h2>
+    <div class="section-sub">Write real SQL against an in-browser database. Run queries, see live results, check your answer.</div>
+    <div class="challenge-list" id="challengeList"></div>
     <div class="footer-actions" style="margin-top:24px">
       <span style="font-weight:700;font-size:13px;color:var(--muted);align-self:center">${done}/${M.length} modules complete</span>
       <button class="btn btn-secondary" onclick="resetProgress()">Reset progress</button>
@@ -1547,6 +1594,26 @@ function renderHome(){
     else if(m.difficulty === 'intermediate') inter.appendChild(card);
     else adv.appendChild(card);
   });
+  const chList = $('#challengeList');
+  if(chList){
+    const pgProg = state.playgroundProgress || {};
+    CHALLENGES.forEach((c, i) => {
+      const done = !!pgProg[c.id]?.completed;
+      const btn = document.createElement('button');
+      btn.className = `challenge-item ${done?'completed':''}`;
+      btn.setAttribute('aria-label', `Challenge ${i+1}: ${c.title}, ${c.difficulty}`);
+      btn.innerHTML = `
+        <div class="challenge-num ${c.difficulty}" aria-hidden="true">${i+1}</div>
+        <div class="challenge-info">
+          <h4>${esc(c.title)}</h4>
+          <p>${esc(c.prompt.replace(/<[^>]+>/g,''))}</p>
+        </div>
+        <div class="check-badge" aria-hidden="true">${done?'✓':'›'}</div>
+      `;
+      btn.onclick = () => startChallenge(c.id);
+      chList.appendChild(btn);
+    });
+  }
   updateStatsUI();
 }
 
@@ -1838,6 +1905,443 @@ function openGlossary(){
   $('#modalContainer').innerHTML = html;
 }
 function closeGlossary(){$('#modalContainer').innerHTML = '';}
+
+/* ============ SQL Playground ============ */
+let _SQL = null;
+let _sqlLoading = null;
+const SQLJS_CDN = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/';
+
+function ensureSql(){
+  if(_SQL) return Promise.resolve(_SQL);
+  if(_sqlLoading) return _sqlLoading;
+  _sqlLoading = new Promise((resolve, reject) => {
+    const start = () => {
+      window.initSqlJs({locateFile: f => SQLJS_CDN + f})
+        .then(SQL => { _SQL = SQL; resolve(SQL); })
+        .catch(reject);
+    };
+    if(window.initSqlJs) start();
+    else {
+      const s = document.createElement('script');
+      s.src = SQLJS_CDN + 'sql-wasm.js';
+      s.async = true;
+      s.onload = start;
+      s.onerror = () => reject(new Error('Could not load sql.js from CDN. Check your network.'));
+      document.head.appendChild(s);
+    }
+  });
+  return _sqlLoading;
+}
+
+function buildDb(setup){
+  const db = new _SQL.Database();
+  setup.forEach(stmt => db.run(stmt));
+  return db;
+}
+
+function execSelect(db, sql){
+  const trimmed = sql.trim().replace(/;+\s*$/, '');
+  if(!trimmed) throw new Error('Empty query — type something first.');
+  if(!/^(select|with)\b/i.test(trimmed)){
+    throw new Error('The playground only runs SELECT queries (or WITH … SELECT). No INSERT / UPDATE / DELETE here.');
+  }
+  const out = db.exec(trimmed);
+  if(out.length === 0) return {cols:[], rows:[]};
+  return {cols: out[0].columns, rows: out[0].values};
+}
+
+function compareResults(a, b, ordered){
+  if(a.rows.length !== b.rows.length) return false;
+  if(a.cols.length !== b.cols.length) return false;
+  const norm = rows => rows.map(r => r.map(v => v===null||v===undefined ? '\u0000NULL' : String(v).trim()));
+  let ar = norm(a.rows), br = norm(b.rows);
+  if(!ordered){
+    const f = (x, y) => JSON.stringify(x).localeCompare(JSON.stringify(y));
+    ar = [...ar].sort(f);
+    br = [...br].sort(f);
+  }
+  return JSON.stringify(ar) === JSON.stringify(br);
+}
+
+function previewTable(db, name){
+  try{
+    const r = db.exec(`SELECT * FROM ${name} LIMIT 50`);
+    if(r.length === 0) return {name, cols:[], rows:[]};
+    return {name, cols: r[0].columns, rows: r[0].values};
+  }catch(e){return null}
+}
+
+/* ---------- Challenges ---------- */
+const CHALLENGES = [
+  /* ----- Beginner ----- */
+  {
+    id:'pg-1', title:'Hello, SELECT', difficulty:'beginner',
+    prompt:'Return every row from <code>products</code> with all columns.',
+    setup:[
+      `CREATE TABLE products (id INT, name TEXT, price INT, category TEXT);`,
+      `INSERT INTO products VALUES (1,'Pen',10,'stationery'),(2,'Mug',90,'kitchen'),(3,'Book',250,'books'),(4,'Lamp',450,'home');`
+    ],
+    visible:['products'],
+    starter:`-- Return every row from products\nSELECT  FROM products;`,
+    expected:`SELECT id, name, price, category FROM products;`,
+    ordered:false,
+    hint:'Use <code>SELECT *</code> — the star means "every column".'
+  },
+  {
+    id:'pg-2', title:'Expensive products', difficulty:'beginner',
+    prompt:'Return <code>name</code> and <code>price</code> of products costing <b>more than 100</b>.',
+    setup:[
+      `CREATE TABLE products (id INT, name TEXT, price INT, category TEXT);`,
+      `INSERT INTO products VALUES (1,'Pen',10,'stationery'),(2,'Mug',90,'kitchen'),(3,'Book',250,'books'),(4,'Lamp',450,'home');`
+    ],
+    visible:['products'],
+    starter:`SELECT name, price\nFROM products\nWHERE ;`,
+    expected:`SELECT name, price FROM products WHERE price > 100;`,
+    ordered:false,
+    hint:'Use a <code>WHERE price &gt; 100</code> clause.'
+  },
+  {
+    id:'pg-3', title:'Top 3 most expensive', difficulty:'beginner',
+    prompt:'Return the 3 most expensive products (<code>name</code>, <code>price</code>), highest first.',
+    setup:[
+      `CREATE TABLE products (id INT, name TEXT, price INT, category TEXT);`,
+      `INSERT INTO products VALUES (1,'Pen',10,'stationery'),(2,'Mug',90,'kitchen'),(3,'Book',250,'books'),(4,'Lamp',450,'home'),(5,'Chair',900,'home'),(6,'Tablet',1800,'electronics');`
+    ],
+    visible:['products'],
+    starter:`SELECT name, price\nFROM products\nORDER BY price \nLIMIT ;`,
+    expected:`SELECT name, price FROM products ORDER BY price DESC LIMIT 3;`,
+    ordered:true,
+    hint:'Combine <code>ORDER BY price DESC</code> with <code>LIMIT 3</code>.'
+  },
+  {
+    id:'pg-4', title:'Unique categories', difficulty:'beginner',
+    prompt:'Return each unique <code>category</code> exactly once.',
+    setup:[
+      `CREATE TABLE products (id INT, name TEXT, price INT, category TEXT);`,
+      `INSERT INTO products VALUES (1,'Pen',10,'stationery'),(2,'Pencil',5,'stationery'),(3,'Mug',90,'kitchen'),(4,'Book',250,'books'),(5,'Lamp',450,'home'),(6,'Vase',120,'home');`
+    ],
+    visible:['products'],
+    starter:`SELECT  category\nFROM products;`,
+    expected:`SELECT DISTINCT category FROM products;`,
+    ordered:false,
+    hint:'<code>DISTINCT</code> drops duplicate rows.'
+  },
+  {
+    id:'pg-5', title:'Missing emails', difficulty:'beginner',
+    prompt:'Return users whose <code>email</code> is missing (NULL).',
+    setup:[
+      `CREATE TABLE users (id INT, name TEXT, email TEXT);`,
+      `INSERT INTO users VALUES (1,'Asha','asha@x.com'),(2,'Ben',NULL),(3,'Cara','cara@x.com'),(4,'Dev',NULL);`
+    ],
+    visible:['users'],
+    starter:`SELECT *\nFROM users\nWHERE email ;`,
+    expected:`SELECT * FROM users WHERE email IS NULL;`,
+    ordered:false,
+    hint:'<code>= NULL</code> never works — use <code>IS NULL</code>.'
+  },
+  /* ----- Intermediate ----- */
+  {
+    id:'pg-6', title:'Revenue per client', difficulty:'intermediate',
+    prompt:'Return each client\'s <code>name</code> and their total <code>amount</code> as <code>total</code>. Clients with no orders should NOT appear.',
+    setup:[
+      `CREATE TABLE clients (id INT, name TEXT);`,
+      `CREATE TABLE orders (id INT, client_id INT, amount INT);`,
+      `INSERT INTO clients VALUES (1,'Acme'),(2,'Globex'),(3,'Initech');`,
+      `INSERT INTO orders VALUES (101,1,500),(102,1,300),(103,2,150);`
+    ],
+    visible:['clients','orders'],
+    starter:`SELECT c.name, SUM(o.amount) AS total\nFROM clients c\nJOIN orders o ON \nGROUP BY ;`,
+    expected:`SELECT c.name, SUM(o.amount) AS total FROM clients c JOIN orders o ON o.client_id = c.id GROUP BY c.id, c.name;`,
+    ordered:false,
+    hint:'Inner-join on <code>o.client_id = c.id</code>, then GROUP BY the client.'
+  },
+  {
+    id:'pg-7', title:'Clients with no orders', difficulty:'intermediate',
+    prompt:'Return clients (<code>id</code>, <code>name</code>) who have <b>never</b> placed an order.',
+    setup:[
+      `CREATE TABLE clients (id INT, name TEXT);`,
+      `CREATE TABLE orders (id INT, client_id INT, amount INT);`,
+      `INSERT INTO clients VALUES (1,'Acme'),(2,'Globex'),(3,'Initech'),(4,'Soylent');`,
+      `INSERT INTO orders VALUES (101,1,500),(102,2,300);`
+    ],
+    visible:['clients','orders'],
+    starter:`SELECT c.id, c.name\nFROM clients c\nLEFT JOIN orders o ON \nWHERE  IS NULL;`,
+    expected:`SELECT c.id, c.name FROM clients c LEFT JOIN orders o ON o.client_id = c.id WHERE o.id IS NULL;`,
+    ordered:false,
+    hint:'Anti-join: LEFT JOIN then filter where the right-side id IS NULL.'
+  },
+  {
+    id:'pg-8', title:'Open vs closed tickets', difficulty:'intermediate',
+    prompt:'For each <code>client_id</code>, return <code>open_n</code> and <code>closed_n</code> using conditional sums.',
+    setup:[
+      `CREATE TABLE tickets (id INT, client_id INT, status TEXT);`,
+      `INSERT INTO tickets VALUES (1,1,'open'),(2,1,'closed'),(3,2,'closed'),(4,2,'closed'),(5,3,'open'),(6,3,'open');`
+    ],
+    visible:['tickets'],
+    starter:`SELECT client_id,\n  SUM(CASE WHEN status='open'   THEN 1 ELSE 0 END) AS open_n,\n  SUM(CASE WHEN status= THEN 1 ELSE 0 END) AS closed_n\nFROM tickets\nGROUP BY client_id;`,
+    expected:`SELECT client_id, SUM(CASE WHEN status='open' THEN 1 ELSE 0 END) AS open_n, SUM(CASE WHEN status='closed' THEN 1 ELSE 0 END) AS closed_n FROM tickets GROUP BY client_id;`,
+    ordered:false,
+    hint:'Repeat the SUM(CASE WHEN…) pattern for the closed status.'
+  },
+  {
+    id:'pg-9', title:'Average price per category, > 100', difficulty:'intermediate',
+    prompt:'Return <code>category</code> and <code>avg_price</code> for categories whose average price is more than 100.',
+    setup:[
+      `CREATE TABLE products (id INT, name TEXT, price INT, category TEXT);`,
+      `INSERT INTO products VALUES (1,'Pen',10,'stationery'),(2,'Pencil',5,'stationery'),(3,'Mug',90,'kitchen'),(4,'Bowl',60,'kitchen'),(5,'Book',250,'books'),(6,'Lamp',450,'home'),(7,'Vase',120,'home');`
+    ],
+    visible:['products'],
+    starter:`SELECT category, AVG(price) AS avg_price\nFROM products\nGROUP BY category\n ;`,
+    expected:`SELECT category, AVG(price) AS avg_price FROM products GROUP BY category HAVING AVG(price) > 100;`,
+    ordered:false,
+    hint:'Filtering on an aggregate → <code>HAVING</code>, not WHERE.'
+  },
+  {
+    id:'pg-10', title:'Order items joined to products', difficulty:'intermediate',
+    prompt:'List every order item as <code>product_name</code>, <code>qty</code>, <code>line_total</code> (qty × unit_price).',
+    setup:[
+      `CREATE TABLE products (id INT, name TEXT);`,
+      `CREATE TABLE order_items (id INT, order_id INT, product_id INT, qty INT, unit_price INT);`,
+      `INSERT INTO products VALUES (1,'Pen'),(2,'Mug'),(3,'Book');`,
+      `INSERT INTO order_items VALUES (10,101,1,5,10),(11,101,3,1,250),(12,102,2,2,90);`
+    ],
+    visible:['products','order_items'],
+    starter:`SELECT p.name AS product_name,\n       oi.qty,\n       oi.qty * oi.unit_price AS line_total\nFROM order_items oi\nJOIN products p ON ;`,
+    expected:`SELECT p.name AS product_name, oi.qty, oi.qty * oi.unit_price AS line_total FROM order_items oi JOIN products p ON p.id = oi.product_id;`,
+    ordered:false,
+    hint:'Join on <code>p.id = oi.product_id</code>.'
+  },
+  /* ----- Advanced ----- */
+  {
+    id:'pg-11', title:'Running total of sales', difficulty:'advanced',
+    prompt:'For each day, return <code>day</code>, <code>total</code>, and a cumulative <code>running</code> total ordered by day.',
+    setup:[
+      `CREATE TABLE sales_daily (day TEXT, total INT);`,
+      `INSERT INTO sales_daily VALUES ('2025-05-01',1500),('2025-05-02',2100),('2025-05-03',1800),('2025-05-04',2400);`
+    ],
+    visible:['sales_daily'],
+    starter:`SELECT day, total,\n  SUM(total) OVER ( ) AS running\nFROM sales_daily;`,
+    expected:`SELECT day, total, SUM(total) OVER (ORDER BY day) AS running FROM sales_daily;`,
+    ordered:true,
+    hint:'<code>SUM(col) OVER (ORDER BY day)</code> = cumulative total.'
+  },
+  {
+    id:'pg-12', title:'Most recent order per client', difficulty:'advanced',
+    prompt:'Return the single most recent order per client: <code>id, client_id, amount, created_at</code>.',
+    setup:[
+      `CREATE TABLE orders (id INT, client_id INT, amount INT, created_at TEXT);`,
+      `INSERT INTO orders VALUES (101,1,500,'2025-05-01'),(102,1,300,'2025-05-03'),(103,2,150,'2025-05-10'),(104,2,200,'2025-04-22'),(105,3,90,'2025-05-08');`
+    ],
+    visible:['orders'],
+    starter:`SELECT id, client_id, amount, created_at\nFROM (\n  SELECT *, ROW_NUMBER() OVER (\n    PARTITION BY  ORDER BY created_at DESC\n  ) AS rn\n  FROM orders\n) t\nWHERE rn = ;`,
+    expected:`SELECT id, client_id, amount, created_at FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY client_id ORDER BY created_at DESC) AS rn FROM orders) t WHERE rn = 1;`,
+    ordered:false,
+    hint:'Partition by client_id, order by created_at DESC, keep rn = 1.'
+  },
+  {
+    id:'pg-13', title:'Dense rank within department', difficulty:'advanced',
+    prompt:'Return <code>name, dept_id, salary, rk</code> where <code>rk</code> is the dense rank within the department (highest salary = 1, ties share rank with no gaps).',
+    setup:[
+      `CREATE TABLE employees (id INT, name TEXT, salary INT, dept_id INT);`,
+      `INSERT INTO employees VALUES (1,'Asha',70000,1),(2,'Ben',95000,1),(3,'Cara',60000,2),(4,'Dev',95000,3),(5,'Eli',85000,1),(6,'Fae',75000,3);`
+    ],
+    visible:['employees'],
+    starter:`SELECT name, dept_id, salary,\n  (salary) OVER (\n    PARTITION BY dept_id \n  ) AS rk\nFROM employees;`,
+    expected:`SELECT name, dept_id, salary, DENSE_RANK() OVER (PARTITION BY dept_id ORDER BY salary DESC) AS rk FROM employees;`,
+    ordered:false,
+    hint:'<code>DENSE_RANK()</code> closes gaps on ties. Partition by dept, order by salary DESC.'
+  },
+  {
+    id:'pg-14', title:'Day-over-day delta', difficulty:'advanced',
+    prompt:'Return <code>day, total, delta</code> where delta = today\'s total − previous day\'s total. The first row\'s delta should be NULL.',
+    setup:[
+      `CREATE TABLE sales_daily (day TEXT, total INT);`,
+      `INSERT INTO sales_daily VALUES ('2025-05-01',1500),('2025-05-02',2100),('2025-05-03',1800),('2025-05-04',2400);`
+    ],
+    visible:['sales_daily'],
+    starter:`SELECT day, total,\n  total -  (total) OVER (ORDER BY day) AS delta\nFROM sales_daily;`,
+    expected:`SELECT day, total, total - LAG(total) OVER (ORDER BY day) AS delta FROM sales_daily;`,
+    ordered:true,
+    hint:'<code>LAG(col)</code> returns the previous row in the ordered window.'
+  }
+];
+
+/* ---------- Challenge UI ---------- */
+let curChallenge = null;
+let curChallengeDb = null;
+let curChallengeStarter = '';
+
+async function startChallenge(id){
+  curChallenge = CHALLENGES.find(c => c.id === id);
+  if(!curChallenge) return renderHome();
+  hideFeedback();
+  main.innerHTML = `<div class="pg-loading"><span class="spin">⟳</span>Loading SQL engine</div>`;
+  try{
+    await ensureSql();
+    if(curChallengeDb){try{curChallengeDb.close()}catch(e){}}
+    curChallengeDb = buildDb(curChallenge.setup);
+    curChallengeStarter = curChallenge.starter;
+    renderChallenge();
+  }catch(e){
+    main.innerHTML = `
+      <div class="lesson-header">
+        <button class="close-btn" onclick="renderHome()" aria-label="Back">×</button>
+        <div style="flex:1"></div>
+      </div>
+      <article class="card card-pitfall">
+        <span class="card-badge b-pitfall">⚠ Couldn't load engine</span>
+        <h2>Couldn't load the SQL engine</h2>
+        <p>The playground fetches <code>sql.js</code> from a CDN. Make sure you're online and reload the page.</p>
+        <div class="error-block">${esc(e.message || String(e))}</div>
+        <div class="footer-actions"><button class="btn btn-secondary" onclick="renderHome()">Back to map</button></div>
+      </article>`;
+  }
+}
+
+function renderChallenge(){
+  hideFeedback();
+  const c = curChallenge;
+  const tables = (c.visible || []).map(n => previewTable(curChallengeDb, n)).filter(Boolean);
+  main.innerHTML = `
+    <div class="lesson-header">
+      <button class="close-btn" onclick="exitChallenge()" aria-label="Back to map">×</button>
+      <div style="flex:1;font-weight:800;font-size:14px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(c.title)}</div>
+      <span class="diff ${c.difficulty}">${c.difficulty}</span>
+    </div>
+    <article class="card card-syntax">
+      <span class="card-badge b-syntax">🛠 Playground</span>
+      <h2>${esc(c.title)}</h2>
+      <p>${c.prompt}</p>
+      ${tables.length ? `<div class="result-label">tables you can query</div>${renderTables(tables)}` : ''}
+      <div class="editor-shell">
+        <div class="editor-bar">
+          <span>SQL Editor</span>
+          <span class="hint">Ctrl/Cmd + Enter to run</span>
+        </div>
+        <textarea class="sql-editor" id="sqlEditor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" aria-label="SQL editor">${esc(c.starter)}</textarea>
+      </div>
+      <div class="pg-actions">
+        <button class="btn btn-blue" onclick="runChallenge()" aria-label="Run query">▶ Run Query</button>
+        <button class="btn btn-primary" onclick="checkChallenge()" aria-label="Check answer">✓ Check Answer</button>
+        <button class="btn btn-secondary" onclick="resetChallenge()" aria-label="Reset editor">↺ Reset</button>
+        ${c.hint ? `<button class="btn btn-ghost" onclick="showHint()" aria-label="Show hint">💡 Hint</button>` : ''}
+      </div>
+      <div class="run-output" id="runOutput" aria-live="polite"></div>
+    </article>
+    <div class="footer-actions" style="margin-top:18px">
+      <button class="btn btn-secondary" onclick="prevChallenge()" ${!hasPrevChallenge()?'disabled':''} aria-label="Previous challenge">← Previous</button>
+      <div class="right">
+        <button class="btn btn-primary" onclick="nextChallenge()" ${!hasNextChallenge()?'disabled':''} aria-label="Next challenge">Next →</button>
+      </div>
+    </div>
+  `;
+  const editor = $('#sqlEditor');
+  editor.addEventListener('keydown', e => {
+    if((e.ctrlKey || e.metaKey) && e.key === 'Enter'){
+      e.preventDefault();
+      runChallenge();
+    }
+    if(e.key === 'Tab' && !e.shiftKey){
+      e.preventDefault();
+      const s = editor.selectionStart, ee = editor.selectionEnd;
+      editor.value = editor.value.slice(0, s) + '  ' + editor.value.slice(ee);
+      editor.selectionStart = editor.selectionEnd = s + 2;
+    }
+  });
+}
+
+function exitChallenge(){
+  if(curChallengeDb){try{curChallengeDb.close()}catch(e){}}
+  curChallengeDb = null;
+  curChallenge = null;
+  renderHome();
+}
+
+function runChallenge(){
+  const sql = $('#sqlEditor').value;
+  const out = $('#runOutput');
+  try{
+    const r = execSelect(curChallengeDb, sql);
+    out.innerHTML = `
+      <div class="run-status ok">▶ Query ran · ${r.rows.length} row${r.rows.length===1?'':'s'}</div>
+      ${renderTables([{name:'your result', cols:r.cols, rows:r.rows}])}
+    `;
+  }catch(e){
+    out.innerHTML = `
+      <div class="run-status err">⚠ Query error</div>
+      <div class="error-block">${esc(e.message || String(e))}</div>
+    `;
+  }
+}
+
+function checkChallenge(){
+  const sql = $('#sqlEditor').value;
+  const out = $('#runOutput');
+  let userRes;
+  try{
+    userRes = execSelect(curChallengeDb, sql);
+  }catch(e){
+    out.innerHTML = `
+      <div class="run-status err">⚠ Query error</div>
+      <div class="error-block">${esc(e.message || String(e))}</div>
+    `;
+    return;
+  }
+  let expectedRes;
+  try{
+    const fresh = buildDb(curChallenge.setup);
+    expectedRes = execSelect(fresh, curChallenge.expected);
+    fresh.close();
+  }catch(e){
+    out.innerHTML = `<div class="error-block">Internal error: ${esc(e.message)}</div>`;
+    return;
+  }
+  const correct = compareResults(userRes, expectedRes, curChallenge.ordered);
+  if(correct){
+    if(!state.playgroundProgress) state.playgroundProgress = {};
+    const already = state.playgroundProgress[curChallenge.id]?.completed;
+    state.playgroundProgress[curChallenge.id] = {completed:true};
+    if(!already){
+      state.xp += 20;
+      const today = new Date().toDateString();
+      if(state.lastPlayed !== today){state.streak += 1; state.lastPlayed = today;}
+    }
+    saveState();
+    updateStatsUI();
+    out.innerHTML = `
+      <div class="run-status ok">✓ Correct!</div>
+      <div class="success-block">${already ? '🎉 Solved again — XP only awarded once per challenge.' : '🎉 +20 XP earned!'} Your query matches the expected result.</div>
+      ${renderTables([{name:'your result', cols:userRes.cols, rows:userRes.rows}])}
+    `;
+  } else {
+    out.innerHTML = `
+      <div class="run-status err">✗ Not yet — your output doesn't match the expected result.</div>
+      <div class="diff-block">
+        <strong>Your result · ${userRes.rows.length} row${userRes.rows.length===1?'':'s'}</strong>
+        ${renderTables([{name:'yours', cols:userRes.cols, rows:userRes.rows}])}
+        <strong>Expected · ${expectedRes.rows.length} row${expectedRes.rows.length===1?'':'s'}</strong>
+        ${renderTables([{name:'expected', cols:expectedRes.cols, rows:expectedRes.rows}])}
+      </div>
+    `;
+  }
+}
+
+function resetChallenge(){
+  const ed = $('#sqlEditor');
+  ed.value = curChallengeStarter;
+  $('#runOutput').innerHTML = '';
+  ed.focus();
+}
+
+function showHint(){
+  $('#runOutput').innerHTML = `<div class="hint-block"><b>💡 Hint:</b> ${curChallenge.hint}</div>`;
+}
+
+function challengeIdx(){return CHALLENGES.findIndex(c => c.id === curChallenge.id)}
+function hasPrevChallenge(){return challengeIdx() > 0}
+function hasNextChallenge(){return challengeIdx() < CHALLENGES.length - 1}
+function prevChallenge(){if(hasPrevChallenge()) startChallenge(CHALLENGES[challengeIdx()-1].id)}
+function nextChallenge(){if(hasNextChallenge()) startChallenge(CHALLENGES[challengeIdx()+1].id)}
 
 /* ============ Boot ============ */
 updateStatsUI();
