@@ -86,6 +86,7 @@ main{flex:1;padding:20px 14px 80px;max-width:880px;margin:0 auto;width:100%}
 .diff.intermediate{background:#fff0d6;color:#9c5d00}
 .diff.advanced{background:#ffe0e0;color:#9c2222}
 .diff.expert{background:#e8defb;color:#5e2c9e}
+.diff.analytics{background:#dbeafe;color:#1d4ed8}
 .progress-ring{width:46px;height:46px;border-radius:50%;background:conic-gradient(var(--green) calc(var(--p)*1%),#eee 0);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .progress-ring-inner{width:36px;height:36px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:900}
 
@@ -238,6 +239,47 @@ details.more[open]{background:#fff}
   .mini-table th,.mini-table td{padding:3px 6px}
 }
 
+/* === Adaptive Learning === */
+.adaptive-card{background:linear-gradient(135deg,#e0f2fe,#eef2ff);color:#0f4c81;box-shadow:0 6px 0 #b6d4e8}
+.adaptive-card .featured-btn{background:#fff;color:#0f4c81}
+.adaptive-mini{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:12px;font-weight:800;color:#0f4c81}
+.adaptive-mini span{background:rgba(255,255,255,.8);padding:6px 10px;border-radius:999px}
+.adaptive-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 18px}
+.adaptive-stat{background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 4px 0 var(--line)}
+.adaptive-stat .lbl{font-size:10px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+.adaptive-stat .val{font-size:24px;font-weight:900;letter-spacing:-.4px;margin-top:4px;color:var(--blue-sh)}
+.goal-card{background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 4px 0 var(--line);margin:0 0 14px}
+.goal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.goal-head h3{font-size:15px;font-weight:900;letter-spacing:-.2px}
+.goal-head .goal-meta{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+.goal-track{height:12px;background:#e5e5e5;border-radius:999px;overflow:hidden}
+.goal-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--green));transition:width .25s}
+.goal-note{font-size:13px;color:var(--muted);font-weight:600;line-height:1.5;margin-top:8px}
+.topic-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.topic-row{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 12px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;box-shadow:0 3px 0 var(--line)}
+.topic-row.weak{border-left:4px solid var(--red)}
+.topic-row.good{border-left:4px solid var(--green)}
+.topic-avatar{width:36px;height:36px;border-radius:10px;background:#eef6ff;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.topic-copy h4{font-size:14.5px;font-weight:900;letter-spacing:-.2px;line-height:1.25}
+.topic-copy p{font-size:12px;color:var(--muted);font-weight:600;line-height:1.45;margin-top:2px}
+.topic-actions{display:flex;flex-direction:column;align-items:flex-end;gap:8px;min-width:120px}
+.topic-pill{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:8px;font-size:10px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;background:#eef;color:#4f46e5}
+.topic-pill.weak{background:#fee2e2;color:var(--red-sh)}
+.topic-pill.good{background:#dffac4;color:var(--green-sh)}
+.recovery-banner{background:linear-gradient(135deg,#fff7ed,#fef3c7);border:2px solid #f59e0b;border-radius:14px;padding:14px;box-shadow:0 4px 0 rgba(245,158,11,.18);margin:0 0 14px}
+.recovery-banner h3{font-size:15px;font-weight:900;letter-spacing:-.2px;color:#7a4a00;margin-bottom:4px}
+.recovery-banner p{font-size:13px;color:#7a4a00;font-weight:600;line-height:1.5}
+.recovery-banner .featured-actions{margin-top:10px}
+.reco-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.reco-item{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;font-weight:600;color:var(--ink2);line-height:1.5}
+.reco-item strong{color:#0f4c81}
+.adaptive-empty{padding:14px;border:1.5px dashed var(--line);border-radius:12px;text-align:center;color:var(--muted);font-size:13px;font-style:italic;background:#fafaf5}
+@media (max-width:600px){
+  .adaptive-grid{grid-template-columns:repeat(2,1fr)}
+  .topic-row{grid-template-columns:auto 1fr;gap:10px}
+  .topic-actions{grid-column:1 / -1;align-items:flex-start;min-width:0}
+}
+
 /* === Playground === */
 .challenge-list{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
 .challenge-item{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:14px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;cursor:pointer;text-align:left;width:100%;transition:transform .1s,box-shadow .1s,border-color .1s;box-shadow:0 3px 0 var(--line)}
@@ -246,6 +288,7 @@ details.more[open]{background:#fff}
 .challenge-num{width:32px;height:32px;border-radius:8px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0}
 .challenge-num.intermediate{background:var(--orange)}
 .challenge-num.advanced{background:var(--red)}
+.challenge-num.analytics{background:#3b82f6}
 .challenge-info h4{font-size:15px;font-weight:800;letter-spacing:-.1px;line-height:1.3}
 .challenge-info p{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.4;font-weight:600}
 .check-badge{font-size:18px;flex-shrink:0;color:var(--green-sh);font-weight:900}
@@ -373,6 +416,115 @@ details.more[open]{background:#fff}
   .iv-q-row{grid-template-columns:auto 1fr auto;font-size:12.5px}
   .iv-q-row .qtime{display:none}
 }
+
+/* === Schema viewer & ER diagrams === */
+.schema-list{display:flex;flex-direction:column;gap:10px}
+.schema-item{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:14px;display:grid;grid-template-columns:50px 1fr auto;gap:12px;align-items:center;cursor:pointer;text-align:left;width:100%;transition:transform .1s,box-shadow .1s,border-color .1s;box-shadow:0 3px 0 var(--line)}
+.schema-item:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--line);border-color:#0ea5e9}
+.schema-icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;flex-shrink:0;box-shadow:inset 0 -3px 0 rgba(0,0,0,.15)}
+.schema-info h4{font-size:15px;font-weight:800;letter-spacing:-.1px;line-height:1.3}
+.schema-info p{font-size:12.5px;color:var(--muted);font-weight:600;margin-top:2px;line-height:1.4}
+.schema-arrow{font-size:20px;color:var(--muted);font-weight:900}
+
+.schema-canvas{background:#fafaf5;background-image:radial-gradient(circle,#d4d4cc 1px,transparent 1px);background-size:18px 18px;border:2px solid var(--line);border-radius:14px;margin:14px 0;overflow:auto;-webkit-overflow-scrolling:touch}
+.schema-canvas-inner{position:relative}
+.schema-svg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.schema-tables{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2}
+
+.er-table{position:absolute;width:210px;background:#fff;border:2px solid var(--ink2);border-radius:10px;box-shadow:0 4px 0 rgba(0,0,0,.15);font-family:'JetBrains Mono',monospace;font-size:11.5px;overflow:hidden}
+.er-table-header{background:linear-gradient(135deg,#1e1e2e,#313244);color:#fff;padding:8px 12px;font-weight:900;font-family:Nunito,sans-serif;font-size:13px;letter-spacing:.3px}
+.er-row{height:28px;padding:0 10px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:6px;line-height:28px;transition:background .25s,box-shadow .25s}
+.er-row.pk-row{background:#fff7e0}
+.er-row.fk-row{background:#eff6ff}
+.er-row.pk-row.fk-row{background:linear-gradient(135deg,#fff7e0,#eff6ff)}
+.er-row.highlight{background:#dffac4!important;box-shadow:inset 0 0 0 2px var(--green);animation:rowPulse .8s ease-in-out 3}
+@keyframes rowPulse{0%,100%{background:#dffac4}50%{background:#a7f3d0}}
+.er-row .col-name{font-weight:700;display:flex;align-items:center;gap:6px;color:var(--ink)}
+.er-row .col-type{color:var(--muted);font-size:10px;letter-spacing:.2px}
+.er-row .kpi{font-family:Nunito,sans-serif;font-size:9px;font-weight:900;padding:2px 5px;border-radius:4px;letter-spacing:.3px;line-height:1}
+.er-row .kpi.pk{background:var(--gold);color:#fff}
+.er-row .kpi.fk{background:var(--blue);color:#fff}
+
+.rel-line{fill:none;stroke:#94a3b8;stroke-width:2;stroke-dasharray:5 4;cursor:pointer;pointer-events:stroke;transition:stroke .2s,stroke-width .2s,stroke-dasharray .2s}
+.rel-line:hover{stroke:#0ea5e9;stroke-width:3}
+.rel-line.active{stroke:var(--green-sh);stroke-width:3.5;stroke-dasharray:none}
+.rel-line.hit{pointer-events:stroke;stroke:transparent;stroke-width:14}
+.rel-label{fill:var(--ink);paint-order:stroke;stroke:#fafaf5;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;font-family:Nunito,sans-serif;font-size:10.5px;font-weight:900;pointer-events:none;text-anchor:middle}
+.join-dot{fill:var(--orange);filter:drop-shadow(0 0 6px rgba(255,150,0,.85))}
+
+.rel-list{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.rel-item{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center;cursor:pointer;text-align:left;width:100%;transition:border-color .15s,background .15s,box-shadow .15s}
+.rel-item:hover{border-color:#0ea5e9}
+.rel-item.active{border-color:var(--green-sh);background:#f3fae6;box-shadow:0 2px 0 rgba(70,163,2,.3)}
+.rel-type-pill{font-family:Nunito,sans-serif;font-weight:900;font-size:10px;padding:3px 7px;border-radius:6px;letter-spacing:.3px;white-space:nowrap}
+.rel-type-pill.one-to-many{background:#dbeafe;color:#1d4ed8}
+.rel-type-pill.many-to-many{background:#fef3c7;color:#92400e}
+.rel-item .rel-desc{font-size:13px;font-weight:600;color:var(--ink2);line-height:1.4}
+.rel-item .rel-desc code{font-family:'JetBrains Mono',monospace;font-size:11.5px;background:rgba(0,0,0,.06);padding:1px 5px;border-radius:4px;color:var(--ink)}
+.rel-item .rel-desc small{display:block;color:var(--muted);font-size:11.5px;font-weight:600;margin-top:2px}
+
+.mn-callout{background:linear-gradient(135deg,#fef3c7,#fde68a);border:1.5px solid #f59e0b;border-radius:10px;padding:10px 12px;margin-top:10px;font-size:13px;color:#7a4a00;font-weight:600;line-height:1.5}
+.mn-callout b{color:#4a3700}
+.mn-callout code{font-family:'JetBrains Mono',monospace;font-size:11.5px;background:rgba(255,255,255,.6);padding:1px 5px;border-radius:4px}
+
+.join-sql-box{margin-top:14px}
+.join-sql-box pre.code{margin-top:6px}
+
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0 0;font-size:11.5px;color:var(--muted);font-weight:700}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend .sw{width:14px;height:14px;border-radius:3px;display:inline-block}
+
+/* Normalization */
+.norm-stages{display:flex;gap:8px;margin:10px 0 14px;flex-wrap:wrap}
+.norm-tab{padding:10px 16px;background:#fff;border:2px solid var(--line);border-radius:12px;font-weight:800;font-size:13px;box-shadow:0 3px 0 var(--line);cursor:pointer;transition:transform .08s;font-family:Nunito,sans-serif}
+.norm-tab:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line)}
+.norm-tab.active{background:var(--blue);color:#fff;border-color:var(--blue-sh);box-shadow:0 3px 0 var(--blue-sh)}
+.norm-stage-header{display:flex;align-items:center;gap:10px;margin:6px 0 10px}
+.norm-stage-header h3{font-size:18px;font-weight:900;letter-spacing:-.3px}
+.norm-stage-badge{padding:4px 9px;border-radius:8px;font-size:11px;font-weight:900;letter-spacing:.4px;background:var(--line);color:var(--ink2)}
+.norm-stage-badge.issue{background:#fee2e2;color:var(--red-sh)}
+.norm-stage-badge.partial{background:#fef3c7;color:#92400e}
+.norm-stage-badge.fixed{background:#d7ffb8;color:var(--green-sh)}
+.norm-issue{padding:11px 13px;border-radius:10px;font-size:13.5px;line-height:1.55;font-weight:600;margin-bottom:10px;border-left:4px solid}
+.norm-issue.issue{background:#fef2f2;border-left-color:var(--red);color:#7f1d1d}
+.norm-issue.partial{background:#fef3c7;border-left-color:#f59e0b;color:#7a4a00}
+.norm-issue.fixed{background:#d7ffb8;border-left-color:var(--green);color:#3d7300}
+.norm-issue b{font-weight:900}
+.norm-sample-label{font-size:11px;font-weight:900;letter-spacing:.5px;color:var(--muted);margin:14px 0 4px;text-transform:uppercase}
+
+@media (max-width:600px){
+  .er-table{width:180px;font-size:11px}
+  .er-table-header{font-size:12px;padding:7px 10px}
+  .er-row{height:26px;line-height:26px;font-size:10.5px;padding:0 8px}
+  .er-row .kpi{font-size:8.5px;padding:2px 4px}
+  .er-row .col-type{font-size:9.5px}
+  .schema-item{padding:12px;grid-template-columns:42px 1fr auto;gap:10px}
+  .schema-icon{width:42px;height:42px;font-size:20px}
+  .schema-info h4{font-size:14px}
+  .schema-info p{font-size:12px}
+  .norm-tab{padding:9px 13px;font-size:12.5px}
+}
+
+/* === AI Mentor === */
+.mentor-card{background:linear-gradient(135deg,#fefce8,#fef3c7);border:2px solid #f59e0b;border-radius:14px;padding:14px;margin-top:12px;box-shadow:0 4px 0 rgba(245,158,11,.25)}
+.mentor-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.mentor-avatar{font-size:22px;width:38px;height:38px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 0 rgba(0,0,0,.1);flex-shrink:0}
+.mentor-info{flex:1;min-width:0}
+.mentor-name{font-weight:900;font-size:13.5px;letter-spacing:-.2px;color:#7a4a00;line-height:1.2}
+.mentor-tag{font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:#a16207;margin-top:2px}
+.mentor-close{font-size:18px;color:#a16207;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900}
+.mentor-close:hover{background:rgba(0,0,0,.06)}
+.mentor-title{font-size:14.5px;font-weight:900;letter-spacing:-.2px;color:#7a4a00;margin-bottom:8px;line-height:1.35}
+.mentor-title code{background:rgba(0,0,0,.07);padding:1px 6px;border-radius:5px;font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;color:#5a3a00}
+.mentor-hint{background:#fff;border-radius:10px;padding:11px 13px;font-size:13.5px;line-height:1.6;color:#3f2a00;font-weight:600}
+.mentor-hint code{background:rgba(0,0,0,.08);padding:2px 6px;border-radius:5px;font-size:12px;font-family:'JetBrains Mono',monospace;color:#1f1f1f}
+.mentor-progress{font-size:10.5px;font-weight:900;color:#a16207;margin-top:8px;letter-spacing:.4px;text-transform:uppercase}
+.mentor-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.mentor-actions .btn{padding:8px 14px;font-size:12.5px;min-height:36px}
+.mentor-encouragement{background:#fff;border-radius:10px;padding:11px 13px;font-size:13.5px;line-height:1.6;color:#3d7300;font-weight:700;border-left:3px solid var(--green)}
+.btn-mentor{background:#fef3c7;color:#7a4a00;border:2px solid #f59e0b;box-shadow:0 3px 0 #c77400;font-weight:800}
+.btn-mentor:active{box-shadow:0 1px 0 #c77400}
+.btn-mentor:hover{background:#fde68a}
 </style>
 </head>
 <body>
@@ -1538,25 +1690,333 @@ cur.execute(
     "Prepared statements / parameterized queries are the fix.",
     "Never use root for app connections."
   ]}
- ]}
+ ]},
+
+/* 23 */ {
+  id:23, title:"Ecommerce Analytics", icon:"🛒", color:"#ec4899", difficulty:"analytics",
+  description:"AOV, conversion, repeat purchase, RFM — the numbers that run an online store.",
+  cards:[
+    {type:'concept', title:"The metrics that run ecommerce",
+     body:`<p>A small set of numbers drives every ecommerce dashboard:</p>
+           <ul>
+             <li><b>AOV</b> — average order value. Bigger baskets per order.</li>
+             <li><b>Conversion rate</b> — sessions that resulted in a purchase.</li>
+             <li><b>Repeat purchase rate</b> — % of customers who bought twice or more.</li>
+             <li><b>RFM</b> — recency, frequency, monetary scoring per customer.</li>
+           </ul>
+           <p>Each one is a single aggregate query.</p>`},
+    {type:'example', title:"AOV by month",
+     input:[T("orders","id, customer_id, total, created_at",[[1,1,50,"2025-01-15"],[2,2,120,"2025-01-20"],[3,1,75,"2025-02-10"],[4,3,200,"2025-02-15"],[5,2,80,"2025-02-28"]])],
+     code:`SELECT substr(created_at, 1, 7) AS month,
+       ROUND(AVG(total), 2) AS aov
+FROM orders
+GROUP BY substr(created_at, 1, 7);`,
+     result:T("result","month, aov",[["2025-01",85.00],["2025-02",118.33]]),
+     walkthrough:"<p>Group by year-month, compute mean order total. AOV trending up usually means bigger baskets per visit — upsells, bundles, or free-shipping thresholds working.</p>",
+     real:"Watch for AOV drops the month AFTER a promo ends — without the discount, customers stop crossing the threshold. That's a pricing signal."},
+    {type:'concept', title:"Repeat purchase rate",
+     body:`<p>Of all customers who bought, what % came back for a second order?</p>
+           <p>Pattern: count orders per customer, then count customers with 2+, divide by total customers.</p>`},
+    {type:'example', title:"Calculating repeat purchase rate",
+     input:[T("orders","id, customer_id, total",[[1,1,50],[2,1,75],[3,2,120],[4,3,200],[5,3,80],[6,4,40]])],
+     code:`WITH per_cust AS (
+  SELECT customer_id, COUNT(*) AS n
+  FROM orders GROUP BY customer_id
+)
+SELECT ROUND(100.0 *
+  SUM(CASE WHEN n >= 2 THEN 1 ELSE 0 END) / COUNT(*), 1) AS repeat_pct
+FROM per_cust;`,
+     result:T("result","repeat_pct",[[50.0]]),
+     walkthrough:"<p>Customers 1 and 3 ordered 2+ times. 2 of 4 customers = 50%. Healthy DTC brands see 25–40% repeat rate by year 1.</p>"},
+    {type:'question', kind:'mcq',
+     question:"AOV jumped from $80 → $95. Most likely cause:",
+     options:["More customers visited","Customers bought bigger baskets per order","Conversion rate dropped","More refunds processed"], correct:1,
+     explanation:"AOV is per-order. Bigger basket per order increases AOV. Visits/conversion affect order count, not order size."},
+    {type:'pitfall', title:"Real ecommerce data is messy",
+     body:`<p>Refunded orders, $0 promo orders, and staff test orders all warp AOV and revenue numbers if you don't filter them out.</p>`,
+     bad:`-- this includes everything, including refunds and test orders:
+SELECT AVG(total) FROM orders;`,
+     good:`SELECT AVG(total) FROM orders
+WHERE status = 'completed'
+  AND total > 0
+  AND customer_id NOT IN (SELECT id FROM staff_users);`},
+    {type:'summary', title:"Recap", bullets:[
+      "AOV = AVG(order total) — track over time.",
+      "Repeat purchase rate = customers with 2+ orders ÷ all customers.",
+      "Conversion rate = orders ÷ sessions.",
+      "Always filter out refunds, $0 orders, and test accounts.",
+      "RFM scoring buckets customers by recency, frequency, monetary."
+    ]}
+  ]
+},
+
+/* 24 */ {
+  id:24, title:"SaaS Metrics & Churn", icon:"📈", color:"#14b8a6", difficulty:"analytics",
+  description:"MRR, ARR, retention, churn — the language of recurring revenue.",
+  cards:[
+    {type:'concept', title:"MRR and ARR",
+     body:`<p><b>MRR</b> — Monthly Recurring Revenue. Sum of monthly subscription value for all active subs.</p>
+           <p><b>ARR</b> — Annual Recurring Revenue = MRR × 12. The board-facing number.</p>
+           <p>Both exclude one-time fees, usage overages, and refunds.</p>`},
+    {type:'example', title:"Active MRR right now",
+     input:[T("subscriptions","id, customer_id, mrr, started, ended",[[1,1,99,"2024-01-01",null],[2,2,49,"2024-03-15",null],[3,3,99,"2024-06-01","2025-01-15"],[4,4,199,"2025-02-01",null]])],
+     code:`SELECT SUM(mrr) AS active_mrr
+FROM subscriptions
+WHERE ended IS NULL OR ended > date('now');`,
+     result:T("result","active_mrr",[[347]]),
+     walkthrough:"<p>Sub #3 churned in Jan 2025, so it's excluded. Active MRR = 99 + 49 + 199 = 347.</p>",
+     real:"Snapshot MRR daily into a table — querying live state is slow at scale and changes mid-query as subs cancel."},
+    {type:'concept', title:"Churn — logo vs revenue",
+     body:`<p><b>Logo churn</b> = % of customers who cancelled this month, by count.</p>
+           <p><b>Revenue churn</b> = % of MRR lost from cancellations this month.</p>
+           <p>If one big customer cancels, logo churn stays small but revenue churn explodes. Always report both.</p>`},
+    {type:'example', title:"Net Revenue Retention (NRR)",
+     body:`<p>NRR = (Starting MRR + Expansion − Contraction − Churn) ÷ Starting MRR.</p>
+           <p><b>NRR &gt; 100%</b> is the holy grail — existing customers grow MRR faster than they lose it. Top SaaS companies report 120%+.</p>`,
+     code:`-- conceptual:
+SELECT
+  (start_mrr + expansion - contraction - churn) * 1.0 / start_mrr AS nrr
+FROM mrr_movements WHERE month = '2025-03';`},
+    {type:'question', kind:'mcq',
+     question:"One $5K/mo customer cancels. You have 100 other $50/mo customers. Logo churn for the month?",
+     options:["1%","5%","50%","99%"], correct:0,
+     explanation:"1 of 101 customers cancelled = ~1% logo churn. But revenue churn is huge (5000 / 10000 = 50%). Always report both."},
+    {type:'pitfall', title:"Gross vs net retention",
+     body:`<p>Gross retention caps at 100% — it only counts losses (churn + downgrades).</p>
+           <p>Net retention can exceed 100% because it adds expansion.</p>
+           <p>If a slide shows "110% retention" without saying gross or net, ask. (It's net.)</p>`},
+    {type:'summary', title:"Recap", bullets:[
+      "MRR = sum of active subs' monthly fees. ARR = MRR × 12.",
+      "Active sub = started AND (ended IS NULL OR ended > today).",
+      "Logo churn (customer count) ≠ revenue churn (MRR). Track both.",
+      "NRR includes expansion; gross retention caps at 100%.",
+      "NRR &gt; 100% means existing customers fund growth on their own."
+    ]}
+  ]
+},
+
+/* 25 */ {
+  id:25, title:"Funnels & Marketing Attribution", icon:"🔄", color:"#f97316", difficulty:"analytics",
+  description:"Step conversion rates, drop-off analysis, attribution models.",
+  cards:[
+    {type:'concept', title:"What's a conversion funnel?",
+     body:`<p>A sequence of steps users move through: visit → signup → activate → purchase.</p>
+           <p>The funnel shape (wide → narrow) shows where users drop off. Each step has a conversion rate to the next.</p>`},
+    {type:'example', title:"Funnel conversion rates",
+     input:[T("events","user_id, step",[[1,"visit"],[2,"visit"],[3,"visit"],[4,"visit"],[1,"signup"],[2,"signup"],[3,"signup"],[1,"activate"],[2,"activate"],[1,"purchase"]])],
+     code:`WITH counts AS (
+  SELECT step, COUNT(DISTINCT user_id) AS users
+  FROM events GROUP BY step
+)
+SELECT step, users,
+  ROUND(100.0 * users / LAG(users) OVER (
+    ORDER BY CASE step
+      WHEN 'visit' THEN 1 WHEN 'signup' THEN 2
+      WHEN 'activate' THEN 3 WHEN 'purchase' THEN 4
+    END), 1) AS step_conv_pct
+FROM counts;`,
+     result:T("result","step, users, step_conv_pct",[["visit",4,null],["signup",3,75.0],["activate",2,66.7],["purchase",1,50.0]]),
+     walkthrough:"<p>Half drop off between visit→signup. Bigger fall between activate→purchase. Each step's % shows what fraction of the previous step made it through.</p>",
+     real:"Find the LEAKIEST step — that's where to invest UX, copy, or onboarding work."},
+    {type:'concept', title:"Attribution models",
+     body:`<p>A user touches your brand many times before buying — ad, email, organic search. Which touch gets credit for the conversion?</p>
+           <ul>
+             <li><b>First-touch</b> — first interaction. Useful for awareness/branding spend.</li>
+             <li><b>Last-touch</b> — last interaction before conversion. Useful for closing tactics.</li>
+             <li><b>Linear</b> — credit split equally across all touches.</li>
+             <li><b>Time-decay</b> — recent touches get more credit.</li>
+           </ul>`},
+    {type:'example', title:"Last-touch attribution",
+     input:[T("touchpoints","user_id, channel, touched_at",[[1,"google","2025-05-01"],[1,"email","2025-05-03"],[1,"direct","2025-05-05"],[2,"facebook","2025-05-02"],[2,"email","2025-05-04"]]), T("conversions","user_id, value, converted_at",[[1,100,"2025-05-06"],[2,200,"2025-05-05"]])],
+     code:`WITH last_touch AS (
+  SELECT t.user_id, t.channel,
+    ROW_NUMBER() OVER (PARTITION BY t.user_id
+      ORDER BY t.touched_at DESC) AS rn
+  FROM touchpoints t
+  JOIN conversions c
+    ON c.user_id = t.user_id AND t.touched_at <= c.converted_at
+)
+SELECT lt.channel, SUM(c.value) AS attributed_revenue
+FROM last_touch lt
+JOIN conversions c ON c.user_id = lt.user_id
+WHERE lt.rn = 1
+GROUP BY lt.channel;`,
+     result:T("result","channel, attributed_revenue",[["direct",100],["email",200]]),
+     walkthrough:"<p>User 1's last touch was 'direct' → $100 credit. User 2's was 'email' → $200. Last-touch tends to favor channels that close the deal, not the ones that started the journey.</p>"},
+    {type:'question', kind:'mcq',
+     question:"Step conversion rate of 'signup → activate' = 75%. What does it mean?",
+     options:["75% of all users activated","75% of users who signed up went on to activate","75% of activations came from signups","Conversion is up by 75%"], correct:1,
+     explanation:"Step conv = users at step N ÷ users at step N-1. It's the transition rate between adjacent steps."},
+    {type:'pitfall', title:"Count distinct users, not events",
+     body:`<p>A user can fire the same event 10 times. If you <code>COUNT(*)</code> instead of <code>COUNT(DISTINCT user_id)</code>, your funnel inflates and looks better than reality.</p>
+           <p>Also: define a time window. "Signup within 7 days of visit" is very different from "ever signed up".</p>`,
+     bad:`SELECT step, COUNT(*) AS n FROM events GROUP BY step;`,
+     good:`SELECT step, COUNT(DISTINCT user_id) AS users
+FROM events GROUP BY step;`},
+    {type:'summary', title:"Recap", bullets:[
+      "Funnel = ordered sequence of user steps with drop-off at each.",
+      "Step conv % = users at step ÷ users at previous step.",
+      "Attribution models differ on which touch gets credit (first/last/linear/decay).",
+      "Always <code>COUNT(DISTINCT user_id)</code>, not <code>COUNT(*)</code>.",
+      "Define a conversion time window so the funnel is comparable across time."
+    ]}
+  ]
+},
+
+/* 26 */ {
+  id:26, title:"Cohorts, Revenue & Fraud", icon:"📊", color:"#3b82f6", difficulty:"analytics",
+  description:"Cohort retention, MoM/YoY growth, velocity-based fraud detection.",
+  cards:[
+    {type:'concept', title:"Cohort analysis",
+     body:`<p>A <b>cohort</b> is a group of users sharing a starting event — most often signup month.</p>
+           <p>Cohort retention shows what % of each cohort comes back in months 1, 2, 3… It separates "good months" (lots of signups) from "good products" (signups that stick).</p>`},
+    {type:'example', title:"Monthly cohort retention",
+     input:[T("users","id, signup_month",[[1,"2025-01"],[2,"2025-01"],[3,"2025-02"],[4,"2025-02"]]), T("events","user_id, event_month",[[1,"2025-01"],[1,"2025-02"],[2,"2025-01"],[3,"2025-02"],[3,"2025-03"]])],
+     code:`SELECT u.signup_month AS cohort,
+       e.event_month,
+       COUNT(DISTINCT u.id) AS active_users
+FROM users u
+JOIN events e ON e.user_id = u.id
+GROUP BY u.signup_month, e.event_month
+ORDER BY cohort, event_month;`,
+     result:T("result","cohort, event_month, active_users",[["2025-01","2025-01",2],["2025-01","2025-02",1],["2025-02","2025-02",1],["2025-02","2025-03",1]]),
+     walkthrough:"<p>Jan cohort: 2 users active in Jan, only 1 returned in Feb (50%). Retention curves that flatten quickly (instead of dropping to 0) signal product-market fit.</p>"},
+    {type:'concept', title:"Period-over-period growth",
+     body:`<p><b>MoM</b> = (this month − last month) ÷ last month × 100.</p>
+           <p><b>YoY</b> compares to 12 months ago — better signal when business is seasonal (retail, travel, education).</p>`},
+    {type:'example', title:"MoM revenue growth",
+     input:[T("monthly_rev","month, revenue",[["2025-01",10000],["2025-02",12000],["2025-03",11500],["2025-04",14000]])],
+     code:`SELECT month, revenue,
+  ROUND(100.0 * (revenue - LAG(revenue) OVER (ORDER BY month))
+              / LAG(revenue) OVER (ORDER BY month), 1) AS mom_pct
+FROM monthly_rev;`,
+     result:T("result","month, revenue, mom_pct",[["2025-01",10000,null],["2025-02",12000,20.0],["2025-03",11500,-4.2],["2025-04",14000,21.7]]),
+     walkthrough:"<p>March dipped 4.2%, April rebounded 21.7%. First row is NULL because there's no prior month to compare to.</p>"},
+    {type:'concept', title:"Fraud — velocity patterns",
+     body:`<p>Most online fraud reveals itself through <i>velocity</i> — abnormally fast or repeated actions.</p>
+           <ul>
+             <li>Many transactions from one card in minutes</li>
+             <li>Many accounts created from one IP</li>
+             <li>Sudden spend spike vs personal baseline</li>
+           </ul>
+           <p>Detect with window functions counting events in rolling time windows.</p>`,
+     real:"Real fraud systems combine 10+ signals with ML. SQL velocity checks are the FIRST line of defense — and often catch the obvious stuff."},
+    {type:'example', title:"5+ transactions in 10 minutes",
+     input:[T("transactions","id, user_id, ts",[[1,1,"2025-05-01 10:00"],[2,1,"2025-05-01 10:02"],[3,1,"2025-05-01 10:05"],[4,1,"2025-05-01 10:07"],[5,1,"2025-05-01 10:09"],[6,2,"2025-05-01 11:00"]])],
+     code:`WITH x AS (
+  SELECT user_id, ts,
+    COUNT(*) OVER (
+      PARTITION BY user_id ORDER BY julianday(ts)
+      RANGE BETWEEN 0.00694 PRECEDING AND CURRENT ROW
+    ) AS c10min
+  FROM transactions
+)
+SELECT DISTINCT user_id FROM x WHERE c10min >= 5;`,
+     result:T("result","user_id",[[1]]),
+     walkthrough:"<p>User 1 hit 5 transactions in 9 minutes — flagged. The constant 0.00694 = 10 / (24 × 60), i.e. 10 minutes as a fraction of a day.</p>"},
+    {type:'question', kind:'mcq',
+     question:"In a cohort retention matrix, columns typically represent:",
+     options:["Customer IDs","Months since the cohort joined","Revenue per row","Country names"], correct:1,
+     explanation:"Cohort matrices: rows = cohort (when joined), columns = months since joining. Each cell = % of that cohort active that month."},
+    {type:'pitfall', title:"Survivorship bias",
+     body:`<p>If you only count cohorts whose curve "looks good" because the bad ones already churned out and don't show up — your conclusions are misleading.</p>
+           <p>Always include ALL users from a cohort in the denominator, even ones who never came back. Otherwise retention looks artificially high.</p>`},
+    {type:'summary', title:"Recap", bullets:[
+      "Cohort = group of users sharing a start event (usually signup month).",
+      "Retention matrix: rows = cohort, cols = months since.",
+      "MoM = (this − prev) ÷ prev. YoY for seasonal businesses.",
+      "Fraud velocity checks use window functions on rolling time ranges.",
+      "Always include ALL cohort members in the denominator — don't cherry-pick."
+    ]}
+  ]
+}
 ];
 
 /* ============ State ============ */
-const DEFAULT_STATE = {xp:0, streak:0, lastPlayed:null, moduleProgress:{}};
-function loadState(){
+const DEFAULT_ADAPTIVE = {
+  topics:{
+    joins:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
+    aggregates:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
+    subqueries:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
+    ctes:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
+    windowFunctions:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
+    indexing:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
+    transactions:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0}
+  },
+  questions:{},
+  dailyGoal:5,
+  dailySolved:0,
+  dailyDate:null,
+  streakRecovery:{available:false,used:false,restoreValue:0,lastBreak:null},
+  lastUpdated:null
+};
+const REVIEW_SCHEDULE_MS = [10*60*1000, 60*60*1000, 6*60*60*1000, 24*60*60*1000, 3*24*60*60*1000, 7*24*60*60*1000, 14*24*60*60*1000];
+const MODULE_TOPIC_MAP = {
+  '6':'aggregates',
+  '8':'joins',
+  '9':'joins',
+  '11':'subqueries',
+  '12':'ctes',
+  '17':'windowFunctions',
+  '18':'indexing',
+  '20':'transactions'
+};
+const TOPIC_META = {
+  joins:{label:'Joins', icon:'🔗', modules:[8,9]},
+  aggregates:{label:'Aggregates', icon:'➕', modules:[6]},
+  subqueries:{label:'Subqueries', icon:'📦', modules:[11]},
+  ctes:{label:'CTEs', icon:'🌳', modules:[12]},
+  windowFunctions:{label:'Window Functions', icon:'🪟', modules:[17]},
+  indexing:{label:'Indexing', icon:'📈', modules:[18]},
+  transactions:{label:'Transactions', icon:'⚙️', modules:[20]}
+};
+const DEFAULT_STATE = {xp:0, streak:0, lastPlayed:null, moduleProgress:{}, playgroundProgress:{}, interviewHistory:[], adaptive:null};
+const loadStateRaw = () => {
   try{
     const raw = localStorage.getItem('sqlingo.v3');
-    if(!raw) return {...DEFAULT_STATE};
-    return {...DEFAULT_STATE, ...JSON.parse(raw)};
-  }catch(e){return {...DEFAULT_STATE}}
+    return raw ? JSON.parse(raw) : {};
+  }catch(e){return {}}
+};
+function loadState(){
+  const raw = loadStateRaw();
+  return {...DEFAULT_STATE, ...raw};
 }
 function saveState(){try{localStorage.setItem('sqlingo.v3', JSON.stringify(state))}catch(e){}}
+function cloneAdaptiveBase(){ return JSON.parse(JSON.stringify(DEFAULT_ADAPTIVE)); }
+function hydrateState(){
+  const raw = loadStateRaw();
+  const base = {...DEFAULT_STATE, ...raw};
+  state = base;
+  state.moduleProgress = state.moduleProgress || {};
+  state.playgroundProgress = state.playgroundProgress || {};
+  state.interviewHistory = state.interviewHistory || [];
+  const adaptiveRaw = raw.adaptive || {};
+  state.adaptive = cloneAdaptiveBase();
+  state.adaptive = {...state.adaptive, ...adaptiveRaw};
+  state.adaptive.topics = {...cloneAdaptiveBase().topics, ...(adaptiveRaw.topics || {})};
+  Object.keys(cloneAdaptiveBase().topics).forEach(k => {
+    state.adaptive.topics[k] = {...cloneAdaptiveBase().topics[k], ...((adaptiveRaw.topics || {})[k] || {})};
+  });
+  state.adaptive.questions = {...(adaptiveRaw.questions || {})};
+  state.adaptive.streakRecovery = {...cloneAdaptiveBase().streakRecovery, ...(adaptiveRaw.streakRecovery || {})};
+  state.xp = Number(state.xp || 0);
+  state.streak = Number(state.streak || 0);
+}
 let state = loadState();
+hydrateState();
 (function streakCheck(){
   const today = new Date().toDateString();
   if(state.lastPlayed && state.lastPlayed !== today){
     const diff = (new Date(today) - new Date(state.lastPlayed))/86400000;
-    if(diff > 1) state.streak = 0;
+    if(diff > 1){
+      if(state.streak > 0){
+        state.adaptive.streakRecovery.available = true;
+        state.adaptive.streakRecovery.used = false;
+        state.adaptive.streakRecovery.restoreValue = Math.max(state.streak, state.adaptive.streakRecovery.restoreValue || 0);
+        state.adaptive.streakRecovery.lastBreak = state.lastPlayed;
+      }
+      state.streak = 0;
+    }
   }
 })();
 
@@ -1582,6 +2042,337 @@ function showFeedback(correct, explain){
 function randomCorrect(){
   const o = ['Nice!','Excellent!','You got it!','Crushed it!','Perfect.','Sharp!'];
   return o[Math.floor(Math.random()*o.length)];
+}
+
+
+/* ============ Adaptive learning & spaced repetition ============ */
+function todayKey(){ return new Date().toDateString(); }
+function getTopicForModule(moduleId, title=''){
+  const mapped = MODULE_TOPIC_MAP[String(moduleId)];
+  if(mapped) return mapped;
+  const t = String(title || '').toLowerCase();
+  if(t.includes('join')) return 'joins';
+  if(t.includes('aggregate') || t.includes('group by')) return 'aggregates';
+  if(t.includes('subquery')) return 'subqueries';
+  if(t.includes('cte')) return 'ctes';
+  if(t.includes('window')) return 'windowFunctions';
+  if(t.includes('index')) return 'indexing';
+  if(t.includes('transaction')) return 'transactions';
+  return null;
+}
+function ensureAdaptiveDaily(){
+  const today = todayKey();
+  if(state.adaptive.dailyDate !== today){
+    state.adaptive.dailyDate = today;
+    state.adaptive.dailySolved = 0;
+  }
+}
+function getQuestionMeta(module, idx, card){
+  const sourceId = card && card._sourceId != null ? card._sourceId : (module ? module.id : null);
+  const sourceTitle = card && card._sourceTitle ? card._sourceTitle : (module ? module.title : '');
+  const sourceIdx = card && card._sourceIdx != null ? card._sourceIdx : idx;
+  const topic = (card && card._topic) || getTopicForModule(sourceId, sourceTitle);
+  const qid = (card && card._qid) ? card._qid : `${sourceId}:${sourceIdx}`;
+  return {sourceId, sourceTitle, sourceIdx, topic, qid};
+}
+function getAdaptiveQuestionEntries(){
+  const now = Date.now();
+  const entries = [];
+  M.forEach(m => {
+    m.cards.forEach((c, idx) => {
+      if(c.type !== 'question') return;
+      const meta = getQuestionMeta(m, idx, c);
+      const qState = state.adaptive.questions[meta.qid] || {};
+      const tState = meta.topic ? (state.adaptive.topics[meta.topic] || {}) : {};
+      const attempts = qState.attempts || 0;
+      const correct = qState.correct || 0;
+      const wrong = qState.wrong || 0;
+      const qAccuracy = attempts ? correct / attempts : 1;
+      const tAccuracy = meta.topic && tState.attempts ? (tState.correct || 0) / tState.attempts : 1;
+      const dueAt = meta.topic ? (qState.nextReview || 0) : Number.POSITIVE_INFINITY;
+      let weight = 1;
+      if(meta.topic && dueAt && dueAt <= now) weight += 2.5;
+      if(wrong > 0) weight += Math.min(3, wrong * 0.9);
+      if(attempts >= 3 && qAccuracy < 0.8) weight += 1.5;
+      if(meta.topic && tState.attempts >= 3 && tAccuracy < 0.8) weight += 1.5;
+      if(meta.topic && tAccuracy < 0.6) weight += 1.2;
+      entries.push({
+        card:{...c, _sourceId:m.id, _sourceTitle:m.title, _sourceIdx:idx, _topic:meta.topic, _qid:meta.qid},
+        meta,
+        qState,
+        topicState:tState,
+        weight,
+        dueAt,
+        qAccuracy,
+        topicAccuracy:tAccuracy
+      });
+    });
+  });
+  return entries;
+}
+function getAdaptiveStats(){
+  const now = Date.now();
+  const entries = getAdaptiveQuestionEntries();
+  const topics = Object.keys(TOPIC_META).map(key => {
+    const meta = TOPIC_META[key];
+    const s = state.adaptive.topics[key] || {};
+    const attempts = s.attempts || 0;
+    const correct = s.correct || 0;
+    const wrong = s.wrong || 0;
+    const accuracy = attempts ? Math.round(100 * correct / attempts) : 0;
+    const dueQuestions = entries.filter(e => e.meta.topic === key && e.dueAt <= now).length;
+    return {key, ...meta, attempts, correct, wrong, accuracy, dueQuestions};
+  }).sort((a,b) => {
+    const aScore = a.attempts >= 3 ? a.accuracy : 101;
+    const bScore = b.attempts >= 3 ? b.accuracy : 101;
+    return aScore - bScore;
+  });
+  const dueCount = entries.filter(e => e.dueAt <= now).length;
+  const weakCount = topics.filter(t => t.attempts >= 3 && t.accuracy < 80).length;
+  const masteredCount = topics.filter(t => t.attempts >= 5 && t.accuracy >= 85).length;
+  const goal = Math.max(1, Number(state.adaptive.dailyGoal || 5));
+  const dailySolved = Number(state.adaptive.dailySolved || 0);
+  const recovery = !!(state.adaptive.streakRecovery && state.adaptive.streakRecovery.available && !state.adaptive.streakRecovery.used);
+  return {topics, entries, dueCount, weakCount, masteredCount, goal, dailySolved, goalPct: Math.min(100, Math.round(100 * dailySolved / goal)), recovery};
+}
+function getAdaptiveRecommendations(stats){
+  const recos = [];
+  const weak = stats.topics.filter(t => t.attempts >= 3 && t.accuracy < 80).slice(0, 3);
+  if(weak.length){
+    weak.forEach(t => recos.push(`Focus on <strong>${esc(t.label)}</strong> (${t.accuracy}% accuracy) — ${t.dueQuestions} review item${t.dueQuestions === 1 ? '' : 's'} due.`));
+  } else {
+    recos.push(`Nice work — no weak topics yet. Use review mode to keep your recall fresh.`);
+  }
+  const strongest = stats.topics.filter(t => t.attempts >= 5).sort((a,b) => b.accuracy - a.accuracy)[0];
+  if(strongest && strongest.accuracy >= 90){
+    recos.push(`You are strongest at <strong>${esc(strongest.label)}</strong>. Keep it warm with one quick spaced-repetition pass.`);
+  }
+  return recos.slice(0, 3);
+}
+function renderAdaptiveHomeCard(){
+  const stats = getAdaptiveStats();
+  const primary = stats.topics[0];
+  const dueText = stats.dueCount ? `${stats.dueCount} due` : 'All clear';
+  const weakText = stats.weakCount ? `${stats.weakCount} weak topic${stats.weakCount === 1 ? '' : 's'}` : 'No weak topics';
+  const recText = stats.recovery ? 'Streak recovery ready' : 'Streak recovery inactive';
+  return `
+    <div class="featured adaptive-card">
+      <div class="featured-icon">🧭</div>
+      <div class="featured-content">
+        <h2>Adaptive Learning</h2>
+        <p>Tracks weak topics, spaces reviews, and keeps joins, aggregates, subqueries, CTEs, window functions, indexing, and transactions in your rotation.</p>
+        <div class="featured-actions">
+          <button class="featured-btn" onclick="renderAdaptiveLanding()">🧠 Open dashboard</button>
+          <button class="featured-btn" onclick="startAdaptiveReview('due', 10)">🔁 Review due · ${stats.dueCount}</button>
+          <button class="featured-btn" onclick="startAdaptiveReview('weak', 10)">🎯 Weak topics</button>
+        </div>
+        <div class="adaptive-mini">
+          <span>${dueText}</span>
+          <span>${weakText}</span>
+          <span>${stats.dailySolved}/${stats.goal} today</span>
+          <span>${recText}</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+function buildAdaptivePool(mode='due', count=10, topic=null){
+  const stats = getAdaptiveStats();
+  let entries = stats.entries.slice();
+  if(topic && topic !== 'all'){
+    entries = entries.filter(e => e.meta.topic === topic);
+  }
+  if(entries.length === 0) return [];
+  const now = Date.now();
+  if(mode === 'due'){
+    const due = entries.filter(e => e.dueAt <= now).sort((a,b) => (a.dueAt - b.dueAt) || (a.topicAccuracy - b.topicAccuracy) || (a.qAccuracy - b.qAccuracy));
+    const rest = entries.filter(e => e.dueAt > now).sort((a,b) => b.weight - a.weight);
+    entries = due.concat(rest);
+  } else if(mode === 'weak'){
+    entries = entries.sort((a,b) => b.weight - a.weight);
+  } else if(mode === 'topic'){
+    entries = entries.sort((a,b) => b.weight - a.weight);
+  }
+  const pool = [];
+  entries.forEach(e => {
+    const copies = Math.max(1, Math.min(5, Math.round(e.weight)));
+    for(let i=0;i<copies;i++) pool.push(e.card);
+  });
+  for(let i=pool.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, Math.min(count, pool.length));
+}
+function startAdaptiveReview(mode='due', count=10){
+  hideFeedback();
+  let topic = null;
+  let title = 'Review Mode';
+  let poolMode = 'due';
+  if(TOPIC_META[mode]){
+    topic = mode;
+    title = `${TOPIC_META[mode].icon} ${TOPIC_META[mode].label} Drill`;
+    poolMode = 'topic';
+  } else if(mode === 'weak'){
+    title = 'Weak Topic Review';
+    poolMode = 'weak';
+  } else if(mode === 'all' || mode === 'mixed'){
+    title = 'Mixed Adaptive Review';
+    poolMode = 'mixed';
+  } else if(mode === 'due'){
+    title = 'Due Review';
+    poolMode = 'due';
+  }
+  const cards = buildAdaptivePool(poolMode, count, topic);
+  if(cards.length === 0){
+    alert('No review items are due yet. Try weak-topic review or answer more questions first.');
+    return;
+  }
+  curModule = {id:`adaptive-${mode}`, title, icon:'🧠', color:'#0ea5e9', cards};
+  curIdx = 0;
+  sessionCorrect = 0;
+  sessionTotal = cards.length;
+  sessionStart = Date.now();
+  renderCard();
+}
+function claimStreakRecovery(){
+  if(!state.adaptive.streakRecovery.available || state.adaptive.streakRecovery.used) return;
+  const restore = Math.max(1, Number(state.adaptive.streakRecovery.restoreValue || 1));
+  state.streak = Math.max(state.streak, restore);
+  state.adaptive.streakRecovery.used = true;
+  state.adaptive.streakRecovery.available = false;
+  state.adaptive.streakRecovery.restoreValue = 0;
+  saveState();
+  updateStatsUI();
+  renderAdaptiveLanding();
+}
+function renderAdaptiveLanding(){
+  hideFeedback();
+  const stats = getAdaptiveStats();
+  const weak = stats.topics.filter(t => t.attempts >= 3 && t.accuracy < 80).slice(0, 6);
+  const recos = getAdaptiveRecommendations(stats);
+  main.innerHTML = `
+    <div class="lesson-header">
+      <button class="close-btn" onclick="renderHome()" aria-label="Back">×</button>
+      <div style="flex:1;font-weight:800;font-size:14px;color:var(--muted)">Adaptive Learning</div>
+    </div>
+
+    <article class="card card-concept">
+      <span class="card-badge b-concept">🧠 Spaced repetition</span>
+      <h2>Keep weak SQL topics in rotation</h2>
+      <p>This dashboard tracks accuracy per concept, schedules review questions, and nudges difficult items back sooner so they show up more often until they stick.</p>
+      <div class="featured-actions">
+        <button class="featured-btn" onclick="startAdaptiveReview('due', 10)">🔁 Review due (${stats.dueCount})</button>
+        <button class="featured-btn" onclick="startAdaptiveReview('weak', 10)">🎯 Weak-topic review</button>
+        <button class="featured-btn" onclick="startAdaptiveReview('all', 10)">🎲 Mixed adaptive</button>
+      </div>
+    </article>
+
+    <div class="adaptive-grid">
+      <div class="adaptive-stat"><div class="lbl">Due reviews</div><div class="val">${stats.dueCount}</div></div>
+      <div class="adaptive-stat"><div class="lbl">Weak topics</div><div class="val">${stats.weakCount}</div></div>
+      <div class="adaptive-stat"><div class="lbl">Mastered</div><div class="val">${stats.masteredCount}</div></div>
+      <div class="adaptive-stat"><div class="lbl">Daily goal</div><div class="val">${stats.dailySolved}/${stats.goal}</div></div>
+    </div>
+
+    <div class="goal-card">
+      <div class="goal-head">
+        <div>
+          <h3>Daily practice goal</h3>
+          <div class="goal-meta">${stats.goalPct}% complete</div>
+        </div>
+        <div class="goal-meta">${stats.dailySolved} / ${stats.goal} questions</div>
+      </div>
+      <div class="goal-track"><div class="goal-fill" style="width:${stats.goalPct}%"></div></div>
+      <div class="goal-note">Answer ${Math.max(0, stats.goal - stats.dailySolved)} more question${Math.max(0, stats.goal - stats.dailySolved) === 1 ? '' : 's'} to hit today’s target. The app counts practice attempts and keeps today’s total in your progress state.</div>
+    </div>
+
+    ${stats.recovery ? `
+      <div class="recovery-banner">
+        <h3>Streak recovery is available</h3>
+        <p>You missed a day, but you can restore your streak once from the last saved value.</p>
+        <div class="featured-actions">
+          <button class="featured-btn" onclick="claimStreakRecovery()">Recover streak</button>
+        </div>
+      </div>
+    ` : ''}
+
+    <article class="card card-example">
+      <span class="card-badge b-example">🔎 Personalized recommendations</span>
+      <h2>What to review next</h2>
+      <div class="reco-list">
+        ${recos.map(r => `<div class="reco-item">${r}</div>`).join('')}
+      </div>
+    </article>
+
+    <article class="card card-syntax">
+      <span class="card-badge b-syntax">📚 Weak-topic tracker</span>
+      <h2>Topic accuracy</h2>
+      ${weak.length ? `
+        <div class="topic-list">
+          ${weak.map(t => `
+            <div class="topic-row weak">
+              <div class="topic-avatar" aria-hidden="true">${t.icon}</div>
+              <div class="topic-copy">
+                <h4>${esc(t.label)}</h4>
+                <p>${t.attempts} answered · ${t.correct} correct · ${t.wrong} wrong · ${t.dueQuestions} due</p>
+              </div>
+              <div class="topic-actions">
+                <span class="topic-pill weak">${t.accuracy}% accuracy</span>
+                <button class="btn btn-secondary" onclick="startAdaptiveReview('${t.key}', 8)">Drill</button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      ` : `<div class="adaptive-empty">No weak topics yet. Keep going — the review queue will automatically populate as you answer more questions.</div>`}
+    </article>
+
+    <article class="card card-summary">
+      <span class="card-badge b-summary">⏱ Review mode</span>
+      <h2>How spaced repetition works here</h2>
+      <ul class="bullets">
+        <li>Correct answers move a question further out on the schedule.</li>
+        <li>Incorrect answers pull it back sooner so it appears again quickly.</li>
+        <li>Weak concepts show up more often in mixed practice and review mode.</li>
+        <li>The dashboard keeps accuracy per concept for joins, aggregates, subqueries, CTEs, window functions, indexing, and transactions.</li>
+      </ul>
+    </article>
+
+    <div class="footer-actions" style="justify-content:center">
+      <button class="btn btn-secondary" onclick="renderHome()">Back home</button>
+      <button class="btn btn-primary" onclick="startAdaptiveReview('due', 10)">Start review</button>
+    </div>
+  `;
+}
+function recordAdaptiveAnswer(correct){
+  const card = curModule && curModule.cards ? curModule.cards[curIdx] : null;
+  if(!card || card.type !== 'question') return;
+  const meta = getQuestionMeta(curModule, curIdx, card);
+  ensureAdaptiveDaily();
+  const now = Date.now();
+  state.adaptive.dailySolved = (state.adaptive.dailySolved || 0) + 1;
+  state.adaptive.lastUpdated = now;
+  if(!meta.topic) return;
+  const topic = state.adaptive.topics[meta.topic] || (state.adaptive.topics[meta.topic] = {attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0});
+  const qState = state.adaptive.questions[meta.qid] || (state.adaptive.questions[meta.qid] = {topic:meta.topic, attempts:0, correct:0, wrong:0, stage:0, nextReview:0, lastSeen:null, ease:2.3});
+  qState.topic = meta.topic;
+  qState.attempts += 1;
+  topic.attempts = (topic.attempts || 0) + 1;
+  if(correct){
+    qState.correct += 1;
+    topic.correct = (topic.correct || 0) + 1;
+    qState.stage = Math.min((qState.stage || 0) + 1, REVIEW_SCHEDULE_MS.length - 1);
+    qState.ease = Math.min(2.8, (qState.ease || 2.3) + 0.05);
+  }else{
+    qState.wrong += 1;
+    topic.wrong = (topic.wrong || 0) + 1;
+    qState.stage = 0;
+    qState.ease = Math.max(1.3, (qState.ease || 2.3) - 0.15);
+  }
+  qState.lastSeen = now;
+  qState.nextReview = now + REVIEW_SCHEDULE_MS[qState.stage];
+  topic.lastSeen = now;
+  topic.nextReview = qState.nextReview;
 }
 
 /* ============ Table render (real null) ============ */
@@ -1655,6 +2446,7 @@ function renderHome(){
         </div>
       </div>
     </div>
+    ${renderAdaptiveHomeCard()}
     <h2 class="section-heading">🌱 Foundations</h2>
     <div class="section-sub">Start here if you're rusty on the basics.</div>
     <div class="map" id="mapBeginner"></div>
@@ -1664,6 +2456,17 @@ function renderHome(){
     <h2 class="section-heading">🔥 Advanced &amp; Expert</h2>
     <div class="section-sub">Interview-grade patterns and production techniques.</div>
     <div class="map" id="mapAdv"></div>
+    <h2 class="section-heading">📊 Business Analytics SQL</h2>
+    <div class="section-sub">Analyst-grade lessons and challenges with realistic datasets — ecommerce, SaaS, marketing, fraud.</div>
+    <div class="map" id="mapAnalytics"></div>
+    <div class="challenge-list" id="analyticsChallenges" style="margin-top:12px"></div>
+    <h2 class="section-heading">🗂 Schema Designer &amp; ER Diagrams</h2>
+    <div class="section-sub">Visual table relationships, normalization journey, interactive join paths.</div>
+    <button class="schema-item" onclick="renderSchemaLanding()" aria-label="Open schema designer" style="margin-bottom:14px">
+      <div class="schema-icon" style="background:linear-gradient(135deg,#0ea5e9,#a855f7)" aria-hidden="true">🗂</div>
+      <div class="schema-info"><h4>Open Schema Designer</h4><p>4 ER diagrams + a 1NF→3NF normalization walkthrough. Tap relationships to animate joins.</p></div>
+      <div class="schema-arrow" aria-hidden="true">›</div>
+    </button>
     <h2 class="section-heading">🛠 SQL Playground</h2>
     <div class="section-sub">Write real SQL against an in-browser database. Run queries, see live results, check your answer.</div>
     <div class="challenge-list" id="challengeList"></div>
@@ -1672,7 +2475,7 @@ function renderHome(){
       <button class="btn btn-secondary" onclick="resetProgress()">Reset progress</button>
     </div>
   `;
-  const beg = $('#mapBeginner'), inter = $('#mapInter'), adv = $('#mapAdv');
+  const beg = $('#mapBeginner'), inter = $('#mapInter'), adv = $('#mapAdv'), anly = $('#mapAnalytics');
   M.forEach((m, idx) => {
     const prog = state.moduleProgress[m.id] || {};
     const total = m.cards.length;
@@ -1694,9 +2497,11 @@ function renderHome(){
     card.onclick = () => startModule(m.id);
     if(m.difficulty === 'beginner') beg.appendChild(card);
     else if(m.difficulty === 'intermediate') inter.appendChild(card);
+    else if(m.difficulty === 'analytics') anly.appendChild(card);
     else adv.appendChild(card);
   });
   const chList = $('#challengeList');
+  const anlyList = $('#analyticsChallenges');
   if(chList){
     const pgProg = state.playgroundProgress || {};
     CHALLENGES.forEach((c, i) => {
@@ -1713,7 +2518,8 @@ function renderHome(){
         <div class="check-badge" aria-hidden="true">${done?'✓':'›'}</div>
       `;
       btn.onclick = () => startChallenge(c.id);
-      chList.appendChild(btn);
+      if(c.difficulty === 'analytics') anlyList.appendChild(btn);
+      else chList.appendChild(btn);
     });
   }
   updateStatsUI();
@@ -1740,15 +2546,21 @@ function startModule(id){
 }
 
 function startMixed(count){
-  const all = [];
-  M.forEach(m => m.cards.forEach(c => {
-    if(c.type === 'question') all.push({...c, _from: m.title});
-  }));
-  for(let i = all.length-1; i>0; i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [all[i], all[j]] = [all[j], all[i]];
+  const entries = getAdaptiveQuestionEntries();
+  if(entries.length === 0){
+    alert('No questions available yet.');
+    return;
   }
-  const picked = all.slice(0, Math.min(count, all.length));
+  const pool = [];
+  entries.forEach(e => {
+    const copies = Math.max(1, Math.min(5, Math.round(e.weight)));
+    for(let i=0;i<copies;i++) pool.push(e.card);
+  });
+  for(let i = pool.length-1; i>0; i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  const picked = pool.slice(0, Math.min(count, pool.length));
   curModule = {id:'mixed', title:`Mixed Practice (${picked.length})`, icon:'🎲', color:'#ef4444', cards: picked};
   curIdx = 0;
   sessionCorrect = 0;
@@ -1928,6 +2740,7 @@ function checkAnswer(){
     input.classList.add(correct ? 'correct' : 'wrong');
   }
   curAnswered = true;
+  recordAdaptiveAnswer(correct);
   if(correct){
     sessionCorrect++;
     state.xp += 10;
@@ -1985,7 +2798,11 @@ function nextModuleId(){
 function goNextOrHome(){const n = nextModuleId(); if(n) startModule(n); else renderHome();}
 function resetProgress(){
   if(confirm('Reset all progress, XP and streak? This cannot be undone.')){
-    state = {...DEFAULT_STATE}; saveState(); renderHome();
+    state = {...DEFAULT_STATE, adaptive: cloneAdaptiveBase()};
+    state.adaptive.questions = {};
+    state.adaptive.topics = cloneAdaptiveBase().topics;
+    saveState();
+    renderHome();
   }
 }
 
@@ -2265,6 +3082,203 @@ const CHALLENGES = [
     expected:`SELECT day, total, total - LAG(total) OVER (ORDER BY day) AS delta FROM sales_daily;`,
     ordered:true,
     hint:'<code>LAG(col)</code> returns the previous row in the ordered window.'
+  },
+  /* ----- Business Analytics ----- */
+  {
+    id:'pg-15', title:'Average order value by month', difficulty:'analytics',
+    prompt:'Return <code>month</code> (YYYY-MM) and <code>aov</code> (avg total per order). Track basket size over time.',
+    setup:[
+      `CREATE TABLE orders (id INT, customer_id INT, total REAL, created_at TEXT);`,
+      `INSERT INTO orders VALUES (1,1,50,'2025-01-15'),(2,2,120,'2025-01-20'),(3,1,75,'2025-02-10'),(4,3,200,'2025-02-15'),(5,2,80,'2025-02-28'),(6,4,300,'2025-03-05'),(7,1,45,'2025-03-10'),(8,5,150,'2025-03-22');`
+    ],
+    visible:['orders'],
+    starter:`SELECT  AS month,
+       ROUND(AVG( ), 2) AS aov
+FROM orders
+GROUP BY 
+ORDER BY month;`,
+    expected:`SELECT substr(created_at,1,7) AS month, ROUND(AVG(total),2) AS aov FROM orders GROUP BY substr(created_at,1,7) ORDER BY month;`,
+    ordered:true,
+    hint:'Use <code>substr(created_at, 1, 7)</code> to get the year-month, then <code>AVG(total)</code>.',
+    interpretation:'AOV trending up means customers are buying bigger baskets — usually a sign that upsells, bundles, or free-shipping thresholds are working. A sudden drop often correlates with a discount campaign ending.'
+  },
+  {
+    id:'pg-16', title:'Active MRR snapshot', difficulty:'analytics',
+    prompt:'Return a single value <code>active_mrr</code>: the sum of <code>mrr</code> across all subscriptions still active as of 2025-04-01.',
+    setup:[
+      `CREATE TABLE subscriptions (id INT, customer_id INT, mrr INT, started TEXT, ended TEXT);`,
+      `INSERT INTO subscriptions VALUES (1,1,99,'2024-01-01',NULL),(2,2,49,'2024-03-15',NULL),(3,3,99,'2024-06-01','2025-01-15'),(4,4,199,'2025-02-01',NULL),(5,5,49,'2024-11-01','2025-03-20'),(6,6,299,'2025-03-15',NULL);`
+    ],
+    visible:['subscriptions'],
+    starter:`SELECT SUM(mrr) AS active_mrr
+FROM subscriptions
+WHERE started <= '2025-04-01'
+  AND ( ended IS NULL OR  );`,
+    expected:`SELECT SUM(mrr) AS active_mrr FROM subscriptions WHERE started <= '2025-04-01' AND (ended IS NULL OR ended > '2025-04-01');`,
+    ordered:false,
+    hint:'Active = <code>started &le; snapshot_date</code> AND (<code>ended IS NULL</code> OR <code>ended &gt; snapshot_date</code>).',
+    interpretation:'MRR snapshots are the foundation of every SaaS board deck. Computing point-in-time MRR is harder than it sounds — you have to be precise about whether a sub ending ON the snapshot date is still active or not. Most companies define it as "active if ended > snapshot date".'
+  },
+  {
+    id:'pg-17', title:'Funnel conversion rates', difficulty:'analytics',
+    prompt:'Return each <code>step</code>, distinct <code>users</code>, and <code>step_pct</code> (conversion from previous step) for the funnel visit → signup → activate → purchase.',
+    setup:[
+      `CREATE TABLE events (user_id INT, step TEXT);`,
+      `INSERT INTO events VALUES (1,'visit'),(2,'visit'),(3,'visit'),(4,'visit'),(5,'visit'),(6,'visit'),(1,'signup'),(2,'signup'),(3,'signup'),(4,'signup'),(1,'activate'),(2,'activate'),(3,'activate'),(1,'purchase');`
+    ],
+    visible:['events'],
+    starter:`WITH counts AS (
+  SELECT step, COUNT(DISTINCT user_id) AS users
+  FROM events
+  GROUP BY step
+)
+SELECT step, users,
+  ROUND(100.0 * users / LAG(users) OVER (
+    ORDER BY CASE step
+      WHEN 'visit' THEN 1 WHEN 'signup' THEN 2
+      WHEN 'activate' THEN 3 WHEN 'purchase' THEN 4
+    END
+  ), 1) AS step_pct
+FROM counts
+ORDER BY CASE step
+  WHEN 'visit' THEN 1 WHEN 'signup' THEN 2
+  WHEN 'activate' THEN 3 WHEN 'purchase' THEN 4
+END;`,
+    expected:`WITH counts AS (SELECT step, COUNT(DISTINCT user_id) AS users FROM events GROUP BY step) SELECT step, users, ROUND(100.0 * users / LAG(users) OVER (ORDER BY CASE step WHEN 'visit' THEN 1 WHEN 'signup' THEN 2 WHEN 'activate' THEN 3 WHEN 'purchase' THEN 4 END), 1) AS step_pct FROM counts ORDER BY CASE step WHEN 'visit' THEN 1 WHEN 'signup' THEN 2 WHEN 'activate' THEN 3 WHEN 'purchase' THEN 4 END;`,
+    ordered:true,
+    hint:'Order steps manually using <code>CASE</code>, then <code>LAG(users)</code> for the previous step\'s count.',
+    interpretation:'The step with the steepest drop-off is where to focus product investment. If signup → activate is the leakiest, you likely have an onboarding problem (too many fields, unclear value, broken email verification). If activate → purchase leaks the most, you have a pricing or activation-energy problem.'
+  },
+  {
+    id:'pg-18', title:'Last-touch attribution by channel', difficulty:'analytics',
+    prompt:'For each <code>channel</code>, return <code>attributed_revenue</code>: the sum of conversion values where that channel was the LAST touchpoint before conversion.',
+    setup:[
+      `CREATE TABLE touchpoints (user_id INT, channel TEXT, touched_at TEXT);`,
+      `CREATE TABLE conversions (user_id INT, value INT, converted_at TEXT);`,
+      `INSERT INTO touchpoints VALUES (1,'google','2025-05-01'),(1,'email','2025-05-03'),(1,'direct','2025-05-05'),(2,'facebook','2025-05-02'),(2,'email','2025-05-04'),(3,'google','2025-05-01'),(3,'google','2025-05-06');`,
+      `INSERT INTO conversions VALUES (1,100,'2025-05-06'),(2,200,'2025-05-05'),(3,300,'2025-05-07');`
+    ],
+    visible:['touchpoints','conversions'],
+    starter:`WITH lt AS (
+  SELECT t.user_id, t.channel,
+    ROW_NUMBER() OVER (PARTITION BY t.user_id
+      ORDER BY t.touched_at DESC) AS rn
+  FROM touchpoints t
+  JOIN conversions c
+    ON c.user_id = t.user_id
+   AND t.touched_at <= c.converted_at
+)
+SELECT lt.channel, SUM(c.value) AS attributed_revenue
+FROM lt
+JOIN conversions c ON c.user_id = lt.user_id
+WHERE rn = 
+GROUP BY lt.channel;`,
+    expected:`WITH lt AS (SELECT t.user_id, t.channel, ROW_NUMBER() OVER (PARTITION BY t.user_id ORDER BY t.touched_at DESC) AS rn FROM touchpoints t JOIN conversions c ON c.user_id = t.user_id AND t.touched_at <= c.converted_at) SELECT lt.channel, SUM(c.value) AS attributed_revenue FROM lt JOIN conversions c ON c.user_id = lt.user_id WHERE rn = 1 GROUP BY lt.channel;`,
+    ordered:false,
+    hint:'Rank each user\'s touchpoints DESC by date, keep <code>rn = 1</code>, then sum conversion values per channel.',
+    interpretation:'Last-touch attribution credits the channel that "closes" the conversion — usually direct, email, or retargeting ads. It tends to UNDER-credit awareness channels (search ads, content, social) that brought the user in originally. Run multiple attribution models side by side and use them to inform — not decide — channel spend.'
+  },
+  {
+    id:'pg-19', title:'Monthly logo churn rate', difficulty:'analytics',
+    prompt:'Return a single value <code>logo_churn_pct</code>: the % of subscriptions active at start of March 2025 that ended during March 2025.',
+    setup:[
+      `CREATE TABLE subscriptions (customer_id INT, started TEXT, ended TEXT);`,
+      `INSERT INTO subscriptions VALUES (1,'2024-01-01',NULL),(2,'2024-02-01','2025-03-10'),(3,'2024-03-15',NULL),(4,'2024-12-01','2025-03-25'),(5,'2025-01-15',NULL),(6,'2025-02-10','2025-03-28');`
+    ],
+    visible:['subscriptions'],
+    starter:`SELECT ROUND(100.0 *
+  SUM(CASE WHEN ended >= '2025-03-01'
+            AND ended <= '2025-03-31' THEN 1 ELSE 0 END) /
+  SUM(CASE WHEN started < '2025-03-01'
+            AND ( ended IS NULL OR ended >= '2025-03-01' ) THEN 1 ELSE 0 END
+  ), 1) AS logo_churn_pct
+FROM subscriptions;`,
+    expected:`SELECT ROUND(100.0 * SUM(CASE WHEN ended >= '2025-03-01' AND ended <= '2025-03-31' THEN 1 ELSE 0 END) / SUM(CASE WHEN started < '2025-03-01' AND (ended IS NULL OR ended >= '2025-03-01') THEN 1 ELSE 0 END), 1) AS logo_churn_pct FROM subscriptions;`,
+    ordered:false,
+    hint:'Numerator = subs ended in March. Denominator = subs active at start of March (started before March 1 AND not yet ended).',
+    interpretation:'Healthy SaaS sees 1–2%/month logo churn. Above 5%/month is a leaky bucket — growth has to outrun churn just to stand still. Always pair logo churn with revenue churn: if one big customer leaves, logo churn looks fine but revenue churn explodes.'
+  },
+  {
+    id:'pg-20', title:'Monthly cohort retention', difficulty:'analytics',
+    prompt:'Return <code>cohort_month</code>, <code>month_offset</code> (months since signup, 0+), and <code>users</code> (distinct users from that cohort active that month).',
+    setup:[
+      `CREATE TABLE users (id INT, signup_month TEXT);`,
+      `CREATE TABLE events (user_id INT, event_month TEXT);`,
+      `INSERT INTO users VALUES (1,'2025-01'),(2,'2025-01'),(3,'2025-01'),(4,'2025-02'),(5,'2025-02'),(6,'2025-03');`,
+      `INSERT INTO events VALUES (1,'2025-01'),(1,'2025-02'),(2,'2025-01'),(2,'2025-02'),(2,'2025-03'),(3,'2025-01'),(4,'2025-02'),(4,'2025-03'),(5,'2025-02'),(6,'2025-03');`
+    ],
+    visible:['users','events'],
+    starter:`SELECT u.signup_month AS cohort_month,
+  CAST((CAST(substr(e.event_month,1,4) AS INT) - CAST(substr(u.signup_month,1,4) AS INT)) * 12
+     + (CAST(substr(e.event_month,6,2) AS INT) - CAST(substr(u.signup_month,6,2) AS INT)) AS INT) AS month_offset,
+  COUNT(DISTINCT u.id) AS users
+FROM users u
+JOIN events e ON e.user_id = u.id
+GROUP BY cohort_month, month_offset
+ORDER BY cohort_month, month_offset;`,
+    expected:`SELECT u.signup_month AS cohort_month, CAST((CAST(substr(e.event_month,1,4) AS INT) - CAST(substr(u.signup_month,1,4) AS INT)) * 12 + (CAST(substr(e.event_month,6,2) AS INT) - CAST(substr(u.signup_month,6,2) AS INT)) AS INT) AS month_offset, COUNT(DISTINCT u.id) AS users FROM users u JOIN events e ON e.user_id = u.id GROUP BY cohort_month, month_offset ORDER BY cohort_month, month_offset;`,
+    ordered:true,
+    hint:'Compute month_offset by subtracting signup month from event month, in months. Group by both.',
+    interpretation:'Cohort retention is the single most useful chart in SaaS and ecommerce analytics. Healthy product-market fit shows retention curves that FLATTEN — users who survive the first month tend to stick. A curve that drops to 0 means no retained value.'
+  },
+  {
+    id:'pg-21', title:'Month-over-month revenue growth', difficulty:'analytics',
+    prompt:'Return <code>month</code>, <code>revenue</code>, <code>mom_pct</code> (% change from previous month, rounded to 1 decimal). First row\'s mom_pct should be NULL.',
+    setup:[
+      `CREATE TABLE monthly_rev (month TEXT, revenue INT);`,
+      `INSERT INTO monthly_rev VALUES ('2025-01',10000),('2025-02',12000),('2025-03',11500),('2025-04',14000),('2025-05',15800);`
+    ],
+    visible:['monthly_rev'],
+    starter:`SELECT month, revenue,
+  ROUND(100.0 * (revenue -  (revenue) OVER (ORDER BY month))
+              / LAG(revenue) OVER (ORDER BY month), 1) AS mom_pct
+FROM monthly_rev;`,
+    expected:`SELECT month, revenue, ROUND(100.0 * (revenue - LAG(revenue) OVER (ORDER BY month)) / LAG(revenue) OVER (ORDER BY month), 1) AS mom_pct FROM monthly_rev;`,
+    ordered:true,
+    hint:'<code>LAG(revenue) OVER (ORDER BY month)</code> gives last month\'s value.',
+    interpretation:'MoM growth is the most-watched number on the exec team\'s dashboard. Beware: % growth from a small base looks dramatic but isn\'t meaningful (10% MoM at $10K MRR is not the same achievement as 10% at $10M). Always pair % growth with absolute deltas.'
+  },
+  {
+    id:'pg-22', title:'Velocity-based fraud detection', difficulty:'analytics',
+    prompt:'Return distinct <code>user_id</code>s who had 5 or more transactions within any 10-minute window.',
+    setup:[
+      `CREATE TABLE transactions (id INT, user_id INT, ts TEXT);`,
+      `INSERT INTO transactions VALUES (1,1,'2025-05-01 10:00'),(2,1,'2025-05-01 10:02'),(3,1,'2025-05-01 10:05'),(4,1,'2025-05-01 10:07'),(5,1,'2025-05-01 10:09'),(6,2,'2025-05-01 11:00'),(7,2,'2025-05-01 13:00'),(8,3,'2025-05-01 09:00'),(9,3,'2025-05-01 09:03'),(10,3,'2025-05-01 09:06'),(11,3,'2025-05-01 09:08'),(12,3,'2025-05-01 09:09');`
+    ],
+    visible:['transactions'],
+    starter:`WITH x AS (
+  SELECT user_id, ts,
+    COUNT(*) OVER (
+      PARTITION BY user_id ORDER BY julianday(ts)
+      RANGE BETWEEN  PRECEDING AND CURRENT ROW
+    ) AS c10
+  FROM transactions
+)
+SELECT DISTINCT user_id FROM x WHERE c10 >= 5;`,
+    expected:`WITH x AS (SELECT user_id, ts, COUNT(*) OVER (PARTITION BY user_id ORDER BY julianday(ts) RANGE BETWEEN 0.00694 PRECEDING AND CURRENT ROW) AS c10 FROM transactions) SELECT DISTINCT user_id FROM x WHERE c10 >= 5;`,
+    ordered:false,
+    hint:'10 min as a fraction of a day = 10 / (24 * 60) = 0.00694. Use that as the RANGE PRECEDING value.',
+    interpretation:'Velocity checks catch the dumbest bots — credit card testers, account stuffers, click fraud. Real fraud systems combine these signals with device fingerprinting, geo-IP, and behavioral ML. But SQL velocity rules typically catch 60-70% of the obvious fraud before more expensive systems even need to weigh in.'
+  },
+  {
+    id:'pg-23', title:'RFM customer segmentation', difficulty:'analytics',
+    prompt:'For each <code>customer_id</code>, return <code>recency</code> (days since last order, against 2025-06-01), <code>frequency</code> (order count), and <code>monetary</code> (total spend).',
+    setup:[
+      `CREATE TABLE orders (id INT, customer_id INT, total REAL, created_at TEXT);`,
+      `INSERT INTO orders VALUES (1,1,50,'2025-05-28'),(2,1,75,'2025-05-30'),(3,2,200,'2025-01-15'),(4,3,300,'2025-05-25'),(5,3,150,'2025-05-29'),(6,3,80,'2025-05-31'),(7,4,40,'2025-04-01'),(8,5,500,'2025-05-20'),(9,5,500,'2025-05-30');`
+    ],
+    visible:['orders'],
+    starter:`SELECT customer_id,
+  CAST(julianday('2025-06-01') - julianday(MAX(created_at)) AS INT) AS recency,
+  COUNT(*) AS frequency,
+  SUM(total) AS monetary
+FROM orders
+GROUP BY customer_id
+ORDER BY customer_id;`,
+    expected:`SELECT customer_id, CAST(julianday('2025-06-01') - julianday(MAX(created_at)) AS INT) AS recency, COUNT(*) AS frequency, SUM(total) AS monetary FROM orders GROUP BY customer_id ORDER BY customer_id;`,
+    ordered:true,
+    hint:'Recency = days between snapshot date and most-recent order. Frequency = COUNT(*). Monetary = SUM(total).',
+    interpretation:'RFM scoring is the simplest possible customer segmentation that still works. Group by R/F/M quintiles (1-5) to bucket customers into segments like "champions" (R5/F5/M5), "loyal" (high F+M but R dropping), "at-risk" (high F+M but R is low), and "lost" (R1). Email automation tools (Klaviyo, Mailchimp) bake RFM in.'
   }
 ];
 
@@ -2277,6 +3291,8 @@ async function startChallenge(id){
   curChallenge = CHALLENGES.find(c => c.id === id);
   if(!curChallenge) return renderHome();
   hideFeedback();
+  lastChallengeRun = {user:null, expected:null};
+  mentor = {issues:[], issueIdx:0, hintLevel:0};
   main.innerHTML = `<div class="pg-loading"><span class="spin">⟳</span>Loading SQL engine</div>`;
   try{
     await ensureSql();
@@ -2327,8 +3343,10 @@ function renderChallenge(){
         <button class="btn btn-primary" onclick="checkChallenge()" aria-label="Check answer">✓ Check Answer</button>
         <button class="btn btn-secondary" onclick="resetChallenge()" aria-label="Reset editor">↺ Reset</button>
         ${c.hint ? `<button class="btn btn-ghost" onclick="showHint()" aria-label="Show hint">💡 Hint</button>` : ''}
+        <button class="btn btn-mentor" onclick="askMentor('playground')" aria-label="Ask the AI mentor">🧠 Mentor</button>
       </div>
       <div class="run-output" id="runOutput" aria-live="polite"></div>
+      <div id="mentorPanel" aria-live="polite"></div>
     </article>
     <div class="footer-actions" style="margin-top:18px">
       <button class="btn btn-secondary" onclick="prevChallenge()" ${!hasPrevChallenge()?'disabled':''} aria-label="Previous challenge">← Previous</button>
@@ -2364,11 +3382,13 @@ function runChallenge(){
   const out = $('#runOutput');
   try{
     const r = execSelect(curChallengeDb, sql);
+    lastChallengeRun = {user:r, expected:lastChallengeRun.expected, error:null, sql};
     out.innerHTML = `
       <div class="run-status ok">▶ Query ran · ${r.rows.length} row${r.rows.length===1?'':'s'}</div>
       ${renderTables([{name:'your result', cols:r.cols, rows:r.rows}])}
     `;
   }catch(e){
+    lastChallengeRun = {user:null, expected:lastChallengeRun.expected, error:e.message || String(e), sql};
     out.innerHTML = `
       <div class="run-status err">⚠ Query error</div>
       <div class="error-block">${esc(e.message || String(e))}</div>
@@ -2383,6 +3403,7 @@ function checkChallenge(){
   try{
     userRes = execSelect(curChallengeDb, sql);
   }catch(e){
+    lastChallengeRun = {user:null, expected:null, error:e.message || String(e), sql};
     out.innerHTML = `
       <div class="run-status err">⚠ Query error</div>
       <div class="error-block">${esc(e.message || String(e))}</div>
@@ -2399,6 +3420,7 @@ function checkChallenge(){
     return;
   }
   const correct = compareResults(userRes, expectedRes, curChallenge.ordered);
+  lastChallengeRun = {user:userRes, expected:expectedRes, error:null, sql};
   if(correct){
     if(!state.playgroundProgress) state.playgroundProgress = {};
     const already = state.playgroundProgress[curChallenge.id]?.completed;
@@ -2413,6 +3435,7 @@ function checkChallenge(){
     out.innerHTML = `
       <div class="run-status ok">✓ Correct!</div>
       <div class="success-block">${already ? '🎉 Solved again — XP only awarded once per challenge.' : '🎉 +20 XP earned!'} Your query matches the expected result.</div>
+      ${curChallenge.interpretation ? `<div class="real" style="margin-top:10px"><b>📊 Business meaning:</b> ${curChallenge.interpretation}</div>` : ''}
       ${renderTables([{name:'your result', cols:userRes.cols, rows:userRes.rows}])}
     `;
   } else {
@@ -2777,7 +3800,246 @@ const INTERVIEW_QUESTIONS = [
     expected:`SELECT id, user_id, amount FROM (SELECT *, AVG(amount) OVER (PARTITION BY user_id) AS u_avg FROM txn) t WHERE amount > 3 * u_avg;`,
     ordered:false,
     hint:'Window AVG over user_id, then filter rows above <code>3 * u_avg</code>.'
+  },
+
+  /* ---------- ANALYST INTERVIEWS (tagged by difficulty into existing pools) ---------- */
+  {
+    id:'iv-a1', title:'Top channel by attributed revenue', difficulty:'medium', category:'joins',
+    prompt:'Return the <code>channel</code> that drove the most attributed revenue using LAST-touch attribution. Single row, single column <code>channel</code>.',
+    setup:[
+      `CREATE TABLE touches (user_id INT, channel TEXT, ts TEXT);`,
+      `CREATE TABLE conv (user_id INT, value INT, ts TEXT);`,
+      `INSERT INTO touches VALUES (1,'google','2025-05-01'),(1,'email','2025-05-03'),(1,'direct','2025-05-05'),(2,'facebook','2025-05-02'),(2,'email','2025-05-04'),(3,'google','2025-05-01'),(3,'email','2025-05-05');`,
+      `INSERT INTO conv VALUES (1,100,'2025-05-06'),(2,500,'2025-05-05'),(3,300,'2025-05-07');`
+    ],
+    visible:['touches','conv'],
+    starter:`WITH lt AS (
+  SELECT t.user_id, t.channel,
+    ROW_NUMBER() OVER (PARTITION BY t.user_id
+      ORDER BY t.ts DESC) AS rn
+  FROM touches t
+  JOIN conv c
+    ON c.user_id = t.user_id AND t.ts <= c.ts
+)
+SELECT lt.channel
+FROM lt
+JOIN conv c ON c.user_id = lt.user_id
+WHERE rn = 1
+GROUP BY lt.channel
+ORDER BY SUM(c.value) DESC
+LIMIT ;`,
+    expected:`WITH lt AS (SELECT t.user_id, t.channel, ROW_NUMBER() OVER (PARTITION BY t.user_id ORDER BY t.ts DESC) AS rn FROM touches t JOIN conv c ON c.user_id = t.user_id AND t.ts <= c.ts) SELECT lt.channel FROM lt JOIN conv c ON c.user_id = lt.user_id WHERE rn = 1 GROUP BY lt.channel ORDER BY SUM(c.value) DESC LIMIT 1;`,
+    ordered:true,
+    hint:'For each user, find their last touchpoint before their conversion. Sum conversion values per channel. Pick the top.'
+  },
+  {
+    id:'iv-a2', title:'Customer Lifetime Value (CLV) estimate', difficulty:'medium', category:'group-by',
+    prompt:'Return <code>customer_id, clv</code> where <code>clv = avg_order_value * order_count</code> (simple historical CLV). Round to 2 decimals.',
+    setup:[
+      `CREATE TABLE orders (id INT, customer_id INT, total REAL);`,
+      `INSERT INTO orders VALUES (1,1,50),(2,1,75),(3,1,100),(4,2,200),(5,2,150),(6,3,40),(7,4,500),(8,4,600),(9,4,700);`
+    ],
+    visible:['orders'],
+    starter:`SELECT customer_id,
+  ROUND( AVG(total) * COUNT(*), 2) AS clv
+FROM orders
+GROUP BY customer_id
+ORDER BY customer_id;`,
+    expected:`SELECT customer_id, ROUND(AVG(total) * COUNT(*), 2) AS clv FROM orders GROUP BY customer_id ORDER BY customer_id;`,
+    ordered:true,
+    hint:'<code>AVG(total) * COUNT(*) = SUM(total)</code> — same thing here. For real CLV you\'d include predicted future spend.'
+  },
+  {
+    id:'iv-a3', title:'Leakiest funnel step', difficulty:'medium', category:'window',
+    prompt:'Return the single <code>step</code> that loses the highest fraction of users from the previous step in this funnel (visit → signup → activate → purchase).',
+    setup:[
+      `CREATE TABLE events (user_id INT, step TEXT);`,
+      `INSERT INTO events VALUES (1,'visit'),(2,'visit'),(3,'visit'),(4,'visit'),(5,'visit'),(6,'visit'),(7,'visit'),(8,'visit'),(1,'signup'),(2,'signup'),(3,'signup'),(4,'signup'),(5,'signup'),(6,'signup'),(1,'activate'),(2,'activate'),(1,'purchase');`
+    ],
+    visible:['events'],
+    starter:`WITH counts AS (
+  SELECT step, COUNT(DISTINCT user_id) AS users
+  FROM events
+  GROUP BY step
+),
+drop_rate AS (
+  SELECT step,
+    1.0 - 1.0 * users / LAG(users) OVER (
+      ORDER BY CASE step
+        WHEN 'visit' THEN 1 WHEN 'signup' THEN 2
+        WHEN 'activate' THEN 3 WHEN 'purchase' THEN 4
+      END
+    ) AS drop_pct
+  FROM counts
+)
+SELECT step
+FROM drop_rate
+WHERE drop_pct IS NOT NULL
+ORDER BY drop_pct DESC
+LIMIT ;`,
+    expected:`WITH counts AS (SELECT step, COUNT(DISTINCT user_id) AS users FROM events GROUP BY step), drop_rate AS (SELECT step, 1.0 - 1.0 * users / LAG(users) OVER (ORDER BY CASE step WHEN 'visit' THEN 1 WHEN 'signup' THEN 2 WHEN 'activate' THEN 3 WHEN 'purchase' THEN 4 END) AS drop_pct FROM counts) SELECT step FROM drop_rate WHERE drop_pct IS NOT NULL ORDER BY drop_pct DESC LIMIT 1;`,
+    ordered:true,
+    hint:'Compute drop rate per step using LAG. Pick the step with the largest drop.'
+  },
+  {
+    id:'iv-a4', title:'Day-7 cohort retention rate', difficulty:'hard', category:'retention',
+    prompt:'Return a single value <code>day7</code>: the fraction (0-1) of users who signed up on 2025-05-01 and had any event on 2025-05-08.',
+    setup:[
+      `CREATE TABLE users (id INT, signup_day TEXT);`,
+      `CREATE TABLE events (user_id INT, day TEXT);`,
+      `INSERT INTO users VALUES (1,'2025-05-01'),(2,'2025-05-01'),(3,'2025-05-01'),(4,'2025-05-01'),(5,'2025-05-01'),(6,'2025-05-02');`,
+      `INSERT INTO events VALUES (1,'2025-05-08'),(2,'2025-05-08'),(2,'2025-05-09'),(3,'2025-05-05'),(4,'2025-05-08'),(6,'2025-05-08');`
+    ],
+    visible:['users','events'],
+    starter:`SELECT
+  1.0 *
+  COUNT(DISTINCT CASE WHEN e.day = '2025-05-08' THEN e.user_id END) /
+  COUNT(DISTINCT u.id) AS day7
+FROM users u
+LEFT JOIN events e ON e.user_id = u.id
+WHERE u.signup_day = ;`,
+    expected:`SELECT 1.0 * COUNT(DISTINCT CASE WHEN e.day = '2025-05-08' THEN e.user_id END) / COUNT(DISTINCT u.id) AS day7 FROM users u LEFT JOIN events e ON e.user_id = u.id WHERE u.signup_day = '2025-05-01';`,
+    ordered:false,
+    hint:'Numerator = users in the cohort who had an event on day 7. Denominator = all users in the cohort.'
+  },
+  {
+    id:'iv-a5', title:'Weekly spend anomaly per user', difficulty:'hard', category:'window',
+    prompt:'Return <code>user_id</code> of users whose total spend in the last 7 days (≥ 2025-05-25) is more than 3× their average WEEKLY spend across all prior weeks.',
+    setup:[
+      `CREATE TABLE txn (user_id INT, amount INT, ts TEXT);`,
+      `INSERT INTO txn VALUES (1,100,'2025-05-01'),(1,80,'2025-05-08'),(1,120,'2025-05-15'),(1,800,'2025-05-27'),(2,200,'2025-05-01'),(2,180,'2025-05-08'),(2,220,'2025-05-15'),(2,210,'2025-05-26'),(3,50,'2025-05-01'),(3,40,'2025-05-08'),(3,500,'2025-05-28');`
+    ],
+    visible:['txn'],
+    starter:`WITH recent AS (
+  SELECT user_id, SUM(amount) AS recent_total
+  FROM txn
+  WHERE ts >= '2025-05-25'
+  GROUP BY user_id
+),
+baseline AS (
+  -- average weekly spend before 2025-05-25
+  SELECT user_id, AVG(weekly) AS avg_weekly
+  FROM (
+    SELECT user_id,
+      CAST((julianday(ts) - julianday('2025-05-01')) / 7 AS INT) AS wk,
+      SUM(amount) AS weekly
+    FROM txn
+    WHERE ts < '2025-05-25'
+    GROUP BY user_id, wk
+  )
+  GROUP BY user_id
+)
+SELECT r.user_id
+FROM recent r
+JOIN baseline b ON b.user_id = r.user_id
+WHERE r.recent_total >  ;`,
+    expected:`WITH recent AS (SELECT user_id, SUM(amount) AS recent_total FROM txn WHERE ts >= '2025-05-25' GROUP BY user_id), baseline AS (SELECT user_id, AVG(weekly) AS avg_weekly FROM (SELECT user_id, CAST((julianday(ts) - julianday('2025-05-01')) / 7 AS INT) AS wk, SUM(amount) AS weekly FROM txn WHERE ts < '2025-05-25' GROUP BY user_id, wk) GROUP BY user_id) SELECT r.user_id FROM recent r JOIN baseline b ON b.user_id = r.user_id WHERE r.recent_total > 3 * b.avg_weekly;`,
+    ordered:false,
+    hint:'Compute recent (last 7d) sum per user, compute prior weekly avg per user, compare with 3x threshold.'
+  },
+  {
+    id:'iv-a6', title:'Net Revenue Retention', difficulty:'faang', category:'retention',
+    prompt:'Return <code>nrr</code>: (Starting MRR + Expansion − Contraction − Churn) / Starting MRR for cohort of customers active on 2025-02-01, measured at 2025-05-01. Compute from <code>mrr_snapshots(customer_id, month, mrr)</code>.',
+    setup:[
+      `CREATE TABLE mrr_snapshots (customer_id INT, month TEXT, mrr INT);`,
+      `INSERT INTO mrr_snapshots VALUES (1,'2025-02-01',100),(1,'2025-05-01',150),(2,'2025-02-01',200),(2,'2025-05-01',180),(3,'2025-02-01',300),(3,'2025-05-01',0),(4,'2025-02-01',150),(4,'2025-05-01',150),(5,'2025-05-01',200);`
+    ],
+    visible:['mrr_snapshots'],
+    starter:`-- Only count customers in the original cohort (Feb 1).
+WITH cohort AS (
+  SELECT customer_id, mrr AS feb_mrr
+  FROM mrr_snapshots
+  WHERE month = '2025-02-01'
+),
+may AS (
+  SELECT customer_id, mrr AS may_mrr
+  FROM mrr_snapshots
+  WHERE month = '2025-05-01'
+),
+joined AS (
+  SELECT c.customer_id, c.feb_mrr,
+         COALESCE(m.may_mrr, 0) AS may_mrr
+  FROM cohort c
+  LEFT JOIN may m ON m.customer_id = c.customer_id
+)
+SELECT
+  1.0 * SUM(may_mrr) / SUM( ) AS nrr
+FROM joined;`,
+    expected:`WITH cohort AS (SELECT customer_id, mrr AS feb_mrr FROM mrr_snapshots WHERE month = '2025-02-01'), may AS (SELECT customer_id, mrr AS may_mrr FROM mrr_snapshots WHERE month = '2025-05-01'), joined AS (SELECT c.customer_id, c.feb_mrr, COALESCE(m.may_mrr, 0) AS may_mrr FROM cohort c LEFT JOIN may m ON m.customer_id = c.customer_id) SELECT 1.0 * SUM(may_mrr) / SUM(feb_mrr) AS nrr FROM joined;`,
+    ordered:false,
+    hint:'NRR is computed against the ORIGINAL cohort (Feb 1) only. Customer 5 signed up later — exclude them from the denominator.'
   }
+,
+{id:23, title:"Advanced SQL Engineering", icon:"🛠️", color:"#7c3aed", difficulty:"expert",
+ description:"Performance tuning, scaling patterns, and warehouse design for production SQL.",
+ cards:[
+  {type:'concept', title:"Indexing strategies",
+   body:`<p>Indexes speed up lookups, joins, and sorts. Start with columns used often in <code>WHERE</code>, <code>JOIN</code>, and <code>ORDER BY</code>.</p>
+         <p>Prefer a small number of high-value indexes over indexing everything.</p>`},
+  {type:'concept', title:"Composite & covering indexes",
+   body:`<p>A <b>composite index</b> covers multiple columns in a defined order. A <b>covering index</b> contains every column a query needs, so MySQL can answer it from the index alone.</p>
+         <p>Column order matters: put the most selective / most commonly filtered prefix first.</p>`},
+  {type:'example', title:"EXPLAIN a query plan",
+   code:`EXPLAIN SELECT id, client_id, amount
+FROM orders
+WHERE client_id = 1
+ORDER BY created_at DESC
+LIMIT 5;`,
+   walkthrough:"<p><code>EXPLAIN</code> helps you inspect how MySQL plans to run the query — which indexes it uses, estimated rows scanned, and where sorting happens.</p>",
+   real:"In interviews, explain why a query is slow before proposing index changes."},
+  {type:'concept', title:"Query optimization",
+   body:`<p>Optimization is mostly about reducing work: filter early, avoid unnecessary columns, join on indexed keys, and remove full scans when possible.</p>
+         <p>Common fixes include replacing <code>SELECT *</code>, using sargable predicates, and aligning indexes with access patterns.</p>`},
+  {type:'concept', title:"Partitioning",
+   body:`<p>Partitioning splits a large table into smaller physical chunks. It helps maintenance and partition pruning for date-range queries.</p>
+         <p>It is not a substitute for good indexing.</p>`},
+  {type:'concept', title:"Transactions & isolation levels",
+   body:`<p>Transactions group changes so they commit or roll back together. Isolation levels control how one transaction sees another's uncommitted work.</p>
+         <p>Know the tradeoff: stronger isolation reduces anomalies but can lower concurrency.</p>`},
+  {type:'concept', title:"Locking & deadlocks",
+   body:`<p>Locks protect rows or ranges during writes. A <b>deadlock</b> happens when two transactions wait on each other in a cycle.</p>
+         <p>Best practice: keep transactions short and touch tables in a consistent order.</p>`},
+  {type:'concept', title:"Replication basics",
+   body:`<p>Replication copies data from a primary database to one or more replicas. It is used for read scaling, backups, and high availability.</p>
+         <p>Interview note: know the difference between synchronous and asynchronous replication at a high level.</p>`},
+  {type:'concept', title:"Materialized views",
+   body:`<p>A materialized view stores the result of a query instead of recomputing it every time. It is common in analytics systems where speed matters more than perfect freshness.</p>`},
+  {type:'concept', title:"ETL, SCDs, and star schemas",
+   body:`<p><b>ETL</b> moves and transforms data into analytics-ready tables. <b>Slowly changing dimensions</b> preserve history of attributes over time. <b>Star schemas</b> organize one fact table around multiple dimension tables.</p>`},
+  {type:'example', title:"Warehouse design sketch",
+   code:`-- fact table
+sales_fact(order_date_id, customer_id, product_id, revenue, units)
+
+-- dimensions
+dim_date(date_id, calendar_date, month, quarter)
+dim_customer(customer_id, name, segment)
+dim_product(product_id, sku, category)`,
+   walkthrough:"<p>Fact tables hold measurable events. Dimensions add descriptive context for slicing and reporting.</p>",
+   real:"A star schema is the default mental model for BI dashboards and cohort analytics."},
+  {type:'question', kind:'mcq', question:"Which index can satisfy a query without reading the base table?",
+   options:["Primary key only","Composite index only","Covering index","Temporary index"], correct:2,
+   explanation:"A covering index contains all columns required by the query."},
+  {type:'question', kind:'mcq', question:"What is the main purpose of EXPLAIN?",
+   options:["Run the query faster","Show the execution plan","Create indexes","Detect deadlocks"], correct:1,
+   explanation:"EXPLAIN reveals how MySQL plans to execute the query."},
+  {type:'question', kind:'fill', question:"Keep transactions short to reduce ___ risk.", 
+   template:"Keep transactions short to reduce ___ risk.", answer:"deadlock",
+   explanation:"Long transactions and inconsistent lock ordering increase the chance of deadlocks."},
+  {type:'question', kind:'mcq', question:"Which model places one fact table in the center with surrounding dimensions?",
+   options:["Snowflake schema","Star schema","Heap table","Federated schema"], correct:1,
+   explanation:"Star schemas are built around a fact table with dimension tables around it."},
+  {type:'question', kind:'mcq', question:"Which scenario is the BEST reason to use partitioning?",
+   options:["Every query becomes faster automatically","Very large tables with date-based pruning and maintenance needs","To replace all indexes","To avoid normalization"], correct:1,
+   explanation:"Partitioning helps when large tables can be pruned by date or other ranges."},
+  {type:'summary', title:"Recap", bullets:[
+    "Index for the access pattern you actually use.",
+    "Composite indexes depend on column order.",
+    "EXPLAIN shows the optimizer's plan.",
+    "Transactions, locks, and isolation control concurrency.",
+    "Warehouses usually use ETL pipelines, SCDs, and star schemas."
+  ]}
+ ]}
+
 ];
 
 const IV_DIFF_CONFIG = {
@@ -2923,6 +4185,8 @@ function startIvQuestion(){
   iv.qHints = 0;
   iv.qAttempts = 0;
   iv.qStarter = q.starter;
+  iv.lastRun = {user:null, expected:null, error:null, sql:''};
+  mentor = {issues:[], issueIdx:0, hintLevel:0};
   renderIvQuestion();
   startIvTimer();
 }
@@ -2960,9 +4224,11 @@ function renderIvQuestion(){
         <button class="btn btn-primary" onclick="checkIv()" aria-label="Check answer">✓ Submit</button>
         <button class="btn btn-secondary" onclick="resetIv()" aria-label="Reset editor">↺ Reset</button>
         <button class="btn btn-ghost" onclick="hintIv()" aria-label="Show hint (−25 pts)">💡 Hint (−25)</button>
+        <button class="btn btn-mentor" onclick="askMentor('interview')" aria-label="Ask the AI mentor">🧠 Mentor</button>
         <button class="btn btn-ghost" onclick="skipIv()" style="color:var(--red-sh)" aria-label="Skip question (0 pts)">⏭ Skip</button>
       </div>
       <div class="run-output" id="runOutput" aria-live="polite"></div>
+      <div id="mentorPanel" aria-live="polite"></div>
     </article>
     <div style="margin-top:14px;text-align:center">
       <button class="btn btn-ghost" onclick="abortInterview()" style="font-size:13px">End round early</button>
@@ -3020,11 +4286,13 @@ function runIv(){
   const out = $('#runOutput');
   try{
     const r = execSelect(iv.db, sql);
+    iv.lastRun = {user:r, expected: iv.lastRun ? iv.lastRun.expected : null, error:null, sql};
     out.innerHTML = `
       <div class="run-status ok">▶ Query ran · ${r.rows.length} row${r.rows.length===1?'':'s'}</div>
       ${renderTables([{name:'your result', cols:r.cols, rows:r.rows}])}
     `;
   }catch(e){
+    iv.lastRun = {user:null, expected: iv.lastRun ? iv.lastRun.expected : null, error:e.message || String(e), sql};
     out.innerHTML = `
       <div class="run-status err">⚠ Query error</div>
       <div class="error-block">${esc(e.message || String(e))}</div>
@@ -3040,6 +4308,7 @@ function checkIv(){
   try{ userRes = execSelect(iv.db, sql); }
   catch(e){
     iv.qAttempts++;
+    iv.lastRun = {user:null, expected: iv.lastRun ? iv.lastRun.expected : null, error:e.message || String(e), sql};
     out.innerHTML = `
       <div class="run-status err">⚠ Query error</div>
       <div class="error-block">${esc(e.message || String(e))}</div>
@@ -3056,6 +4325,7 @@ function checkIv(){
     return;
   }
   const correct = compareResults(userRes, expectedRes, q.ordered);
+  iv.lastRun = {user:userRes, expected:expectedRes, error:null, sql};
   if(correct){
     const elapsed = Math.round((Date.now() - iv.qStart) / 1000);
     const cfg = IV_DIFF_CONFIG[iv.difficulty];
@@ -3215,6 +4485,906 @@ function finishInterview(){
     </div>
   `;
   iv = null;
+}
+
+/* ============ Schema Designer & ER Diagrams ============ */
+const ER_TABLE_W = 210;
+const ER_HEADER_H = 36;
+const ER_ROW_H = 28;
+
+function erTableHeight(table){ return ER_HEADER_H + table.columns.length * ER_ROW_H; }
+
+const SCHEMAS = [
+  {
+    id:'ecommerce', title:'E-commerce store', icon:'🛒', iconBg:'#ec4899',
+    description:'Classic OLTP design: customers, orders, line items, products, payments.',
+    canvasW:840, canvasH:480,
+    tables:[
+      {id:'customers', x:30, y:50, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'name',type:'VARCHAR(100)'},
+        {name:'email',type:'VARCHAR(255)'},
+        {name:'created_at',type:'DATETIME'}
+      ]},
+      {id:'orders', x:300, y:30, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'customer_id',type:'INT',fk:'customers.id'},
+        {name:'total',type:'DECIMAL'},
+        {name:'created_at',type:'DATETIME'}
+      ]},
+      {id:'order_items', x:580, y:30, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'order_id',type:'INT',fk:'orders.id'},
+        {name:'product_id',type:'INT',fk:'products.id'},
+        {name:'qty',type:'INT'},
+        {name:'unit_price',type:'DECIMAL'}
+      ]},
+      {id:'products', x:580, y:280, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'name',type:'VARCHAR(100)'},
+        {name:'price',type:'DECIMAL'},
+        {name:'category',type:'VARCHAR(50)'}
+      ]},
+      {id:'payments', x:300, y:280, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'order_id',type:'INT',fk:'orders.id'},
+        {name:'amount',type:'DECIMAL'},
+        {name:'status',type:'VARCHAR(20)'}
+      ]}
+    ],
+    relationships:[
+      {from:'orders.customer_id', to:'customers.id', type:'1:N',
+       label:'<b>customers → orders</b><small>One customer places many orders.</small>',
+       joinSql:'SELECT *\nFROM customers c\nJOIN orders o ON o.customer_id = c.id;'},
+      {from:'order_items.order_id', to:'orders.id', type:'1:N',
+       label:'<b>orders → order_items</b><small>Each order contains many line items.</small>',
+       joinSql:'SELECT *\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id;'},
+      {from:'order_items.product_id', to:'products.id', type:'1:N',
+       label:'<b>products → order_items</b><small>Each product can appear in many line items.</small>',
+       joinSql:'SELECT *\nFROM products p\nJOIN order_items oi ON oi.product_id = p.id;'},
+      {from:'payments.order_id', to:'orders.id', type:'1:N',
+       label:'<b>orders → payments</b><small>One order may have multiple payment records.</small>',
+       joinSql:'SELECT *\nFROM orders o\nLEFT JOIN payments pm ON pm.order_id = o.id;'}
+    ],
+    notes:'<b>M:N implied:</b> Through <code>order_items</code>, every order is linked to many products, and every product to many orders — a junction-table M:N.'
+  },
+  {
+    id:'blog', title:'Blog with tags', icon:'📝', iconBg:'#0ea5e9',
+    description:'Users post articles; posts have comments; posts ↔ tags via junction table.',
+    canvasW:840, canvasH:480,
+    tables:[
+      {id:'users', x:30, y:40, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'name',type:'VARCHAR(100)'},
+        {name:'joined',type:'DATETIME'}
+      ]},
+      {id:'posts', x:300, y:30, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'user_id',type:'INT',fk:'users.id'},
+        {name:'title',type:'VARCHAR(200)'},
+        {name:'created_at',type:'DATETIME'}
+      ]},
+      {id:'comments', x:580, y:30, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'post_id',type:'INT',fk:'posts.id'},
+        {name:'user_id',type:'INT',fk:'users.id'},
+        {name:'body',type:'TEXT'}
+      ]},
+      {id:'post_tags', x:300, y:300, columns:[
+        {name:'post_id',type:'INT',pk:'composite',fk:'posts.id'},
+        {name:'tag_id',type:'INT',pk:'composite',fk:'tags.id'}
+      ]},
+      {id:'tags', x:580, y:300, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'name',type:'VARCHAR(50)'}
+      ]}
+    ],
+    relationships:[
+      {from:'posts.user_id', to:'users.id', type:'1:N',
+       label:'<b>users → posts</b><small>Each user can author many posts.</small>',
+       joinSql:'SELECT u.name, p.title\nFROM users u\nJOIN posts p ON p.user_id = u.id;'},
+      {from:'comments.post_id', to:'posts.id', type:'1:N',
+       label:'<b>posts → comments</b><small>Each post receives many comments.</small>',
+       joinSql:'SELECT p.title, c.body\nFROM posts p\nJOIN comments c ON c.post_id = p.id;'},
+      {from:'comments.user_id', to:'users.id', type:'1:N',
+       label:'<b>users → comments</b><small>Same user can post many comments.</small>',
+       joinSql:'SELECT u.name, c.body\nFROM users u\nJOIN comments c ON c.user_id = u.id;'},
+      {from:'post_tags.post_id', to:'posts.id', type:'1:N',
+       label:'<b>posts → post_tags</b><small>One post links to multiple tag rows.</small>',
+       joinSql:'SELECT p.title, pt.tag_id\nFROM posts p\nJOIN post_tags pt ON pt.post_id = p.id;'},
+      {from:'post_tags.tag_id', to:'tags.id', type:'1:N',
+       label:'<b>tags → post_tags</b><small>One tag links to multiple post rows.</small>',
+       joinSql:'SELECT t.name, pt.post_id\nFROM tags t\nJOIN post_tags pt ON pt.tag_id = t.id;'}
+    ],
+    derivedRelationships:[
+      {type:'M:N', label:'<b>posts ↔ tags (via post_tags)</b>',
+       desc:'Each post can have many tags; each tag can be on many posts. The junction table <code>post_tags</code> holds (post_id, tag_id) pairs.',
+       joinSql:'SELECT p.title, t.name\nFROM posts p\nJOIN post_tags pt ON pt.post_id = p.id\nJOIN tags t ON t.id = pt.tag_id;'}
+    ],
+    notes:'<b>Junction table pattern.</b> The PK of <code>post_tags</code> is the composite (post_id, tag_id) — preventing duplicate tag assignments.'
+  },
+  {
+    id:'saas', title:'SaaS subscriptions', icon:'📈', iconBg:'#14b8a6',
+    description:'Users subscribe to plans; subscriptions generate invoices over time.',
+    canvasW:840, canvasH:420,
+    tables:[
+      {id:'users', x:30, y:40, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'email',type:'VARCHAR(255)'},
+        {name:'signed_up',type:'DATETIME'}
+      ]},
+      {id:'plans', x:30, y:240, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'name',type:'VARCHAR(50)'},
+        {name:'monthly_price',type:'DECIMAL'}
+      ]},
+      {id:'subscriptions', x:320, y:100, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'user_id',type:'INT',fk:'users.id'},
+        {name:'plan_id',type:'INT',fk:'plans.id'},
+        {name:'started',type:'DATE'},
+        {name:'ended',type:'DATE'}
+      ]},
+      {id:'invoices', x:610, y:120, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'subscription_id',type:'INT',fk:'subscriptions.id'},
+        {name:'amount',type:'DECIMAL'},
+        {name:'paid_at',type:'DATETIME'}
+      ]}
+    ],
+    relationships:[
+      {from:'subscriptions.user_id', to:'users.id', type:'1:N',
+       label:'<b>users → subscriptions</b><small>A user can have many subscriptions over time (upgrades, restarts).</small>',
+       joinSql:'SELECT u.email, s.started\nFROM users u\nJOIN subscriptions s ON s.user_id = u.id;'},
+      {from:'subscriptions.plan_id', to:'plans.id', type:'1:N',
+       label:'<b>plans → subscriptions</b><small>Each plan has many subscribers.</small>',
+       joinSql:'SELECT p.name, COUNT(*) AS subs\nFROM plans p\nJOIN subscriptions s ON s.plan_id = p.id\nGROUP BY p.name;'},
+      {from:'invoices.subscription_id', to:'subscriptions.id', type:'1:N',
+       label:'<b>subscriptions → invoices</b><small>Each subscription accumulates monthly invoices.</small>',
+       joinSql:'SELECT s.id, SUM(i.amount) AS lifetime_revenue\nFROM subscriptions s\nJOIN invoices i ON i.subscription_id = s.id\nGROUP BY s.id;'}
+    ],
+    notes:'<b>Tip:</b> An "active" subscription = <code>started &le; today</code> AND (<code>ended IS NULL</code> OR <code>ended &gt; today</code>). Sum the linked plan\'s <code>monthly_price</code> across active subs to get live MRR.'
+  },
+  {
+    id:'mn-roles', title:'Many-to-many: users & roles', icon:'🔗', iconBg:'#a855f7',
+    description:'Pure junction-table pattern. Users get many roles; roles cover many users.',
+    canvasW:660, canvasH:280,
+    tables:[
+      {id:'users', x:30, y:50, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'name',type:'VARCHAR(100)'},
+        {name:'email',type:'VARCHAR(255)'}
+      ]},
+      {id:'user_roles', x:240, y:80, columns:[
+        {name:'user_id',type:'INT',pk:'composite',fk:'users.id'},
+        {name:'role_id',type:'INT',pk:'composite',fk:'roles.id'}
+      ]},
+      {id:'roles', x:440, y:50, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'name',type:'VARCHAR(50)'},
+        {name:'description',type:'TEXT'}
+      ]}
+    ],
+    relationships:[
+      {from:'user_roles.user_id', to:'users.id', type:'1:N',
+       label:'<b>users → user_roles</b><small>Each user appears in multiple junction rows.</small>',
+       joinSql:'SELECT u.name, ur.role_id\nFROM users u\nJOIN user_roles ur ON ur.user_id = u.id;'},
+      {from:'user_roles.role_id', to:'roles.id', type:'1:N',
+       label:'<b>roles → user_roles</b><small>Each role appears in multiple junction rows.</small>',
+       joinSql:'SELECT r.name, ur.user_id\nFROM roles r\nJOIN user_roles ur ON ur.role_id = r.id;'}
+    ],
+    derivedRelationships:[
+      {type:'M:N', label:'<b>users ↔ roles (via user_roles)</b>',
+       desc:'Every user can have many roles; every role can be granted to many users.',
+       joinSql:'SELECT u.name, r.name AS role\nFROM users u\nJOIN user_roles ur ON ur.user_id = u.id\nJOIN roles r ON r.id = ur.role_id;'}
+    ],
+    notes:'<b>Composite PK trick:</b> <code>PRIMARY KEY (user_id, role_id)</code> on the junction prevents granting the same role twice to the same user. The pair itself is the key — no separate id column needed.'
+  }
+];
+
+const NORM_STAGES = [
+  {
+    badge:'0NF', status:'issue', title:'Unnormalized — one giant spreadsheet',
+    issue:'<b>Problems:</b> Multi-value cells (Items, Prices). Customer info repeats per row. Adding a new item means reaching into a CSV string. Filtering by item name is impossible without string-splitting.',
+    canvasW:560, canvasH:200,
+    tables:[
+      {id:'orders_flat', x:30, y:30, columns:[
+        {name:'order_id',type:'INT',pk:true},
+        {name:'customer',type:'VARCHAR(100)'},
+        {name:'email',type:'VARCHAR(255)'},
+        {name:'items_csv',type:'TEXT'},
+        {name:'prices_csv',type:'TEXT'}
+      ]}
+    ],
+    relationships:[],
+    sample:T('sample data','order_id, customer, email, items_csv, prices_csv',[
+      [1,'Asha','a@x.com','Pen, Mug','10, 90'],
+      [2,'Asha','a@x.com','Book','250'],
+      [3,'Ben','b@x.com','Pen, Pen, Lamp','10, 10, 450']
+    ])
+  },
+  {
+    badge:'1NF', status:'partial', title:'1NF — atomic values, one fact per cell',
+    issue:'<b>Fixed:</b> Multi-value cells split into rows. <br><b>Still wrong:</b> Customer name and email repeat for every line item — update anomaly waiting to happen. Composite PK <code>(order_id, item)</code> but customer info depends only on <code>order_id</code>.',
+    canvasW:560, canvasH:230,
+    tables:[
+      {id:'orders_flat', x:30, y:30, columns:[
+        {name:'order_id',type:'INT',pk:'composite'},
+        {name:'item',type:'VARCHAR(50)',pk:'composite'},
+        {name:'customer',type:'VARCHAR(100)'},
+        {name:'email',type:'VARCHAR(255)'},
+        {name:'price',type:'DECIMAL'}
+      ]}
+    ],
+    relationships:[],
+    sample:T('sample data','order_id, item, customer, email, price',[
+      [1,'Pen','Asha','a@x.com',10],
+      [1,'Mug','Asha','a@x.com',90],
+      [2,'Book','Asha','a@x.com',250],
+      [3,'Pen','Ben','b@x.com',10],
+      [3,'Lamp','Ben','b@x.com',450]
+    ])
+  },
+  {
+    badge:'2NF', status:'partial', title:'2NF — no partial dependencies',
+    issue:'<b>Fixed:</b> Customer info moved out into <code>orders</code>, depending on the full key. <br><b>Still wrong:</b> Customer name and email together depend on a customer ENTITY, not the order. Same customer placing 100 orders still repeats their email 100 times.',
+    canvasW:680, canvasH:260,
+    tables:[
+      {id:'orders', x:30, y:30, columns:[
+        {name:'order_id',type:'INT',pk:true},
+        {name:'customer',type:'VARCHAR(100)'},
+        {name:'email',type:'VARCHAR(255)'}
+      ]},
+      {id:'order_items', x:380, y:30, columns:[
+        {name:'order_id',type:'INT',pk:'composite',fk:'orders.order_id'},
+        {name:'item',type:'VARCHAR(50)',pk:'composite'},
+        {name:'price',type:'DECIMAL'}
+      ]}
+    ],
+    relationships:[
+      {from:'order_items.order_id', to:'orders.order_id', type:'1:N',
+       label:'<b>orders → order_items</b><small>Each order has many line items.</small>',
+       joinSql:'SELECT o.customer, oi.item\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.order_id;'}
+    ],
+    sample:null
+  },
+  {
+    badge:'3NF', status:'fixed', title:'3NF — no transitive dependencies',
+    issue:'<b>Fixed:</b> Customer entity extracted. Now every non-key column depends ONLY on its table\'s key, never on another non-key column. Update an email in <i>one</i> place. <br><b>This is what production schemas look like.</b>',
+    canvasW:820, canvasH:280,
+    tables:[
+      {id:'customers', x:30, y:30, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'name',type:'VARCHAR(100)'},
+        {name:'email',type:'VARCHAR(255)'}
+      ]},
+      {id:'orders', x:310, y:30, columns:[
+        {name:'id',type:'INT',pk:true},
+        {name:'customer_id',type:'INT',fk:'customers.id'}
+      ]},
+      {id:'order_items', x:580, y:30, columns:[
+        {name:'order_id',type:'INT',pk:'composite',fk:'orders.id'},
+        {name:'item',type:'VARCHAR(50)',pk:'composite'},
+        {name:'price',type:'DECIMAL'}
+      ]}
+    ],
+    relationships:[
+      {from:'orders.customer_id', to:'customers.id', type:'1:N',
+       label:'<b>customers → orders</b><small>One customer, many orders.</small>',
+       joinSql:'SELECT c.name, o.id\nFROM customers c\nJOIN orders o ON o.customer_id = c.id;'},
+      {from:'order_items.order_id', to:'orders.id', type:'1:N',
+       label:'<b>orders → order_items</b><small>One order, many items.</small>',
+       joinSql:'SELECT o.id, oi.item\nFROM orders o\nJOIN order_items oi ON oi.order_id = o.id;'}
+    ],
+    sample:null
+  }
+];
+
+/* ---------- Schema rendering ---------- */
+let curSchemaCtx = null; // {schema, relationships, idPrefix}
+
+function renderSchemaLanding(){
+  hideFeedback();
+  const items = SCHEMAS.map(s => `
+    <button class="schema-item" onclick="renderSchema('${s.id}')" aria-label="${esc(s.title)}">
+      <div class="schema-icon" style="background:${s.iconBg}" aria-hidden="true">${s.icon}</div>
+      <div class="schema-info"><h4>${esc(s.title)}</h4><p>${esc(s.description)}</p></div>
+      <div class="schema-arrow" aria-hidden="true">›</div>
+    </button>
+  `).join('');
+  main.innerHTML = `
+    <div class="lesson-header">
+      <button class="close-btn" onclick="renderHome()" aria-label="Back">×</button>
+      <div style="flex:1;font-weight:800;font-size:14px;color:var(--muted)">Schemas &amp; ER diagrams</div>
+    </div>
+    <article class="card card-concept">
+      <span class="card-badge b-concept">🗂 Schema Designer</span>
+      <h2>Pick a schema to explore</h2>
+      <p>Visual ER diagrams of real-world relational designs. Click any relationship to highlight the join path and watch the connection animate.</p>
+      <div class="schema-list" style="margin-top:14px">${items}</div>
+      <button class="schema-item" onclick="renderNormalization()" aria-label="Normalization journey" style="margin-top:12px">
+        <div class="schema-icon" style="background:#3b82f6" aria-hidden="true">📐</div>
+        <div class="schema-info"><h4>Normalization journey: 1NF → 2NF → 3NF</h4><p>The same data shown at each normalization stage, with sample rows.</p></div>
+        <div class="schema-arrow" aria-hidden="true">›</div>
+      </button>
+    </article>
+  `;
+}
+
+function renderSchema(schemaId){
+  const schema = SCHEMAS.find(s => s.id === schemaId);
+  if(!schema) return renderSchemaLanding();
+  hideFeedback();
+  curSchemaCtx = {schema, idPrefix:`rel-${schema.id}`};
+  main.innerHTML = `
+    <div class="lesson-header">
+      <button class="close-btn" onclick="renderSchemaLanding()" aria-label="Back">×</button>
+      <div style="flex:1;font-weight:800;font-size:14px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${schema.icon} ${esc(schema.title)}</div>
+    </div>
+    <article class="card card-concept">
+      <span class="card-badge b-concept">🗂 ER Diagram</span>
+      <h2>${esc(schema.title)}</h2>
+      <p>${esc(schema.description)}</p>
+      ${renderSchemaCanvas(schema)}
+      <div class="legend">
+        <span><span class="sw" style="background:var(--gold)"></span>PK · primary key</span>
+        <span><span class="sw" style="background:var(--blue)"></span>FK · foreign key</span>
+        <span><span class="sw" style="background:#94a3b8;border-radius:1px;height:3px;align-self:center"></span>relationship</span>
+      </div>
+      ${schema.notes ? `<div class="mn-callout" style="margin-top:14px">${schema.notes}</div>` : ''}
+      <h3 style="font-size:14px;font-weight:900;margin-top:18px;letter-spacing:-.2px">Relationships</h3>
+      <p style="font-size:13px;color:var(--muted);margin-top:2px">Tap one to highlight the join path and animate the connection.</p>
+      ${renderRelList(schema)}
+      <div id="joinSqlBox" class="join-sql-box" style="display:none"></div>
+    </article>
+    <div class="footer-actions" style="margin-top:18px">
+      <button class="btn btn-secondary" onclick="renderSchemaLanding()">← All schemas</button>
+    </div>
+  `;
+}
+
+function renderSchemaCanvas(schema){
+  const paths = schema.relationships.map((rel, i) => {
+    const p = buildErPath(schema, rel);
+    return {...p, idx:i};
+  });
+  const pathsSvg = paths.map((p, i) => `
+    <path id="${curSchemaCtx ? curSchemaCtx.idPrefix : 'rel-'+schema.id}-${i}" d="${p.d}" class="rel-line" data-rel-idx="${i}" />
+    <path d="${p.d}" class="rel-line hit" data-rel-idx="${i}" onclick="highlightRel(${i})" />
+    <text x="${p.midX}" y="${p.midY - 5}" class="rel-label">${schema.relationships[i].type}</text>
+  `).join('');
+  const tablesHtml = schema.tables.map(t => renderErTable(t)).join('');
+  return `
+    <div class="schema-canvas">
+      <div class="schema-canvas-inner" style="width:${schema.canvasW}px;height:${schema.canvasH}px">
+        <svg class="schema-svg" viewBox="0 0 ${schema.canvasW} ${schema.canvasH}" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${pathsSvg}</svg>
+        <div class="schema-tables">${tablesHtml}</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderErTable(table){
+  const rows = table.columns.map(col => {
+    const isPk = !!col.pk;
+    const isFk = !!col.fk;
+    const cls = (isPk?'pk-row ':'') + (isFk?'fk-row ':'');
+    const badges = (isPk?'<span class="kpi pk">PK</span>':'') + (isFk?'<span class="kpi fk">FK</span>':'');
+    return `<div class="er-row ${cls.trim()}" data-col="${table.id}.${col.name}">
+      <span class="col-name">${badges} ${esc(col.name)}</span>
+      <span class="col-type">${esc(col.type)}</span>
+    </div>`;
+  }).join('');
+  return `<div class="er-table" style="left:${table.x}px;top:${table.y}px" data-table="${table.id}">
+    <div class="er-table-header">${esc(table.id)}</div>${rows}
+  </div>`;
+}
+
+function buildErPath(schema, rel){
+  const [fromT, fromCol] = rel.from.split('.');
+  const [toT, toCol] = rel.to.split('.');
+  const fT = schema.tables.find(t => t.id === fromT);
+  const tT = schema.tables.find(t => t.id === toT);
+  const fI = fT.columns.findIndex(c => c.name === fromCol);
+  const tI = tT.columns.findIndex(c => c.name === toCol);
+  const fY = fT.y + ER_HEADER_H + fI * ER_ROW_H + ER_ROW_H/2;
+  const tY = tT.y + ER_HEADER_H + tI * ER_ROW_H + ER_ROW_H/2;
+  const fCx = fT.x + ER_TABLE_W/2;
+  const tCx = tT.x + ER_TABLE_W/2;
+  let fX, tX, c1x, c2x;
+  if(tCx < fCx - 30){
+    fX = fT.x;            tX = tT.x + ER_TABLE_W;
+    const dx = Math.min(80, (fX - tX) / 2);
+    c1x = fX - dx;        c2x = tX + dx;
+  } else if(tCx > fCx + 30){
+    fX = fT.x + ER_TABLE_W; tX = tT.x;
+    const dx = Math.min(80, (tX - fX) / 2);
+    c1x = fX + dx;        c2x = tX - dx;
+  } else {
+    fX = fT.x + ER_TABLE_W; tX = tT.x + ER_TABLE_W;
+    c1x = fX + 70;          c2x = tX + 70;
+  }
+  const d = `M ${fX} ${fY} C ${c1x} ${fY}, ${c2x} ${tY}, ${tX} ${tY}`;
+  const midX = (fX + c1x + c2x + tX) / 4;
+  const midY = (fY + tY) / 2;
+  return {d, midX, midY};
+}
+
+function renderRelList(schema){
+  const items = schema.relationships.map((r, i) => `
+    <button class="rel-item" data-rel-item="${i}" onclick="highlightRel(${i})" aria-label="${esc(r.from)} to ${esc(r.to)}">
+      <span class="rel-type-pill one-to-many">${r.type}</span>
+      <span class="rel-desc">${r.label}<small><code>${esc(r.from)}</code> → <code>${esc(r.to)}</code></small></span>
+    </button>
+  `).join('');
+  const derived = (schema.derivedRelationships || []).map((r, i) => `
+    <button class="rel-item" onclick="showDerivedRel(${i})" aria-label="${esc(r.label.replace(/<[^>]+>/g,''))}">
+      <span class="rel-type-pill many-to-many">${r.type}</span>
+      <span class="rel-desc">${r.label}<small>${r.desc}</small></span>
+    </button>
+  `).join('');
+  return `<div class="rel-list">${items}${derived}</div>`;
+}
+
+function highlightRel(idx){
+  if(!curSchemaCtx) return;
+  const {schema, idPrefix} = curSchemaCtx;
+  const rel = schema.relationships[idx];
+  // clear previous
+  document.querySelectorAll('.rel-line').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.rel-item').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.er-row').forEach(r => r.classList.remove('highlight'));
+  document.querySelectorAll('.join-dot').forEach(d => d.remove());
+  // activate
+  document.querySelectorAll(`.rel-line[data-rel-idx="${idx}"]`).forEach(l => l.classList.add('active'));
+  const item = document.querySelector(`[data-rel-item="${idx}"]`);
+  if(item) item.classList.add('active');
+  const fromRow = document.querySelector(`[data-col="${rel.from}"]`);
+  const toRow = document.querySelector(`[data-col="${rel.to}"]`);
+  if(fromRow) fromRow.classList.add('highlight');
+  if(toRow) toRow.classList.add('highlight');
+  // animate dot
+  const svg = document.querySelector('.schema-svg');
+  if(svg){
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+    const XLINK_NS = 'http://www.w3.org/1999/xlink';
+    const dot = document.createElementNS(SVG_NS, 'circle');
+    dot.setAttribute('r', '7');
+    dot.setAttribute('class', 'join-dot');
+    const motion = document.createElementNS(SVG_NS, 'animateMotion');
+    motion.setAttribute('dur', '1.6s');
+    motion.setAttribute('repeatCount', '3');
+    motion.setAttribute('rotate', '0');
+    const mpath = document.createElementNS(SVG_NS, 'mpath');
+    const pathId = `${idPrefix}-${idx}`;
+    mpath.setAttribute('href', '#' + pathId);
+    mpath.setAttributeNS(XLINK_NS, 'xlink:href', '#' + pathId);
+    motion.appendChild(mpath);
+    dot.appendChild(motion);
+    svg.appendChild(dot);
+    setTimeout(() => { if(dot.parentNode) dot.parentNode.removeChild(dot); }, 5000);
+  }
+  // show SQL
+  const box = document.getElementById('joinSqlBox');
+  if(box){
+    box.style.display = 'block';
+    box.innerHTML = `
+      <div class="result-label">join SQL</div>
+      <pre class="code">${hl(rel.joinSql)}</pre>
+    `;
+  }
+}
+
+function showDerivedRel(idx){
+  if(!curSchemaCtx) return;
+  const rel = curSchemaCtx.schema.derivedRelationships[idx];
+  document.querySelectorAll('.rel-line').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.rel-item').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.er-row').forEach(r => r.classList.remove('highlight'));
+  document.querySelectorAll('.join-dot').forEach(d => d.remove());
+  const box = document.getElementById('joinSqlBox');
+  if(box){
+    box.style.display = 'block';
+    box.innerHTML = `
+      <div class="result-label">M:N join SQL</div>
+      <pre class="code">${hl(rel.joinSql)}</pre>
+    `;
+  }
+}
+
+/* ---------- Normalization view ---------- */
+let curNormStage = 0;
+
+function renderNormalization(){
+  curNormStage = 0;
+  hideFeedback();
+  main.innerHTML = `
+    <div class="lesson-header">
+      <button class="close-btn" onclick="renderSchemaLanding()" aria-label="Back">×</button>
+      <div style="flex:1;font-weight:800;font-size:14px;color:var(--muted)">Normalization journey</div>
+    </div>
+    <article class="card card-concept">
+      <span class="card-badge b-concept">📐 Normalization</span>
+      <h2>From spreadsheet to 3NF</h2>
+      <p>The same orders dataset, taken from a messy single-table layout through 1NF, 2NF, and 3NF. Click each stage to see what gets fixed and what's still wrong.</p>
+      <div class="norm-stages" role="tablist">
+        ${NORM_STAGES.map((s, i) => `
+          <button class="norm-tab ${i===0?'active':''}" data-stage="${i}" onclick="setNormStage(${i})" role="tab" aria-selected="${i===0}">${s.badge}</button>
+        `).join('')}
+      </div>
+      <div id="normStageContent"></div>
+    </article>
+    <div class="footer-actions" style="margin-top:18px">
+      <button class="btn btn-secondary" onclick="renderSchemaLanding()">← All schemas</button>
+      <div class="right">
+        <button class="btn btn-secondary" onclick="setNormStage(curNormStage-1)" id="normPrev">← Prev</button>
+        <button class="btn btn-primary" onclick="setNormStage(curNormStage+1)" id="normNext">Next →</button>
+      </div>
+    </div>
+  `;
+  setNormStage(0);
+}
+
+function setNormStage(i){
+  if(i < 0 || i >= NORM_STAGES.length) return;
+  curNormStage = i;
+  document.querySelectorAll('.norm-tab').forEach((tab, idx) => {
+    tab.classList.toggle('active', idx === i);
+    tab.setAttribute('aria-selected', idx === i ? 'true' : 'false');
+  });
+  const stage = NORM_STAGES[i];
+  // build a schema-like object for canvas
+  const fakeSchema = {
+    id:'norm-'+i,
+    canvasW:stage.canvasW, canvasH:stage.canvasH,
+    tables:stage.tables,
+    relationships:stage.relationships || []
+  };
+  curSchemaCtx = {schema:fakeSchema, idPrefix:'norm-'+i};
+  document.getElementById('normStageContent').innerHTML = `
+    <div class="norm-stage-header">
+      <span class="norm-stage-badge ${stage.status}">${stage.badge}</span>
+      <h3>${esc(stage.title)}</h3>
+    </div>
+    <div class="norm-issue ${stage.status}">${stage.issue}</div>
+    ${renderSchemaCanvas(fakeSchema)}
+    ${stage.relationships && stage.relationships.length ? renderRelList(fakeSchema) : ''}
+    ${stage.sample ? `<div class="norm-sample-label">Sample rows</div>${renderTable(stage.sample)}` : ''}
+    <div id="joinSqlBox" class="join-sql-box" style="display:none"></div>
+  `;
+  document.getElementById('normPrev').disabled = (i === 0);
+  document.getElementById('normNext').disabled = (i === NORM_STAGES.length - 1);
+}
+
+/* ============ AI Mentor ============ */
+let lastChallengeRun = {user:null, expected:null, error:null, sql:''};
+let mentor = {issues:[], issueIdx:0, hintLevel:0};
+
+function buildExecutionMentorIssue(sql, errorMessage){
+  const sqlText = String(sql || '');
+  const msg = String(errorMessage || '');
+  const lowerSql = sqlText.toLowerCase();
+  const lowerMsg = msg.toLowerCase();
+
+  const issue = {
+    id: 'execution-error',
+    tag: 'SQL error',
+    title: 'Your query has a syntax or execution error',
+    hints: [
+      'The SQL engine rejected this query before it could return rows. Read the error message and the clause near it.',
+      'Check for typos, extra characters, missing commas, missing quotes, or a value that is not valid SQL syntax.',
+      'Fix the parser error first; once the query runs, we can check logic like joins, grouping, and filters.'
+    ]
+  };
+
+  if(/\blimit\b/.test(lowerSql) && /\blimit\s+\d+[a-z_]+\b/i.test(sqlText)){
+    issue.tag = 'Syntax';
+    issue.title = 'Malformed LIMIT value';
+    issue.hints = [
+      'LIMIT expects a whole number, like 3 or 10.',
+      'Your LIMIT clause appears to contain extra characters after the number. Remove them so the database sees only an integer.',
+      'For example: <code>LIMIT 3</code> is valid; <code>LIMIT 3w</code> is not.'
+    ];
+    return issue;
+  }
+
+  if(/near\s+["']?[^"']+["']?\s*:\s*syntax error/i.test(msg) || /syntax error/i.test(lowerMsg) || /unrecognized token/i.test(lowerMsg) || /incomplete input/i.test(lowerMsg)){
+    if(/\bselect\s+[\w.]+\s+[\w.]+\s+from\b/i.test(sqlText)){
+      issue.tag = 'Syntax';
+      issue.title = 'Possible missing comma in SELECT list';
+      issue.hints = [
+        'Two column names appear to be written next to each other with no comma between them.',
+        'SELECT column names must be separated by commas.',
+        'Try: <code>SELECT name, price FROM products</code>.'
+      ];
+      return issue;
+    }
+    if(/\bwhere\s*;?\s*$/i.test(sqlText) || /\bgroup\s+by\s*;?\s*$/i.test(sqlText) || /\border\s+by\s*;?\s*$/i.test(sqlText)){
+      issue.tag = 'Syntax';
+      issue.title = 'Your clause is incomplete';
+      issue.hints = [
+        'The database expected something after the keyword you wrote.',
+        'Check the end of the query: a WHERE, GROUP BY, ORDER BY, or LIMIT clause may be missing its expression.',
+        'Read the line near the error and fill in the missing column, operator, or value.'
+      ];
+      return issue;
+    }
+    if(/\bselect\s+from\b/i.test(sqlText) || /\bselect\s*;?$/i.test(sqlText)){
+      issue.tag = 'Syntax';
+      issue.title = 'SELECT is missing its column list';
+      issue.hints = [
+        'The SELECT clause needs one or more columns before FROM.',
+        'Add the column names the prompt asks for, or use <code>*</code> if all columns are required.',
+        'Example: <code>SELECT * FROM products</code>.'
+      ];
+      return issue;
+    }
+    issue.tag = 'Syntax';
+    issue.title = 'SQL parser error';
+    issue.hints = [
+      'The database parser hit a syntax problem somewhere in the query.',
+      'Look around the token mentioned in the error message and compare it to valid SQL keyword order.',
+      'Fix the syntax first; then rerun the query to check the logic.'
+    ];
+    return issue;
+  }
+
+  if(/no such column/i.test(lowerMsg) || /unknown column/i.test(lowerMsg)){
+    issue.tag = 'Schema';
+    issue.title = 'Unknown column or alias';
+    issue.hints = [
+      'The query references a column name that the current table does not have, or an alias used too early.',
+      'Check spelling, table aliases, and whether the column belongs to the table you joined.',
+      'If you used an alias in WHERE, remember SELECT aliases are usually not visible there.'
+    ];
+    return issue;
+  }
+
+  if(/wrong number of arguments/i.test(lowerMsg)){
+    issue.tag = 'Function';
+    issue.title = 'Function call has the wrong number of arguments';
+    issue.hints = [
+      'A SQL function is being called with too many or too few inputs.',
+      'Check the function name and its parentheses carefully.',
+      'Look up the expected signature for the function you used.'
+    ];
+    return issue;
+  }
+
+  if(/misuse of aggregate/i.test(lowerMsg)){
+    issue.tag = 'GROUP BY';
+    issue.title = 'Aggregate used in the wrong place';
+    issue.hints = [
+      'An aggregate like COUNT or SUM is being used where a raw row expression was expected.',
+      'Aggregates usually belong in SELECT or HAVING, not in WHERE.',
+      'Move the filter to HAVING or rewrite the logic around a grouped result.'
+    ];
+    return issue;
+  }
+
+  return issue;
+}
+
+
+const MENTOR_RULES = [
+  {id:'no-from', tag:'Syntax', title:'<code>SELECT</code> without <code>FROM</code>',
+   test:s=>/\bSELECT\b/i.test(s) && !/\bFROM\b/i.test(s) && !/^\s*SELECT\s+\d+\s*(;|$)/i.test(s),
+   hints:[
+     'Your query has SELECT but no FROM clause. The database needs to know which table to read from.',
+     'Look at the tables listed above the editor — pick the one that holds the data the prompt asks about.',
+     'Add <code>FROM &lt;table_name&gt;</code> after your column list. That gives SELECT something to read.'
+   ]},
+  {id:'unbalanced-paren', tag:'Syntax', title:'Parentheses don\'t balance',
+   test:s=>{const o=(s.match(/\(/g)||[]).length, c=(s.match(/\)/g)||[]).length; return o !== c;},
+   hints:[
+     'Count your parentheses — they don\'t balance.',
+     'Each <code>(</code> needs a matching <code>)</code>. The usual suspects: subqueries, function calls, GROUP BY expressions, OVER() clauses.',
+     'Read your query left to right. For every <code>(</code>, find its matching <code>)</code>. The unmatched one points to your bug.'
+   ]},
+  {id:'null-eq', tag:'NULL pitfall', title:'Comparing with NULL using <code>=</code> or <code>!=</code>',
+   test:s=>/\b(WHERE|AND|OR)\s+[\w.()]+\s*(=|!=|<>)\s*NULL\b/i.test(s),
+   hints:[
+     'Look carefully at your WHERE clause. There\'s a comparison that will silently return zero rows.',
+     'NULL means "unknown". Comparing anything to "unknown" with <code>=</code> returns "unknown" — which SQL treats as FALSE. So <code>WHERE col = NULL</code> never matches.',
+     'Replace <code>= NULL</code> with <code>IS NULL</code>, and <code>!= NULL</code> with <code>IS NOT NULL</code>. These are the only operators that work around NULL.'
+   ]},
+  {id:'not-in-subq', tag:'NULL pitfall', title:'<code>NOT IN (SELECT …)</code> is dangerous around NULLs',
+   test:s=>/\bNOT\s+IN\s*\(\s*SELECT/i.test(s),
+   hints:[
+     'You\'re using NOT IN with a subquery. There\'s a classic bug lurking here…',
+     'If the subquery returns even one NULL, the entire NOT IN evaluates to UNKNOWN — and you get zero rows back. Three-valued logic strikes again.',
+     'Switch to <code>NOT EXISTS (SELECT 1 FROM … WHERE …)</code>. Safe around NULLs, often faster, clearer intent.'
+   ]},
+  {id:'cross-join', tag:'Inefficient join', title:'Accidental cross join via comma',
+   test:s=>/\bFROM\s+\w+(?:\s+\w+)?\s*,\s*\w+/i.test(s) && !/\bJOIN\b/i.test(s),
+   hints:[
+     'Look at your FROM clause. You\'ve listed multiple tables with a comma — but I don\'t see a JOIN.',
+     'Comma-separated tables in FROM without a matching condition produce a Cartesian product: every row of A paired with every row of B. Often unintended and very slow.',
+     'Use explicit <code>JOIN … ON …</code> syntax. It\'s clearer, and you can\'t forget the ON.'
+   ]},
+  {id:'limit-no-order', tag:'Anti-pattern', title:'<code>LIMIT</code> without <code>ORDER BY</code>',
+   test:s=>/\bLIMIT\s+\d+/i.test(s) && !/\bORDER\s+BY\b/i.test(s),
+   hints:[
+     'You used LIMIT, but I don\'t see an ORDER BY. Which rows you get back depends on database mood.',
+     'Without ORDER BY, "top N" isn\'t stable. Run the same query twice → potentially different rows.',
+     'Add an ORDER BY clause that produces a deterministic ordering — usually the column that motivated the LIMIT in the first place.'
+   ]},
+  {id:'func-on-col', tag:'Optimization', title:'Function on a column in WHERE — kills index',
+   test:s=>/\bWHERE\b[\s\S]*?\b(DATE|YEAR|MONTH|UPPER|LOWER|SUBSTR|CAST|TRIM)\s*\(\s*[\w.]+\s*\)\s*(=|<|>|<=|>=|<>|!=)/i.test(s),
+   hints:[
+     'You\'re wrapping a column in a function inside WHERE. Spot anything suspicious?',
+     'When you write <code>WHERE DATE(created_at) = …</code>, the database has to compute DATE() for every row before comparing. The index on created_at can\'t help.',
+     'Rewrite as a range. Instead of <code>DATE(created_at) = \'2025-05-21\'</code>, use <code>created_at &gt;= \'2025-05-21\' AND created_at &lt; \'2025-05-22\'</code>. Same result, indexes work.'
+   ]},
+  {id:'leading-wildcard', tag:'Optimization', title:'<code>LIKE \'%…\'</code> can\'t use indexes',
+   test:s=>/\bLIKE\s+['"]%[^'"%]/i.test(s),
+   hints:[
+     'Your LIKE pattern starts with %. Even if there\'s an index on the column, the database can\'t use it.',
+     'B-tree indexes seek by prefix. <code>LIKE \'abc%\'</code> works — the DB knows where "abc" starts. <code>LIKE \'%abc\'</code> doesn\'t — could be anywhere.',
+     'If you really need contains-search at scale, look at full-text indexing (e.g. <code>MATCH() AGAINST()</code> in MySQL).'
+   ]},
+  {id:'select-star-join', tag:'Style', title:'<code>SELECT *</code> with a JOIN',
+   test:s=>/\bSELECT\s+\*\s+FROM[\s\S]+?\bJOIN\b/i.test(s),
+   hints:[
+     'You\'re selecting <code>*</code> in a query with a JOIN. Usually a sign you haven\'t picked which columns you actually need.',
+     'SELECT * with JOINs returns the join-key column twice, includes columns you don\'t need, and blocks covering-index optimizations.',
+     'List the specific columns you need, qualified by alias (e.g. <code>c.name, o.total</code>). Cleaner SQL, faster, more interview-friendly.'
+   ]},
+  {id:'having-no-group', tag:'GROUP BY mistake', title:'<code>HAVING</code> without GROUP BY or aggregates',
+   test:s=>/\bHAVING\b/i.test(s) && !/\bGROUP\s+BY\b/i.test(s) && !/\b(COUNT|SUM|AVG|MIN|MAX)\s*\(/i.test(s),
+   hints:[
+     'You have HAVING but no GROUP BY and no aggregate function. That\'s almost always a mistake.',
+     'HAVING filters GROUPS after aggregation. If you\'re filtering raw rows, you want WHERE.',
+     'Replace <code>HAVING</code> with <code>WHERE</code>. The query should work.'
+   ]},
+  {id:'agg-no-group', tag:'GROUP BY mistake', title:'Aggregate mixed with raw column, no GROUP BY',
+   test:s=>{
+     const m = s.match(/\bSELECT\s+([\s\S]+?)\bFROM\b/i);
+     if(!m) return false;
+     const proj = m[1];
+     const hasAgg = /\b(COUNT|SUM|AVG|MIN|MAX)\s*\(/i.test(proj);
+     // crude: count comma-separated terms and check at least one isn't fully inside an aggregate
+     const terms = proj.split(',');
+     const hasRaw = terms.some(t => !/\b(COUNT|SUM|AVG|MIN|MAX)\s*\(/i.test(t) && /[\w.]/.test(t) && !/^\s*\d+\s*$/.test(t));
+     return hasAgg && hasRaw && !/\bGROUP\s+BY\b/i.test(s);
+   },
+   hints:[
+     'You have an aggregate (COUNT, SUM, etc.) AND a non-aggregated column in SELECT — but no GROUP BY.',
+     'The database doesn\'t know whether you want ONE row (with one aggregate) or one row per category. It needs a GROUP BY.',
+     'Every non-aggregate column in SELECT must appear in GROUP BY. Decide what you\'re grouping by, then add it.'
+   ]}
+];
+
+function analyzeSql(sql){
+  if(!sql || !sql.trim()) return [];
+  return MENTOR_RULES.filter(r => { try{return r.test(sql);}catch(e){return false;} });
+}
+
+function diffAnalysis(user, expected){
+  if(!user || !expected) return null;
+  if(user.rows.length === 0 && expected.rows.length > 0){
+    return {id:'diff-empty', tag:'Wrong result', title:'Your query returned 0 rows — expected has data',
+      hints:[
+        `Expected ${expected.rows.length} row(s); you got 0. Most common cause: your WHERE clause is too restrictive.`,
+        'Common culprits: comparing strings to numbers, using AND where OR was meant, or filtering on a value that doesn\'t exist in the data.',
+        'Strip your WHERE clause and rerun. If rows come back, add conditions one at a time to find which one is killing everything.'
+      ]};
+  }
+  if(expected.rows.length > 0 && user.rows.length > expected.rows.length * 1.5){
+    return {id:'diff-many', tag:'Too many rows', title:`You returned ${user.rows.length} rows; expected ${expected.rows.length}`,
+      hints:[
+        'Too many rows usually means a JOIN without a proper ON clause, a missing GROUP BY, or UNION ALL when UNION was meant.',
+        'Cartesian joins explode row counts. Check each JOIN — does it have a matching ON condition that uniquely connects rows?',
+        'Ask yourself: "What does ONE row in the expected output represent?" Then verify your query produces ONE row per that thing.'
+      ]};
+  }
+  if(user.cols.length !== expected.cols.length){
+    return {id:'diff-cols', tag:'Wrong columns', title:`Wrong number of columns (you: ${user.cols.length}, expected: ${expected.cols.length})`,
+      hints:[
+        'Re-read the prompt. It usually states exactly which columns to return.',
+        'If you used <code>SELECT *</code>, you may have too many. If you listed columns by hand, you may be missing some.',
+        'List the columns the prompt asks for, in order. Aliases don\'t affect count — but extras or omissions do.'
+      ]};
+  }
+  if(user.rows.length === expected.rows.length){
+    return {id:'diff-values', tag:'Wrong values', title:'Right shape, but the values differ',
+      hints:[
+        'Same row count and column count — but the values aren\'t matching. Likely a JOIN, filter, or computation issue.',
+        'Compare your output to expected side by side. Where do they first differ? That\'s where to look.',
+        'If aggregates differ, recheck GROUP BY. If specific values look wrong, check your JOIN keys (joining on the wrong column?) or computations.'
+      ]};
+  }
+  return null;
+}
+
+function askMentor(src){
+  const editor = document.getElementById('sqlEditor');
+  const sql = editor ? editor.value : '';
+  let issues = analyzeSql(sql);
+  let lastRun = null;
+  if(src === 'playground') lastRun = lastChallengeRun;
+  else if(src === 'interview' && iv) lastRun = iv.lastRun;
+
+  if(lastRun && lastRun.error){
+    const execIssue = buildExecutionMentorIssue(lastRun.sql || sql, lastRun.error);
+    if(execIssue) issues = [execIssue, ...issues];
+  }
+
+  if(lastRun && lastRun.user && lastRun.expected){
+    const d = diffAnalysis(lastRun.user, lastRun.expected);
+    if(d) issues.push(d);
+  }
+
+  mentor = {issues, issueIdx:0, hintLevel:0};
+  renderMentorPanel();
+  const panel = document.getElementById('mentorPanel');
+  if(panel) panel.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+function renderMentorPanel(){
+  const panel = document.getElementById('mentorPanel');
+  if(!panel) return;
+  if(mentor.issues.length === 0){
+    panel.innerHTML = `
+      <div class="mentor-card">
+        <div class="mentor-header">
+          <div class="mentor-avatar" aria-hidden="true">🧠</div>
+          <div class="mentor-info">
+            <div class="mentor-name">SQL Mentor</div>
+            <div class="mentor-tag">Looks clean</div>
+          </div>
+          <button class="mentor-close" onclick="closeMentor()" aria-label="Close mentor">×</button>
+        </div>
+        <div class="mentor-encouragement">Your query looks structurally clean — no obvious anti-patterns or NULL traps I can see. Hit <b>Run Query</b> to see what comes back, then come ask me again if the result isn\'t what you expected!</div>
+      </div>
+    `;
+    return;
+  }
+  const issue = mentor.issues[mentor.issueIdx];
+  const total = mentor.issues.length;
+  const lastHint = mentor.hintLevel >= issue.hints.length - 1;
+  const moreIssues = mentor.issueIdx < total - 1;
+  panel.innerHTML = `
+    <div class="mentor-card">
+      <div class="mentor-header">
+        <div class="mentor-avatar" aria-hidden="true">🧠</div>
+        <div class="mentor-info">
+          <div class="mentor-name">SQL Mentor${total>1?` · Issue ${mentor.issueIdx+1} of ${total}`:''}</div>
+          <div class="mentor-tag">${issue.tag}</div>
+        </div>
+        <button class="mentor-close" onclick="closeMentor()" aria-label="Close mentor">×</button>
+      </div>
+      <div class="mentor-title">${issue.title}</div>
+      <div class="mentor-hint">${issue.hints[mentor.hintLevel]}</div>
+      <div class="mentor-progress">Hint ${mentor.hintLevel+1} of ${issue.hints.length}${lastHint ? ' · last one!' : ''}</div>
+      <div class="mentor-actions">
+        ${!lastHint ? '<button class="btn btn-mentor" onclick="moreMentorHint()">Tell me more →</button>' : ''}
+        ${lastHint && moreIssues ? '<button class="btn btn-mentor" onclick="nextMentorIssue()">Next issue →</button>' : ''}
+        ${lastHint && !moreIssues ? '<button class="btn btn-primary" onclick="closeMentor()">Got it — let me try</button>' : '<button class="btn btn-ghost" onclick="closeMentor()" style="padding:8px 12px;font-size:12.5px">Close</button>'}
+      </div>
+    </div>
+  `;
+}
+
+function moreMentorHint(){
+  const issue = mentor.issues[mentor.issueIdx];
+  if(!issue) return;
+  if(mentor.hintLevel < issue.hints.length - 1){
+    mentor.hintLevel++;
+    renderMentorPanel();
+  }
+}
+function nextMentorIssue(){
+  if(mentor.issueIdx < mentor.issues.length - 1){
+    mentor.issueIdx++;
+    mentor.hintLevel = 0;
+    renderMentorPanel();
+  }
+}
+function closeMentor(){
+  const panel = document.getElementById('mentorPanel');
+  if(panel) panel.innerHTML = '';
+  mentor = {issues:[], issueIdx:0, hintLevel:0};
 }
 
 /* ============ Boot ============ */
