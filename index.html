@@ -281,6 +281,98 @@ details.more[open]{background:#fff}
   .challenge-info h4{font-size:14.5px}
   .challenge-info p{font-size:12px}
 }
+
+/* === Interview Mode === */
+.interview-card{background:linear-gradient(135deg,#1e1e2e,#6366f1);color:#fff;border-radius:20px;padding:22px;margin-bottom:24px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;box-shadow:0 6px 0 #312e81}
+.interview-card .featured-btn{background:#fff;color:#3730a3}
+
+.interview-bar{position:sticky;top:62px;z-index:40;background:linear-gradient(135deg,#1e1e2e,#313244);color:#fff;padding:12px 16px;border-radius:14px;display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:16px;box-shadow:0 4px 0 #181825;flex-wrap:wrap}
+.iv-timer{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:900;display:flex;align-items:center;gap:8px;letter-spacing:.5px}
+.iv-timer .pulse{display:inline-block;width:10px;height:10px;background:#a6e3a1;border-radius:50%;animation:tick 1s infinite}
+.iv-timer.urgent{color:#ff6b6b}
+.iv-timer.urgent .pulse{background:#ff6b6b;animation:urgent 0.5s infinite}
+@keyframes tick{0%,100%{opacity:1}50%{opacity:0.3}}
+@keyframes urgent{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(1.4)}}
+.iv-meta{display:flex;gap:18px;font-weight:800;font-size:13px;align-items:center}
+.iv-meta-item{display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+.iv-meta-item .lbl{opacity:.65;font-size:9.5px;text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+.iv-meta-item .val{font-size:16px;font-weight:900;font-family:'JetBrains Mono',monospace}
+.iv-meta-item .val.score{color:#a6e3a1}
+
+.iv-diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:14px 0 18px}
+.iv-diff-btn{padding:16px 14px;border-radius:16px;background:#fff;border:2px solid var(--line);box-shadow:0 4px 0 var(--line);text-align:left;cursor:pointer;transition:transform .1s,box-shadow .1s,border-color .1s;display:block;width:100%}
+.iv-diff-btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--line);border-color:var(--blue)}
+.iv-diff-btn.active{border-color:var(--blue);background:#eaf6fe;box-shadow:0 4px 0 var(--blue-sh)}
+.iv-diff-btn h4{font-size:15px;font-weight:900;letter-spacing:-.2px;display:flex;align-items:center;gap:6px}
+.iv-diff-btn p{font-size:12px;color:var(--muted);margin-top:3px;font-weight:600;line-height:1.4}
+.iv-diff-btn .pill{display:inline-block;padding:1px 7px;border-radius:8px;font-size:10px;font-weight:800;background:var(--line);color:var(--muted);margin-left:6px}
+.iv-diff-btn.active .pill{background:var(--blue);color:#fff}
+.iv-diff-btn.faang{background:linear-gradient(135deg,#1e1e2e,#312e81);color:#fff;border-color:#312e81;box-shadow:0 4px 0 #1e1b4b}
+.iv-diff-btn.faang p{color:#cdd6f4}
+.iv-diff-btn.faang .pill{background:rgba(255,255,255,0.2);color:#fff}
+.iv-diff-btn.faang.active{border-color:#a6e3a1;box-shadow:0 4px 0 #1e1b4b}
+
+.iv-duration{display:flex;gap:10px;margin:8px 0 22px;flex-wrap:wrap}
+.iv-duration .iv-dur-btn{flex:1;min-width:90px;padding:14px;border-radius:14px;background:#fff;border:2px solid var(--line);box-shadow:0 4px 0 var(--line);font-weight:800;font-size:14px;cursor:pointer;text-align:center;transition:transform .08s,box-shadow .08s,border-color .1s}
+.iv-duration .iv-dur-btn:active{transform:translateY(2px);box-shadow:0 2px 0 var(--line)}
+.iv-duration .iv-dur-btn.active{border-color:var(--blue);background:#eaf6fe;color:var(--blue-sh);box-shadow:0 4px 0 var(--blue-sh)}
+.iv-duration .iv-dur-btn .sub{font-size:10.5px;font-weight:700;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:.4px}
+.iv-duration .iv-dur-btn.active .sub{color:var(--blue-sh)}
+
+.iv-start-btn{width:100%;padding:16px;font-size:16px;margin-top:6px}
+
+.iv-q-result{font-size:11px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;padding:5px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:5px}
+.iv-q-result.correct{background:#d7ffb8;color:var(--green-sh)}
+.iv-q-result.skipped{background:#fde68a;color:#92400e}
+.iv-q-result.timeout{background:#fed7aa;color:#9a3412}
+.iv-q-result.failed{background:#fee2e2;color:var(--red-sh)}
+
+.iv-summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:540px;margin:18px auto 24px}
+.iv-sum-card{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:14px 6px;box-shadow:0 4px 0 var(--line)}
+.iv-sum-card .lbl{font-size:10px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+.iv-sum-card .val{font-size:22px;font-weight:900;letter-spacing:-.4px;margin-top:3px}
+.iv-sum-card.score .val{color:var(--gold)}
+.iv-sum-card.solved .val{color:var(--green)}
+.iv-sum-card.xp .val{color:var(--blue)}
+.iv-sum-card.time .val{color:var(--purple)}
+
+.iv-breakdown{margin:24px 0 0}
+.iv-breakdown h3{font-size:15px;font-weight:900;margin-bottom:10px;letter-spacing:-.2px}
+.iv-q-row{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;padding:10px 12px;background:#fff;border:1.5px solid var(--line);border-radius:10px;margin-bottom:8px;text-align:left;font-size:13.5px;font-weight:700}
+.iv-q-row.correct{border-left:4px solid var(--green)}
+.iv-q-row.failed{border-left:4px solid var(--red)}
+.iv-q-row.skipped{border-left:4px solid #f59e0b}
+.iv-q-row .qnum{width:26px;height:26px;border-radius:6px;background:var(--line);color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0}
+.iv-q-row.correct .qnum{background:var(--green);color:#fff}
+.iv-q-row.failed .qnum{background:var(--red);color:#fff}
+.iv-q-row.skipped .qnum{background:#f59e0b;color:#fff}
+.iv-q-row .qtitle{font-weight:800;font-size:13px;letter-spacing:-.1px}
+.iv-q-row .qcat{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;margin-top:2px}
+.iv-q-row .qtime{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);font-weight:700}
+.iv-q-row .qscore{font-size:14px;font-weight:900;color:var(--gold-sh);font-family:'JetBrains Mono',monospace}
+
+.iv-history{margin-top:18px}
+.iv-history h3{font-size:15px;font-weight:900;margin-bottom:10px;letter-spacing:-.2px}
+.iv-history-empty{padding:18px;text-align:center;color:var(--muted);font-size:13px;font-style:italic;background:#fafaf5;border-radius:12px;border:1px dashed var(--line)}
+.iv-history-list{display:flex;flex-direction:column;gap:8px}
+.iv-history-row{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;font-size:13px}
+.iv-history-row .dt{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);font-weight:700}
+.iv-history-row .desc{font-weight:800;font-size:13px}
+.iv-history-row .desc small{display:block;color:var(--muted);font-weight:600;font-size:11.5px;margin-top:1px}
+.iv-history-row .pts{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:900;color:var(--gold-sh)}
+
+.iv-end-warning{background:#fef3c7;border-left:4px solid #f59e0b;padding:10px 12px;border-radius:8px;font-size:13px;color:#7a4a00;font-weight:600;line-height:1.5;margin-top:10px}
+
+@media (max-width:600px){
+  .iv-diff-grid{grid-template-columns:1fr}
+  .iv-summary-grid{grid-template-columns:repeat(2,1fr)}
+  .interview-bar{top:54px;padding:10px 12px;gap:8px}
+  .iv-timer{font-size:18px}
+  .iv-meta{gap:12px}
+  .iv-meta-item .val{font-size:14px}
+  .iv-q-row{grid-template-columns:auto 1fr auto;font-size:12.5px}
+  .iv-q-row .qtime{display:none}
+}
 </style>
 </head>
 <body>
@@ -1553,6 +1645,16 @@ function renderHome(){
         </div>
       </div>
     </div>
+    <div class="featured interview-card">
+      <div class="featured-icon">🎤</div>
+      <div class="featured-content">
+        <h2>Interview Mode</h2>
+        <p>Timed SQL rounds — speed, accuracy, and FAANG-grade questions.</p>
+        <div class="featured-actions">
+          <button class="featured-btn" onclick="renderInterviewLanding()">🎯 Start a round</button>
+        </div>
+      </div>
+    </div>
     <h2 class="section-heading">🌱 Foundations</h2>
     <div class="section-sub">Start here if you're rusty on the basics.</div>
     <div class="map" id="mapBeginner"></div>
@@ -2342,6 +2444,778 @@ function hasPrevChallenge(){return challengeIdx() > 0}
 function hasNextChallenge(){return challengeIdx() < CHALLENGES.length - 1}
 function prevChallenge(){if(hasPrevChallenge()) startChallenge(CHALLENGES[challengeIdx()-1].id)}
 function nextChallenge(){if(hasNextChallenge()) startChallenge(CHALLENGES[challengeIdx()+1].id)}
+
+/* ============ Interview Mode ============ */
+const INTERVIEW_QUESTIONS = [
+  /* ---------- EASY ---------- */
+  {
+    id:'iv-e1', title:'Count distinct departments', difficulty:'easy', category:'group-by',
+    prompt:'Return a single value: the number of <b>distinct</b> departments in employees.',
+    setup:[
+      `CREATE TABLE employees (id INT, name TEXT, dept TEXT);`,
+      `INSERT INTO employees VALUES (1,'Asha','Eng'),(2,'Ben','Eng'),(3,'Cara','Mkt'),(4,'Dev','Ops'),(5,'Eli','Eng');`
+    ],
+    visible:['employees'],
+    starter:`SELECT \nFROM employees;`,
+    expected:`SELECT COUNT(DISTINCT dept) FROM employees;`,
+    ordered:false,
+    hint:'Use <code>COUNT(DISTINCT col)</code>.'
+  },
+  {
+    id:'iv-e2', title:'Find duplicate emails', difficulty:'easy', category:'duplicates',
+    prompt:'Return each <code>email</code> that appears more than once.',
+    setup:[
+      `CREATE TABLE users (id INT, email TEXT);`,
+      `INSERT INTO users VALUES (1,'a@x.com'),(2,'b@x.com'),(3,'a@x.com'),(4,'c@x.com'),(5,'b@x.com'),(6,'b@x.com');`
+    ],
+    visible:['users'],
+    starter:`SELECT email\nFROM users\nGROUP BY email\nHAVING ;`,
+    expected:`SELECT email FROM users GROUP BY email HAVING COUNT(*) > 1;`,
+    ordered:false,
+    hint:'<code>HAVING COUNT(*) &gt; 1</code> filters groups appearing more than once.'
+  },
+  {
+    id:'iv-e3', title:'Top 3 most expensive products', difficulty:'easy', category:'top-n',
+    prompt:'Return <code>name, price</code> of the 3 most expensive products, highest first.',
+    setup:[
+      `CREATE TABLE products (id INT, name TEXT, price INT);`,
+      `INSERT INTO products VALUES (1,'Pen',10),(2,'Mug',90),(3,'Book',250),(4,'Lamp',450),(5,'Chair',900),(6,'Tablet',1800);`
+    ],
+    visible:['products'],
+    starter:`SELECT name, price\nFROM products\nORDER BY price \nLIMIT ;`,
+    expected:`SELECT name, price FROM products ORDER BY price DESC LIMIT 3;`,
+    ordered:true,
+    hint:'<code>ORDER BY price DESC LIMIT 3</code>.'
+  },
+  {
+    id:'iv-e4', title:'Customers without orders', difficulty:'easy', category:'anti-join',
+    prompt:'Return <code>id, name</code> of customers who have <b>never</b> placed an order.',
+    setup:[
+      `CREATE TABLE customers (id INT, name TEXT);`,
+      `CREATE TABLE orders (id INT, customer_id INT, amount INT);`,
+      `INSERT INTO customers VALUES (1,'Acme'),(2,'Globex'),(3,'Initech'),(4,'Soylent');`,
+      `INSERT INTO orders VALUES (101,1,500),(102,2,300),(103,1,200);`
+    ],
+    visible:['customers','orders'],
+    starter:`SELECT c.id, c.name\nFROM customers c\nLEFT JOIN orders o ON \nWHERE  IS NULL;`,
+    expected:`SELECT c.id, c.name FROM customers c LEFT JOIN orders o ON o.customer_id = c.id WHERE o.id IS NULL;`,
+    ordered:false,
+    hint:'Anti-join: LEFT JOIN, then filter where the right-side id IS NULL.'
+  },
+  {
+    id:'iv-e5', title:'Departments with >2 employees', difficulty:'easy', category:'group-by',
+    prompt:'Return <code>dept, n</code> for departments that have more than 2 employees.',
+    setup:[
+      `CREATE TABLE employees (id INT, name TEXT, dept TEXT);`,
+      `INSERT INTO employees VALUES (1,'Asha','Eng'),(2,'Ben','Eng'),(3,'Cara','Mkt'),(4,'Dev','Ops'),(5,'Eli','Eng'),(6,'Fae','Mkt'),(7,'Gil','Eng');`
+    ],
+    visible:['employees'],
+    starter:`SELECT dept, COUNT(*) AS n\nFROM employees\nGROUP BY dept\n ;`,
+    expected:`SELECT dept, COUNT(*) AS n FROM employees GROUP BY dept HAVING COUNT(*) > 2;`,
+    ordered:false,
+    hint:'Filter on an aggregate → <code>HAVING</code>.'
+  },
+  {
+    id:'iv-e6', title:'Total revenue per customer', difficulty:'easy', category:'joins',
+    prompt:'Return each customer\'s <code>name</code> and their total order <code>amount</code> as <code>total</code>. Only customers with orders.',
+    setup:[
+      `CREATE TABLE customers (id INT, name TEXT);`,
+      `CREATE TABLE orders (id INT, customer_id INT, amount INT);`,
+      `INSERT INTO customers VALUES (1,'Acme'),(2,'Globex'),(3,'Initech');`,
+      `INSERT INTO orders VALUES (101,1,500),(102,1,300),(103,2,150);`
+    ],
+    visible:['customers','orders'],
+    starter:`SELECT c.name, SUM(o.amount) AS total\nFROM customers c\nJOIN orders o ON \nGROUP BY ;`,
+    expected:`SELECT c.name, SUM(o.amount) AS total FROM customers c JOIN orders o ON o.customer_id = c.id GROUP BY c.id, c.name;`,
+    ordered:false,
+    hint:'Inner-join on <code>o.customer_id = c.id</code>, then <code>GROUP BY</code> the customer.'
+  },
+
+  /* ---------- MEDIUM ---------- */
+  {
+    id:'iv-m1', title:'Second-highest salary', difficulty:'medium', category:'ranking',
+    prompt:'Return the second-highest <b>distinct</b> salary as a single value labeled <code>second_highest</code>.',
+    setup:[
+      `CREATE TABLE employees (id INT, name TEXT, salary INT);`,
+      `INSERT INTO employees VALUES (1,'Asha',95000),(2,'Ben',70000),(3,'Cara',95000),(4,'Dev',85000),(5,'Eli',60000);`
+    ],
+    visible:['employees'],
+    starter:`-- Many ways. One classic:\nSELECT MAX(salary) AS second_highest\nFROM employees\nWHERE salary <  ;`,
+    expected:`SELECT MAX(salary) AS second_highest FROM employees WHERE salary < (SELECT MAX(salary) FROM employees);`,
+    ordered:false,
+    hint:'MAX of salaries below the overall MAX. Or <code>DENSE_RANK() = 2</code>.'
+  },
+  {
+    id:'iv-m2', title:'Top product per category', difficulty:'medium', category:'top-n-per-group',
+    prompt:'For each <code>category</code>, return the product with the highest <code>price</code>: <code>category, name, price</code>.',
+    setup:[
+      `CREATE TABLE products (id INT, name TEXT, price INT, category TEXT);`,
+      `INSERT INTO products VALUES (1,'Pen',10,'stationery'),(2,'Pencil',5,'stationery'),(3,'Mug',90,'kitchen'),(4,'Bowl',60,'kitchen'),(5,'Book',250,'books'),(6,'Lamp',450,'home'),(7,'Vase',120,'home');`
+    ],
+    visible:['products'],
+    starter:`SELECT category, name, price\nFROM (\n  SELECT *, ROW_NUMBER() OVER (\n    PARTITION BY category ORDER BY price \n  ) AS rn\n  FROM products\n) t\nWHERE rn = ;`,
+    expected:`SELECT category, name, price FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS rn FROM products) t WHERE rn = 1;`,
+    ordered:false,
+    hint:'ROW_NUMBER partitioned by category, ordered by price DESC; keep <code>rn = 1</code>.'
+  },
+  {
+    id:'iv-m3', title:'Earners above dept average', difficulty:'medium', category:'window',
+    prompt:'Return <code>name, salary, dept</code> for employees whose salary is <b>strictly above</b> their department\'s average.',
+    setup:[
+      `CREATE TABLE employees (id INT, name TEXT, salary INT, dept TEXT);`,
+      `INSERT INTO employees VALUES (1,'Asha',70000,'Eng'),(2,'Ben',95000,'Eng'),(3,'Cara',60000,'Mkt'),(4,'Dev',95000,'Ops'),(5,'Eli',85000,'Eng'),(6,'Fae',75000,'Mkt');`
+    ],
+    visible:['employees'],
+    starter:`SELECT name, salary, dept\nFROM (\n  SELECT *, AVG(salary) OVER (PARTITION BY dept) AS avg_d\n  FROM employees\n) t\nWHERE ;`,
+    expected:`SELECT name, salary, dept FROM (SELECT *, AVG(salary) OVER (PARTITION BY dept) AS avg_d FROM employees) t WHERE salary > avg_d;`,
+    ordered:false,
+    hint:'Compute <code>AVG(salary) OVER (PARTITION BY dept)</code>, then filter where salary &gt; that average.'
+  },
+  {
+    id:'iv-m4', title:'Department with most employees', difficulty:'medium', category:'group-by',
+    prompt:'Return <code>dept, n</code> for the department with the largest headcount. (Ties: return all tied depts.)',
+    setup:[
+      `CREATE TABLE employees (id INT, name TEXT, dept TEXT);`,
+      `INSERT INTO employees VALUES (1,'Asha','Eng'),(2,'Ben','Eng'),(3,'Cara','Mkt'),(4,'Dev','Ops'),(5,'Eli','Eng'),(6,'Fae','Mkt'),(7,'Gil','Eng');`
+    ],
+    visible:['employees'],
+    starter:`SELECT dept, COUNT(*) AS n\nFROM employees\nGROUP BY dept\nHAVING COUNT(*) = (\n  SELECT MAX(c) FROM (\n    SELECT COUNT(*) AS c FROM employees GROUP BY \n  )\n);`,
+    expected:`SELECT dept, COUNT(*) AS n FROM employees GROUP BY dept HAVING COUNT(*) = (SELECT MAX(c) FROM (SELECT COUNT(*) AS c FROM employees GROUP BY dept));`,
+    ordered:false,
+    hint:'Compute the max headcount in a subquery, then keep depts whose count equals it.'
+  },
+  {
+    id:'iv-m5', title:'Products never ordered', difficulty:'medium', category:'anti-join',
+    prompt:'Return <code>id, name</code> of products that have never appeared in <code>order_items</code>.',
+    setup:[
+      `CREATE TABLE products (id INT, name TEXT);`,
+      `CREATE TABLE order_items (id INT, product_id INT, qty INT);`,
+      `INSERT INTO products VALUES (1,'Pen'),(2,'Mug'),(3,'Book'),(4,'Lamp'),(5,'Chair');`,
+      `INSERT INTO order_items VALUES (1,1,5),(2,3,1),(3,1,2);`
+    ],
+    visible:['products','order_items'],
+    starter:`SELECT p.id, p.name\nFROM products p\nWHERE NOT EXISTS (\n  SELECT 1 FROM order_items oi WHERE \n);`,
+    expected:`SELECT p.id, p.name FROM products p WHERE NOT EXISTS (SELECT 1 FROM order_items oi WHERE oi.product_id = p.id);`,
+    ordered:false,
+    hint:'<code>NOT EXISTS</code> with correlation on <code>oi.product_id = p.id</code>.'
+  },
+  {
+    id:'iv-m6', title:'Most recent post per user', difficulty:'medium', category:'top-n-per-group',
+    prompt:'For each user, return their most recent post: <code>user_id, title, posted_at</code>.',
+    setup:[
+      `CREATE TABLE posts (id INT, user_id INT, title TEXT, posted_at TEXT);`,
+      `INSERT INTO posts VALUES (1,1,'Hello','2024-06-01'),(2,1,'Tips','2024-07-02'),(3,2,'About','2024-08-15'),(4,2,'More','2024-09-01'),(5,3,'First','2024-05-10');`
+    ],
+    visible:['posts'],
+    starter:`SELECT user_id, title, posted_at\nFROM (\n  SELECT *, ROW_NUMBER() OVER (\n    PARTITION BY user_id ORDER BY \n  ) AS rn\n  FROM posts\n) t\nWHERE rn = 1;`,
+    expected:`SELECT user_id, title, posted_at FROM (SELECT *, ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY posted_at DESC) AS rn FROM posts) t WHERE rn = 1;`,
+    ordered:false,
+    hint:'Partition by user_id, order by posted_at DESC, keep <code>rn=1</code>.'
+  },
+  {
+    id:'iv-m7', title:'Duplicate orders within 1 hour', difficulty:'medium', category:'duplicates',
+    prompt:'Return <code>customer_id, amount</code> of pairs of orders by the SAME customer with the SAME amount placed within 1 hour of each other. List each unordered pair once.',
+    setup:[
+      `CREATE TABLE orders (id INT, customer_id INT, amount INT, created_at TEXT);`,
+      `INSERT INTO orders VALUES (1,1,500,'2025-05-01 10:00'),(2,1,500,'2025-05-01 10:30'),(3,2,200,'2025-05-01 12:00'),(4,2,200,'2025-05-01 14:00'),(5,3,150,'2025-05-02 09:00'),(6,3,150,'2025-05-02 09:45');`
+    ],
+    visible:['orders'],
+    starter:`SELECT DISTINCT a.customer_id, a.amount\nFROM orders a\nJOIN orders b\n  ON a.customer_id = b.customer_id\n AND a.amount = b.amount\n AND a.id < b.id\n AND (julianday(b.created_at) - julianday(a.created_at)) * 24 ;`,
+    expected:`SELECT DISTINCT a.customer_id, a.amount FROM orders a JOIN orders b ON a.customer_id = b.customer_id AND a.amount = b.amount AND a.id < b.id AND (julianday(b.created_at) - julianday(a.created_at)) * 24 <= 1;`,
+    ordered:false,
+    hint:'Self-join with <code>a.id &lt; b.id</code>; convert datetime diff to hours.'
+  },
+
+  /* ---------- HARD ---------- */
+  {
+    id:'iv-h1', title:'7-day rolling sum', difficulty:'hard', category:'window',
+    prompt:'Return <code>day, total, rolling7</code> where <code>rolling7</code> is the sum of the current day + previous 6 days.',
+    setup:[
+      `CREATE TABLE sales_daily (day TEXT, total INT);`,
+      `INSERT INTO sales_daily VALUES ('2025-05-01',100),('2025-05-02',200),('2025-05-03',150),('2025-05-04',300),('2025-05-05',250),('2025-05-06',180),('2025-05-07',220),('2025-05-08',270),('2025-05-09',310);`
+    ],
+    visible:['sales_daily'],
+    starter:`SELECT day, total,\n  SUM(total) OVER (\n    ORDER BY day\n    ROWS BETWEEN  PRECEDING AND CURRENT ROW\n  ) AS rolling7\nFROM sales_daily;`,
+    expected:`SELECT day, total, SUM(total) OVER (ORDER BY day ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS rolling7 FROM sales_daily;`,
+    ordered:true,
+    hint:'<code>ROWS BETWEEN 6 PRECEDING AND CURRENT ROW</code> = 7-day window.'
+  },
+  {
+    id:'iv-h2', title:'Median salary per department', difficulty:'hard', category:'window',
+    prompt:'Return <code>dept</code> and the median <code>salary</code> as <code>median_sal</code> per department. (Use the standard SQL trick with NTILE or row numbers.)',
+    setup:[
+      `CREATE TABLE employees (id INT, name TEXT, salary INT, dept TEXT);`,
+      `INSERT INTO employees VALUES (1,'A',60000,'Eng'),(2,'B',70000,'Eng'),(3,'C',80000,'Eng'),(4,'D',90000,'Eng'),(5,'E',100000,'Eng'),(6,'F',50000,'Mkt'),(7,'G',75000,'Mkt'),(8,'H',95000,'Mkt');`
+    ],
+    visible:['employees'],
+    starter:`-- One approach: average of the middle row(s)\nWITH ranked AS (\n  SELECT dept, salary,\n    ROW_NUMBER() OVER (PARTITION BY dept ORDER BY salary) AS rn,\n    COUNT(*) OVER (PARTITION BY dept) AS n\n  FROM employees\n)\nSELECT dept, AVG(salary) AS median_sal\nFROM ranked\nWHERE rn IN ((n+1)/2, (n+2)/2)\nGROUP BY dept;`,
+    expected:`WITH ranked AS (SELECT dept, salary, ROW_NUMBER() OVER (PARTITION BY dept ORDER BY salary) AS rn, COUNT(*) OVER (PARTITION BY dept) AS n FROM employees) SELECT dept, AVG(salary*1.0) AS median_sal FROM ranked WHERE rn IN ((n+1)/2, (n+2)/2) GROUP BY dept;`,
+    ordered:false,
+    hint:'Row-numbered per dept. Median = the middle row (odd count) or avg of two middle rows (even count).'
+  },
+  {
+    id:'iv-h3', title:'Longest active streak', difficulty:'hard', category:'gaps-islands',
+    prompt:'For each user, return their longest streak of CONSECUTIVE active days as <code>user_id, streak</code>. Logins are unique per (user, day).',
+    setup:[
+      `CREATE TABLE logins (user_id INT, day TEXT);`,
+      `INSERT INTO logins VALUES (1,'2025-05-01'),(1,'2025-05-02'),(1,'2025-05-03'),(1,'2025-05-05'),(1,'2025-05-06'),(2,'2025-05-01'),(2,'2025-05-03'),(2,'2025-05-04'),(2,'2025-05-05'),(2,'2025-05-06');`
+    ],
+    visible:['logins'],
+    starter:`-- Classic gaps-and-islands.\n-- Group consecutive days by subtracting row number.\nWITH s AS (\n  SELECT user_id, day,\n    date(day, -ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY day) || ' days') AS grp\n  FROM logins\n)\nSELECT user_id, MAX( ) AS streak\nFROM s\nGROUP BY user_id, grp\n-- then take max per user…`,
+    expected:`WITH s AS (SELECT user_id, day, date(day, -ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY day) || ' days') AS grp FROM logins), g AS (SELECT user_id, grp, COUNT(*) AS streak FROM s GROUP BY user_id, grp) SELECT user_id, MAX(streak) AS streak FROM g GROUP BY user_id;`,
+    ordered:false,
+    hint:'Trick: <code>date − row_number</code> is constant for consecutive days. Group by it, count, then take MAX per user.'
+  },
+  {
+    id:'iv-h4', title:'Day-7 retention rate', difficulty:'hard', category:'retention',
+    prompt:'Return the retention rate as a single value <code>day7_retention</code>: of users who signed up on 2025-05-01, what fraction had ANY activity on 2025-05-08?',
+    setup:[
+      `CREATE TABLE users (id INT, signup_day TEXT);`,
+      `CREATE TABLE events (user_id INT, day TEXT);`,
+      `INSERT INTO users VALUES (1,'2025-05-01'),(2,'2025-05-01'),(3,'2025-05-01'),(4,'2025-05-01'),(5,'2025-05-02');`,
+      `INSERT INTO events VALUES (1,'2025-05-08'),(2,'2025-05-08'),(2,'2025-05-09'),(3,'2025-05-05'),(5,'2025-05-08');`
+    ],
+    visible:['users','events'],
+    starter:`SELECT\n  CAST(COUNT(DISTINCT CASE WHEN e.day = '2025-05-08' THEN e.user_id END) AS REAL) /\n  COUNT(DISTINCT u.id) AS day7_retention\nFROM users u\nLEFT JOIN events e ON e.user_id = u.id\nWHERE u.signup_day = ;`,
+    expected:`SELECT CAST(COUNT(DISTINCT CASE WHEN e.day = '2025-05-08' THEN e.user_id END) AS REAL) / COUNT(DISTINCT u.id) AS day7_retention FROM users u LEFT JOIN events e ON e.user_id = u.id WHERE u.signup_day = '2025-05-01';`,
+    ordered:false,
+    hint:'Cohort = users who signed up on 2025-05-01. Numerator: of those, how many had an event 7 days later.'
+  },
+  {
+    id:'iv-h5', title:'Employee hierarchy depth', difficulty:'hard', category:'recursive-cte',
+    prompt:'Return <code>id, name, depth</code> for every employee, where depth = distance from the root manager (root has depth 0).',
+    setup:[
+      `CREATE TABLE employees (id INT, name TEXT, manager_id INT);`,
+      `INSERT INTO employees VALUES (1,'CEO',NULL),(2,'VP1',1),(3,'VP2',1),(4,'Mgr1',2),(5,'IC1',4),(6,'IC2',4),(7,'IC3',3);`
+    ],
+    visible:['employees'],
+    starter:`WITH RECURSIVE tree AS (\n  -- anchor: roots\n  SELECT id, name, 0 AS depth\n  FROM employees WHERE manager_id IS NULL\n  UNION ALL\n  -- recurse: report to anyone already found\n  SELECT e.id, e.name, t.depth + 1\n  FROM employees e\n  JOIN tree t ON \n)\nSELECT id, name, depth FROM tree;`,
+    expected:`WITH RECURSIVE tree AS (SELECT id, name, 0 AS depth FROM employees WHERE manager_id IS NULL UNION ALL SELECT e.id, e.name, t.depth + 1 FROM employees e JOIN tree t ON e.manager_id = t.id) SELECT id, name, depth FROM tree;`,
+    ordered:false,
+    hint:'Recursive step: each employee\'s manager_id matches the parent\'s id in the CTE.'
+  },
+  {
+    id:'iv-h6', title:'Users with 3+ orders in 30 days', difficulty:'hard', category:'window',
+    prompt:'Return distinct <code>customer_id</code> who ever had 3 or more orders within a rolling 30-day window.',
+    setup:[
+      `CREATE TABLE orders (id INT, customer_id INT, created_at TEXT);`,
+      `INSERT INTO orders VALUES (1,1,'2025-01-01'),(2,1,'2025-01-10'),(3,1,'2025-01-20'),(4,2,'2025-01-01'),(5,2,'2025-03-15'),(6,3,'2025-02-01'),(7,3,'2025-02-15'),(8,3,'2025-02-28'),(9,3,'2025-04-10');`
+    ],
+    visible:['orders'],
+    starter:`-- For each order, count how many of that customer's orders fall\n-- within the prior 30 days (including itself).\nWITH x AS (\n  SELECT customer_id, created_at,\n    COUNT(*) OVER (\n      PARTITION BY customer_id ORDER BY julianday(created_at)\n      RANGE BETWEEN  PRECEDING AND CURRENT ROW\n    ) AS c30\n  FROM orders\n)\nSELECT DISTINCT customer_id FROM x WHERE c30 >= 3;`,
+    expected:`WITH x AS (SELECT customer_id, created_at, COUNT(*) OVER (PARTITION BY customer_id ORDER BY julianday(created_at) RANGE BETWEEN 30 PRECEDING AND CURRENT ROW) AS c30 FROM orders) SELECT DISTINCT customer_id FROM x WHERE c30 >= 3;`,
+    ordered:false,
+    hint:'RANGE-based window over <code>julianday(created_at)</code> with <code>30 PRECEDING</code>.'
+  },
+
+  /* ---------- FAANG ---------- */
+  {
+    id:'iv-f1', title:'Cohort retention matrix', difficulty:'faang', category:'retention',
+    prompt:'For each signup cohort week, return <code>cohort_week, week_offset, retained_users</code> — count of users from that cohort active in that week. Limit to week_offset in 0..2.',
+    setup:[
+      `CREATE TABLE users (id INT, signup_day TEXT);`,
+      `CREATE TABLE events (user_id INT, day TEXT);`,
+      `INSERT INTO users VALUES (1,'2025-05-05'),(2,'2025-05-06'),(3,'2025-05-12'),(4,'2025-05-13'),(5,'2025-05-19');`,
+      `INSERT INTO events VALUES (1,'2025-05-05'),(1,'2025-05-12'),(1,'2025-05-19'),(2,'2025-05-06'),(2,'2025-05-13'),(3,'2025-05-12'),(3,'2025-05-26'),(4,'2025-05-13'),(5,'2025-05-19'),(5,'2025-05-21');`
+    ],
+    visible:['users','events'],
+    starter:`-- Bucket each event into a week_offset from the user's cohort week.\nWITH cohort AS (\n  SELECT id AS user_id,\n         date(signup_day, 'weekday 0', '-6 days') AS cohort_week\n  FROM users\n),\nact AS (\n  SELECT c.user_id, c.cohort_week,\n    CAST((julianday(e.day) - julianday(c.cohort_week)) / 7 AS INT) AS week_offset\n  FROM cohort c\n  JOIN events e ON e.user_id = c.user_id\n)\nSELECT cohort_week, week_offset, COUNT(DISTINCT user_id) AS retained_users\nFROM act\nWHERE week_offset BETWEEN 0 AND 2\nGROUP BY cohort_week, week_offset\nORDER BY cohort_week, week_offset;`,
+    expected:`WITH cohort AS (SELECT id AS user_id, date(signup_day, 'weekday 0', '-6 days') AS cohort_week FROM users), act AS (SELECT c.user_id, c.cohort_week, CAST((julianday(e.day) - julianday(c.cohort_week)) / 7 AS INT) AS week_offset FROM cohort c JOIN events e ON e.user_id = c.user_id) SELECT cohort_week, week_offset, COUNT(DISTINCT user_id) AS retained_users FROM act WHERE week_offset BETWEEN 0 AND 2 GROUP BY cohort_week, week_offset ORDER BY cohort_week, week_offset;`,
+    ordered:true,
+    hint:'Cohort by signup week. For each event, compute weeks since signup. GROUP BY cohort × week_offset.'
+  },
+  {
+    id:'iv-f2', title:'Cumulative distinct active users', difficulty:'faang', category:'window',
+    prompt:'Return <code>day, cum_users</code> — the cumulative number of distinct users who had ANY activity up to and including each day.',
+    setup:[
+      `CREATE TABLE events (user_id INT, day TEXT);`,
+      `INSERT INTO events VALUES (1,'2025-05-01'),(2,'2025-05-01'),(1,'2025-05-02'),(3,'2025-05-02'),(2,'2025-05-03'),(4,'2025-05-04'),(1,'2025-05-04');`
+    ],
+    visible:['events'],
+    starter:`-- Trick: count each user only on their FIRST active day, then running SUM.\nWITH firsts AS (\n  SELECT user_id, MIN(day) AS first_day\n  FROM events\n  GROUP BY user_id\n)\nSELECT day, SUM(new_users) OVER (ORDER BY day) AS cum_users\nFROM (\n  SELECT first_day AS day, COUNT(*) AS new_users\n  FROM firsts\n  GROUP BY first_day\n) t\nORDER BY day;`,
+    expected:`WITH firsts AS (SELECT user_id, MIN(day) AS first_day FROM events GROUP BY user_id) SELECT day, SUM(new_users) OVER (ORDER BY day) AS cum_users FROM (SELECT first_day AS day, COUNT(*) AS new_users FROM firsts GROUP BY first_day) t ORDER BY day;`,
+    ordered:true,
+    hint:'Count new users (first-seen) per day, then running SUM over the day order.'
+  },
+  {
+    id:'iv-f3', title:'Mutual follows', difficulty:'faang', category:'joins',
+    prompt:'Return all pairs of users who BOTH follow each other, as <code>a, b</code> with a &lt; b (each unordered pair once).',
+    setup:[
+      `CREATE TABLE follows (follower INT, followee INT);`,
+      `INSERT INTO follows VALUES (1,2),(2,1),(1,3),(3,2),(2,3),(4,1);`
+    ],
+    visible:['follows'],
+    starter:`SELECT f1.follower AS a, f1.followee AS b\nFROM follows f1\nJOIN follows f2\n  ON f2.follower = f1.followee\n AND f2.followee = f1.follower\nWHERE ;`,
+    expected:`SELECT f1.follower AS a, f1.followee AS b FROM follows f1 JOIN follows f2 ON f2.follower = f1.followee AND f2.followee = f1.follower WHERE f1.follower < f1.followee;`,
+    ordered:false,
+    hint:'Self-join on the mirrored pair; keep only <code>follower &lt; followee</code> to dedupe.'
+  },
+  {
+    id:'iv-f4', title:'Top 3 products by revenue per category', difficulty:'faang', category:'top-n-per-group',
+    prompt:'For each <code>category</code>, return the top 3 products by total revenue: <code>category, product_id, name, revenue, rk</code> (dense rank, 1 = highest revenue).',
+    setup:[
+      `CREATE TABLE products (id INT, name TEXT, category TEXT);`,
+      `CREATE TABLE order_items (product_id INT, qty INT, unit_price INT);`,
+      `INSERT INTO products VALUES (1,'Pen','sta'),(2,'Pencil','sta'),(3,'Eraser','sta'),(4,'Ruler','sta'),(5,'Mug','kit'),(6,'Bowl','kit'),(7,'Cup','kit'),(8,'Plate','kit');`,
+      `INSERT INTO order_items VALUES (1,10,10),(2,20,5),(3,5,15),(4,30,3),(5,3,90),(6,5,60),(7,8,40),(8,2,200);`
+    ],
+    visible:['products','order_items'],
+    starter:`WITH rev AS (\n  SELECT p.category, p.id AS product_id, p.name,\n    SUM(oi.qty * oi.unit_price) AS revenue\n  FROM products p\n  LEFT JOIN order_items oi ON oi.product_id = p.id\n  GROUP BY p.id, p.category, p.name\n),\nranked AS (\n  SELECT *,\n    DENSE_RANK() OVER (PARTITION BY category ORDER BY  ) AS rk\n  FROM rev\n)\nSELECT category, product_id, name, revenue, rk\nFROM ranked\nWHERE rk <= 3;`,
+    expected:`WITH rev AS (SELECT p.category, p.id AS product_id, p.name, SUM(oi.qty * oi.unit_price) AS revenue FROM products p LEFT JOIN order_items oi ON oi.product_id = p.id GROUP BY p.id, p.category, p.name), ranked AS (SELECT *, DENSE_RANK() OVER (PARTITION BY category ORDER BY revenue DESC) AS rk FROM rev) SELECT category, product_id, name, revenue, rk FROM ranked WHERE rk <= 3;`,
+    ordered:false,
+    hint:'Two CTEs: compute revenue per product, then DENSE_RANK partitioned by category ordered by revenue DESC.'
+  },
+  {
+    id:'iv-f5', title:'Anomaly: spend > 3× personal avg', difficulty:'faang', category:'window',
+    prompt:'Return <code>id, user_id, amount</code> of transactions whose amount exceeds 3× that user\'s overall average transaction amount.',
+    setup:[
+      `CREATE TABLE txn (id INT, user_id INT, amount INT);`,
+      `INSERT INTO txn VALUES (1,1,100),(2,1,120),(3,1,90),(4,1,500),(5,2,50),(6,2,60),(7,2,55),(8,2,300),(9,3,200),(10,3,210),(11,3,190);`
+    ],
+    visible:['txn'],
+    starter:`SELECT id, user_id, amount\nFROM (\n  SELECT *, AVG(amount) OVER (PARTITION BY user_id) AS u_avg\n  FROM txn\n) t\nWHERE amount > ;`,
+    expected:`SELECT id, user_id, amount FROM (SELECT *, AVG(amount) OVER (PARTITION BY user_id) AS u_avg FROM txn) t WHERE amount > 3 * u_avg;`,
+    ordered:false,
+    hint:'Window AVG over user_id, then filter rows above <code>3 * u_avg</code>.'
+  }
+];
+
+const IV_DIFF_CONFIG = {
+  easy:   {base:100, mult:1,   speed:[50,30,15], desc:'Filters, joins, GROUP BY basics'},
+  medium: {base:150, mult:1.5, speed:[60,40,20], desc:'Top-N per group, anti-joins, windows'},
+  hard:   {base:200, mult:2,   speed:[80,50,25], desc:'Rolling windows, gaps/islands, retention, recursive'},
+  faang:  {base:300, mult:3,   speed:[100,60,30],desc:'Cohorts, mutual graph, anomaly detection'}
+};
+
+const IV_DURATIONS = [
+  {min:5,  label:'Sprint'},
+  {min:10, label:'Standard'},
+  {min:20, label:'Marathon'}
+];
+
+function ivCount(diff, durMin){
+  const baseTime = {easy:1.5, medium:2.5, hard:4, faang:6};
+  return Math.max(2, Math.floor(durMin / baseTime[diff]));
+}
+
+let iv = null; // active session
+
+function ivQuestionsBy(diff){
+  return INTERVIEW_QUESTIONS.filter(q => q.difficulty === diff);
+}
+
+/* ---------- Interview landing ---------- */
+let ivPickDiff = 'easy';
+let ivPickDur = 10;
+
+function renderInterviewLanding(){
+  hideFeedback();
+  const history = (state.interviewHistory || []).slice().reverse().slice(0, 8);
+  main.innerHTML = `
+    <div class="lesson-header">
+      <button class="close-btn" onclick="renderHome()" aria-label="Back">×</button>
+      <div style="flex:1;font-weight:800;font-size:14px;color:var(--muted)">Interview Mode</div>
+    </div>
+    <article class="card card-syntax">
+      <span class="card-badge b-syntax">🎤 Interview Mode</span>
+      <h2>Timed SQL rounds</h2>
+      <p>Randomized questions on a clock. Solve fast, accurately, and without hints to maximize your score.</p>
+
+      <h3 style="font-size:14px;font-weight:900;margin-top:14px;letter-spacing:-.2px">1. Pick a difficulty</h3>
+      <div class="iv-diff-grid">
+        ${['easy','medium','hard','faang'].map(d => {
+          const cfg = IV_DIFF_CONFIG[d];
+          const pool = ivQuestionsBy(d).length;
+          return `<button class="iv-diff-btn ${d==='faang'?'faang':''} ${ivPickDiff===d?'active':''}" onclick="ivPick('diff','${d}')">
+            <h4>${d==='easy'?'🟢 Easy':d==='medium'?'🟡 Medium':d==='hard'?'🔴 Hard':'🚀 FAANG'} <span class="pill">×${cfg.mult}</span></h4>
+            <p>${cfg.desc}<br><small style="opacity:.75">${pool} questions in pool</small></p>
+          </button>`;
+        }).join('')}
+      </div>
+
+      <h3 style="font-size:14px;font-weight:900;margin-top:8px;letter-spacing:-.2px">2. Pick a duration</h3>
+      <div class="iv-duration">
+        ${IV_DURATIONS.map(d => `
+          <button class="iv-dur-btn ${ivPickDur===d.min?'active':''}" onclick="ivPick('dur',${d.min})">
+            ${d.min} min<div class="sub">${d.label}</div>
+          </button>
+        `).join('')}
+      </div>
+
+      <div class="note">
+        <b>Scoring</b> · Base: ${IV_DIFF_CONFIG[ivPickDiff].base} pts per question (×${IV_DIFF_CONFIG[ivPickDiff].mult} multiplier already applied). Speed bonus up to +${IV_DIFF_CONFIG[ivPickDiff].speed[0]}. Each hint: −25. Each failed Check: −10. You will see <b>${ivCount(ivPickDiff, ivPickDur)} questions</b>.
+      </div>
+
+      <button class="btn btn-primary iv-start-btn" onclick="launchInterview()">🎯 Start round</button>
+    </article>
+
+    <div class="iv-history">
+      <h3>Recent sessions</h3>
+      ${history.length === 0
+        ? '<div class="iv-history-empty">No sessions yet — start one above!</div>'
+        : '<div class="iv-history-list">' + history.map(h => {
+            const dt = new Date(h.timestamp);
+            const dtStr = dt.toLocaleDateString(undefined,{month:'short',day:'numeric'}) + ' ' + dt.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'});
+            return `<div class="iv-history-row">
+              <div class="dt">${dtStr}</div>
+              <div class="desc">${h.difficulty.toUpperCase()} · ${h.duration} min<small>${h.questionsSolved}/${h.questionsTotal} solved · ${h.xp} XP</small></div>
+              <div class="pts">${h.score}</div>
+            </div>`;
+          }).join('') + '</div>'
+      }
+    </div>
+  `;
+}
+
+function ivPick(kind, val){
+  if(kind === 'diff') ivPickDiff = val;
+  else if(kind === 'dur') ivPickDur = val;
+  renderInterviewLanding();
+}
+
+/* ---------- Launching ---------- */
+async function launchInterview(){
+  const pool = ivQuestionsBy(ivPickDiff);
+  if(pool.length === 0){
+    alert('No questions in this pool yet.');
+    return;
+  }
+  hideFeedback();
+  main.innerHTML = `<div class="pg-loading"><span class="spin">⟳</span>Loading SQL engine</div>`;
+  try{
+    await ensureSql();
+  }catch(e){
+    main.innerHTML = `
+      <article class="card card-pitfall">
+        <span class="card-badge b-pitfall">⚠ Couldn't load engine</span>
+        <h2>Couldn't load SQL engine</h2>
+        <div class="error-block">${esc(e.message || String(e))}</div>
+        <div class="footer-actions"><button class="btn btn-secondary" onclick="renderInterviewLanding()">Back</button></div>
+      </article>`;
+    return;
+  }
+  const n = Math.min(ivCount(ivPickDiff, ivPickDur), pool.length);
+  const shuffled = [...pool].sort(() => Math.random() - 0.5).slice(0, n);
+  iv = {
+    difficulty: ivPickDiff,
+    durationMs: ivPickDur * 60000,
+    startTime: Date.now(),
+    endTime: Date.now() + ivPickDur * 60000,
+    questions: shuffled,
+    idx: 0,
+    score: 0,
+    db: null,
+    timerId: null,
+    qStart: 0,
+    qHints: 0,
+    qAttempts: 0,
+    qStarter: '',
+    results: []
+  };
+  startIvQuestion();
+}
+
+function startIvQuestion(){
+  const q = iv.questions[iv.idx];
+  if(iv.db){try{iv.db.close()}catch(e){}}
+  iv.db = buildDb(q.setup);
+  iv.qStart = Date.now();
+  iv.qHints = 0;
+  iv.qAttempts = 0;
+  iv.qStarter = q.starter;
+  renderIvQuestion();
+  startIvTimer();
+}
+
+function renderIvQuestion(){
+  const q = iv.questions[iv.idx];
+  const tables = (q.visible || []).map(n => previewTable(iv.db, n)).filter(Boolean);
+  const remainSec = Math.max(0, Math.round((iv.endTime - Date.now())/1000));
+  const mm = String(Math.floor(remainSec/60)).padStart(2,'0');
+  const ss = String(remainSec%60).padStart(2,'0');
+  const urgent = remainSec <= 30;
+  main.innerHTML = `
+    <div class="interview-bar">
+      <div class="iv-timer ${urgent?'urgent':''}" id="ivTimer"><span class="pulse" aria-hidden="true"></span><span id="ivTime">${mm}:${ss}</span></div>
+      <div class="iv-meta">
+        <div class="iv-meta-item"><div class="lbl">Question</div><div class="val">${iv.idx+1}/${iv.questions.length}</div></div>
+        <div class="iv-meta-item"><div class="lbl">Score</div><div class="val score" id="ivScore">${iv.score}</div></div>
+        <div class="iv-meta-item"><div class="lbl">Mode</div><div class="val" style="font-size:13px">${iv.difficulty.toUpperCase()}</div></div>
+      </div>
+    </div>
+    <article class="card card-syntax">
+      <span class="card-badge b-syntax">🎤 ${iv.difficulty.toUpperCase()} · ${q.category}</span>
+      <h2>${esc(q.title)}</h2>
+      <p>${q.prompt}</p>
+      ${tables.length ? `<div class="result-label">tables you can query</div>${renderTables(tables)}` : ''}
+      <div class="editor-shell">
+        <div class="editor-bar">
+          <span>SQL Editor</span>
+          <span class="hint">Ctrl/Cmd + Enter to run</span>
+        </div>
+        <textarea class="sql-editor" id="sqlEditor" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" aria-label="SQL editor">${esc(q.starter)}</textarea>
+      </div>
+      <div class="pg-actions">
+        <button class="btn btn-blue" onclick="runIv()" aria-label="Run query">▶ Run Query</button>
+        <button class="btn btn-primary" onclick="checkIv()" aria-label="Check answer">✓ Submit</button>
+        <button class="btn btn-secondary" onclick="resetIv()" aria-label="Reset editor">↺ Reset</button>
+        <button class="btn btn-ghost" onclick="hintIv()" aria-label="Show hint (−25 pts)">💡 Hint (−25)</button>
+        <button class="btn btn-ghost" onclick="skipIv()" style="color:var(--red-sh)" aria-label="Skip question (0 pts)">⏭ Skip</button>
+      </div>
+      <div class="run-output" id="runOutput" aria-live="polite"></div>
+    </article>
+    <div style="margin-top:14px;text-align:center">
+      <button class="btn btn-ghost" onclick="abortInterview()" style="font-size:13px">End round early</button>
+    </div>
+  `;
+  const editor = $('#sqlEditor');
+  editor.addEventListener('keydown', e => {
+    if((e.ctrlKey || e.metaKey) && e.key === 'Enter'){ e.preventDefault(); runIv(); }
+    if(e.key === 'Tab' && !e.shiftKey){
+      e.preventDefault();
+      const s = editor.selectionStart, ee = editor.selectionEnd;
+      editor.value = editor.value.slice(0,s) + '  ' + editor.value.slice(ee);
+      editor.selectionStart = editor.selectionEnd = s + 2;
+    }
+  });
+}
+
+function startIvTimer(){
+  stopIvTimer();
+  iv.timerId = setInterval(() => {
+    const remain = Math.max(0, iv.endTime - Date.now());
+    const sec = Math.round(remain/1000);
+    const el = $('#ivTime');
+    if(el){
+      const mm = String(Math.floor(sec/60)).padStart(2,'0');
+      const ss = String(sec%60).padStart(2,'0');
+      el.textContent = `${mm}:${ss}`;
+      const wrap = $('#ivTimer');
+      if(wrap){
+        if(sec <= 30) wrap.classList.add('urgent');
+        else wrap.classList.remove('urgent');
+      }
+    }
+    if(remain === 0){
+      stopIvTimer();
+      // record current Q as timed out if not yet done
+      iv.results.push({
+        questionId: iv.questions[iv.idx].id,
+        title: iv.questions[iv.idx].title,
+        category: iv.questions[iv.idx].category,
+        solved:false, status:'timeout', score:0,
+        timeSpent: Math.round((Date.now() - iv.qStart)/1000),
+        hintsUsed: iv.qHints, attempts: iv.qAttempts
+      });
+      finishInterview();
+    }
+  }, 1000);
+}
+function stopIvTimer(){
+  if(iv && iv.timerId){clearInterval(iv.timerId); iv.timerId = null;}
+}
+
+function runIv(){
+  const sql = $('#sqlEditor').value;
+  const out = $('#runOutput');
+  try{
+    const r = execSelect(iv.db, sql);
+    out.innerHTML = `
+      <div class="run-status ok">▶ Query ran · ${r.rows.length} row${r.rows.length===1?'':'s'}</div>
+      ${renderTables([{name:'your result', cols:r.cols, rows:r.rows}])}
+    `;
+  }catch(e){
+    out.innerHTML = `
+      <div class="run-status err">⚠ Query error</div>
+      <div class="error-block">${esc(e.message || String(e))}</div>
+    `;
+  }
+}
+
+function checkIv(){
+  const sql = $('#sqlEditor').value;
+  const out = $('#runOutput');
+  const q = iv.questions[iv.idx];
+  let userRes;
+  try{ userRes = execSelect(iv.db, sql); }
+  catch(e){
+    iv.qAttempts++;
+    out.innerHTML = `
+      <div class="run-status err">⚠ Query error</div>
+      <div class="error-block">${esc(e.message || String(e))}</div>
+    `;
+    return;
+  }
+  let expectedRes;
+  try{
+    const fresh = buildDb(q.setup);
+    expectedRes = execSelect(fresh, q.expected);
+    fresh.close();
+  }catch(e){
+    out.innerHTML = `<div class="error-block">Internal error: ${esc(e.message)}</div>`;
+    return;
+  }
+  const correct = compareResults(userRes, expectedRes, q.ordered);
+  if(correct){
+    const elapsed = Math.round((Date.now() - iv.qStart) / 1000);
+    const cfg = IV_DIFF_CONFIG[iv.difficulty];
+    let qScore = cfg.base;
+    // failed attempts before correct
+    qScore -= iv.qAttempts * 10;
+    // hint penalty
+    qScore -= iv.qHints * 25;
+    // speed bonus
+    if(elapsed < 60) qScore += cfg.speed[0];
+    else if(elapsed < 120) qScore += cfg.speed[1];
+    else if(elapsed < 180) qScore += cfg.speed[2];
+    qScore = Math.max(10, qScore);
+    iv.score += qScore;
+    iv.results.push({
+      questionId: q.id, title: q.title, category: q.category,
+      solved:true, status:'correct', score:qScore,
+      timeSpent: elapsed, hintsUsed: iv.qHints, attempts: iv.qAttempts
+    });
+    out.innerHTML = `
+      <div class="run-status ok">✓ Correct! +${qScore} pts</div>
+      <div class="success-block">Solved in ${elapsed}s${iv.qHints?` · ${iv.qHints} hint(s)`:''}${iv.qAttempts?` · ${iv.qAttempts} failed check(s)`:''}.</div>
+    `;
+    const scoreEl = $('#ivScore'); if(scoreEl) scoreEl.textContent = iv.score;
+    setTimeout(advanceIv, 900);
+  } else {
+    iv.qAttempts++;
+    out.innerHTML = `
+      <div class="run-status err">✗ Not matching expected output (attempt ${iv.qAttempts}). −10 pts when you finally solve it.</div>
+      <div class="diff-block">
+        <strong>Your result · ${userRes.rows.length} row${userRes.rows.length===1?'':'s'}</strong>
+        ${renderTables([{name:'yours', cols:userRes.cols, rows:userRes.rows}])}
+        <strong>Expected · ${expectedRes.rows.length} row${expectedRes.rows.length===1?'':'s'}</strong>
+        ${renderTables([{name:'expected', cols:expectedRes.cols, rows:expectedRes.rows}])}
+      </div>
+    `;
+  }
+}
+
+function hintIv(){
+  const q = iv.questions[iv.idx];
+  iv.qHints++;
+  $('#runOutput').innerHTML = `<div class="hint-block"><b>💡 Hint (−25):</b> ${q.hint}</div>`;
+}
+
+function resetIv(){
+  $('#sqlEditor').value = iv.qStarter;
+  $('#runOutput').innerHTML = '';
+  $('#sqlEditor').focus();
+}
+
+function skipIv(){
+  if(!confirm('Skip this question? You will get 0 points for it.')) return;
+  const q = iv.questions[iv.idx];
+  iv.results.push({
+    questionId: q.id, title: q.title, category: q.category,
+    solved:false, status:'skipped', score:0,
+    timeSpent: Math.round((Date.now() - iv.qStart)/1000),
+    hintsUsed: iv.qHints, attempts: iv.qAttempts
+  });
+  advanceIv();
+}
+
+function advanceIv(){
+  if(iv.idx < iv.questions.length - 1){
+    iv.idx++;
+    startIvQuestion();
+  } else {
+    stopIvTimer();
+    finishInterview();
+  }
+}
+
+function abortInterview(){
+  if(!confirm('End this round now? Your score so far will be recorded.')) return;
+  // mark remaining as skipped
+  for(let i = iv.idx; i < iv.questions.length; i++){
+    const q = iv.questions[i];
+    if(!iv.results.find(r => r.questionId === q.id)){
+      iv.results.push({
+        questionId: q.id, title: q.title, category: q.category,
+        solved:false, status:'skipped', score:0,
+        timeSpent: 0, hintsUsed: 0, attempts: 0
+      });
+    }
+  }
+  stopIvTimer();
+  finishInterview();
+}
+
+function finishInterview(){
+  stopIvTimer();
+  if(iv.db){try{iv.db.close()}catch(e){}}
+  const total = iv.questions.length;
+  const solved = iv.results.filter(r => r.solved).length;
+  const totalTime = iv.results.reduce((a,r) => a + (r.timeSpent||0), 0);
+  const avgTime = solved > 0 ? Math.round(iv.results.filter(r=>r.solved).reduce((a,r)=>a+r.timeSpent,0) / solved) : 0;
+  const xpEarned = Math.round(iv.score / 10);
+  state.xp += xpEarned;
+  const today = new Date().toDateString();
+  if(state.lastPlayed !== today){state.streak += 1; state.lastPlayed = today;}
+  // save session
+  if(!state.interviewHistory) state.interviewHistory = [];
+  state.interviewHistory.push({
+    timestamp: Date.now(),
+    sessionId: Math.random().toString(36).substring(2,11),
+    difficulty: iv.difficulty,
+    duration: iv.durationMs / 60000,
+    score: iv.score,
+    questionsTotal: total,
+    questionsSolved: solved,
+    avgTimePerQ: avgTime,
+    xp: xpEarned,
+    results: iv.results.map(r => ({
+      questionId: r.questionId, status: r.status, score: r.score,
+      timeSpent: r.timeSpent, hintsUsed: r.hintsUsed, attempts: r.attempts
+    }))
+  });
+  if(state.interviewHistory.length > 50) state.interviewHistory = state.interviewHistory.slice(-50);
+  saveState();
+  updateStatsUI();
+  // render summary
+  const trophy = iv.score >= total * IV_DIFF_CONFIG[iv.difficulty].base * 0.9 ? '🏆'
+               : iv.score >= total * IV_DIFF_CONFIG[iv.difficulty].base * 0.6 ? '🌟'
+               : iv.score >= total * IV_DIFF_CONFIG[iv.difficulty].base * 0.3 ? '💪' : '📖';
+  main.innerHTML = `
+    <div class="results">
+      <div class="trophy">${trophy}</div>
+      <h2>Round complete</h2>
+      <p class="subtitle">${iv.difficulty.toUpperCase()} · ${iv.durationMs/60000} min</p>
+      <div class="iv-summary-grid">
+        <div class="iv-sum-card score"><div class="lbl">Score</div><div class="val">${iv.score}</div></div>
+        <div class="iv-sum-card solved"><div class="lbl">Solved</div><div class="val">${solved}/${total}</div></div>
+        <div class="iv-sum-card xp"><div class="lbl">XP</div><div class="val">+${xpEarned}</div></div>
+        <div class="iv-sum-card time"><div class="lbl">Avg time</div><div class="val">${avgTime}s</div></div>
+      </div>
+
+      <div class="iv-breakdown" style="max-width:560px;margin:0 auto;text-align:left">
+        <h3>Question breakdown</h3>
+        ${iv.results.map((r,i) => `
+          <div class="iv-q-row ${r.solved?'correct':r.status==='skipped'?'skipped':'failed'}">
+            <div class="qnum">${i+1}</div>
+            <div>
+              <div class="qtitle">${esc(r.title)}</div>
+              <div class="qcat">${r.category}${r.hintsUsed?` · ${r.hintsUsed} hint`:''}${r.attempts?` · ${r.attempts} fail`:''}</div>
+            </div>
+            <div class="qtime">${r.timeSpent}s</div>
+            <div class="qscore">${r.solved?'+':''}${r.score}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="footer-actions" style="justify-content:center;margin-top:20px">
+        <button class="btn btn-secondary" onclick="renderInterviewLanding()">Another round</button>
+        <button class="btn btn-primary" onclick="renderHome()">Back to map</button>
+      </div>
+    </div>
+  `;
+  iv = null;
+}
 
 /* ============ Boot ============ */
 updateStatsUI();
