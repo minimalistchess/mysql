@@ -87,6 +87,7 @@ main{flex:1;padding:20px 14px 80px;max-width:880px;margin:0 auto;width:100%}
 .diff.advanced{background:#ffe0e0;color:#9c2222}
 .diff.expert{background:#e8defb;color:#5e2c9e}
 .diff.analytics{background:#dbeafe;color:#1d4ed8}
+.diff.engineering{background:#e2e8f0;color:#0f172a}
 .progress-ring{width:46px;height:46px;border-radius:50%;background:conic-gradient(var(--green) calc(var(--p)*1%),#eee 0);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .progress-ring-inner{width:36px;height:36px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:900}
 
@@ -237,47 +238,6 @@ details.more[open]{background:#fff}
   .modal{padding:18px;max-height:85vh}
   .mini-table{font-size:11px;min-width:140px}
   .mini-table th,.mini-table td{padding:3px 6px}
-}
-
-/* === Adaptive Learning === */
-.adaptive-card{background:linear-gradient(135deg,#e0f2fe,#eef2ff);color:#0f4c81;box-shadow:0 6px 0 #b6d4e8}
-.adaptive-card .featured-btn{background:#fff;color:#0f4c81}
-.adaptive-mini{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:12px;font-weight:800;color:#0f4c81}
-.adaptive-mini span{background:rgba(255,255,255,.8);padding:6px 10px;border-radius:999px}
-.adaptive-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 18px}
-.adaptive-stat{background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 4px 0 var(--line)}
-.adaptive-stat .lbl{font-size:10px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
-.adaptive-stat .val{font-size:24px;font-weight:900;letter-spacing:-.4px;margin-top:4px;color:var(--blue-sh)}
-.goal-card{background:#fff;border:2px solid var(--line);border-radius:14px;padding:14px;box-shadow:0 4px 0 var(--line);margin:0 0 14px}
-.goal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
-.goal-head h3{font-size:15px;font-weight:900;letter-spacing:-.2px}
-.goal-head .goal-meta{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
-.goal-track{height:12px;background:#e5e5e5;border-radius:999px;overflow:hidden}
-.goal-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--green));transition:width .25s}
-.goal-note{font-size:13px;color:var(--muted);font-weight:600;line-height:1.5;margin-top:8px}
-.topic-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
-.topic-row{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 12px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;box-shadow:0 3px 0 var(--line)}
-.topic-row.weak{border-left:4px solid var(--red)}
-.topic-row.good{border-left:4px solid var(--green)}
-.topic-avatar{width:36px;height:36px;border-radius:10px;background:#eef6ff;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.topic-copy h4{font-size:14.5px;font-weight:900;letter-spacing:-.2px;line-height:1.25}
-.topic-copy p{font-size:12px;color:var(--muted);font-weight:600;line-height:1.45;margin-top:2px}
-.topic-actions{display:flex;flex-direction:column;align-items:flex-end;gap:8px;min-width:120px}
-.topic-pill{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:8px;font-size:10px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;background:#eef;color:#4f46e5}
-.topic-pill.weak{background:#fee2e2;color:var(--red-sh)}
-.topic-pill.good{background:#dffac4;color:var(--green-sh)}
-.recovery-banner{background:linear-gradient(135deg,#fff7ed,#fef3c7);border:2px solid #f59e0b;border-radius:14px;padding:14px;box-shadow:0 4px 0 rgba(245,158,11,.18);margin:0 0 14px}
-.recovery-banner h3{font-size:15px;font-weight:900;letter-spacing:-.2px;color:#7a4a00;margin-bottom:4px}
-.recovery-banner p{font-size:13px;color:#7a4a00;font-weight:600;line-height:1.5}
-.recovery-banner .featured-actions{margin-top:10px}
-.reco-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-.reco-item{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;font-weight:600;color:var(--ink2);line-height:1.5}
-.reco-item strong{color:#0f4c81}
-.adaptive-empty{padding:14px;border:1.5px dashed var(--line);border-radius:12px;text-align:center;color:var(--muted);font-size:13px;font-style:italic;background:#fafaf5}
-@media (max-width:600px){
-  .adaptive-grid{grid-template-columns:repeat(2,1fr)}
-  .topic-row{grid-template-columns:auto 1fr;gap:10px}
-  .topic-actions{grid-column:1 / -1;align-items:flex-start;min-width:0}
 }
 
 /* === Playground === */
@@ -525,6 +485,51 @@ details.more[open]{background:#fff}
 .btn-mentor{background:#fef3c7;color:#7a4a00;border:2px solid #f59e0b;box-shadow:0 3px 0 #c77400;font-weight:800}
 .btn-mentor:active{box-shadow:0 1px 0 #c77400}
 .btn-mentor:hover{background:#fde68a}
+
+/* === Adaptive Learning === */
+.daily-goal-card{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border:2px solid #3b82f6;border-radius:16px;padding:14px 16px;margin-bottom:14px;box-shadow:0 4px 0 #1d4ed8;cursor:pointer;width:100%;text-align:left;transition:transform .08s,box-shadow .15s}
+.daily-goal-card:hover{transform:translateY(-1px);box-shadow:0 5px 0 #1d4ed8}
+.dg-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:10px;flex-wrap:wrap}
+.dg-title{font-weight:900;font-size:14.5px;color:#1e3a8a;letter-spacing:-.2px;display:flex;align-items:center;gap:6px}
+.dg-count{font-weight:900;font-size:14px;color:#1e3a8a;font-family:'JetBrains Mono',monospace}
+.dg-bar-bg{background:#fff;height:10px;border-radius:5px;overflow:hidden;border:1.5px solid #93c5fd}
+.dg-bar-fill{height:100%;background:linear-gradient(90deg,#3b82f6,#0ea5e9);border-radius:4px;transition:width .4s}
+.dg-bar-fill.complete{background:linear-gradient(90deg,#22c55e,#16a34a)}
+.dg-status{font-size:12px;color:#1e40af;font-weight:700;margin-top:7px;line-height:1.4}
+.dg-freeze{display:inline-flex;align-items:center;gap:3px;background:#fff;color:#1d4ed8;padding:1px 6px;border-radius:5px;font-size:10.5px;font-weight:900;letter-spacing:.3px}
+
+.rec-card{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #f59e0b;border-radius:14px;padding:12px 14px;margin-bottom:14px;box-shadow:0 3px 0 #c77400;display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;cursor:pointer;text-align:left;width:100%;transition:transform .08s,box-shadow .15s}
+.rec-card:hover{transform:translateY(-1px);box-shadow:0 4px 0 #c77400}
+.rec-icon{font-size:22px;width:42px;height:42px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 0 rgba(0,0,0,.1)}
+.rec-body h4{font-weight:900;font-size:14px;color:#7a4a00;letter-spacing:-.1px;line-height:1.3}
+.rec-body p{font-size:12px;color:#a16207;font-weight:700;margin-top:2px;line-height:1.4}
+.rec-arrow{font-size:22px;color:#a16207;font-weight:900}
+
+.review-card{background:linear-gradient(135deg,#ddd6fe,#c4b5fd);border:2px solid #8b5cf6;border-radius:14px;padding:12px 14px;margin-bottom:14px;box-shadow:0 3px 0 #7c3aed;display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;cursor:pointer;text-align:left;width:100%;transition:transform .08s,box-shadow .15s}
+.review-card:hover{transform:translateY(-1px);box-shadow:0 4px 0 #7c3aed}
+.review-icon{font-size:22px;width:42px;height:42px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 0 rgba(0,0,0,.1)}
+.review-info h4{font-weight:900;font-size:14px;color:#4c1d95;letter-spacing:-.1px;line-height:1.3}
+.review-info p{font-size:12px;color:#5b21b6;font-weight:700;margin-top:2px;line-height:1.4}
+.review-badge{background:#fff;color:#7c3aed;font-weight:900;font-size:11px;padding:4px 8px;border-radius:6px;letter-spacing:.5px}
+
+.concept-rows{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.concept-row{background:#fff;border:2px solid var(--line);border-radius:12px;padding:11px 13px;display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:center}
+.concept-row.weak{border-color:var(--red);background:#fef2f2}
+.concept-row.strong{border-color:var(--green);background:#f0fdf4}
+.cr-icon{font-size:20px;width:36px;height:36px;border-radius:9px;background:var(--bg);display:flex;align-items:center;justify-content:center}
+.cr-name{font-weight:900;font-size:14px;letter-spacing:-.1px;margin-bottom:5px}
+.cr-bar-bg{background:var(--line);height:6px;border-radius:3px;overflow:hidden}
+.cr-bar-fill{height:100%;background:linear-gradient(90deg,#22c55e,#16a34a);border-radius:3px;transition:width .4s}
+.concept-row.weak .cr-bar-fill{background:linear-gradient(90deg,#ef4444,#dc2626)}
+.cr-stat{text-align:right;min-width:60px}
+.cr-acc{font-weight:900;font-size:18px;font-family:'JetBrains Mono',monospace;letter-spacing:-.5px}
+.concept-row.weak .cr-acc{color:var(--red-sh)}
+.concept-row.strong .cr-acc{color:var(--green-sh)}
+.cr-seen{font-size:10.5px;color:var(--muted);font-weight:700;margin-top:1px}
+.rec-buttons{display:flex;flex-wrap:wrap;gap:6px}
+.rec-btn{background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:7px 11px;font-size:12px;font-weight:800;color:var(--ink);cursor:pointer;transition:border-color .15s,transform .08s}
+.rec-btn:hover{border-color:#0ea5e9}
+.rec-btn:active{transform:translateY(1px)}
 </style>
 </head>
 <body>
@@ -1929,95 +1934,372 @@ SELECT DISTINCT user_id FROM x WHERE c10min >= 5;`,
       "Always include ALL cohort members in the denominator — don't cherry-pick."
     ]}
   ]
+},
+
+/* 27 */ {
+  id:27, title:"Indexing Mastery", icon:"🗃️", color:"#475569", difficulty:"engineering",
+  description:"B-trees, composite ordering, covering indexes, and when NOT to add indexes.",
+  cards:[
+    {type:'concept', title:"Why indexes exist",
+     body:`<p>Without an index, every query is a <b>full table scan</b> — read every row, check if it matches.</p>
+           <p>With a B-tree index on column X, MySQL finds matching rows in O(log N) time. On a million-row table that's ~20 comparisons instead of a million.</p>
+           <p>Trade-off: every index slows down INSERT/UPDATE/DELETE (the index has to be maintained) and uses disk space.</p>`},
+    {type:'syntax', title:"Creating indexes",
+     code:`CREATE INDEX idx_name ON orders (customer_id);
+
+-- composite:
+CREATE INDEX idx_oc ON orders (customer_id, created_at);
+
+-- unique:
+CREATE UNIQUE INDEX idx_email ON users (email);
+
+-- drop:
+DROP INDEX idx_name ON orders;`,
+     note:"PRIMARY KEY columns are indexed automatically (clustered in InnoDB)."},
+    {type:'concept', title:"Composite index: the leftmost-prefix rule",
+     body:`<p>An index on <code>(a, b, c)</code> is sorted by a first, then b, then c. It serves queries that filter from the LEFT.</p>
+           <ul>
+             <li>✓ <code>WHERE a=1</code></li>
+             <li>✓ <code>WHERE a=1 AND b=2</code></li>
+             <li>✓ <code>WHERE a=1 AND b=2 AND c &gt; 5</code></li>
+             <li>✗ <code>WHERE b=2</code> — no leftmost (a)</li>
+             <li>✗ <code>WHERE c &gt; 5</code> — no leftmost (a, b)</li>
+             <li>✗ <code>WHERE a=1 AND c &gt; 5</code> — skips b</li>
+           </ul>
+           <p>Canonical column order: <b>equality → range → sort</b>.</p>`},
+    {type:'concept', title:"Covering index",
+     body:`<p>If the index contains EVERY column the query needs (SELECT + WHERE + ORDER BY), MySQL serves the query from the index without touching the table.</p>
+           <p>EXPLAIN shows <code>Extra: Using index</code>. Often 10–100× faster than the same query without a covering index.</p>`,
+     real:"For hot list-page queries (ORDER BY + LIMIT with a few columns), the right covering index makes them near-instant."},
+    {type:'example', title:"Designing a composite index",
+     code:`-- query:
+SELECT order_id, total
+FROM orders
+WHERE customer_id = 5
+  AND status = 'paid'
+  AND created_at > '2025-01-01'
+ORDER BY created_at DESC
+LIMIT 20;
+
+-- best index:
+CREATE INDEX idx_paid ON orders
+  (customer_id, status, created_at, total);
+-- equality, equality, range+sort, covered`,
+     walkthrough:"<p>customer_id and status are equalities (most selective first). created_at handles both the range and ORDER BY. Adding total at the end makes it covering — no table access at all.</p>"},
+    {type:'question', kind:'mcq',
+     question:"Given INDEX(client_id, status, created_at), which query CAN'T use the index efficiently?",
+     options:[
+       "WHERE client_id = 5",
+       "WHERE client_id = 5 AND status = 'open'",
+       "WHERE status = 'open'",
+       "WHERE client_id = 5 AND created_at > '2025-01-01'"
+     ], correct:2,
+     explanation:"Leftmost-prefix: without client_id in the predicate, the index can't be seeked. The DB falls back to a scan."},
+    {type:'question', kind:'mcq',
+     question:"A 'covering index' means:",
+     options:[
+       "Index covers all rows of the table",
+       "Index contains every column the query needs",
+       "Index has many columns",
+       "Index is unique"
+     ], correct:1,
+     explanation:"Covering = MySQL answers the query from the index alone. EXPLAIN shows 'Using index'."},
+    {type:'pitfall', title:"Too many indexes = slow writes",
+     body:`<p>Every index has to be updated on every INSERT/UPDATE/DELETE. A table with 10 indexes is dramatically slower to write to.</p>
+           <p>Audit unused indexes via <code>information_schema</code> (or pt-index-usage). Drop the ones nothing reads.</p>`},
+    {type:'summary', title:"Recap", bullets:[
+      "Indexes turn O(N) scans into O(log N) lookups.",
+      "Composite index column order: equality → range → sort.",
+      "Leftmost-prefix: queries must filter from the left of the index.",
+      "Covering index = entire query served from the index alone.",
+      "Indexes slow writes — only add what your queries actually need."
+    ]}
+  ]
+},
+
+/* 28 */ {
+  id:28, title:"Query Optimization & EXPLAIN", icon:"📊", color:"#7c3aed", difficulty:"engineering",
+  description:"Reading EXPLAIN, fixing common slow patterns, when partitioning helps.",
+  cards:[
+    {type:'concept', title:"EXPLAIN — your most-used optimization tool",
+     body:`<p><code>EXPLAIN query</code> shows MySQL's plan: what tables, what indexes, estimated rows, join order.</p>
+           <p>Key columns to watch:</p>
+           <ul>
+             <li><code>type</code> — <code>ALL</code> = full scan (bad), <code>ref/range/eq_ref</code> = index seek (good), <code>const</code> = best</li>
+             <li><code>rows</code> — estimated rows examined; lower is better</li>
+             <li><code>Extra</code> — <code>Using index</code> = covering (great), <code>Using filesort</code>/<code>Using temporary</code> = often expensive</li>
+           </ul>`},
+    {type:'example', title:"Reading an EXPLAIN row",
+     code:`EXPLAIN SELECT * FROM orders
+WHERE client_id = 5 AND created_at > '2025-01-01';
+
+-- output:
+-- type:  ref
+-- key:   idx_client_date
+-- rows:  42
+-- Extra: Using index condition`,
+     walkthrough:"<p><code>type:ref</code> + index used + small <code>rows</code> count = good plan. If you see <code>type:ALL</code> with rows in the millions, that's the slow query you need to fix.</p>"},
+    {type:'concept', title:"Common slow patterns and fixes",
+     body:`<ul>
+       <li><b>Function on indexed column</b> — <code>DATE(created_at) = '...'</code> defeats the index. Rewrite as a range: <code>created_at &gt;= '...' AND created_at &lt; '...'</code>.</li>
+       <li><b>Leading wildcard LIKE</b> — <code>LIKE '%abc'</code> can't seek. Use FULLTEXT for contains-search at scale.</li>
+       <li><b>OR across different columns</b> — often turns into a scan. UNION ALL of two indexed queries can be faster.</li>
+       <li><b>Big OFFSET</b> — <code>LIMIT 1000000, 10</code> still reads a million rows. Use keyset pagination: <code>WHERE id &gt; last_seen_id ORDER BY id LIMIT 10</code>.</li>
+       <li><b>SELECT *</b> in a list page — defeats covering indexes. Select only the columns you actually display.</li>
+     </ul>`},
+    {type:'concept', title:"Partitioning",
+     body:`<p>Splits one logical table into multiple physical chunks by some key (usually date).</p>
+           <p><b>Helps when:</b> queries naturally filter on the partition key, the table is huge (100M+ rows), or you need to drop old data fast (dropping a partition = instant).</p>
+           <p><b>Doesn't help when:</b> most queries don't include the partition key in WHERE.</p>`},
+    {type:'example', title:"Range partitioning by year",
+     code:`CREATE TABLE orders (
+  id INT, created_at DATETIME, amount DECIMAL,
+  ...
+)
+PARTITION BY RANGE (YEAR(created_at)) (
+  PARTITION p2023 VALUES LESS THAN (2024),
+  PARTITION p2024 VALUES LESS THAN (2025),
+  PARTITION p2025 VALUES LESS THAN (2026)
+);
+
+-- this query only touches p2025:
+SELECT * FROM orders
+WHERE created_at >= '2025-01-01'
+  AND created_at <  '2026-01-01';`,
+     walkthrough:"<p>MySQL prunes the irrelevant partitions automatically. EXPLAIN shows <code>partitions: p2025</code> — only one chunk is read instead of the whole table.</p>"},
+    {type:'question', kind:'mcq',
+     question:"EXPLAIN shows <code>type: ALL</code> and <code>rows: 5,000,000</code>. What does it mean?",
+     options:[
+       "Optimal plan",
+       "Full table scan — likely missing an index",
+       "Using covering index",
+       "The query is invalid"
+     ], correct:1,
+     explanation:"type:ALL = full table scan. If rows are large, add the right index on the WHERE columns."},
+    {type:'question', kind:'mcq',
+     question:"You see <code>Using filesort</code> in EXPLAIN. The likely cause:",
+     options:[
+       "ORDER BY can't use an index",
+       "Tables are too large",
+       "Wrong JOIN type",
+       "Missing PRIMARY KEY"
+     ], correct:0,
+     explanation:"Filesort means MySQL must sort results in memory or on disk because the result order doesn't match any available index."},
+    {type:'pitfall', title:"Don't optimize prematurely",
+     body:`<p>Add indexes when you SEE a slow query, not "just in case". Speculative indexes bloat writes and storage with no measurable benefit.</p>
+           <p>Workflow: write query → EXPLAIN → measure → add index only if needed → re-measure.</p>`},
+    {type:'summary', title:"Recap", bullets:[
+      "EXPLAIN before optimizing — watch type, rows, Extra.",
+      "type:ALL = scan; type:ref/range/eq_ref = index seek.",
+      "Using index = covering (great). Using filesort/temporary = often expensive.",
+      "Common fixes: convert function-on-column to ranges; avoid leading wildcards; use keyset pagination.",
+      "Partition huge date-keyed tables. Measure first."
+    ]}
+  ]
+},
+
+/* 29 */ {
+  id:29, title:"Concurrency, Locks & Replication", icon:"⚙️", color:"#dc2626", difficulty:"engineering",
+  description:"Isolation levels, locking, deadlocks, primary/replica setups.",
+  cards:[
+    {type:'concept', title:"Isolation levels in practice",
+     body:`<p>Four standard levels, from loose to strict:</p>
+           <ul>
+             <li><b>READ UNCOMMITTED</b> — can see other transactions' uncommitted changes (dirty reads).</li>
+             <li><b>READ COMMITTED</b> — only see committed data; reads can change between statements (non-repeatable reads).</li>
+             <li><b>REPEATABLE READ</b> — same read returns same data within one transaction. <b>InnoDB default.</b></li>
+             <li><b>SERIALIZABLE</b> — strongest; effectively locks ranges. Slowest, rarely used.</li>
+           </ul>
+           <p>Most production apps use REPEATABLE READ or READ COMMITTED.</p>`},
+    {type:'concept', title:"Locks in InnoDB",
+     body:`<p>InnoDB uses <b>row-level locks</b>: only the affected rows are locked, not the whole table.</p>
+           <ul>
+             <li><b>Shared (S)</b> — multiple readers OK; blocks writers. <code>SELECT … FOR SHARE</code>.</li>
+             <li><b>Exclusive (X)</b> — blocks readers and writers. <code>SELECT … FOR UPDATE</code> or any UPDATE/DELETE.</li>
+             <li><b>Gap locks</b> — lock the empty space BETWEEN index entries. Prevent phantom reads in REPEATABLE READ.</li>
+           </ul>`},
+    {type:'concept', title:"Deadlocks",
+     body:`<p>Two transactions each hold a lock the other needs:</p>
+           <pre class="code">-- T1: UPDATE accounts SET ... WHERE id = 1;   (locks row 1)
+-- T2: UPDATE accounts SET ... WHERE id = 2;   (locks row 2)
+-- T1: UPDATE accounts SET ... WHERE id = 2;   (waits for T2)
+-- T2: UPDATE accounts SET ... WHERE id = 1;   (waits for T1)
+-- ⚠ DEADLOCK</pre>
+           <p>InnoDB detects deadlocks automatically and rolls back one transaction (error 1213). Your application must catch this error and retry.</p>`},
+    {type:'concept', title:"Avoiding deadlocks",
+     body:`<ul>
+       <li><b>Lock rows in a consistent order</b> across all transactions (e.g. ascending by id).</li>
+       <li><b>Keep transactions short</b> — long-held locks = more conflicts.</li>
+       <li><b>Use single statements when possible.</b> <code>UPDATE … WHERE id IN (1, 2)</code> takes locks atomically.</li>
+       <li><b>Retry on deadlock</b> — driver throws 1213; your code retries the transaction.</li>
+     </ul>`,
+     real:"Bank transfer code always locks the lower-id account first. That convention alone eliminates ~all deadlocks across concurrent transfers."},
+    {type:'concept', title:"Replication basics",
+     body:`<p><b>Primary/replica</b> architecture. The primary accepts writes. Replicas asynchronously copy the primary's binary log and serve reads.</p>
+           <p>Benefits: read scaling, backups, disaster recovery, analytics queries off the hot DB.</p>
+           <p>Trade-off: <b>replication lag</b>. A replica may be seconds (or more) behind. Don't read-your-own-write from a replica unless you've waited for catchup.</p>`},
+    {type:'concept', title:"Read replica patterns",
+     body:`<ul>
+       <li><b>Stale-OK reads</b> (dashboards, search) → any replica</li>
+       <li><b>Write-your-own-read</b> (just-submitted form) → primary, or wait for replica catchup</li>
+       <li><b>Hot standby</b> → one replica promotable to primary on failure</li>
+       <li><b>Geo-replicas</b> → reads served from the nearest region</li>
+     </ul>`},
+    {type:'question', kind:'mcq',
+     question:"InnoDB's default isolation level is:",
+     options:["READ UNCOMMITTED","READ COMMITTED","REPEATABLE READ","SERIALIZABLE"], correct:2,
+     explanation:"REPEATABLE READ. InnoDB's implementation also prevents most phantom reads via gap locks."},
+    {type:'question', kind:'mcq',
+     question:"Two transactions deadlock. What happens?",
+     options:[
+       "Both transactions fail",
+       "MySQL detects the deadlock and rolls back one; the other proceeds",
+       "MySQL waits indefinitely",
+       "Database restarts"
+     ], correct:1,
+     explanation:"InnoDB has automatic deadlock detection. One transaction is rolled back (error 1213); your app should retry it."},
+    {type:'pitfall', title:"Long-running transactions are the enemy",
+     body:`<p>A transaction held open for 30 seconds holds its locks for 30 seconds. Other transactions queue up, replication lag explodes, deadlocks multiply.</p>
+           <p>Rule: <code>START TRANSACTION</code> → run statements → <code>COMMIT</code> (or <code>ROLLBACK</code>). Never do HTTP calls, file I/O, or user prompts inside an open transaction.</p>`},
+    {type:'summary', title:"Recap", bullets:[
+      "4 isolation levels. InnoDB default = REPEATABLE READ.",
+      "InnoDB uses row-level locks; SELECT FOR UPDATE for explicit exclusive locks.",
+      "Deadlocks: detected automatically; one txn rolled back. App must retry.",
+      "Always lock rows in a consistent order to prevent deadlocks.",
+      "Replication: primary writes, replicas read. Always mind the lag."
+    ]}
+  ]
+},
+
+/* 30 */ {
+  id:30, title:"Data Warehousing Patterns", icon:"🏭", color:"#0891b2", difficulty:"engineering",
+  description:"Materialized views, ETL, slowly changing dimensions, star schemas.",
+  cards:[
+    {type:'concept', title:"OLTP vs OLAP",
+     body:`<p><b>OLTP</b> (Online Transaction Processing) — your production app DB. Optimized for many small fast writes (insert orders, update profiles).</p>
+           <p><b>OLAP</b> (Online Analytical Processing) — your data warehouse. Optimized for big aggregate reads (revenue by region by quarter).</p>
+           <p>Different schemas, different indexes, often different databases entirely (Snowflake, BigQuery, Redshift for OLAP).</p>`},
+    {type:'concept', title:"Materialized views",
+     body:`<p>A regular VIEW stores its query and re-runs it on every SELECT. A <b>materialized view</b> stores the RESULT and serves it like a table.</p>
+           <p>Trade-off: instant reads, but stale until refreshed. You choose the freshness policy:</p>
+           <ul>
+             <li>Refresh on schedule (every hour, every night)</li>
+             <li>Refresh on demand (after a known data change)</li>
+             <li>Refresh incrementally (only update changed rows)</li>
+           </ul>
+           <pre class="code">-- PostgreSQL syntax:
+CREATE MATERIALIZED VIEW mv_daily_revenue AS
+SELECT DATE(created_at) AS day, SUM(amount) AS revenue
+FROM orders
+GROUP BY DATE(created_at);
+
+REFRESH MATERIALIZED VIEW mv_daily_revenue;</pre>`},
+    {type:'concept', title:"ETL — Extract, Transform, Load",
+     body:`<p>The pipeline that moves data from OLTP into the warehouse:</p>
+           <ul>
+             <li><b>Extract</b> — read from source (replica, CDC log, API).</li>
+             <li><b>Transform</b> — clean, type-cast, derive, deduplicate, join.</li>
+             <li><b>Load</b> — write into warehouse tables (often append-only).</li>
+           </ul>
+           <p>Modern variant: <b>ELT</b> — load raw data first, transform inside the warehouse using dbt/SQL. Easier to debug; closer to the analyst.</p>`},
+    {type:'concept', title:"Slowly Changing Dimensions (SCD)",
+     body:`<p>What happens when a customer's tier changes from silver to gold? Three common strategies:</p>
+           <ul>
+             <li><b>Type 1</b> — overwrite. No history. Cheapest.</li>
+             <li><b>Type 2</b> — add a new row with <code>effective_from</code> / <code>effective_to</code>. Old row preserved. Full history.</li>
+             <li><b>Type 3</b> — add a <code>previous_value</code> column. One step of history.</li>
+           </ul>
+           <p>Type 2 is the standard for warehouse dimensions where you need point-in-time accuracy.</p>`},
+    {type:'example', title:"SCD Type 2 — value at a point in time",
+     input:[T("dim_customer","customer_id, name, tier, effective_from, effective_to",
+       [[1,"Acme","silver","2024-01-01","2024-06-15"],
+        [1,"Acme","gold","2024-06-15",null],
+        [2,"Globex","gold","2024-03-01",null]])],
+     code:`-- "What tier was Acme on 2024-04-01?"
+SELECT customer_id, name, tier
+FROM dim_customer
+WHERE customer_id = 1
+  AND effective_from <= '2024-04-01'
+  AND (effective_to IS NULL OR effective_to > '2024-04-01');`,
+     result:T("result","customer_id, name, tier",[[1,"Acme","silver"]]),
+     walkthrough:"<p>The half-open interval <code>[effective_from, effective_to)</code> contains the date. The current row is identified by <code>effective_to IS NULL</code>.</p>"},
+    {type:'concept', title:"Star schema",
+     body:`<p>The classic warehouse layout: one <b>fact table</b> with measures (sales, clicks, time-spent), surrounded by <b>dimension tables</b> describing the who/what/when/where.</p>
+           <pre class="code">fact_sales              dim_customer
+  customer_id  ──→        customer_id (PK)
+  product_id   ──→        name, tier, region
+  date_key     ──→      dim_product
+  quantity                product_id (PK)
+  amount                  name, category, brand
+                       dim_date
+                          date_key (PK)
+                          day, month, year, quarter</pre>
+           <p>Joins are simple (fact → dim on a single key), aggregates are fast, columns are intuitive for analysts.</p>`,
+     real:"Every dashboard at every retail company runs on some variant of star schema. Learn it once, recognize it everywhere."},
+    {type:'question', kind:'mcq',
+     question:"You need full history of customer tier changes for an audit. Which SCD type?",
+     options:["Type 1","Type 2","Type 3","Type 0"], correct:1,
+     explanation:"Type 2 keeps every version of the row with effective dates. Type 1 overwrites (no history), Type 3 keeps only one prior value."},
+    {type:'question', kind:'mcq',
+     question:"In a star schema, the fact table usually contains:",
+     options:[
+       "Descriptions of customers and products",
+       "Measures (counts, amounts) and FK references to dimensions",
+       "Lookup tables for codes",
+       "Only date columns"
+     ], correct:1,
+     explanation:"Fact = measures + dimension FKs. Dimensions hold the descriptive attributes."},
+    {type:'pitfall', title:"Materialized view staleness",
+     body:`<p>A materialized view is a SNAPSHOT. If you refresh nightly, dashboards show yesterday's numbers — always.</p>
+           <p>Always display the freshness on the dashboard ("Last updated: 2:00 AM"). Otherwise users make decisions on stale numbers, then lose trust in the dashboard when reality diverges.</p>`},
+    {type:'summary', title:"Recap", bullets:[
+      "OLTP = small fast writes; OLAP = big aggregate reads. Different schemas, often different DBs.",
+      "Materialized views = precomputed query results. Trade staleness for speed.",
+      "ETL: Extract → Transform → Load. ELT loads raw, transforms in warehouse (dbt-style).",
+      "SCD Type 2 = effective_from/effective_to columns for full historical accuracy.",
+      "Star schema = central fact table + dimension tables. Lingua franca of analytics."
+    ]}
+  ]
 }
 ];
 
 /* ============ State ============ */
-const DEFAULT_ADAPTIVE = {
-  topics:{
-    joins:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
-    aggregates:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
-    subqueries:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
-    ctes:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
-    windowFunctions:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
-    indexing:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0},
-    transactions:{attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0}
-  },
-  questions:{},
-  dailyGoal:5,
-  dailySolved:0,
-  dailyDate:null,
-  streakRecovery:{available:false,used:false,restoreValue:0,lastBreak:null},
-  lastUpdated:null
-};
-const REVIEW_SCHEDULE_MS = [10*60*1000, 60*60*1000, 6*60*60*1000, 24*60*60*1000, 3*24*60*60*1000, 7*24*60*60*1000, 14*24*60*60*1000];
-const MODULE_TOPIC_MAP = {
-  '6':'aggregates',
-  '8':'joins',
-  '9':'joins',
-  '11':'subqueries',
-  '12':'ctes',
-  '17':'windowFunctions',
-  '18':'indexing',
-  '20':'transactions'
-};
-const TOPIC_META = {
-  joins:{label:'Joins', icon:'🔗', modules:[8,9]},
-  aggregates:{label:'Aggregates', icon:'➕', modules:[6]},
-  subqueries:{label:'Subqueries', icon:'📦', modules:[11]},
-  ctes:{label:'CTEs', icon:'🌳', modules:[12]},
-  windowFunctions:{label:'Window Functions', icon:'🪟', modules:[17]},
-  indexing:{label:'Indexing', icon:'📈', modules:[18]},
-  transactions:{label:'Transactions', icon:'⚙️', modules:[20]}
-};
-const DEFAULT_STATE = {xp:0, streak:0, lastPlayed:null, moduleProgress:{}, playgroundProgress:{}, interviewHistory:[], adaptive:null};
-const loadStateRaw = () => {
+const DEFAULT_STATE = {xp:0, streak:0, lastPlayed:null, moduleProgress:{}};
+function loadState(){
   try{
     const raw = localStorage.getItem('sqlingo.v3');
-    return raw ? JSON.parse(raw) : {};
-  }catch(e){return {}}
-};
-function loadState(){
-  const raw = loadStateRaw();
-  return {...DEFAULT_STATE, ...raw};
+    if(!raw) return {...DEFAULT_STATE};
+    return {...DEFAULT_STATE, ...JSON.parse(raw)};
+  }catch(e){return {...DEFAULT_STATE}}
 }
 function saveState(){try{localStorage.setItem('sqlingo.v3', JSON.stringify(state))}catch(e){}}
-function cloneAdaptiveBase(){ return JSON.parse(JSON.stringify(DEFAULT_ADAPTIVE)); }
-function hydrateState(){
-  const raw = loadStateRaw();
-  const base = {...DEFAULT_STATE, ...raw};
-  state = base;
-  state.moduleProgress = state.moduleProgress || {};
-  state.playgroundProgress = state.playgroundProgress || {};
-  state.interviewHistory = state.interviewHistory || [];
-  const adaptiveRaw = raw.adaptive || {};
-  state.adaptive = cloneAdaptiveBase();
-  state.adaptive = {...state.adaptive, ...adaptiveRaw};
-  state.adaptive.topics = {...cloneAdaptiveBase().topics, ...(adaptiveRaw.topics || {})};
-  Object.keys(cloneAdaptiveBase().topics).forEach(k => {
-    state.adaptive.topics[k] = {...cloneAdaptiveBase().topics[k], ...((adaptiveRaw.topics || {})[k] || {})};
-  });
-  state.adaptive.questions = {...(adaptiveRaw.questions || {})};
-  state.adaptive.streakRecovery = {...cloneAdaptiveBase().streakRecovery, ...(adaptiveRaw.streakRecovery || {})};
-  state.xp = Number(state.xp || 0);
-  state.streak = Number(state.streak || 0);
-}
 let state = loadState();
-hydrateState();
-(function streakCheck(){
+(function migrateState(){
+  function tk(){const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
   const today = new Date().toDateString();
+  // adaptive learning fields
+  if(state.freezesAvailable === undefined) state.freezesAvailable = 1;
+  if(!state.concepts) state.concepts = {};
+  if(!state.questionSrs) state.questionSrs = {};
+  if(!state.dailyGoal) state.dailyGoal = 10;
+  if(!state.dailyProgress || state.dailyProgress.date !== tk()){
+    state.dailyProgress = {date: tk(), completed: 0};
+  }
+  // streak check with freeze recovery
+  state.streakFrozeRecently = false;
   if(state.lastPlayed && state.lastPlayed !== today){
     const diff = (new Date(today) - new Date(state.lastPlayed))/86400000;
-    if(diff > 1){
-      if(state.streak > 0){
-        state.adaptive.streakRecovery.available = true;
-        state.adaptive.streakRecovery.used = false;
-        state.adaptive.streakRecovery.restoreValue = Math.max(state.streak, state.adaptive.streakRecovery.restoreValue || 0);
-        state.adaptive.streakRecovery.lastBreak = state.lastPlayed;
-      }
+    if(diff === 2 && state.freezesAvailable > 0){
+      // Streak freeze: silently bridge one missed day
+      state.freezesAvailable -= 1;
+      const yest = new Date(); yest.setDate(yest.getDate() - 1);
+      state.lastPlayed = yest.toDateString();
+      state.streakFrozeRecently = true;
+    } else if(diff > 1){
       state.streak = 0;
     }
   }
+  saveState();
 })();
 
 /* ============ DOM ============ */
@@ -2042,337 +2324,6 @@ function showFeedback(correct, explain){
 function randomCorrect(){
   const o = ['Nice!','Excellent!','You got it!','Crushed it!','Perfect.','Sharp!'];
   return o[Math.floor(Math.random()*o.length)];
-}
-
-
-/* ============ Adaptive learning & spaced repetition ============ */
-function todayKey(){ return new Date().toDateString(); }
-function getTopicForModule(moduleId, title=''){
-  const mapped = MODULE_TOPIC_MAP[String(moduleId)];
-  if(mapped) return mapped;
-  const t = String(title || '').toLowerCase();
-  if(t.includes('join')) return 'joins';
-  if(t.includes('aggregate') || t.includes('group by')) return 'aggregates';
-  if(t.includes('subquery')) return 'subqueries';
-  if(t.includes('cte')) return 'ctes';
-  if(t.includes('window')) return 'windowFunctions';
-  if(t.includes('index')) return 'indexing';
-  if(t.includes('transaction')) return 'transactions';
-  return null;
-}
-function ensureAdaptiveDaily(){
-  const today = todayKey();
-  if(state.adaptive.dailyDate !== today){
-    state.adaptive.dailyDate = today;
-    state.adaptive.dailySolved = 0;
-  }
-}
-function getQuestionMeta(module, idx, card){
-  const sourceId = card && card._sourceId != null ? card._sourceId : (module ? module.id : null);
-  const sourceTitle = card && card._sourceTitle ? card._sourceTitle : (module ? module.title : '');
-  const sourceIdx = card && card._sourceIdx != null ? card._sourceIdx : idx;
-  const topic = (card && card._topic) || getTopicForModule(sourceId, sourceTitle);
-  const qid = (card && card._qid) ? card._qid : `${sourceId}:${sourceIdx}`;
-  return {sourceId, sourceTitle, sourceIdx, topic, qid};
-}
-function getAdaptiveQuestionEntries(){
-  const now = Date.now();
-  const entries = [];
-  M.forEach(m => {
-    m.cards.forEach((c, idx) => {
-      if(c.type !== 'question') return;
-      const meta = getQuestionMeta(m, idx, c);
-      const qState = state.adaptive.questions[meta.qid] || {};
-      const tState = meta.topic ? (state.adaptive.topics[meta.topic] || {}) : {};
-      const attempts = qState.attempts || 0;
-      const correct = qState.correct || 0;
-      const wrong = qState.wrong || 0;
-      const qAccuracy = attempts ? correct / attempts : 1;
-      const tAccuracy = meta.topic && tState.attempts ? (tState.correct || 0) / tState.attempts : 1;
-      const dueAt = meta.topic ? (qState.nextReview || 0) : Number.POSITIVE_INFINITY;
-      let weight = 1;
-      if(meta.topic && dueAt && dueAt <= now) weight += 2.5;
-      if(wrong > 0) weight += Math.min(3, wrong * 0.9);
-      if(attempts >= 3 && qAccuracy < 0.8) weight += 1.5;
-      if(meta.topic && tState.attempts >= 3 && tAccuracy < 0.8) weight += 1.5;
-      if(meta.topic && tAccuracy < 0.6) weight += 1.2;
-      entries.push({
-        card:{...c, _sourceId:m.id, _sourceTitle:m.title, _sourceIdx:idx, _topic:meta.topic, _qid:meta.qid},
-        meta,
-        qState,
-        topicState:tState,
-        weight,
-        dueAt,
-        qAccuracy,
-        topicAccuracy:tAccuracy
-      });
-    });
-  });
-  return entries;
-}
-function getAdaptiveStats(){
-  const now = Date.now();
-  const entries = getAdaptiveQuestionEntries();
-  const topics = Object.keys(TOPIC_META).map(key => {
-    const meta = TOPIC_META[key];
-    const s = state.adaptive.topics[key] || {};
-    const attempts = s.attempts || 0;
-    const correct = s.correct || 0;
-    const wrong = s.wrong || 0;
-    const accuracy = attempts ? Math.round(100 * correct / attempts) : 0;
-    const dueQuestions = entries.filter(e => e.meta.topic === key && e.dueAt <= now).length;
-    return {key, ...meta, attempts, correct, wrong, accuracy, dueQuestions};
-  }).sort((a,b) => {
-    const aScore = a.attempts >= 3 ? a.accuracy : 101;
-    const bScore = b.attempts >= 3 ? b.accuracy : 101;
-    return aScore - bScore;
-  });
-  const dueCount = entries.filter(e => e.dueAt <= now).length;
-  const weakCount = topics.filter(t => t.attempts >= 3 && t.accuracy < 80).length;
-  const masteredCount = topics.filter(t => t.attempts >= 5 && t.accuracy >= 85).length;
-  const goal = Math.max(1, Number(state.adaptive.dailyGoal || 5));
-  const dailySolved = Number(state.adaptive.dailySolved || 0);
-  const recovery = !!(state.adaptive.streakRecovery && state.adaptive.streakRecovery.available && !state.adaptive.streakRecovery.used);
-  return {topics, entries, dueCount, weakCount, masteredCount, goal, dailySolved, goalPct: Math.min(100, Math.round(100 * dailySolved / goal)), recovery};
-}
-function getAdaptiveRecommendations(stats){
-  const recos = [];
-  const weak = stats.topics.filter(t => t.attempts >= 3 && t.accuracy < 80).slice(0, 3);
-  if(weak.length){
-    weak.forEach(t => recos.push(`Focus on <strong>${esc(t.label)}</strong> (${t.accuracy}% accuracy) — ${t.dueQuestions} review item${t.dueQuestions === 1 ? '' : 's'} due.`));
-  } else {
-    recos.push(`Nice work — no weak topics yet. Use review mode to keep your recall fresh.`);
-  }
-  const strongest = stats.topics.filter(t => t.attempts >= 5).sort((a,b) => b.accuracy - a.accuracy)[0];
-  if(strongest && strongest.accuracy >= 90){
-    recos.push(`You are strongest at <strong>${esc(strongest.label)}</strong>. Keep it warm with one quick spaced-repetition pass.`);
-  }
-  return recos.slice(0, 3);
-}
-function renderAdaptiveHomeCard(){
-  const stats = getAdaptiveStats();
-  const primary = stats.topics[0];
-  const dueText = stats.dueCount ? `${stats.dueCount} due` : 'All clear';
-  const weakText = stats.weakCount ? `${stats.weakCount} weak topic${stats.weakCount === 1 ? '' : 's'}` : 'No weak topics';
-  const recText = stats.recovery ? 'Streak recovery ready' : 'Streak recovery inactive';
-  return `
-    <div class="featured adaptive-card">
-      <div class="featured-icon">🧭</div>
-      <div class="featured-content">
-        <h2>Adaptive Learning</h2>
-        <p>Tracks weak topics, spaces reviews, and keeps joins, aggregates, subqueries, CTEs, window functions, indexing, and transactions in your rotation.</p>
-        <div class="featured-actions">
-          <button class="featured-btn" onclick="renderAdaptiveLanding()">🧠 Open dashboard</button>
-          <button class="featured-btn" onclick="startAdaptiveReview('due', 10)">🔁 Review due · ${stats.dueCount}</button>
-          <button class="featured-btn" onclick="startAdaptiveReview('weak', 10)">🎯 Weak topics</button>
-        </div>
-        <div class="adaptive-mini">
-          <span>${dueText}</span>
-          <span>${weakText}</span>
-          <span>${stats.dailySolved}/${stats.goal} today</span>
-          <span>${recText}</span>
-        </div>
-      </div>
-    </div>
-  `;
-}
-function buildAdaptivePool(mode='due', count=10, topic=null){
-  const stats = getAdaptiveStats();
-  let entries = stats.entries.slice();
-  if(topic && topic !== 'all'){
-    entries = entries.filter(e => e.meta.topic === topic);
-  }
-  if(entries.length === 0) return [];
-  const now = Date.now();
-  if(mode === 'due'){
-    const due = entries.filter(e => e.dueAt <= now).sort((a,b) => (a.dueAt - b.dueAt) || (a.topicAccuracy - b.topicAccuracy) || (a.qAccuracy - b.qAccuracy));
-    const rest = entries.filter(e => e.dueAt > now).sort((a,b) => b.weight - a.weight);
-    entries = due.concat(rest);
-  } else if(mode === 'weak'){
-    entries = entries.sort((a,b) => b.weight - a.weight);
-  } else if(mode === 'topic'){
-    entries = entries.sort((a,b) => b.weight - a.weight);
-  }
-  const pool = [];
-  entries.forEach(e => {
-    const copies = Math.max(1, Math.min(5, Math.round(e.weight)));
-    for(let i=0;i<copies;i++) pool.push(e.card);
-  });
-  for(let i=pool.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [pool[i], pool[j]] = [pool[j], pool[i]];
-  }
-  return pool.slice(0, Math.min(count, pool.length));
-}
-function startAdaptiveReview(mode='due', count=10){
-  hideFeedback();
-  let topic = null;
-  let title = 'Review Mode';
-  let poolMode = 'due';
-  if(TOPIC_META[mode]){
-    topic = mode;
-    title = `${TOPIC_META[mode].icon} ${TOPIC_META[mode].label} Drill`;
-    poolMode = 'topic';
-  } else if(mode === 'weak'){
-    title = 'Weak Topic Review';
-    poolMode = 'weak';
-  } else if(mode === 'all' || mode === 'mixed'){
-    title = 'Mixed Adaptive Review';
-    poolMode = 'mixed';
-  } else if(mode === 'due'){
-    title = 'Due Review';
-    poolMode = 'due';
-  }
-  const cards = buildAdaptivePool(poolMode, count, topic);
-  if(cards.length === 0){
-    alert('No review items are due yet. Try weak-topic review or answer more questions first.');
-    return;
-  }
-  curModule = {id:`adaptive-${mode}`, title, icon:'🧠', color:'#0ea5e9', cards};
-  curIdx = 0;
-  sessionCorrect = 0;
-  sessionTotal = cards.length;
-  sessionStart = Date.now();
-  renderCard();
-}
-function claimStreakRecovery(){
-  if(!state.adaptive.streakRecovery.available || state.adaptive.streakRecovery.used) return;
-  const restore = Math.max(1, Number(state.adaptive.streakRecovery.restoreValue || 1));
-  state.streak = Math.max(state.streak, restore);
-  state.adaptive.streakRecovery.used = true;
-  state.adaptive.streakRecovery.available = false;
-  state.adaptive.streakRecovery.restoreValue = 0;
-  saveState();
-  updateStatsUI();
-  renderAdaptiveLanding();
-}
-function renderAdaptiveLanding(){
-  hideFeedback();
-  const stats = getAdaptiveStats();
-  const weak = stats.topics.filter(t => t.attempts >= 3 && t.accuracy < 80).slice(0, 6);
-  const recos = getAdaptiveRecommendations(stats);
-  main.innerHTML = `
-    <div class="lesson-header">
-      <button class="close-btn" onclick="renderHome()" aria-label="Back">×</button>
-      <div style="flex:1;font-weight:800;font-size:14px;color:var(--muted)">Adaptive Learning</div>
-    </div>
-
-    <article class="card card-concept">
-      <span class="card-badge b-concept">🧠 Spaced repetition</span>
-      <h2>Keep weak SQL topics in rotation</h2>
-      <p>This dashboard tracks accuracy per concept, schedules review questions, and nudges difficult items back sooner so they show up more often until they stick.</p>
-      <div class="featured-actions">
-        <button class="featured-btn" onclick="startAdaptiveReview('due', 10)">🔁 Review due (${stats.dueCount})</button>
-        <button class="featured-btn" onclick="startAdaptiveReview('weak', 10)">🎯 Weak-topic review</button>
-        <button class="featured-btn" onclick="startAdaptiveReview('all', 10)">🎲 Mixed adaptive</button>
-      </div>
-    </article>
-
-    <div class="adaptive-grid">
-      <div class="adaptive-stat"><div class="lbl">Due reviews</div><div class="val">${stats.dueCount}</div></div>
-      <div class="adaptive-stat"><div class="lbl">Weak topics</div><div class="val">${stats.weakCount}</div></div>
-      <div class="adaptive-stat"><div class="lbl">Mastered</div><div class="val">${stats.masteredCount}</div></div>
-      <div class="adaptive-stat"><div class="lbl">Daily goal</div><div class="val">${stats.dailySolved}/${stats.goal}</div></div>
-    </div>
-
-    <div class="goal-card">
-      <div class="goal-head">
-        <div>
-          <h3>Daily practice goal</h3>
-          <div class="goal-meta">${stats.goalPct}% complete</div>
-        </div>
-        <div class="goal-meta">${stats.dailySolved} / ${stats.goal} questions</div>
-      </div>
-      <div class="goal-track"><div class="goal-fill" style="width:${stats.goalPct}%"></div></div>
-      <div class="goal-note">Answer ${Math.max(0, stats.goal - stats.dailySolved)} more question${Math.max(0, stats.goal - stats.dailySolved) === 1 ? '' : 's'} to hit today’s target. The app counts practice attempts and keeps today’s total in your progress state.</div>
-    </div>
-
-    ${stats.recovery ? `
-      <div class="recovery-banner">
-        <h3>Streak recovery is available</h3>
-        <p>You missed a day, but you can restore your streak once from the last saved value.</p>
-        <div class="featured-actions">
-          <button class="featured-btn" onclick="claimStreakRecovery()">Recover streak</button>
-        </div>
-      </div>
-    ` : ''}
-
-    <article class="card card-example">
-      <span class="card-badge b-example">🔎 Personalized recommendations</span>
-      <h2>What to review next</h2>
-      <div class="reco-list">
-        ${recos.map(r => `<div class="reco-item">${r}</div>`).join('')}
-      </div>
-    </article>
-
-    <article class="card card-syntax">
-      <span class="card-badge b-syntax">📚 Weak-topic tracker</span>
-      <h2>Topic accuracy</h2>
-      ${weak.length ? `
-        <div class="topic-list">
-          ${weak.map(t => `
-            <div class="topic-row weak">
-              <div class="topic-avatar" aria-hidden="true">${t.icon}</div>
-              <div class="topic-copy">
-                <h4>${esc(t.label)}</h4>
-                <p>${t.attempts} answered · ${t.correct} correct · ${t.wrong} wrong · ${t.dueQuestions} due</p>
-              </div>
-              <div class="topic-actions">
-                <span class="topic-pill weak">${t.accuracy}% accuracy</span>
-                <button class="btn btn-secondary" onclick="startAdaptiveReview('${t.key}', 8)">Drill</button>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      ` : `<div class="adaptive-empty">No weak topics yet. Keep going — the review queue will automatically populate as you answer more questions.</div>`}
-    </article>
-
-    <article class="card card-summary">
-      <span class="card-badge b-summary">⏱ Review mode</span>
-      <h2>How spaced repetition works here</h2>
-      <ul class="bullets">
-        <li>Correct answers move a question further out on the schedule.</li>
-        <li>Incorrect answers pull it back sooner so it appears again quickly.</li>
-        <li>Weak concepts show up more often in mixed practice and review mode.</li>
-        <li>The dashboard keeps accuracy per concept for joins, aggregates, subqueries, CTEs, window functions, indexing, and transactions.</li>
-      </ul>
-    </article>
-
-    <div class="footer-actions" style="justify-content:center">
-      <button class="btn btn-secondary" onclick="renderHome()">Back home</button>
-      <button class="btn btn-primary" onclick="startAdaptiveReview('due', 10)">Start review</button>
-    </div>
-  `;
-}
-function recordAdaptiveAnswer(correct){
-  const card = curModule && curModule.cards ? curModule.cards[curIdx] : null;
-  if(!card || card.type !== 'question') return;
-  const meta = getQuestionMeta(curModule, curIdx, card);
-  ensureAdaptiveDaily();
-  const now = Date.now();
-  state.adaptive.dailySolved = (state.adaptive.dailySolved || 0) + 1;
-  state.adaptive.lastUpdated = now;
-  if(!meta.topic) return;
-  const topic = state.adaptive.topics[meta.topic] || (state.adaptive.topics[meta.topic] = {attempts:0,correct:0,wrong:0,lastSeen:null,nextReview:0});
-  const qState = state.adaptive.questions[meta.qid] || (state.adaptive.questions[meta.qid] = {topic:meta.topic, attempts:0, correct:0, wrong:0, stage:0, nextReview:0, lastSeen:null, ease:2.3});
-  qState.topic = meta.topic;
-  qState.attempts += 1;
-  topic.attempts = (topic.attempts || 0) + 1;
-  if(correct){
-    qState.correct += 1;
-    topic.correct = (topic.correct || 0) + 1;
-    qState.stage = Math.min((qState.stage || 0) + 1, REVIEW_SCHEDULE_MS.length - 1);
-    qState.ease = Math.min(2.8, (qState.ease || 2.3) + 0.05);
-  }else{
-    qState.wrong += 1;
-    topic.wrong = (topic.wrong || 0) + 1;
-    qState.stage = 0;
-    qState.ease = Math.max(1.3, (qState.ease || 2.3) - 0.15);
-  }
-  qState.lastSeen = now;
-  qState.nextReview = now + REVIEW_SCHEDULE_MS[qState.stage];
-  topic.lastSeen = now;
-  topic.nextReview = qState.nextReview;
 }
 
 /* ============ Table render (real null) ============ */
@@ -2424,6 +2375,7 @@ function renderHome(){
         Tailored from your resume — <strong>SEO &amp; backlinks</strong>, <strong>brand imitation</strong>, <strong>inventory &amp; billing</strong>, <strong>FastAPI</strong>, <strong>BI dashboards</strong>. Every example shows a tiny sample table so you can <i>see</i> what the query operates on.
       </div>
     </div>
+    ${renderAdaptivePanels()}
     <div class="featured">
       <div class="featured-icon">🎲</div>
       <div class="featured-content">
@@ -2446,7 +2398,6 @@ function renderHome(){
         </div>
       </div>
     </div>
-    ${renderAdaptiveHomeCard()}
     <h2 class="section-heading">🌱 Foundations</h2>
     <div class="section-sub">Start here if you're rusty on the basics.</div>
     <div class="map" id="mapBeginner"></div>
@@ -2456,6 +2407,9 @@ function renderHome(){
     <h2 class="section-heading">🔥 Advanced &amp; Expert</h2>
     <div class="section-sub">Interview-grade patterns and production techniques.</div>
     <div class="map" id="mapAdv"></div>
+    <h2 class="section-heading">🛠️ Advanced SQL Engineering</h2>
+    <div class="section-sub">Indexing, query optimization, concurrency, data warehousing — the depth interviews probe.</div>
+    <div class="map" id="mapEngineering"></div>
     <h2 class="section-heading">📊 Business Analytics SQL</h2>
     <div class="section-sub">Analyst-grade lessons and challenges with realistic datasets — ecommerce, SaaS, marketing, fraud.</div>
     <div class="map" id="mapAnalytics"></div>
@@ -2475,7 +2429,7 @@ function renderHome(){
       <button class="btn btn-secondary" onclick="resetProgress()">Reset progress</button>
     </div>
   `;
-  const beg = $('#mapBeginner'), inter = $('#mapInter'), adv = $('#mapAdv'), anly = $('#mapAnalytics');
+  const beg = $('#mapBeginner'), inter = $('#mapInter'), adv = $('#mapAdv'), anly = $('#mapAnalytics'), eng = $('#mapEngineering');
   M.forEach((m, idx) => {
     const prog = state.moduleProgress[m.id] || {};
     const total = m.cards.length;
@@ -2498,6 +2452,7 @@ function renderHome(){
     if(m.difficulty === 'beginner') beg.appendChild(card);
     else if(m.difficulty === 'intermediate') inter.appendChild(card);
     else if(m.difficulty === 'analytics') anly.appendChild(card);
+    else if(m.difficulty === 'engineering') eng.appendChild(card);
     else adv.appendChild(card);
   });
   const chList = $('#challengeList');
@@ -2546,21 +2501,15 @@ function startModule(id){
 }
 
 function startMixed(count){
-  const entries = getAdaptiveQuestionEntries();
-  if(entries.length === 0){
-    alert('No questions available yet.');
-    return;
-  }
-  const pool = [];
-  entries.forEach(e => {
-    const copies = Math.max(1, Math.min(5, Math.round(e.weight)));
-    for(let i=0;i<copies;i++) pool.push(e.card);
-  });
-  for(let i = pool.length-1; i>0; i--){
+  const all = [];
+  M.forEach(m => m.cards.forEach(c => {
+    if(c.type === 'question') all.push({...c, _from: m.title});
+  }));
+  for(let i = all.length-1; i>0; i--){
     const j = Math.floor(Math.random()*(i+1));
-    [pool[i], pool[j]] = [pool[j], pool[i]];
+    [all[i], all[j]] = [all[j], all[i]];
   }
-  const picked = pool.slice(0, Math.min(count, pool.length));
+  const picked = all.slice(0, Math.min(count, all.length));
   curModule = {id:'mixed', title:`Mixed Practice (${picked.length})`, icon:'🎲', color:'#ef4444', cards: picked};
   curIdx = 0;
   sessionCorrect = 0;
@@ -2740,10 +2689,14 @@ function checkAnswer(){
     input.classList.add(correct ? 'correct' : 'wrong');
   }
   curAnswered = true;
-  recordAdaptiveAnswer(correct);
   if(correct){
     sessionCorrect++;
     state.xp += 10;
+    bumpDailyGoal();
+  }
+  if(curModule && curModule.id !== 'mixed'){
+    const concepts = moduleToConcepts(curModule);
+    if(concepts.length) recordConcept(concepts, !!correct);
   }
   saveState();
   updateStatsUI();
@@ -2758,8 +2711,7 @@ continueBtn.onclick = () => {
 
 /* ============ Finish ============ */
 function finishModule(){
-  const today = new Date().toDateString();
-  if(state.lastPlayed !== today){state.streak += 1; state.lastPlayed = today;}
+  tickStreak();
   if(curModule.id !== 'mixed' && state.moduleProgress[curModule.id]){
     state.moduleProgress[curModule.id].completed = true;
     state.moduleProgress[curModule.id].cardsDone = curModule.cards.length;
@@ -2798,11 +2750,7 @@ function nextModuleId(){
 function goNextOrHome(){const n = nextModuleId(); if(n) startModule(n); else renderHome();}
 function resetProgress(){
   if(confirm('Reset all progress, XP and streak? This cannot be undone.')){
-    state = {...DEFAULT_STATE, adaptive: cloneAdaptiveBase()};
-    state.adaptive.questions = {};
-    state.adaptive.topics = cloneAdaptiveBase().topics;
-    saveState();
-    renderHome();
+    state = {...DEFAULT_STATE}; saveState(); renderHome();
   }
 }
 
@@ -3291,7 +3239,7 @@ async function startChallenge(id){
   curChallenge = CHALLENGES.find(c => c.id === id);
   if(!curChallenge) return renderHome();
   hideFeedback();
-  lastChallengeRun = {user:null, expected:null};
+  lastChallengeRun = {user:null, expected:null, error:null};
   mentor = {issues:[], issueIdx:0, hintLevel:0};
   main.innerHTML = `<div class="pg-loading"><span class="spin">⟳</span>Loading SQL engine</div>`;
   try{
@@ -3382,16 +3330,17 @@ function runChallenge(){
   const out = $('#runOutput');
   try{
     const r = execSelect(curChallengeDb, sql);
-    lastChallengeRun = {user:r, expected:lastChallengeRun.expected, error:null, sql};
+    lastChallengeRun = {user:r, expected:lastChallengeRun.expected, error:null};
     out.innerHTML = `
       <div class="run-status ok">▶ Query ran · ${r.rows.length} row${r.rows.length===1?'':'s'}</div>
       ${renderTables([{name:'your result', cols:r.cols, rows:r.rows}])}
     `;
   }catch(e){
-    lastChallengeRun = {user:null, expected:lastChallengeRun.expected, error:e.message || String(e), sql};
+    const msg = e.message || String(e);
+    lastChallengeRun = {user:null, expected:lastChallengeRun.expected, error: msg};
     out.innerHTML = `
-      <div class="run-status err">⚠ Query error</div>
-      <div class="error-block">${esc(e.message || String(e))}</div>
+      <div class="run-status err">⚠ Query error — try the 🧠 Mentor button for help</div>
+      <div class="error-block">${esc(msg)}</div>
     `;
   }
 }
@@ -3403,10 +3352,11 @@ function checkChallenge(){
   try{
     userRes = execSelect(curChallengeDb, sql);
   }catch(e){
-    lastChallengeRun = {user:null, expected:null, error:e.message || String(e), sql};
+    const msg = e.message || String(e);
+    lastChallengeRun = {user:null, expected:null, error:msg};
     out.innerHTML = `
-      <div class="run-status err">⚠ Query error</div>
-      <div class="error-block">${esc(e.message || String(e))}</div>
+      <div class="run-status err">⚠ Query error — try the 🧠 Mentor button for help</div>
+      <div class="error-block">${esc(msg)}</div>
     `;
     return;
   }
@@ -3420,15 +3370,15 @@ function checkChallenge(){
     return;
   }
   const correct = compareResults(userRes, expectedRes, curChallenge.ordered);
-  lastChallengeRun = {user:userRes, expected:expectedRes, error:null, sql};
+  lastChallengeRun = {user:userRes, expected:expectedRes, error:null};
   if(correct){
     if(!state.playgroundProgress) state.playgroundProgress = {};
     const already = state.playgroundProgress[curChallenge.id]?.completed;
     state.playgroundProgress[curChallenge.id] = {completed:true};
     if(!already){
       state.xp += 20;
-      const today = new Date().toDateString();
-      if(state.lastPlayed !== today){state.streak += 1; state.lastPlayed = today;}
+      tickStreak();
+      bumpDailyGoal();
     }
     saveState();
     updateStatsUI();
@@ -3968,78 +3918,104 @@ FROM joined;`,
     expected:`WITH cohort AS (SELECT customer_id, mrr AS feb_mrr FROM mrr_snapshots WHERE month = '2025-02-01'), may AS (SELECT customer_id, mrr AS may_mrr FROM mrr_snapshots WHERE month = '2025-05-01'), joined AS (SELECT c.customer_id, c.feb_mrr, COALESCE(m.may_mrr, 0) AS may_mrr FROM cohort c LEFT JOIN may m ON m.customer_id = c.customer_id) SELECT 1.0 * SUM(may_mrr) / SUM(feb_mrr) AS nrr FROM joined;`,
     ordered:false,
     hint:'NRR is computed against the ORIGINAL cohort (Feb 1) only. Customer 5 signed up later — exclude them from the denominator.'
-  }
-,
-{id:23, title:"Advanced SQL Engineering", icon:"🛠️", color:"#7c3aed", difficulty:"expert",
- description:"Performance tuning, scaling patterns, and warehouse design for production SQL.",
- cards:[
-  {type:'concept', title:"Indexing strategies",
-   body:`<p>Indexes speed up lookups, joins, and sorts. Start with columns used often in <code>WHERE</code>, <code>JOIN</code>, and <code>ORDER BY</code>.</p>
-         <p>Prefer a small number of high-value indexes over indexing everything.</p>`},
-  {type:'concept', title:"Composite & covering indexes",
-   body:`<p>A <b>composite index</b> covers multiple columns in a defined order. A <b>covering index</b> contains every column a query needs, so MySQL can answer it from the index alone.</p>
-         <p>Column order matters: put the most selective / most commonly filtered prefix first.</p>`},
-  {type:'example', title:"EXPLAIN a query plan",
-   code:`EXPLAIN SELECT id, client_id, amount
+  },
+
+  {
+    id:'iv-eng1', difficulty:'medium', tags:['joins','star schema','aggregation'],
+    title:'Sales by customer region (star schema)',
+    prompt:'You have a classic star schema: <code>dim_customer</code> with region info, and <code>fact_sales</code> with amounts. Return <b>total amount per region</b>, columns <code>region, total</code>.',
+    setup:`CREATE TABLE dim_customer (id INT PRIMARY KEY, name TEXT, region TEXT);
+CREATE TABLE fact_sales (customer_id INT, amount INT);
+INSERT INTO dim_customer VALUES (1,'Acme','NA'),(2,'Globex','EU'),(3,'Initech','NA'),(4,'Soylent','APAC');
+INSERT INTO fact_sales VALUES (1,500),(2,300),(1,200),(3,400),(4,150),(2,250),(3,100);`,
+    starter:`SELECT \n  -- region, total\nFROM fact_sales s\nJOIN dim_customer c ON c.id = s.customer_id`,
+    expected:`SELECT c.region AS region, SUM(s.amount) AS total
+FROM fact_sales s JOIN dim_customer c ON c.id = s.customer_id
+GROUP BY c.region`,
+    ordered:false,
+    hint:'JOIN fact_sales → dim_customer on customer_id, then GROUP BY region. Aggregate SUM(amount).'
+  },
+  {
+    id:'iv-eng2', difficulty:'medium', tags:['SCD','top-n-per-group'],
+    title:'SCD Type 2: current tier per customer',
+    prompt:'Customer tier history is stored as SCD Type 2: each version has <code>effective_from</code> and <code>effective_to</code> (NULL = still current). Return each customer\'s <b>current tier</b>: columns <code>customer_id, tier</code>.',
+    setup:`CREATE TABLE dim_customer (customer_id INT, tier TEXT, effective_from TEXT, effective_to TEXT);
+INSERT INTO dim_customer VALUES
+  (1,'silver','2024-01-01','2024-06-15'),
+  (1,'gold','2024-06-15',NULL),
+  (2,'gold','2024-03-01','2024-09-01'),
+  (2,'platinum','2024-09-01',NULL),
+  (3,'silver','2024-05-01',NULL);`,
+    starter:`SELECT customer_id, tier\nFROM dim_customer\nWHERE -- which row is current?`,
+    expected:`SELECT customer_id, tier FROM dim_customer WHERE effective_to IS NULL`,
+    ordered:false,
+    hint:'In SCD Type 2, the current version of a row has effective_to IS NULL. No GROUP BY needed.'
+  },
+  {
+    id:'iv-eng3', difficulty:'hard', tags:['SCD','joins','point-in-time'],
+    title:'SCD Type 2: customer tier AT THE TIME of each order',
+    prompt:'Join <code>orders</code> with <code>dim_customer</code> (SCD Type 2) so each order is matched to the customer\'s tier <b>as of the order date</b>. Columns: <code>order_id, customer_id, order_date, tier</code>.',
+    setup:`CREATE TABLE orders (order_id INT, customer_id INT, order_date TEXT, amount INT);
+CREATE TABLE dim_customer (customer_id INT, tier TEXT, effective_from TEXT, effective_to TEXT);
+INSERT INTO dim_customer VALUES
+  (1,'silver','2024-01-01','2024-06-15'),
+  (1,'gold','2024-06-15',NULL),
+  (2,'gold','2024-03-01',NULL);
+INSERT INTO orders VALUES
+  (101,1,'2024-03-15',100),
+  (102,1,'2024-07-20',200),
+  (103,2,'2024-05-10',300);`,
+    starter:`SELECT o.order_id, o.customer_id, o.order_date, d.tier\nFROM orders o\nJOIN dim_customer d ON -- ?`,
+    expected:`SELECT o.order_id, o.customer_id, o.order_date, d.tier
+FROM orders o
+JOIN dim_customer d ON d.customer_id = o.customer_id
+  AND o.order_date >= d.effective_from
+  AND (d.effective_to IS NULL OR o.order_date < d.effective_to)`,
+    ordered:false,
+    hint:'JOIN on customer_id AND on the half-open interval [effective_from, effective_to). Remember effective_to NULL means "still current" — handle that with OR.'
+  },
+  {
+    id:'iv-eng4', difficulty:'hard', tags:['star schema','aggregation','multi-join'],
+    title:'Q1 sales by product category',
+    prompt:'Star schema with three dimensions. Find <b>total amount per product category for Q1 only</b>. Columns: <code>category, total</code>.',
+    setup:`CREATE TABLE dim_product (id INT, name TEXT, category TEXT);
+CREATE TABLE dim_date (date_key TEXT, quarter TEXT);
+CREATE TABLE fact_sales (product_id INT, date_key TEXT, amount INT);
+INSERT INTO dim_product VALUES (1,'Pen','stationery'),(2,'Mug','kitchen'),(3,'Book','books'),(4,'Lamp','home'),(5,'Bowl','kitchen');
+INSERT INTO dim_date VALUES ('2025-01-15','Q1'),('2025-02-10','Q1'),('2025-04-20','Q2'),('2025-05-15','Q2');
+INSERT INTO fact_sales VALUES (1,'2025-01-15',100),(2,'2025-02-10',180),(3,'2025-01-15',250),(4,'2025-04-20',450),(5,'2025-05-15',60),(2,'2025-04-20',90);`,
+    starter:`SELECT p.category AS category, SUM(s.amount) AS total\nFROM fact_sales s\nJOIN -- ?`,
+    expected:`SELECT p.category AS category, SUM(s.amount) AS total
+FROM fact_sales s
+JOIN dim_product p ON p.id = s.product_id
+JOIN dim_date d ON d.date_key = s.date_key
+WHERE d.quarter = 'Q1'
+GROUP BY p.category`,
+    ordered:false,
+    hint:'Three-way join: fact → dim_product (for category), fact → dim_date (for quarter filter). Filter quarter=\'Q1\' in WHERE, GROUP BY category.'
+  },
+  {
+    id:'iv-eng5', difficulty:'faang', tags:['materialized view','incremental refresh'],
+    title:'Which dates need a materialized view refresh?',
+    prompt:'<code>mv_meta</code> tracks when the daily-revenue materialized view was last refreshed. Find all <b>distinct dates that have orders newer than the last refresh</b> — these dates need re-aggregation. Columns: <code>d</code> (date), ordered ascending.',
+    setup:`CREATE TABLE orders (id INT, created_at TEXT, amount INT);
+CREATE TABLE mv_meta (mv_name TEXT, last_refreshed TEXT);
+INSERT INTO mv_meta VALUES ('mv_daily_revenue','2025-05-15 12:00:00');
+INSERT INTO orders VALUES
+  (1,'2025-05-13 10:00:00',100),
+  (2,'2025-05-14 11:00:00',200),
+  (3,'2025-05-15 09:00:00',150),
+  (4,'2025-05-15 14:00:00',300),
+  (5,'2025-05-16 08:00:00',250),
+  (6,'2025-05-17 10:00:00',180);`,
+    starter:`SELECT DISTINCT date(created_at) AS d\nFROM orders\nWHERE created_at > -- ?`,
+    expected:`SELECT DISTINCT date(created_at) AS d
 FROM orders
-WHERE client_id = 1
-ORDER BY created_at DESC
-LIMIT 5;`,
-   walkthrough:"<p><code>EXPLAIN</code> helps you inspect how MySQL plans to run the query — which indexes it uses, estimated rows scanned, and where sorting happens.</p>",
-   real:"In interviews, explain why a query is slow before proposing index changes."},
-  {type:'concept', title:"Query optimization",
-   body:`<p>Optimization is mostly about reducing work: filter early, avoid unnecessary columns, join on indexed keys, and remove full scans when possible.</p>
-         <p>Common fixes include replacing <code>SELECT *</code>, using sargable predicates, and aligning indexes with access patterns.</p>`},
-  {type:'concept', title:"Partitioning",
-   body:`<p>Partitioning splits a large table into smaller physical chunks. It helps maintenance and partition pruning for date-range queries.</p>
-         <p>It is not a substitute for good indexing.</p>`},
-  {type:'concept', title:"Transactions & isolation levels",
-   body:`<p>Transactions group changes so they commit or roll back together. Isolation levels control how one transaction sees another's uncommitted work.</p>
-         <p>Know the tradeoff: stronger isolation reduces anomalies but can lower concurrency.</p>`},
-  {type:'concept', title:"Locking & deadlocks",
-   body:`<p>Locks protect rows or ranges during writes. A <b>deadlock</b> happens when two transactions wait on each other in a cycle.</p>
-         <p>Best practice: keep transactions short and touch tables in a consistent order.</p>`},
-  {type:'concept', title:"Replication basics",
-   body:`<p>Replication copies data from a primary database to one or more replicas. It is used for read scaling, backups, and high availability.</p>
-         <p>Interview note: know the difference between synchronous and asynchronous replication at a high level.</p>`},
-  {type:'concept', title:"Materialized views",
-   body:`<p>A materialized view stores the result of a query instead of recomputing it every time. It is common in analytics systems where speed matters more than perfect freshness.</p>`},
-  {type:'concept', title:"ETL, SCDs, and star schemas",
-   body:`<p><b>ETL</b> moves and transforms data into analytics-ready tables. <b>Slowly changing dimensions</b> preserve history of attributes over time. <b>Star schemas</b> organize one fact table around multiple dimension tables.</p>`},
-  {type:'example', title:"Warehouse design sketch",
-   code:`-- fact table
-sales_fact(order_date_id, customer_id, product_id, revenue, units)
-
--- dimensions
-dim_date(date_id, calendar_date, month, quarter)
-dim_customer(customer_id, name, segment)
-dim_product(product_id, sku, category)`,
-   walkthrough:"<p>Fact tables hold measurable events. Dimensions add descriptive context for slicing and reporting.</p>",
-   real:"A star schema is the default mental model for BI dashboards and cohort analytics."},
-  {type:'question', kind:'mcq', question:"Which index can satisfy a query without reading the base table?",
-   options:["Primary key only","Composite index only","Covering index","Temporary index"], correct:2,
-   explanation:"A covering index contains all columns required by the query."},
-  {type:'question', kind:'mcq', question:"What is the main purpose of EXPLAIN?",
-   options:["Run the query faster","Show the execution plan","Create indexes","Detect deadlocks"], correct:1,
-   explanation:"EXPLAIN reveals how MySQL plans to execute the query."},
-  {type:'question', kind:'fill', question:"Keep transactions short to reduce ___ risk.", 
-   template:"Keep transactions short to reduce ___ risk.", answer:"deadlock",
-   explanation:"Long transactions and inconsistent lock ordering increase the chance of deadlocks."},
-  {type:'question', kind:'mcq', question:"Which model places one fact table in the center with surrounding dimensions?",
-   options:["Snowflake schema","Star schema","Heap table","Federated schema"], correct:1,
-   explanation:"Star schemas are built around a fact table with dimension tables around it."},
-  {type:'question', kind:'mcq', question:"Which scenario is the BEST reason to use partitioning?",
-   options:["Every query becomes faster automatically","Very large tables with date-based pruning and maintenance needs","To replace all indexes","To avoid normalization"], correct:1,
-   explanation:"Partitioning helps when large tables can be pruned by date or other ranges."},
-  {type:'summary', title:"Recap", bullets:[
-    "Index for the access pattern you actually use.",
-    "Composite indexes depend on column order.",
-    "EXPLAIN shows the optimizer's plan.",
-    "Transactions, locks, and isolation control concurrency.",
-    "Warehouses usually use ETL pipelines, SCDs, and star schemas."
-  ]}
- ]}
-
+WHERE created_at > (SELECT last_refreshed FROM mv_meta WHERE mv_name='mv_daily_revenue')
+ORDER BY d`,
+    ordered:true,
+    hint:'Use a scalar subquery to pull last_refreshed. Filter orders newer than that timestamp, DISTINCT on date(created_at). Note: order #3 was BEFORE the refresh, so 2025-05-15 still appears because order #4 was after.'
+  }
 ];
 
 const IV_DIFF_CONFIG = {
@@ -4185,7 +4161,7 @@ function startIvQuestion(){
   iv.qHints = 0;
   iv.qAttempts = 0;
   iv.qStarter = q.starter;
-  iv.lastRun = {user:null, expected:null, error:null, sql:''};
+  iv.lastRun = {user:null, expected:null, error:null};
   mentor = {issues:[], issueIdx:0, hintLevel:0};
   renderIvQuestion();
   startIvTimer();
@@ -4286,16 +4262,17 @@ function runIv(){
   const out = $('#runOutput');
   try{
     const r = execSelect(iv.db, sql);
-    iv.lastRun = {user:r, expected: iv.lastRun ? iv.lastRun.expected : null, error:null, sql};
+    iv.lastRun = {user:r, expected: iv.lastRun ? iv.lastRun.expected : null, error:null};
     out.innerHTML = `
       <div class="run-status ok">▶ Query ran · ${r.rows.length} row${r.rows.length===1?'':'s'}</div>
       ${renderTables([{name:'your result', cols:r.cols, rows:r.rows}])}
     `;
   }catch(e){
-    iv.lastRun = {user:null, expected: iv.lastRun ? iv.lastRun.expected : null, error:e.message || String(e), sql};
+    const msg = e.message || String(e);
+    iv.lastRun = {user:null, expected: iv.lastRun ? iv.lastRun.expected : null, error:msg};
     out.innerHTML = `
-      <div class="run-status err">⚠ Query error</div>
-      <div class="error-block">${esc(e.message || String(e))}</div>
+      <div class="run-status err">⚠ Query error — try the 🧠 Mentor button for help</div>
+      <div class="error-block">${esc(msg)}</div>
     `;
   }
 }
@@ -4308,10 +4285,11 @@ function checkIv(){
   try{ userRes = execSelect(iv.db, sql); }
   catch(e){
     iv.qAttempts++;
-    iv.lastRun = {user:null, expected: iv.lastRun ? iv.lastRun.expected : null, error:e.message || String(e), sql};
+    const msg = e.message || String(e);
+    iv.lastRun = {user:null, expected:null, error:msg};
     out.innerHTML = `
-      <div class="run-status err">⚠ Query error</div>
-      <div class="error-block">${esc(e.message || String(e))}</div>
+      <div class="run-status err">⚠ Query error — try the 🧠 Mentor button for help</div>
+      <div class="error-block">${esc(msg)}</div>
     `;
     return;
   }
@@ -4325,7 +4303,7 @@ function checkIv(){
     return;
   }
   const correct = compareResults(userRes, expectedRes, q.ordered);
-  iv.lastRun = {user:userRes, expected:expectedRes, error:null, sql};
+  iv.lastRun = {user:userRes, expected:expectedRes, error:null};
   if(correct){
     const elapsed = Math.round((Date.now() - iv.qStart) / 1000);
     const cfg = IV_DIFF_CONFIG[iv.difficulty];
@@ -4340,6 +4318,10 @@ function checkIv(){
     else if(elapsed < 180) qScore += cfg.speed[2];
     qScore = Math.max(10, qScore);
     iv.score += qScore;
+    bumpDailyGoal();
+    const ivConcepts = tagsToConcepts(q.tags || []);
+    if(ivConcepts.length) recordConcept(ivConcepts, true);
+    recordQuestionSrs(q.id, true);
     iv.results.push({
       questionId: q.id, title: q.title, category: q.category,
       solved:true, status:'correct', score:qScore,
@@ -4380,6 +4362,9 @@ function resetIv(){
 function skipIv(){
   if(!confirm('Skip this question? You will get 0 points for it.')) return;
   const q = iv.questions[iv.idx];
+  const ivConcepts = tagsToConcepts(q.tags || []);
+  if(ivConcepts.length) recordConcept(ivConcepts, false);
+  recordQuestionSrs(q.id, false);
   iv.results.push({
     questionId: q.id, title: q.title, category: q.category,
     solved:false, status:'skipped', score:0,
@@ -4425,8 +4410,7 @@ function finishInterview(){
   const avgTime = solved > 0 ? Math.round(iv.results.filter(r=>r.solved).reduce((a,r)=>a+r.timeSpent,0) / solved) : 0;
   const xpEarned = Math.round(iv.score / 10);
   state.xp += xpEarned;
-  const today = new Date().toDateString();
-  if(state.lastPlayed !== today){state.streak += 1; state.lastPlayed = today;}
+  tickStreak();
   // save session
   if(!state.interviewHistory) state.interviewHistory = [];
   state.interviewHistory.push({
@@ -5057,114 +5041,8 @@ function setNormStage(i){
 }
 
 /* ============ AI Mentor ============ */
-let lastChallengeRun = {user:null, expected:null, error:null, sql:''};
+let lastChallengeRun = {user:null, expected:null, error:null};
 let mentor = {issues:[], issueIdx:0, hintLevel:0};
-
-function buildExecutionMentorIssue(sql, errorMessage){
-  const sqlText = String(sql || '');
-  const msg = String(errorMessage || '');
-  const lowerSql = sqlText.toLowerCase();
-  const lowerMsg = msg.toLowerCase();
-
-  const issue = {
-    id: 'execution-error',
-    tag: 'SQL error',
-    title: 'Your query has a syntax or execution error',
-    hints: [
-      'The SQL engine rejected this query before it could return rows. Read the error message and the clause near it.',
-      'Check for typos, extra characters, missing commas, missing quotes, or a value that is not valid SQL syntax.',
-      'Fix the parser error first; once the query runs, we can check logic like joins, grouping, and filters.'
-    ]
-  };
-
-  if(/\blimit\b/.test(lowerSql) && /\blimit\s+\d+[a-z_]+\b/i.test(sqlText)){
-    issue.tag = 'Syntax';
-    issue.title = 'Malformed LIMIT value';
-    issue.hints = [
-      'LIMIT expects a whole number, like 3 or 10.',
-      'Your LIMIT clause appears to contain extra characters after the number. Remove them so the database sees only an integer.',
-      'For example: <code>LIMIT 3</code> is valid; <code>LIMIT 3w</code> is not.'
-    ];
-    return issue;
-  }
-
-  if(/near\s+["']?[^"']+["']?\s*:\s*syntax error/i.test(msg) || /syntax error/i.test(lowerMsg) || /unrecognized token/i.test(lowerMsg) || /incomplete input/i.test(lowerMsg)){
-    if(/\bselect\s+[\w.]+\s+[\w.]+\s+from\b/i.test(sqlText)){
-      issue.tag = 'Syntax';
-      issue.title = 'Possible missing comma in SELECT list';
-      issue.hints = [
-        'Two column names appear to be written next to each other with no comma between them.',
-        'SELECT column names must be separated by commas.',
-        'Try: <code>SELECT name, price FROM products</code>.'
-      ];
-      return issue;
-    }
-    if(/\bwhere\s*;?\s*$/i.test(sqlText) || /\bgroup\s+by\s*;?\s*$/i.test(sqlText) || /\border\s+by\s*;?\s*$/i.test(sqlText)){
-      issue.tag = 'Syntax';
-      issue.title = 'Your clause is incomplete';
-      issue.hints = [
-        'The database expected something after the keyword you wrote.',
-        'Check the end of the query: a WHERE, GROUP BY, ORDER BY, or LIMIT clause may be missing its expression.',
-        'Read the line near the error and fill in the missing column, operator, or value.'
-      ];
-      return issue;
-    }
-    if(/\bselect\s+from\b/i.test(sqlText) || /\bselect\s*;?$/i.test(sqlText)){
-      issue.tag = 'Syntax';
-      issue.title = 'SELECT is missing its column list';
-      issue.hints = [
-        'The SELECT clause needs one or more columns before FROM.',
-        'Add the column names the prompt asks for, or use <code>*</code> if all columns are required.',
-        'Example: <code>SELECT * FROM products</code>.'
-      ];
-      return issue;
-    }
-    issue.tag = 'Syntax';
-    issue.title = 'SQL parser error';
-    issue.hints = [
-      'The database parser hit a syntax problem somewhere in the query.',
-      'Look around the token mentioned in the error message and compare it to valid SQL keyword order.',
-      'Fix the syntax first; then rerun the query to check the logic.'
-    ];
-    return issue;
-  }
-
-  if(/no such column/i.test(lowerMsg) || /unknown column/i.test(lowerMsg)){
-    issue.tag = 'Schema';
-    issue.title = 'Unknown column or alias';
-    issue.hints = [
-      'The query references a column name that the current table does not have, or an alias used too early.',
-      'Check spelling, table aliases, and whether the column belongs to the table you joined.',
-      'If you used an alias in WHERE, remember SELECT aliases are usually not visible there.'
-    ];
-    return issue;
-  }
-
-  if(/wrong number of arguments/i.test(lowerMsg)){
-    issue.tag = 'Function';
-    issue.title = 'Function call has the wrong number of arguments';
-    issue.hints = [
-      'A SQL function is being called with too many or too few inputs.',
-      'Check the function name and its parentheses carefully.',
-      'Look up the expected signature for the function you used.'
-    ];
-    return issue;
-  }
-
-  if(/misuse of aggregate/i.test(lowerMsg)){
-    issue.tag = 'GROUP BY';
-    issue.title = 'Aggregate used in the wrong place';
-    issue.hints = [
-      'An aggregate like COUNT or SUM is being used where a raw row expression was expected.',
-      'Aggregates usually belong in SELECT or HAVING, not in WHERE.',
-      'Move the filter to HAVING or rewrite the logic around a grouped result.'
-    ];
-    return issue;
-  }
-
-  return issue;
-}
-
 
 const MENTOR_RULES = [
   {id:'no-from', tag:'Syntax', title:'<code>SELECT</code> without <code>FROM</code>',
@@ -5297,24 +5175,208 @@ function diffAnalysis(user, expected){
   return null;
 }
 
+function lev(a, b){
+  if(a === b) return 0;
+  const m = a.length, n = b.length;
+  if(m === 0) return n;
+  if(n === 0) return m;
+  const dp = Array(n+1).fill(0).map((_,i) => i);
+  for(let i = 1; i <= m; i++){
+    let prev = dp[0]; dp[0] = i;
+    for(let j = 1; j <= n; j++){
+      const tmp = dp[j];
+      dp[j] = a[i-1] === b[j-1] ? prev : 1 + Math.min(prev, dp[j-1], dp[j]);
+      prev = tmp;
+    }
+  }
+  return dp[n];
+}
+function closestKeyword(input, list){
+  let best = null;
+  for(const word of list){
+    const d = lev(input, word);
+    const ml = Math.max(input.length, word.length);
+    const score = ml === 0 ? 0 : 1 - d/ml;
+    if(!best || score > best.score) best = {word, score, d};
+  }
+  return best;
+}
+
+function parseExecError(msg, sql){
+  if(!msg) return [];
+  // Our own validation
+  if(/empty query|type something first/i.test(msg)){
+    return [{tag:'Empty query', title:'Your editor is empty',
+      hints:[
+        'Nothing to analyze yet — the editor is empty.',
+        'Click <b>↺ Reset</b> to bring back the starter code, which gives you a skeleton to fill in.',
+        'Type at least <code>SELECT … FROM …</code> to get started.'
+      ]}];
+  }
+  if(/only runs SELECT|only allows SELECT/i.test(msg)){
+    return [{tag:'Statement type', title:'Playground only runs SELECT statements',
+      hints:[
+        'This sandbox only allows SELECT (and WITH … SELECT). INSERT / UPDATE / DELETE / DDL are blocked.',
+        'If the prompt mentions modifying data, you can usually express it as a SELECT that returns what the modified state would look like.',
+        'Start your query with <code>SELECT</code> or <code>WITH … SELECT</code>.'
+      ]}];
+  }
+  // near "X": syntax error
+  const near = msg.match(/near\s+"([^"]+)":\s*syntax error/i);
+  if(near){
+    const token = near[1];
+    const KW = ['SELECT','FROM','WHERE','GROUP','HAVING','ORDER','LIMIT','OFFSET','JOIN','INNER','LEFT','RIGHT','OUTER','CROSS','ON','AS','AND','OR','NOT','IN','LIKE','BETWEEN','IS','NULL','DISTINCT','UNION','ALL','EXISTS','CASE','WHEN','THEN','ELSE','END','WITH','OVER','PARTITION','BY','DESC','ASC','VALUES'];
+    const upper = token.toUpperCase();
+    if(/^[a-zA-Z]+$/.test(token) && !KW.includes(upper)){
+      const close = closestKeyword(upper, KW);
+      if(close && close.score >= 0.6 && close.d <= 2){
+        return [{tag:'Misspelled keyword', title:`<code>${esc(token)}</code> looks like a typo`,
+          hints:[
+            `The parser stopped at <code>${esc(token)}</code> — that\'s not a SQL keyword or anything recognized there.`,
+            `It looks very close to <code>${close.word}</code> — a common typo (letters swapped or one missing).`,
+            `Replace <code>${esc(token)}</code> with <code>${close.word}</code> and rerun.`
+          ]}];
+      }
+    }
+    if(token === ')' || token === '('){
+      return [{tag:'Parentheses issue', title:`Unexpected <code>${esc(token)}</code>`,
+        hints:[
+          `SQL choked on an unmatched <code>${esc(token)}</code>. Almost certainly a paren imbalance.`,
+          `Count your <code>(</code> and <code>)</code> — they must match. Subqueries, function calls, and <code>OVER()</code> each need their own pair.`,
+          `Read left to right. Match each opening paren with a closing one. The unpaired one is your bug.`
+        ]}];
+    }
+    if(token === ',' || token === ';'){
+      return [{tag:'Unexpected punctuation', title:`Unexpected <code>${esc(token)}</code>`,
+        hints:[
+          `SQL didn\'t expect a <code>${esc(token)}</code> there.`,
+          `Common causes: trailing comma at the end of SELECT, a stray semicolon mid-statement, or a comma where a keyword belongs.`,
+          `Remove the extra punctuation, or add what was supposed to come before/after it.`
+        ]}];
+    }
+    if(/^['"]/.test(token)){
+      return [{tag:'String/quote issue', title:`Quote problem near <code>${esc(token)}</code>`,
+        hints:[
+          `SQL hit a quoted value that doesn\'t parse cleanly.`,
+          `Common causes: unterminated string (missing closing quote), smart quotes from copy-paste, or mixing <code>"</code> and <code>\'</code>.`,
+          `In SQL, string literals use straight single quotes: <code>\'hello\'</code>. Double quotes mean an identifier.`
+        ]}];
+    }
+    return [{tag:'Syntax error', title:`Syntax error near <code>${esc(token)}</code>`,
+      hints:[
+        `The parser stopped right before <code>${esc(token)}</code>. Whatever it saw just BEFORE this point doesn\'t make sense to SQL.`,
+        `Most common causes: missing comma between columns, missing keyword (FROM, AS, ON), a clause out of order, or stray punctuation.`,
+        `Focus on the 3–5 words just BEFORE <code>${esc(token)}</code>. That\'s where the bug lives ~90% of the time.`
+      ]}];
+  }
+  // no such table
+  const noTable = msg.match(/no such table:?\s*([\w.]+)/i);
+  if(noTable){
+    return [{tag:'Unknown table', title:`Table <code>${esc(noTable[1])}</code> doesn\'t exist`,
+      hints:[
+        `SQL can\'t find a table called <code>${esc(noTable[1])}</code>. Either misspelled, or it\'s not part of this challenge.`,
+        `Scroll up — the tables you CAN query are listed above the editor. Check spelling, plural vs singular, underscores.`,
+        `Pick the right table from the visible list and update your FROM/JOIN to match.`
+      ]}];
+  }
+  // no such column
+  const noCol = msg.match(/no such column:?\s*([\w.]+)/i);
+  if(noCol){
+    const c = noCol[1];
+    const qualified = c.includes('.');
+    return [{tag:'Unknown column', title:`Column <code>${esc(c)}</code> doesn\'t exist`,
+      hints:[
+        `SQL can\'t find <code>${esc(c)}</code> in the tables your query reads from.`,
+        qualified
+          ? `You qualified it with an alias. Either the alias is wrong, or that table doesn\'t have this column. Check the columns above.`
+          : `Maybe a typo, OR the column is in a table you haven\'t JOINed yet. SQL only sees columns from tables in FROM/JOIN.`,
+        `Fix the spelling, add the missing JOIN, or qualify the column with the right table alias.`
+      ]}];
+  }
+  // ambiguous column
+  const ambig = msg.match(/ambiguous column name:?\s*([\w.]+)/i);
+  if(ambig){
+    return [{tag:'Ambiguous column', title:`<code>${esc(ambig[1])}</code> exists in multiple joined tables`,
+      hints:[
+        `Two of your joined tables both have a column called <code>${esc(ambig[1])}</code>. SQL doesn\'t know which one you want.`,
+        `Alias your tables (e.g. <code>FROM customers c JOIN orders o</code>) and qualify the column: <code>c.${esc(ambig[1])}</code> or <code>o.${esc(ambig[1])}</code>.`,
+        `Decide which table\'s <code>${esc(ambig[1])}</code> the query needs. Prefix every reference with that alias.`
+      ]}];
+  }
+  // misuse of aggregate
+  if(/misuse of aggregate/i.test(msg)){
+    return [{tag:'Aggregate misuse', title:'Aggregate function used in the wrong place',
+      hints:[
+        'You\'re using COUNT/SUM/AVG/MIN/MAX somewhere it isn\'t allowed — usually inside WHERE.',
+        'WHERE runs row-by-row, BEFORE any aggregation. Aggregates only exist AFTER grouping.',
+        'Fix: filter aggregates with <code>HAVING</code> after a <code>GROUP BY</code> — or wrap the aggregate in a subquery.'
+      ]}];
+  }
+  // incomplete input
+  if(/incomplete input/i.test(msg)){
+    return [{tag:'Incomplete query', title:'Your query is incomplete',
+      hints:[
+        'SQL ran out of input before the query was finished — something is left dangling.',
+        'Common culprits: missing closing <code>)</code>, missing <code>END</code> on a CASE, a WHERE/ON clause that just stops mid-air, or no FROM after SELECT.',
+        'Read top to bottom. Find the last token — what\'s supposed to come right after it? Add it.'
+      ]}];
+  }
+  // unrecognized token
+  const utok = msg.match(/unrecognized token:?\s*"?([^"\n]+?)"?\s*$/i);
+  if(utok){
+    return [{tag:'Unrecognized token', title:`Unrecognized token: <code>${esc(utok[1])}</code>`,
+      hints:[
+        `SQL doesn\'t know what to do with <code>${esc(utok[1])}</code>. Usually a stray character or wrong quote style.`,
+        'Common causes: smart/curly quotes (&ldquo; &rdquo;) from copy-paste, backticks (`) where SQL wants normal quotes, or an invisible character.',
+        'Replace with straight quotes (<code>\'</code> for strings, <code>"</code> for identifiers). Retype the line if you\'re unsure.'
+      ]}];
+  }
+  // wrong number of arguments
+  const wargs = msg.match(/wrong number of arguments to function ([\w.]+)/i);
+  if(wargs){
+    return [{tag:'Function arg count', title:`<code>${esc(wargs[1])}</code> got the wrong number of arguments`,
+      hints:[
+        `The function <code>${esc(wargs[1])}</code> doesn\'t accept the number of args you passed.`,
+        'Common slips: an extra comma inside the parens, or missing arg. <code>DATE_FORMAT(col, fmt)</code> needs 2; <code>COUNT(col)</code> needs 1.',
+        'Look up the function\'s signature, and match your call to it exactly.'
+      ]}];
+  }
+  // GROUP BY required pattern
+  if(/aggregate.*GROUP BY|GROUP BY.*required/i.test(msg)){
+    return [{tag:'GROUP BY mistake', title:'Aggregate without proper GROUP BY',
+      hints:[
+        'You mixed aggregates with non-aggregated columns. SQL needs to know how to group rows.',
+        'Every column in SELECT that isn\'t inside an aggregate must appear in GROUP BY.',
+        'Decide what you\'re grouping by, then add <code>GROUP BY column</code>.'
+      ]}];
+  }
+  // Generic fallback — still helpful
+  return [{tag:'Query error', title:'SQL engine raised an error',
+    hints:[
+      `The engine said: <code>${esc(msg)}</code>`,
+      'Read the error left to right. Phrases like "near X" or "no such Y" point right at the problem token.',
+      'Stuck? Simplify: comment out clauses one by one. When the error vanishes, the clause you just removed had the bug.'
+    ]}];
+}
+
 function askMentor(src){
   const editor = document.getElementById('sqlEditor');
   const sql = editor ? editor.value : '';
-  let issues = analyzeSql(sql);
   let lastRun = null;
   if(src === 'playground') lastRun = lastChallengeRun;
   else if(src === 'interview' && iv) lastRun = iv.lastRun;
-
+  let issues = [];
+  // 1. Runtime/parser error first (highest priority)
   if(lastRun && lastRun.error){
-    const execIssue = buildExecutionMentorIssue(lastRun.sql || sql, lastRun.error);
-    if(execIssue) issues = [execIssue, ...issues];
+    issues = issues.concat(parseExecError(lastRun.error, sql));
   }
-
-  if(lastRun && lastRun.user && lastRun.expected){
+  // 2. Static anti-pattern analysis
+  issues = issues.concat(analyzeSql(sql));
+  // 3. Diff analysis (only if there was a successful run with both results)
+  if(lastRun && !lastRun.error && lastRun.user && lastRun.expected){
     const d = diffAnalysis(lastRun.user, lastRun.expected);
     if(d) issues.push(d);
   }
-
   mentor = {issues, issueIdx:0, hintLevel:0};
   renderMentorPanel();
   const panel = document.getElementById('mentorPanel');
@@ -5385,6 +5447,346 @@ function closeMentor(){
   const panel = document.getElementById('mentorPanel');
   if(panel) panel.innerHTML = '';
   mentor = {issues:[], issueIdx:0, hintLevel:0};
+}
+
+/* ============ Adaptive Learning & Spaced Repetition ============ */
+const CONCEPTS = [
+  {id:'joins', name:'JOINs', icon:'🔗'},
+  {id:'aggregates', name:'Aggregates & GROUP BY', icon:'∑'},
+  {id:'subqueries', name:'Subqueries', icon:'🔂'},
+  {id:'ctes', name:'CTEs (WITH)', icon:'📋'},
+  {id:'window-functions', name:'Window functions', icon:'🪟'},
+  {id:'indexing', name:'Indexing & optimization', icon:'🗃️'},
+  {id:'transactions', name:'Transactions & locks', icon:'⚙️'}
+];
+
+const CONCEPT_TAG_MAP = {
+  'join':'joins','joins':'joins','self-join':'joins','star schema':'joins','multi-join':'joins','anti-join':'joins','left join':'joins','inner join':'joins',
+  'aggregation':'aggregates','aggregate':'aggregates','aggregates':'aggregates','group-by':'aggregates','having':'aggregates','group by':'aggregates',
+  'subquery':'subqueries','subqueries':'subqueries','correlated':'subqueries','exists':'subqueries','point-in-time':'subqueries','scd':'subqueries','incremental refresh':'subqueries','materialized view':'subqueries',
+  'cte':'ctes','ctes':'ctes','with':'ctes','recursive':'ctes',
+  'window':'window-functions','window function':'window-functions','window-functions':'window-functions','rank':'window-functions','row_number':'window-functions','top-n-per-group':'window-functions','running total':'window-functions','partition by':'window-functions',
+  'index':'indexing','indexing':'indexing','explain':'indexing','composite':'indexing','covering':'indexing','optimization':'indexing','partitioning':'indexing',
+  'transaction':'transactions','transactions':'transactions','isolation':'transactions','lock':'transactions','locks':'transactions','deadlock':'transactions','concurrency':'transactions','replication':'transactions'
+};
+
+function adTodayKey(){const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+
+function tagsToConcepts(tags){
+  if(!tags || !tags.length) return [];
+  const set = new Set();
+  for(const t of tags){
+    const lt = String(t).toLowerCase();
+    if(CONCEPT_TAG_MAP[lt]){ set.add(CONCEPT_TAG_MAP[lt]); continue; }
+    for(const [key, cid] of Object.entries(CONCEPT_TAG_MAP)){
+      if(lt.includes(key)){ set.add(cid); break; }
+    }
+  }
+  return Array.from(set);
+}
+
+function moduleToConcepts(mod){
+  if(!mod) return [];
+  const text = ((mod.title||'') + ' ' + (mod.description||'')).toLowerCase();
+  const out = new Set();
+  if(/\bjoin/.test(text)) out.add('joins');
+  if(/aggregat|group by|having/.test(text)) out.add('aggregates');
+  if(/subquer/.test(text)) out.add('subqueries');
+  if(/\bcte|common table|\bwith\b/.test(text)) out.add('ctes');
+  if(/window/.test(text)) out.add('window-functions');
+  if(/index|explain|optim/.test(text)) out.add('indexing');
+  if(/transac|isolation|\block|deadlock|concurren|replication/.test(text)) out.add('transactions');
+  return Array.from(out);
+}
+
+function recordConcept(concepts, correct){
+  if(!concepts || !concepts.length) return;
+  if(!state.concepts) state.concepts = {};
+  for(const c of concepts){
+    if(!state.concepts[c]) state.concepts[c] = {seen:0, correct:0, ease:2.5, dueAt:0, lastSeen:0, interval:1};
+    const cs = state.concepts[c];
+    cs.seen += 1;
+    if(correct) cs.correct += 1;
+    cs.lastSeen = Date.now();
+    if(correct){
+      cs.ease = Math.min(3.0, (cs.ease||2.5) + 0.05);
+      cs.interval = Math.max(1, Math.round((cs.interval||1) * cs.ease));
+    } else {
+      cs.ease = Math.max(1.3, (cs.ease||2.5) - 0.2);
+      cs.interval = 1;
+    }
+    cs.dueAt = Date.now() + cs.interval * 86400000;
+  }
+}
+
+function recordQuestionSrs(qid, correct){
+  if(!qid) return;
+  if(!state.questionSrs) state.questionSrs = {};
+  let srs = state.questionSrs[qid] || {ease:2.5, interval:1, reps:0, lapses:0, dueAt:0};
+  srs.reps += 1;
+  if(correct){
+    srs.ease = Math.min(3.0, srs.ease + 0.1);
+    if(srs.reps === 1) srs.interval = 1;
+    else if(srs.reps === 2) srs.interval = 4;
+    else srs.interval = Math.max(1, Math.round(srs.interval * srs.ease));
+  } else {
+    srs.lapses += 1;
+    srs.ease = Math.max(1.3, srs.ease - 0.25);
+    srs.interval = 1;
+    srs.reps = 0;
+  }
+  srs.dueAt = Date.now() + srs.interval * 86400000;
+  state.questionSrs[qid] = srs;
+}
+
+function bumpDailyGoal(){
+  const today = adTodayKey();
+  if(!state.dailyProgress || state.dailyProgress.date !== today){
+    state.dailyProgress = {date: today, completed: 0};
+  }
+  state.dailyProgress.completed += 1;
+}
+
+function getDailyProgress(){
+  const today = adTodayKey();
+  const goal = state.dailyGoal || 10;
+  if(!state.dailyProgress || state.dailyProgress.date !== today){
+    return {completed: 0, goal};
+  }
+  return {completed: state.dailyProgress.completed, goal};
+}
+
+function tickStreak(){
+  const today = new Date().toDateString();
+  if(state.lastPlayed === today) return;
+  state.streak = (state.streak || 0) + 1;
+  state.lastPlayed = today;
+  state.streakFrozeRecently = false;
+  // Award a freeze at every 7-day milestone (max 3)
+  if(state.streak > 0 && state.streak % 7 === 0 && state.streak !== (state.lastFreezeMilestone||0)){
+    state.freezesAvailable = Math.min((state.freezesAvailable || 0) + 1, 3);
+    state.lastFreezeMilestone = state.streak;
+  }
+}
+
+function getDueReviewQuestions(){
+  const now = Date.now();
+  const due = [];
+  if(!state.questionSrs) return due;
+  for(const q of INTERVIEW_QUESTIONS){
+    const srs = state.questionSrs[q.id];
+    if(srs && srs.dueAt && srs.dueAt <= now) due.push(q);
+  }
+  return due;
+}
+
+function getWeakConcepts(threshold=0.7, minSeen=3){
+  if(!state.concepts) return [];
+  const arr = [];
+  for(const c of CONCEPTS){
+    const cs = state.concepts[c.id];
+    if(cs && cs.seen >= minSeen){
+      const acc = cs.correct / cs.seen;
+      if(acc < threshold) arr.push({...c, accuracy: acc, seen: cs.seen, correct: cs.correct});
+    }
+  }
+  return arr.sort((a,b) => a.accuracy - b.accuracy);
+}
+
+function getUntouchedConcepts(){
+  return CONCEPTS.filter(c => {
+    const cs = state.concepts && state.concepts[c.id];
+    return !cs || cs.seen < 2;
+  });
+}
+
+function getRecommendation(){
+  const weak = getWeakConcepts();
+  if(weak.length > 0) return {type:'weak', concept: weak[0]};
+  const untouched = getUntouchedConcepts();
+  if(untouched.length > 0) return {type:'untouched', concept: untouched[0]};
+  return null;
+}
+
+function findModulesForConcept(conceptId){
+  return M.filter(m => moduleToConcepts(m).includes(conceptId));
+}
+
+function startConceptPractice(conceptId){
+  const mods = findModulesForConcept(conceptId);
+  if(mods.length > 0) startModule(mods[0].id);
+  else renderConceptStats();
+}
+
+function renderAdaptivePanels(){
+  const prog = getDailyProgress();
+  const pct = Math.min(100, Math.round(prog.completed / Math.max(1, prog.goal) * 100));
+  const complete = prog.completed >= prog.goal;
+  const remaining = Math.max(0, prog.goal - prog.completed);
+  let statusMsg;
+  if(complete) statusMsg = `🎉 Daily goal smashed! +${prog.completed - prog.goal} bonus answer${prog.completed - prog.goal === 1 ? '' : 's'}.`;
+  else if(prog.completed === 0) statusMsg = `${prog.goal} correct answers today and your streak grows. Let's go.`;
+  else statusMsg = `${remaining} more correct answer${remaining===1?'':'s'} to hit today's goal.`;
+  const freezeLine = state.freezesAvailable > 0 ? ` · ❄️ ${state.freezesAvailable} streak freeze${state.freezesAvailable===1?'':'s'} banked` : '';
+  const frozeLine = state.streakFrozeRecently ? '<span class="dg-freeze">❄️ STREAK SAVED</span>' : '';
+  const goalHtml = `
+    <button class="daily-goal-card" onclick="renderConceptStats()" aria-label="View concept mastery stats">
+      <div class="dg-header">
+        <div class="dg-title">🎯 Today's goal ${frozeLine}</div>
+        <div class="dg-count">${prog.completed} / ${prog.goal}</div>
+      </div>
+      <div class="dg-bar-bg"><div class="dg-bar-fill ${complete?'complete':''}" style="width:${pct}%"></div></div>
+      <div class="dg-status">${statusMsg}${freezeLine}</div>
+    </button>
+  `;
+  const due = getDueReviewQuestions();
+  const reviewHtml = due.length > 0 ? `
+    <button class="review-card" onclick="launchReview()" aria-label="Start review session">
+      <div class="review-icon" aria-hidden="true">🔄</div>
+      <div class="review-info">
+        <h4>Review session ready</h4>
+        <p>Spaced-repetition — lock in what you've practiced.</p>
+      </div>
+      <div class="review-badge">${due.length} DUE</div>
+    </button>
+  ` : '';
+  const rec = getRecommendation();
+  let recHtml = '';
+  if(rec && rec.type === 'weak'){
+    const acc = Math.round(rec.concept.accuracy * 100);
+    recHtml = `
+      <button class="rec-card" onclick="startConceptPractice('${rec.concept.id}')" aria-label="Practice ${esc(rec.concept.name)}">
+        <div class="rec-icon" aria-hidden="true">${rec.concept.icon}</div>
+        <div class="rec-body">
+          <h4>Practice ${esc(rec.concept.name)}</h4>
+          <p>Your weakest topic — ${acc}% accuracy across ${rec.concept.seen} ${rec.concept.seen===1?'try':'tries'}. Let's drill it.</p>
+        </div>
+        <div class="rec-arrow" aria-hidden="true">›</div>
+      </button>
+    `;
+  } else if(rec && rec.type === 'untouched' && (state.concepts && Object.keys(state.concepts).length > 0)){
+    recHtml = `
+      <button class="rec-card" onclick="startConceptPractice('${rec.concept.id}')" aria-label="Try ${esc(rec.concept.name)}">
+        <div class="rec-icon" aria-hidden="true">${rec.concept.icon}</div>
+        <div class="rec-body">
+          <h4>Try ${esc(rec.concept.name)}</h4>
+          <p>You haven't practiced this concept yet — new territory to cover.</p>
+        </div>
+        <div class="rec-arrow" aria-hidden="true">›</div>
+      </button>
+    `;
+  }
+  return goalHtml + reviewHtml + recHtml;
+}
+
+function renderConceptStats(){
+  hideFeedback();
+  const concepts = state.concepts || {};
+  const items = CONCEPTS.map(c => {
+    const cs = concepts[c.id] || {seen:0, correct:0};
+    const acc = cs.seen ? Math.round((cs.correct/cs.seen)*100) : null;
+    const cls = acc === null ? '' : acc >= 80 ? 'strong' : acc < 60 ? 'weak' : '';
+    const mods = findModulesForConcept(c.id);
+    const modBtns = mods.slice(0,3).map(m => `<button class="rec-btn" onclick="startModule(${m.id})">${m.icon} ${esc(m.title)}</button>`).join('');
+    const srsHint = cs.dueAt && cs.dueAt > Date.now() ? ` · next review in ${Math.ceil((cs.dueAt - Date.now())/86400000)}d` : '';
+    return `
+      <div class="concept-row ${cls}">
+        <div class="cr-icon" aria-hidden="true">${c.icon}</div>
+        <div class="cr-info">
+          <div class="cr-name">${esc(c.name)}</div>
+          <div class="cr-bar-bg"><div class="cr-bar-fill" style="width:${acc||0}%"></div></div>
+        </div>
+        <div class="cr-stat">
+          <div class="cr-acc">${acc !== null ? acc + '%' : '–'}</div>
+          <div class="cr-seen">${cs.seen} ${cs.seen===1?'try':'tries'}${srsHint}</div>
+        </div>
+      </div>
+      ${modBtns ? `<div class="rec-buttons" style="margin:-2px 0 6px 48px">${modBtns}</div>` : ''}
+    `;
+  }).join('');
+  const due = getDueReviewQuestions();
+  const reviewBlock = due.length > 0 ? `
+    <button class="review-card" onclick="launchReview()" style="margin-top:14px">
+      <div class="review-icon" aria-hidden="true">🔄</div>
+      <div class="review-info">
+        <h4>Review session ready</h4>
+        <p>${due.length} interview question${due.length===1?'':'s'} due based on spaced repetition.</p>
+      </div>
+      <div class="review-badge">${due.length} DUE</div>
+    </button>
+  ` : '';
+  const prog = getDailyProgress();
+  const totalAttempts = Object.values(concepts).reduce((a,c) => a + (c.seen||0), 0);
+  const totalCorrect = Object.values(concepts).reduce((a,c) => a + (c.correct||0), 0);
+  const overall = totalAttempts ? Math.round(totalCorrect/totalAttempts*100) : null;
+  main.innerHTML = `
+    <div class="lesson-header">
+      <button class="close-btn" onclick="renderHome()" aria-label="Back">×</button>
+      <div style="flex:1;font-weight:800;font-size:14px;color:var(--muted)">Concept mastery</div>
+    </div>
+    <article class="card card-concept">
+      <span class="card-badge b-concept">📊 Adaptive stats</span>
+      <h2>Your concept mastery</h2>
+      <p>Accuracy per concept across every question you've answered. Concepts below 60% (red) get prioritized in recommendations. Each concept also has a spaced-repetition review schedule.</p>
+      <div style="display:flex;gap:14px;margin:14px 0;font-size:13px;font-weight:700;color:var(--muted);flex-wrap:wrap">
+        <div>Overall accuracy: <b style="color:var(--ink);font-size:15px">${overall !== null ? overall + '%' : '–'}</b></div>
+        <div>Total attempts: <b style="color:var(--ink);font-size:15px">${totalAttempts}</b></div>
+        <div>Today: <b style="color:var(--ink);font-size:15px">${prog.completed}/${prog.goal}</b></div>
+        <div>Streak: <b style="color:var(--ink);font-size:15px">${state.streak||0}🔥</b></div>
+        <div>Freezes: <b style="color:var(--ink);font-size:15px">${state.freezesAvailable||0}❄️</b></div>
+      </div>
+      <div class="concept-rows">${items}</div>
+      ${reviewBlock}
+    </article>
+    <div class="footer-actions" style="margin-top:18px">
+      <button class="btn btn-primary" onclick="renderHome()">Done</button>
+    </div>
+  `;
+}
+
+async function launchReview(){
+  let due = getDueReviewQuestions();
+  if(due.length === 0){
+    // No SRS-due questions: fall back to weakest concept
+    const weak = getWeakConcepts();
+    if(weak.length > 0){
+      const pool = INTERVIEW_QUESTIONS.filter(q => tagsToConcepts(q.tags || []).includes(weak[0].id));
+      if(pool.length > 0){
+        due = pool.sort(() => Math.random() - 0.5).slice(0, 5);
+      }
+    }
+    if(due.length === 0){
+      alert('No reviews due yet! Complete a few interview questions first, then come back here.');
+      return;
+    }
+  }
+  hideFeedback();
+  main.innerHTML = `<div class="pg-loading"><span class="spin">⟳</span>Loading SQL engine</div>`;
+  try{ await ensureSql(); }catch(e){
+    main.innerHTML = `<article class="card card-pitfall"><span class="card-badge b-pitfall">⚠ Engine error</span><h2>Couldn't load engine</h2><div class="error-block">${esc(e.message||String(e))}</div><div class="footer-actions"><button class="btn btn-secondary" onclick="renderHome()">Back</button></div></article>`;
+    return;
+  }
+  const questions = due.slice(0, 10);
+  const durationMin = Math.max(5, questions.length * 2);
+  iv = {
+    difficulty: 'medium',
+    durationMs: durationMin * 60000,
+    startTime: Date.now(),
+    endTime: Date.now() + durationMin * 60000,
+    questions: questions,
+    idx: 0,
+    score: 0,
+    db: null,
+    timerId: null,
+    qStart: 0,
+    qHints: 0,
+    qAttempts: 0,
+    qStarter: '',
+    results: [],
+    reviewMode: true,
+    lastRun: {user:null, expected:null, error:null}
+  };
+  startIvQuestion();
 }
 
 /* ============ Boot ============ */
